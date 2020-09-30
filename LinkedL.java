@@ -26,20 +26,20 @@ public class LinkedL<T> {
         }
         int cont=0;
         Node<T> n= Firstnode;   //Se copia la cabeza de la lista en un nuevo nodo
-        if(index==0){return n.element;} //Si el index es cero se retorna el elemento de la cabeza
+        if(index==0){return n.data;} //Si el index es cero se retorna el elemento de la cabeza
         else{
             while(cont<index){ //Si index!=0 se itera hasta llegar al nodo con ese índex
             n=n.Next;  
             cont+=1;
             }
-            return n.element; //
+            return n.data; //
         }
     }
     public int indexOf(T el){
         Node<T> ne=Firstnode;  //Copiamos la cabeza
         int conta=0;
         while(true){  //Se itera por la lista, si el elemento actual coincide con el que se busca retorna el contador que sería el index
-            if(ne.element==el){  
+            if(ne.data==el){  
                 return conta;
             }
             if(conta==(size-1)){ //Si el contador llega al máximo index el elemento no está en la lista
@@ -67,14 +67,14 @@ public class LinkedL<T> {
         String s="";    //Se itera añadiendo cada elemento de la lista a un string el cual se retorna
         Node<T> copia= Firstnode;
         for(int i=0;i<size;i++){
-            s+= (copia.element).toString()+" ";
+            s+= (copia.data).toString()+" ";
             copia=copia.Next;
         }
         return s;
     }
     public T remove(int index){
         if(index==0){
-            T v=Firstnode.element;
+            T v=Firstnode.data;
             Firstnode=Firstnode.Next;
             size-=1;
             return v;
@@ -83,7 +83,7 @@ public class LinkedL<T> {
         for (int i=0;i<index-1;i++){
             copia=copia.Next;
         }
-        T v=copia.Next.element;
+        T v=copia.Next.data;
         copia=copia.Next.Next;
         size-=1;
         return v;
