@@ -4,8 +4,8 @@ import java.util.*;
  *
  * @author JOSE LUIS
  */
-public class LinkedL<T> {
-    protected Node<T> Firstnode,Lastnode;
+public class LinkedL<T> { //Es mejor usar Object como tipo de dato para las clases y métodos.
+    protected Node<T> Firstnode,Lastnode; // Cosas como esta no se deben hacer. La clase Node ya tiene datos genéricos para que se le pueda alamcenar cualquier tipo de dato.
     protected int size=0;
     
     public LinkedL(){    //Inicializa la lista con la cabeza y la cola apuntando a null.
@@ -67,7 +67,7 @@ public class LinkedL<T> {
         String s="";    //Se itera añadiendo cada elemento de la lista a un string el cual se retorna
         Node<T> copia= Firstnode;
         for(int i=0;i<size;i++){
-            s+= (copia.data).toString()+" ";
+            s+= (copia.data).toString()+" "; // Aquí es mejor dejar sólo copia.data + " " no hace falta usar toString.
             copia=copia.Next;
         }
         return s;
