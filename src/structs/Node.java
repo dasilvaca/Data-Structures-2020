@@ -1,5 +1,4 @@
-package structs;
-
+//package src;
 // La clase Node permite guardar un dato individual.
 public class Node {
     /* El atributo data guarda el valor del dato que se quiera guardar sea del

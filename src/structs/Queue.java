@@ -1,8 +1,8 @@
-package structs;
+//package Classes;
 /* clase Queue (Cola)*/
 public class Queue {
     // La clase Node permite guardar un dato individual.
-    public class Node<T> {
+    public class Node {
     /* El atributo data guarda el valor del dato que se quiera guardar sea del
        tipo que sea. Mientras que el atributo next apunta a la instancia de la
        clase Node inmediatamente posterior, lo que servirá para las colas. */
