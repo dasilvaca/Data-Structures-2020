@@ -1,13 +1,14 @@
-//import structs.*;S
+
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Node a = new Node("xd");
+        System.out.println("Prueba A");
+        //Node a = new Node("xd");
         
-        Queue A = new Queue();
-        A.enqueue("ajksdfbjklsdaf");
+        //Queue A = new Queue();
+        //A.enqueue("ajksdfbjklsdaf");
 
-        A.print();
+        //A.print();
 
 
 

@@ -1,4 +1,4 @@
-//package Classes;
+package structs;
 /* clase Queue (Cola)*/
 public class Queue {
     // La clase Node permite guardar un dato individual.
