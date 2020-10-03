@@ -9,6 +9,9 @@
  *
  * @author JUAN E Y JOSE LUIS
  */
+
+package structs;
+
 public class LinkedL {
     protected Node Firstnode,Lastnode;
     protected int size=0;

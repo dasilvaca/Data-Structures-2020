@@ -5,6 +5,8 @@
  */
 package classes;
 
+import structs.*;
+
 /**
  *
  * @author usuario

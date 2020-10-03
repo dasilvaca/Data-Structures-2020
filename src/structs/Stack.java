@@ -1,4 +1,4 @@
-import Node.java;
+package structs;
 
 public class Stack {
     
