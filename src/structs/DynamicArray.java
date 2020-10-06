@@ -1,18 +1,18 @@
 package structs;
 
-public class DynamicArray {
-    Object[] array;
+public class DynamicArray<t> {
+    t[] array;
     private int size, capacity;
 
-    DynamicArray(){
+    DynamicArray(){ 
         size = 0;
         capacity = 1;
     }
     
-    <T>DynamicArray(T[] arreglo){
+     DynamicArray(T[] arreglo){
         array = arreglo;
-        size = 0;
-        capacity = 1;
+        size =arreglo.length -1;
+        capacity = arreglo.length;
     }
 
     public <T> void append(T data){
@@ -30,6 +30,10 @@ public class DynamicArray {
             array[size] = data;
             size ++;
         }
+    }
+
+    public Object get(int index){
+        return (Object)array[index]
     }
 
 }
