@@ -14,7 +14,7 @@ package structs;
 
 public class LinkedL {
     protected Node Firstnode,Lastnode;
-    protected int size=0;
+    public int size=0;
     
     public LinkedL(){    //Inicializa la lista con la cabeza y la cola apuntando a null.
         Firstnode=new Node(null);

@@ -11,7 +11,7 @@ public class Node {
     public Node next = null;
     
     /* Constructor de la clase: */
-    public Node(Object dt){
+    public <T>Node(T dt){
         this.data = dt;
     }
     

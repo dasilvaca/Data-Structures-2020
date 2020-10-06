@@ -3,7 +3,7 @@ package structs;
 public class Stack {
     Node top;
     
-    public void Stack(){
+    Stack(){
         this.top = null;
     }
     
