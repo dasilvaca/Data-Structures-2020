@@ -9,6 +9,13 @@
             "name": "CodeLens (Launch) - App",
             "request": "launch",
             "mainClass": "App",
+            "projectName": "Data-Structures-2020_7049001e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "App",
             "projectName": "Data-Structures-2020_500ca84b"
         }
     ]

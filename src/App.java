@@ -4,14 +4,15 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Prueba A");
-        Node a = new Node("xd");
+        LinkedL lista = new LinkedL();
 
-        // Node a = new Node("xd");
+        lista.add(0, 24);
 
-        // Queue A = new Queue();
-        // A.enqueue("ajksdfbjklsdaf");
+        lista.add(1, 40);
 
-        // A.print();
+        for(int i =0; i< lista.size; i++){
+            System.out.println(lista.get(i));
+        }
 
     }
 }
