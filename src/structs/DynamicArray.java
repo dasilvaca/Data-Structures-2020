@@ -1,7 +1,7 @@
 package structs;
-/*
-public class DynamicArray<T> {
-    T[] array;
+
+public class DynamicArray {
+    Object[] array;
     private int size, capacity;
 
     DynamicArray(){ 
@@ -9,15 +9,15 @@ public class DynamicArray<T> {
         capacity = 1;
     }
     
-     DynamicArray(T[] arreglo){
+     DynamicArray(Object[] arreglo){
         array = arreglo;
         size =arreglo.length -1;
         capacity = arreglo.length;
     }
 
-    public void append(T data){
+    public void append(Object data){
         if (size + 1 == capacity){
-            T temparray[] = new T[2*capacity];
+            Object temparray[] = new Object[2*capacity];
             for(int i =0; i < capacity; i ++){
                 temparray[i] = array[i];
             }
@@ -33,7 +33,7 @@ public class DynamicArray<T> {
     }
 
     public Object get(int index){
-        return (Object)array[index]
+        return (Object)array[index];
     }
 
-}*/
+}
