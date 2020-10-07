@@ -9,7 +9,7 @@ public class DynamicArray<t> {
         capacity = 1;
     }
     
-     DynamicArray(T[] arreglo){
+     /**DynamicArray(T[] arreglo){
         array = arreglo;
         size =arreglo.length -1;
         capacity = arreglo.length;
@@ -34,6 +34,6 @@ public class DynamicArray<t> {
 
     public Object get(int index){
         return (Object)array[index]
-    }
+    }**/
 
 }

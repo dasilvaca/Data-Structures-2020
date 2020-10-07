@@ -18,20 +18,7 @@ public class App {
         lista.append(hola);
         Project prime= new Project("Estructuras",lista,500);
         hola.followProject(prime);
-        Gson gson = new Gson();
-        String s = gson.toJson(hola);
-        JSONObject intento = new JSONObject();
-        intento.put("Lista",s);
-        JSONArray intentoList = new JSONArray();
-        intentoList.add(intento);
-        try (FileWriter file = new FileWriter("intento.json")) {
- 
-            file.write(intentoList.toJSONString());
-            file.flush();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("hola");
 
 
 

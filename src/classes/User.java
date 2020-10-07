@@ -17,7 +17,7 @@ public class User {
     String birthDate;
     String email;
     LinkedL ownProjectList;
-    LinkedL followedProjects;
+    LinkedL followedProjects=new LinkedL();
     
     public User(String name, String password, String birthdate, String email){
         this.userName = name;
