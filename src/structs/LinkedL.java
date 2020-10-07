@@ -12,13 +12,13 @@
 
 package structs;
 
-public class LinkedL {
-    protected Node Firstnode,Lastnode;
+public class LinkedL<T> {
+    protected Node<T> Firstnode,Lastnode;
     public int size=0;
     
     public LinkedL(){    //Inicializa la lista con la cabeza y la cola apuntando a null.
-        Firstnode=new Node(null);
-        Lastnode= new Node(null);
+        Firstnode=new Node<T>(null);
+        Lastnode= new Node<T>(null);
     }
  
     public boolean isEmpty(){
@@ -27,13 +27,13 @@ public class LinkedL {
         }
         return false;
     } 
-    public Object get(int index){
+    public T get(int index){
         if(index>=size || index<0){       //Se mira si el index está dentro del rango
             System.out.println("List index out of range");
             return null;
         }
         int cont=0;
-        Node n= Firstnode;   //Se copia la cabeza de la lista en un nuevo nodo
+        Node <T> n= Firstnode;   //Se copia la cabeza de la lista en un nuevo nodo
         if(index==0){return n.data;} //Si el index es cero se retorna el elemento de la cabeza
         else{
             while(cont<index){ //Si index!=0 se itera hasta llegar al nodo con ese índex
@@ -43,8 +43,8 @@ public class LinkedL {
             return n.data; //
         }
     }
-    public int indexOf(Object el){
-        Node ne=Firstnode;  //Copiamos la cabeza
+    public int indexOf(T el){
+        Node<T> ne=Firstnode;  //Copiamos la cabeza
         int conta=0;
         while(true){  //Se itera por la lista, si el elemento actual coincide con el que se busca retorna el contador que sería el index
             if(ne.data==el){  
@@ -59,56 +59,56 @@ public class LinkedL {
         System.out.println("No está en la lista");
         return -1;
     }
-    public void append(Object el){
+    public void append(T el){
         if(size==0){  //Si no hay elementos en la lista se añade y la cabeza y la cola apuntan al nuevo elemento
-            Firstnode=new Node(el);
+            Firstnode=new Node<T>(el);
             Lastnode=Firstnode;
             size+=1; //Aumenta el tamaño de la lista
         }else{
-            Node penultimo= Lastnode; //Si ya hay elementos crea un nodo y apunta la cola y el penultimo a este
-            Lastnode= new Node(el);
+            Node<T> penultimo= Lastnode; //Si ya hay elementos crea un nodo y apunta la cola y el penultimo a este
+            Lastnode= new Node<T>(el);
             penultimo.next=Lastnode;
             size+=1;
         }                
     }  
     public String aString(){
         String s="";    //Se itera añadiendo cada elemento de la lista a un string el cual se retorna
-        Node copia= Firstnode;
+        Node<T> copia= Firstnode;
         for(int i=0;i<size;i++){
             s += copia.data+" ";
             copia=copia.next;
         }
         return s;
     }
-    public Object remove(int index){
+    public T remove(int index){
         if(index==0){
-            Object v=Firstnode.data;
+            T v=Firstnode.data;
             Firstnode=Firstnode.next;
             size-=1;
             return v;
         }
-        Node copia=Firstnode;
+        Node<T> copia=Firstnode;
         for (int i=0;i<index-1;i++){
             copia=copia.next;
         }
-        Object v=copia.next.data;
+        T v=copia.next.data;
         copia.next.data = null;
         copia.next = copia.next.next;
         size-=1;
         return v;
     }  //Corregir
-    public void add(int index, Object el){
+    public void add(int index, T el){
         if(index==0){  //Si se añade al principio la cabeza apunta a este y este al que era la cabeza
-            Node nuevo= new Node(el);
+            Node<T> nuevo= new Node<T>(el);
             nuevo.next = Firstnode;
             Firstnode= nuevo;
             size+=1;
         }else{ //Si no se itera hasta llegar a uno anterior donde lo queremos añadir 
-            Node nuevo = Firstnode;   
+            Node<T> nuevo = Firstnode;   
             for(int i=0;i<index-1;i++){
                 nuevo=nuevo.next;
             }
-            Node nuevon= new Node(el);//Luego creamos un nuevo nodo al cual apuntamos donde se estaba parado 
+            Node<T> nuevon= new Node<T>(el);//Luego creamos un nuevo nodo al cual apuntamos donde se estaba parado 
             nuevon.next = nuevo.next;
             nuevo.next=nuevon;          //nuevon se inicializa apuntando al siguiente
             size+=1;

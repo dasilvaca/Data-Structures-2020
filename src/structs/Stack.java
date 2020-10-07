@@ -1,27 +1,27 @@
 package structs;
 
-public class Stack {
-    Node top;
+public class Stack <T> {
+    Node <T> top;
     
     public Stack(){
         this.top = null;
     }
     
-    public void push(Object newElement){
-        Node newNode = new Node(newElement);
+    public void push(T newElement){
+        Node <T> newNode = new Node<T>(newElement);
         if (this.top != null){
             newNode.next = this.top;
         }
         this.top = newNode;
     }
     
-    public Object pop(){
-        Object returnElem = this.top.data;
+    public T pop(){
+        T returnElem = this.top.data;
         this.top = this.top.next;
         return returnElem;
     }
     
-    public Object peek(){
+    public T peek(){
         return this.top.data;
     }
     
@@ -34,7 +34,7 @@ public class Stack {
     }
     
     public int len(){
-        Node curr = this.top;
+        Node<T> curr = this.top;
         int len = 0;
         while(curr != null){
             len++;
@@ -44,7 +44,7 @@ public class Stack {
     }
     
     public void makeEmpty(){
-        Node curr = this.top;
+        Node<T> curr = this.top;
         while(curr != null){
             this.top = this.top.next;
             curr = curr.next;
@@ -52,7 +52,7 @@ public class Stack {
     }
     
     public void print(){
-        Node curr = this.top;
+        Node<T> curr = this.top;
         System.out.print("[");
         while(curr != null){
             if(curr.next != null){

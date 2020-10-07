@@ -4,15 +4,19 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Prueba A");
-        LinkedL lista = new LinkedL();
+        PriorityQueue<String> x = new PriorityQueue<String>();
 
-        lista.add(0, 24);
-
-        lista.add(1, 40);
-
-        for(int i =0; i< lista.size; i++){
-            System.out.println(lista.get(i));
-        }
-
+        x.add("Juanito", 1);
+        x.add("Federico", 100);
+        x.add("Charlie", 9999);
+        x.add("Pepito", 1000);
+        x.add("Sultano", 2);
+        x.add("Fulano", 99999);
+        x.add("Petunia", 500);
+        x.add("Men", 50);
+        x.add("mani", 45);
+        x.add("Meibus", 2);
+        x.add("asdfasdf", 70);
+        System.out.println(x);
     }
 }
