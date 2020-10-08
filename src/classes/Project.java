@@ -12,8 +12,8 @@ import structs.*;
  */
 public class Project {
     String name;
-    LinkedL owners;
-    LinkedL followers;
+    LinkedL owners=new LinkedL();
+    LinkedL followers=new LinkedL();
     int budget;
     
     public Project(String name, LinkedL owners, int budg){
@@ -30,5 +30,8 @@ public class Project {
     public void addOwner(User newOwner){
         owners.append(newOwner);
     }
-    
+    public String aString(){
+        String s= "Name: "+name+" Owners: "+owners.aString()+" Followers: "+followers.aString()+" Budget: "+String.valueOf(budget);
+        return s;
+    }
 }

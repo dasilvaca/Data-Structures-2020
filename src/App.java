@@ -17,8 +17,8 @@ public class App {
         LinkedL lista = new LinkedL();
         lista.append(hola);
         Project prime= new Project("Estructuras",lista,500);
-        hola.followProject(prime);
-        System.out.println("hola");
+        System.out.println(hola.aString());
+        System.out.println(prime.aString());
 
 
 
