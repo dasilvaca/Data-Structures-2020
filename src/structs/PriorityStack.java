@@ -7,6 +7,7 @@ public class PriorityStack<T> extends Stack<T> {
         if (this.top != null){
             nodo.next =this.top;
         }
+        //nodo.next =this.top;
         this.top = nodo;
     }
     
@@ -34,8 +35,9 @@ public class PriorityStack<T> extends Stack<T> {
     }
     public T poppri(){
         T returnElem = this.top.data;
+        PriorityNode<T> currentPriorityNode = this.top;
         this.top = this.top.next;
-        
+        currentPriorityNode.next = null;
         return returnElem;
     }
 }
