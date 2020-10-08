@@ -9,5 +9,8 @@ public class PriorityNode<T> extends Node<T>{
         super(dato);
         this.priority = prioridad;
     }
+    public String aString(){
+        return (String)this.data;
+    }
 }
 

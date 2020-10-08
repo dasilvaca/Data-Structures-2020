@@ -1,5 +1,4 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -13,8 +12,8 @@ import structs.*;
  */
 public class Project {
     String name;
-    LinkedL<User> owners;
-    LinkedL<User> followers;
+    LinkedL<User> owners=new LinkedL<User>();
+    LinkedL<User> followers=new LinkedL<User>();
     int budget;
     
     public Project(String name, LinkedL<User> owners, int budg){
@@ -31,5 +30,8 @@ public class Project {
     public void addOwner(User newOwner){
         owners.append(newOwner);
     }
-    
+    public String aString(){
+        String s= "Name: "+name+" Owners: "+owners.aString()+" Followers: "+followers.aString()+" Budget: "+String.valueOf(budget);
+        return s;
+    }
 }

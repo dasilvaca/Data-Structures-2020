@@ -11,25 +11,35 @@ public class PriorityQueue <T> {
 
     public void add(T data, int prioridad){
         PriorityNode<T> nodo = new PriorityNode<T>(prioridad, data);
-        if (orderedStack.isEmpty() || orderedStack.top.priority < prioridad){
+        if (orderedStack.isEmptypri() || orderedStack.top.priority > prioridad){
             orderedStack.insert(nodo);
+            orderedStack.printpri();
         }
         else{
             PriorityNode <T> current = orderedStack.top;
-            while (current.next != null || current.priority > prioridad){
+            while (current.next != null && current.priority >= prioridad){
                 transStack.insert(current);
                 current = current.next;
-                orderedStack.pop();
+                orderedStack.poppri();
+                
+                
             }
+            
             orderedStack.insert(nodo);
             current = transStack.top;
+            orderedStack.printpri();
+            //transStack.printpri();
+            
             while (current != null){
                 orderedStack.insert(current);
                 current = current.next;
-                transStack.pop();
+                transStack.poppri();
             }
+            orderedStack.print();
+            
         }
         }
+<<<<<<< HEAD
     public void print(){
         if (orderedStack.isEmpty()){
             System.out.println("Está vacía la cola :c");
@@ -42,6 +52,10 @@ public class PriorityQueue <T> {
             }
 
         }
+=======
+       
+        
+>>>>>>> 15ec35a91685dd694d8913f707016fa0fd6eae93
     }
 }
 
