@@ -1,11 +1,7 @@
 package structs;
 
 public class PriorityStack<T> extends Stack<T> {
-<<<<<<< HEAD
-    public PriorityNode<T> top;
-=======
     PriorityNode<T> top=null;
->>>>>>> 15ec35a91685dd694d8913f707016fa0fd6eae93
     
     public void insert(PriorityNode<T> nodo){
         if (this.top != null){

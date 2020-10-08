@@ -39,23 +39,8 @@ public class PriorityQueue <T> {
             
         }
         }
-<<<<<<< HEAD
-    public void print(){
-        if (orderedStack.isEmpty()){
-            System.out.println("Está vacía la cola :c");
-        }
-        else{
-            PriorityNode <T> current = orderedStack.top;
-            while (current.next != null){
-                System.out.println(current);
-                current = current.next;
-            }
-
-        }
-=======
        
         
->>>>>>> 15ec35a91685dd694d8913f707016fa0fd6eae93
-    }
+    
 }
 
