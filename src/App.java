@@ -26,6 +26,6 @@ public class App {
         x.add("mani", 45);
         x.add("Meibus", 2);
         x.add("asdfasdf", 70);
-        System.out.println(x);
+        x.print();
     }
 }

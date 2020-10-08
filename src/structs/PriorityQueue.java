@@ -1,8 +1,8 @@
 package structs;
 
 public class PriorityQueue <T> {
-    PriorityStack<T> orderedStack;
-    PriorityStack<T> transStack;
+    public PriorityStack<T> orderedStack;
+    public PriorityStack<T> transStack;
 
     public PriorityQueue(){
         this.orderedStack = new PriorityStack<T>();
@@ -30,5 +30,18 @@ public class PriorityQueue <T> {
             }
         }
         }
+    public void print(){
+        if (orderedStack.isEmpty()){
+            System.out.println("Está vacía la cola :c");
+        }
+        else{
+            PriorityNode <T> current = orderedStack.top;
+            while (current.next != null){
+                System.out.println(current);
+                current = current.next;
+            }
+
+        }
     }
+}
 

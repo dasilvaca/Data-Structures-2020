@@ -1,7 +1,7 @@
 package structs;
 
 public class PriorityStack<T> extends Stack<T> {
-    PriorityNode<T> top;
+    public PriorityNode<T> top;
     
     public void insert(PriorityNode<T> nodo){
         if (this.top != null){
@@ -9,6 +9,7 @@ public class PriorityStack<T> extends Stack<T> {
         }
         this.top = nodo;
     }
+    
     public PriorityStack(){
         this.top = null;
     }
