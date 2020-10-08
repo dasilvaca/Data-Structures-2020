@@ -35,7 +35,7 @@ public class App {
         x.add("mani", 45);
         x.add("Meibus", 2);
         x.add("asdfasdf", 70);
-        
+        x.orderedStack.printpri();
         System.out.println("Hola");
         
         /**PriorityStack<String> s= new PriorityStack<String>();

@@ -13,39 +13,22 @@ public class PriorityQueue <T> {
         PriorityNode<T> nodo = new PriorityNode<T>(prioridad, data);
         if (orderedStack.isEmptypri() || orderedStack.top.priority < prioridad){
             orderedStack.insert(nodo);
-            orderedStack.printpri();
         }
         else{
             PriorityNode <T> current = orderedStack.top;
             PriorityStack<T> dup= orderedStack;
-            while (current != null && current.priority > prioridad){
-                
-                System.out.println(current.aString()); 
+            while (current != null && current.priority >= prioridad){
+                current = current.next;
                 PriorityNode <T> hola = dup.poppri();
                 transStack.insert(hola);
-                transStack.printpri();
-                current = current.next;
-                
-                
             }
-            
             orderedStack.insert(nodo);
             current = transStack.top;
-            System.out.print("Ordered: ");
-            orderedStack.printpri();
-            System.out.print("Transition: ");
-            transStack.printpri();
-            
             while (current != null){
-                
                 current= transStack.poppri();
-                System.out.println(current.aString());
-                System.out.println(current.next);
                 orderedStack.insert(current);
-                current=transStack.top;
-                System.out.println(current);
+                current=transStack.top;   
             }
-            orderedStack.printpri();
             
         }
         }

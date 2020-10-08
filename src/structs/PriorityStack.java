@@ -2,11 +2,12 @@ package structs;
 
 public class PriorityStack<T> extends Stack<T> {
     PriorityNode<T> top=null;
-    
+    int size=0;
     public void insert(PriorityNode<T> nodo){
         
         nodo.next =this.top;
         this.top = nodo;
+        size+=1;
     }
     
     public PriorityStack(){
@@ -32,10 +33,13 @@ public class PriorityStack<T> extends Stack<T> {
         }
     }
     public PriorityNode<T> poppri(){
-      
+        if(size==0){
+            return null;
+        }
         PriorityNode<T> currentPriorityNode = this.top;
         this.top = this.top.next;
         currentPriorityNode.next = null;
+        size-=1;
         return currentPriorityNode;
     }
 }
