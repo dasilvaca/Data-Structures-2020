@@ -35,6 +35,17 @@ public class App {
         x.add("mani", 45);
         x.add("Meibus", 2);
         x.add("asdfasdf", 70);
-        System.out.println(x.aString());
+        System.out.println("Hola");
+        
+        /**PriorityStack<String> s= new PriorityStack<String>();
+        PriorityNode<String> n= new PriorityNode<String>(3, "HOLA");
+        s.insert(n);
+        s.printpri();
+       
+        
+        Stack<String> st= new Stack<String>();
+        st.push("Joselo");
+        st.print();**/
+
     }
 }
