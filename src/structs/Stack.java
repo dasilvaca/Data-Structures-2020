@@ -1,7 +1,7 @@
 package structs;
 
 public class Stack <T> {
-    Node <T> top;
+    public Node <T> top;
     
     public Stack(){
         this.top = null;
