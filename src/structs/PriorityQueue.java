@@ -17,7 +17,7 @@ public class PriorityQueue <T> {
         }
         else{
             PriorityNode <T> current = orderedStack.top;
-            while (current.next != null && current.priority >= prioridad){
+            while (current.next != null && current.priority < prioridad){
                 transStack.insert(current);
                 current = current.next;
                 orderedStack.poppri();
@@ -39,6 +39,7 @@ public class PriorityQueue <T> {
             
         }
         }
+<<<<<<< HEAD
     public void print(){
         if (orderedStack.isEmpty()){
             System.out.println("Está vacía la cola :c");
@@ -52,5 +53,10 @@ public class PriorityQueue <T> {
 
         }
     }
+=======
+       
+        
+    
+>>>>>>> 06f030ad938dbc7c217085b395b88c67d7ce3695
 }
 

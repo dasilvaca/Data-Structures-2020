@@ -35,6 +35,10 @@ public class App {
         x.add("mani", 45);
         x.add("Meibus", 2);
         x.add("asdfasdf", 70);
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 06f030ad938dbc7c217085b395b88c67d7ce3695
         System.out.println("Hola");
         
         /**PriorityStack<String> s= new PriorityStack<String>();
