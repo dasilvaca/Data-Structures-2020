@@ -17,7 +17,7 @@ public class PriorityQueue <T> {
         }
         else{
             PriorityNode <T> current = orderedStack.top;
-            while (current.next != null && current.priority >= prioridad){
+            while (current.next != null && current.priority < prioridad){
                 transStack.insert(current);
                 current = current.next;
                 orderedStack.poppri();
