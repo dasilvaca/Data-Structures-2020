@@ -24,19 +24,21 @@ public class App {
 
         PriorityQueue<String> x = new PriorityQueue<String>();
 
-        x.add("Juanito", 1);
-        x.add("Federico", 100);
-        x.add("Charlie", 9999);
-        x.add("Pepito", 1000);
-        x.add("Sultano", 2);
-        x.add("Fulano", 99999);
-        x.add("Petunia", 500);
-        x.add("Men", 50);
-        x.add("mani", 45);
-        x.add("Meibus", 2);
-        x.add("asdfasdf", 70);
+        x.insert("Juanito", 1);
+        x.insert("Federico", 100);
+        x.insert("Charlie", 9999);
+        x.insert("Pepito", 1000);
+        x.insert("Sultano", 2);
+        x.insert("Fulano", 99999);
+        x.insert("Petunia", 500);
+        x.insert("Men", 50);
+        x.insert("mani", 45);
+        x.insert("Meibus", 2);
+        x.insert("asdfasdf", 70);
         x.orderedStack.printpri();
-        System.out.println("Hola");
+        System.out.println(x.ExtractMax());
+        System.out.println(x.ExtractMax());
+        System.out.println(x.ExtractMax());
         
         /**PriorityStack<String> s= new PriorityStack<String>();
         PriorityNode<String> n= new PriorityNode<String>(3, "HOLA");

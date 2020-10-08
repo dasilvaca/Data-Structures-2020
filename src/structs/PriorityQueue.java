@@ -9,17 +9,17 @@ public class PriorityQueue <T> {
         this.transStack = new PriorityStack<T>();
     }
 
-    public void add(T data, int prioridad){
+    public void insert(T data, int prioridad){
         PriorityNode<T> nodo = new PriorityNode<T>(prioridad, data);
         if (orderedStack.isEmptypri() || orderedStack.top.priority < prioridad){
             orderedStack.insert(nodo);
         }
         else{
             PriorityNode <T> current = orderedStack.top;
-            PriorityStack<T> dup= orderedStack;
+            PriorityStack<T> duplicado= orderedStack;
             while (current != null && current.priority >= prioridad){
                 current = current.next;
-                PriorityNode <T> hola = dup.poppri();
+                PriorityNode <T> hola = duplicado.poppri();
                 transStack.insert(hola);
             }
             orderedStack.insert(nodo);
@@ -31,6 +31,11 @@ public class PriorityQueue <T> {
             }
             
         }
+        }
+
+        public T ExtractMax(){
+            PriorityNode<T> Max=orderedStack.poppri();
+            return Max.data;
         }
     public void print(){
         if (orderedStack.isEmpty()){
