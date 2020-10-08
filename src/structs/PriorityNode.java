@@ -10,6 +10,9 @@ public class PriorityNode<T> extends Node<T>{
         this.priority = prioridad;
     }
     public String aString(){
+        if(this.equals(null)){
+            return "null";
+        }
         return (String)this.data;
     }
 }
