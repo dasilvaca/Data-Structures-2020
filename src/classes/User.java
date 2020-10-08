@@ -16,8 +16,8 @@ public class User {
     String password;
     String birthDate;
     String email;
-    LinkedL ownProjectList=new LinkedL();
-    LinkedL followedProjects=new LinkedL();
+    LinkedL<Project> ownProjectList=new LinkedL<Project>();
+    LinkedL<Project> followedProjects=new LinkedL<Project>();
     
     public User(String name, String password, String birthdate, String email){
         this.userName = name;
@@ -26,11 +26,11 @@ public class User {
         this.email = email;
     }
     
-    public void followProject(Object project){
+    public void followProject(Project project){
         followedProjects.append(project);
     }
     
-    public void createProject(String name, LinkedL owns, int bdgt){
+    public void createProject(String name, LinkedL<User> owns, int bdgt){
         Project newProject = new Project(name, owns, bdgt);
         ownProjectList.append(newProject);
     }

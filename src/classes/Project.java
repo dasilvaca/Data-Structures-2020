@@ -12,11 +12,11 @@ import structs.*;
  */
 public class Project {
     String name;
-    LinkedL owners=new LinkedL();
-    LinkedL followers=new LinkedL();
+    LinkedL<User> owners=new LinkedL<User>();
+    LinkedL<User> followers=new LinkedL<User>();
     int budget;
     
-    public Project(String name, LinkedL owners, int budg){
+    public Project(String name, LinkedL<User> owners, int budg){
         this.name = name;
         this.owners = owners;
         this.budget = budg;
