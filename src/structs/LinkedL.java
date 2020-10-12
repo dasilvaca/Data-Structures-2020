@@ -71,11 +71,12 @@ public class LinkedL<T> {
             size+=1;
         }                
     }  
-    public String aString(){
+    @Override
+    public String toString(){
         String s="";    //Se itera añadiendo cada elemento de la lista a un string el cual se retorna
         Node<T> copia= Firstnode;
         for(int i=0;i<size;i++){
-            s += copia.data+" ";
+            s += copia.data.toString()+" ";
             copia=copia.next;
         }
         return s;

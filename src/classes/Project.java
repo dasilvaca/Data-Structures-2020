@@ -30,8 +30,9 @@ public class Project {
     public void addOwner(User newOwner){
         owners.append(newOwner);
     }
-    public String aString(){
-        String s= "Name: "+name+" Owners: "+owners.aString()+" Followers: "+followers.aString()+" Budget: "+String.valueOf(budget);
+    @Override
+    public String toString(){
+        String s= "Name: "+name+" Owners: "+owners.toString()+" Followers: "+followers.toString()+" Budget: "+String.valueOf(budget);
         return s;
     }
 }

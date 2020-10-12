@@ -34,9 +34,10 @@ public class User {
         Project newProject = new Project(name, owns, bdgt);
         ownProjectList.append(newProject);
     }
-    public String aString(){
+    @Override
+    public String toString(){
         String s= "Username: "+userName+" Password: "+password+" Birthdate: "+birthDate+" Email"+email
-        +" Projects: "+ownProjectList.aString()+" Followed: "+followedProjects.aString();
+        +" Projects: "+ownProjectList.toString()+" Followed: "+followedProjects.toString();
         return s;
     }
 }
