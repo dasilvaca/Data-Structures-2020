@@ -2,9 +2,10 @@ package structs;
 
 public class Stack <T> {
     public Node <T> top;
-    
+    int size;
     public Stack(){
         this.top = null;
+        size=0;
     }
     
     public void push(T newElement){
@@ -13,11 +14,13 @@ public class Stack <T> {
             newNode.next = this.top;
         }
         this.top = newNode;
+        size+=1;
     }
     
     public T pop(){
         T returnElem = this.top.data;
         this.top = this.top.next;
+        size-=1;
         return returnElem;
     }
     
@@ -34,13 +37,7 @@ public class Stack <T> {
     }
     
     public int len(){
-        Node<T> curr = this.top;
-        int len = 0;
-        while(curr != null){
-            len++;
-            curr = curr.next;
-        }
-        return len;
+        return size;
     }
     
     public void makeEmpty(){
@@ -49,6 +46,7 @@ public class Stack <T> {
             this.top = this.top.next;
             curr = curr.next;
         }
+        size=0;
     }
     
     public void print(){
