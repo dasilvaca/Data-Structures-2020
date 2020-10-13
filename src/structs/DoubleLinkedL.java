@@ -1,11 +1,11 @@
 package structs;
 
-public class DoubleQueue<T>{
+public class DoubleLinkedL<T>{
     public DoubleNode<T> FirstIn;
     public DoubleNode<T> LastIn;
     int size;
 
-    public DoubleQueue(){
+    /**public DoubleQueue(){
         size=0;
         FirstIn=null;
         LastIn=null;
@@ -47,6 +47,6 @@ public class DoubleQueue<T>{
             iterador=iterador.next;
         }
         System.out.println(imprimible+"]");
-    }
+    }**/
 
 }
