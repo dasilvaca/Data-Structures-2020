@@ -57,7 +57,7 @@ public class User {
     }
     @Override
     public String toString(){
-        String s= "Username: "+userName+" Password: "+password+" Birthdate: "+birthDate+" Email"+email
+        String s= "Username: "+userName+" Password: "+password+" Birthdate: "+birthDate+" Email: "+email
         +" Projects: "+ownProjectList.toString()+" Followed: "+followedProjects.toString();
         return s;
     }
