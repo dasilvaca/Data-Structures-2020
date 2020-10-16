@@ -13,7 +13,7 @@
 package structs;
 
 public class LinkedL<T> {
-    protected Node<T> Firstnode,Lastnode;
+    public Node<T> Firstnode,Lastnode;
     public int size=0;
     
     public LinkedL(){    //Inicializa la lista con la cabeza y la cola apuntando a null.
@@ -21,6 +21,11 @@ public class LinkedL<T> {
         Lastnode= new Node<T>(null);
     }
  
+    public void makeEmpty(){
+        Firstnode=Lastnode=null;
+        size=0;
+    }
+
     public boolean isEmpty(){
         if(size==0){  //Si el tamaño es cero la lista está vacía
             return true;

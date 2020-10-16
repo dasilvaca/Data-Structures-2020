@@ -13,11 +13,13 @@ import structs.*;
  */
 public class User {
     String userName;
-    String password;
+   public String password;
     String birthDate;
     String email;
     LinkedL<Project> ownProjectList=new LinkedL<Project>();
     LinkedL<Project> followedProjects=new LinkedL<Project>();
+    LinkedL<String> saveOwnProjectList=new LinkedL<String>();
+    LinkedL<String> saveFollowedProjects=new LinkedL<String>();
     
     public User(String name, String password, String birthdate, String email){
         this.userName = name;
@@ -25,9 +27,28 @@ public class User {
         this.birthDate = birthdate;
         this.email = email;
     }
+    public void toSave(){
+        Node<Project> iterador= ownProjectList.Firstnode;
+        if(!ownProjectList.isEmpty()){
+            while(iterador!=null){
+                saveOwnProjectList.append(iterador.data.name);
+                iterador=iterador.next;
+            }    
+        ownProjectList.makeEmpty();
+        }
+        iterador=followedProjects.Firstnode;
+        if(!followedProjects.isEmpty()){
+            while(iterador!=null){
+                saveFollowedProjects.append(iterador.data.name);
+                iterador=iterador.next;
+            }
+        followedProjects.makeEmpty();
+        }
+    }
     
     public void followProject(Project project){
         followedProjects.append(project);
+        project.followers.append(this);
     }
     
     public void createProject(String name, LinkedL<User> owns, int bdgt){

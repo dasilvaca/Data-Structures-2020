@@ -2,14 +2,15 @@ package structs;
 
 public class DynamicArray {
     Object[] array;
-    private int size, capacity;
+    public int size, capacity;
 
-    DynamicArray(){ 
+    public DynamicArray(){ 
         size = 0;
         capacity = 1;
+        array= new Object[4];
     }
     
-     /**DynamicArray(T[] arreglo){
+     DynamicArray(Object[] arreglo){
         array = arreglo;
         size =arreglo.length -1;
         capacity = arreglo.length;
@@ -33,9 +34,8 @@ public class DynamicArray {
     }
 
     public Object get(int index){
-        return (Object)array[index]
-    }
         return (Object)array[index];
-    }**/
+    }
+       
 
 }

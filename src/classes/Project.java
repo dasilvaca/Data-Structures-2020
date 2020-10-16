@@ -22,13 +22,20 @@ public class Project {
         this.budget = budg;
         
     }
+    public Project(String name,User owner, int budg){
+        this.name = name;
+        this.budget = budg;
+        this.addOwner(owner);
+    }
     
     public void addFollower(User newFollower){
         followers.append(newFollower);
+        newFollower.followedProjects.append(this);
     }
     
     public void addOwner(User newOwner){
         owners.append(newOwner);
+        newOwner.ownProjectList.append(this);
     }
     @Override
     public String toString(){
