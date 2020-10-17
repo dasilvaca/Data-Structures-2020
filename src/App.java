@@ -17,24 +17,7 @@ import structs.*;
 public class App {
 
     
-    private static void parseEmployeeObject(JSONObject employee) 
-    {
-        //Get employee object within list
-        JSONObject employeeObject = (JSONObject) employee.get("employee");
-         
-        //Get employee first name
-        String firstName = (String) employeeObject.get("firstName");    
-        System.out.println(firstName);
-         
-        //Get employee last name
-        String lastName = (String) employeeObject.get("lastName");  
-        System.out.println(lastName);
-         
-        //Get employee website name
-        String website = (String) employeeObject.get("website");    
-        System.out.println(website);
-    }
-
+    
     public static void main(String[] args) throws Exception {
         
         DynamicArray<User> UserList = new DynamicArray<User>();
