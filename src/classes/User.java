@@ -12,8 +12,8 @@ import structs.*;
  * @author usuario
  */
 public class User {
-    String userName;
-   public String password;
+    public String userName;
+    public String password;
     String birthDate;
     String email;
     LinkedL<Project> ownProjectList=new LinkedL<Project>();
