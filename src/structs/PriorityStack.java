@@ -29,6 +29,7 @@ public class PriorityStack<T> extends Stack<T> {
         if(this.top == null){
             return true;
         } else{
+            //[[7]]
             return false;
         }
     }
