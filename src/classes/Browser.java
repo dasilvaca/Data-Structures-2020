@@ -14,8 +14,8 @@ import classes.Sites.Page;
  */
 public class Browser {
     
-    public Stack<Page> navigationStack = new Stack();
-    public Stack<Page> transitionNavigationStack = new Stack();
+    public Stack<Page> navigationStack = new Stack<Page>();
+    public Stack<Page> transitionNavigationStack = new Stack<Page>();
     public LinkedL<Page> pagesList = new LinkedL();
     public LinkedL<User> users = new LinkedL();
     public Page currentPage;
