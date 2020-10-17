@@ -55,6 +55,15 @@ public class User {
         Project newProject = new Project(name, owns, bdgt);
         ownProjectList.append(newProject);
     }
+
+    public boolean validateUsers(User userToValidate){
+        if(this.userName.equals(userToValidate.userName) && this.password.equals(userToValidate.password)){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
     @Override
     public String toString(){
         String s= "Username: "+userName+" Password: "+password+" Birthdate: "+birthDate+" Email: "+email
