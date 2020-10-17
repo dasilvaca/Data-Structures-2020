@@ -6,7 +6,7 @@
 package classes;
 
 import structs.*;
-import classes.Sites.Page;
+import classes.Sites.*;
 
 /**
  *
