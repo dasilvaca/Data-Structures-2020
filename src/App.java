@@ -80,13 +80,8 @@ public class App {
  
         
         //NO TOCAR, ya guarda usuarios en Json.
-<<<<<<< HEAD
         
-=======
-        DynamicArray<structs.User> UserList = new DynamicArray<User>();
-        DynamicArray<Project> ProjectList = new DynamicArray<Project>();
->>>>>>> 95d4edd313c73cd5e8aea5857db4c0624269005b
-        User Jose = new User("Jose","12345","29/11/2001","jmorenoh");
+       /** User Jose = new User("Jose","12345","29/11/2001","jmorenoh");
         Project p1 = new Project("P1", Jose,1234); 
         ProjectList.append(p1);
         UserList.append(Jose);
@@ -138,7 +133,7 @@ public class App {
  
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }**/
 
     }
 }

@@ -43,7 +43,7 @@ public class Page {
             User newUser = new User(newUsername, newPassword, newBirthDate, newEmail);
             
             System.out.print("**************************************************************************");
-            System.out.print("Congratulations "+newUser.userName+", you have sucessfully created your own account!");
+            //System.out.print("Congratulations "+newUser.userName+", you have sucessfully created your own account!");
             
             return newUser;
         } else{
