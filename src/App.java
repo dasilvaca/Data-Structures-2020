@@ -1,27 +1,103 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 
 import com.google.gson.Gson;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import classes.*;
+
 import structs.*;
 
 public class App {
 
     
+    private static void parseEmployeeObject(JSONObject employee) 
+    {
+        //Get employee object within list
+        JSONObject employeeObject = (JSONObject) employee.get("employee");
+         
+        //Get employee first name
+        String firstName = (String) employeeObject.get("firstName");    
+        System.out.println(firstName);
+         
+        //Get employee last name
+        String lastName = (String) employeeObject.get("lastName");  
+        System.out.println(lastName);
+         
+        //Get employee website name
+        String website = (String) employeeObject.get("website");    
+        System.out.println(website);
+    }
 
     public static void main(String[] args) throws Exception {
         
-        
-        
-        
-        
-        //NO TOCAR, ya guarda usuarios en Json.
         DynamicArray<User> UserList = new DynamicArray<User>();
         DynamicArray<Project> ProjectList = new DynamicArray<Project>();
+        Gson gson = new Gson();
+        JSONParser jsonParser = new JSONParser();
+         
+        try (FileReader ProjectReader = new FileReader("EdProjects.json"))
+        {
+            //Read JSON file
+            Object objProject = jsonParser.parse(ProjectReader);
+ 
+            JSONArray readProjectList = (JSONArray) objProject;
+            for(int l=0;l<readProjectList.size();l++){
+                JSONObject JsonReadProject = (JSONObject)readProjectList.get(l);
+                String readProjectString =(String)JsonReadProject.get("Project"+l);
+                Project readedProject =  gson.fromJson(readProjectString, Project.class);
+                ProjectList.append(readedProject);
+            }
+             
+            //Iterate over User array
+            
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } /**catch (ParseException e) {
+            e.printStackTrace();
+        }**/
+
+        try (FileReader UserReader = new FileReader("EdUsers.json"))
+        {
+            //Read JSON file
+            Object objUser = jsonParser.parse(UserReader);
+ 
+            JSONArray readUserList = (JSONArray) objUser;
+            for(int k=0;k<readUserList.size();k++){
+                JSONObject JsonReadUser = (JSONObject)readUserList.get(k);
+                String readUserString =(String)JsonReadUser.get("User"+k);
+                User readedUser =  gson.fromJson(readUserString, User.class);
+                UserList.append(readedUser);
+            }
+             
+            
+            
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } /**catch (ParseException e) {
+            e.printStackTrace();
+        }**/
+        
+        
+
+
+    
+ 
+        
+        //NO TOCAR, ya guarda usuarios en Json.
+        
         User Jose = new User("Jose","12345","29/11/2001","jmorenoh");
         Project p1 = new Project("P1", Jose,1234); 
         ProjectList.append(p1);
@@ -29,7 +105,7 @@ public class App {
         UserList.append(new User("Juan","12345","29/11/2001","juaneduardo"));
         UserList.append(new User("Daniel","12345","29/11/2001","danielsantiago"));
         User iterador;
-        Gson gson = new Gson();
+        
         JSONArray JsonUserList = new JSONArray();
         String jsonUserString;
         for(int i=0;i<UserList.size;i++){
