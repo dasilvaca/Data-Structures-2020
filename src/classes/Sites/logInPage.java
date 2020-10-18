@@ -1,14 +1,15 @@
 package classes.Sites;
 
 import classes.*;
+import structs.DynamicArray;
+
 import java.util.Scanner;
 
 public class logInPage extends Page{
     
     Scanner input = new Scanner(System.in);
 
-    public User logIn(){
-
+    public User logIn(DynamicArray<User> Users){
         System.out.print("|===========================================================================|");
         System.out.print("|***************************************************************************|");
         System.out.print("|                                                                           |");
@@ -25,6 +26,11 @@ public class logInPage extends Page{
             System.out.print("|                                                                              |");
             System.out.println("|       Enter your password: ");
             String pssw = input.nextLine();
+            if(Users.getUser(usnm, pssw)==null){
+                System.out.println("User or password are incorrect");
+            }else{
+                return Users.getUser(usnm, pssw);
+            }
             System.out.print("|                                                                              |");
 
             /** Aquí va la validación de usuario; se supone que luego de que el usuario entrega sus creden-

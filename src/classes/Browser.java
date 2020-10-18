@@ -20,9 +20,9 @@ public class Browser {
     public LinkedL<User> users = new LinkedL<User>();
     public Page currentPage;
     
-    public void open(){
+    public void open(DynamicArray<User>  Users){
         logInPage login = new logInPage();
-        mainPage mnpg = new mainPage(login.logIn());
+        mainPage mnpg = new mainPage(login.logIn(Users));
         mnpg.display();
         navigationStack.push(mnpg);
     }
