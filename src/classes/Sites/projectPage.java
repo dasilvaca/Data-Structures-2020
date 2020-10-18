@@ -37,7 +37,7 @@ public class projectPage extends Page{
             System.out.println("Do you want to exit?");
             String answer = input.nextLine();
             if("Y".equals(answer)){
-                mnpg = new mainPage();
+                mnpg = new mainPage(new User("Jose","1234","23","jmorenoh"));
                 resp = true;
             }
         }

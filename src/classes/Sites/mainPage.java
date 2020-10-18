@@ -4,7 +4,9 @@ import classes.*;
 
 public class mainPage extends Page{
 
-
+    public mainPage(User currentUser){
+        
+    }
     public void display(){
 
         /** Este método despliega la página principal, busca todos los proyectos que el usuario haya crado o que

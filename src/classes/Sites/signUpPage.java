@@ -8,7 +8,7 @@ public class signUpPage extends Page{
     public Scanner input;
 
     public signUpPage(){
-        this.input = new Scanner(System.in)
+        this.input = new Scanner(System.in);
     }
 
     public User signUp(){

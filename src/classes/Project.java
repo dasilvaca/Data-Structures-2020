@@ -12,8 +12,8 @@ import structs.*;
  */
 public class Project {
     public String name;
-    LinkedL<User> owners=new LinkedL<User>();
-    LinkedL<User> followers=new LinkedL<User>();
+    public LinkedL<User> owners=new LinkedL<User>();
+    public LinkedL<User> followers=new LinkedL<User>();
     public int budget;
     
     public Project(String name, LinkedL<User> owners, int budg){

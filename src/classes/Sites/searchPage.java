@@ -14,5 +14,6 @@ public class searchPage extends Page{
          *  Algo que se me ocurrió es que en caso de que el usuario escribiera 'exit' el bucle se rompiera de
          *  inmediato.
          */
+        return null;
     }
 }

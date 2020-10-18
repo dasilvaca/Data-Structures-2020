@@ -21,6 +21,7 @@ public class logInPage extends Page{
         } else{
             System.out.println("|       Enter your username: ");
             String usnm = input.nextLine();
+
             System.out.print("|                                                                              |");
             System.out.println("|       Enter your password: ");
             String pssw = input.nextLine();
@@ -41,6 +42,7 @@ public class logInPage extends Page{
              */
 
         }
+        return null;
     }
 
 }

@@ -61,7 +61,6 @@ public class App {
                 UserList.append(readedUser);
                 Node changer=readedUser.saveFollowedProjects.Firstnode;
                 while(changer!=null){
-                    System.out.println((String)changer.data);
                     readedUser.followedProjects.append(ProjectList.getProject((String)changer.data));
                     changer=changer.next;
                 }
@@ -82,8 +81,7 @@ public class App {
             e.printStackTrace();
         }**/ 
         
-        User peo=UserList.get(0);
-        System.out.println(peo.ownProjectList.Firstnode.data.name);
+        
 
         /**User Jose = new User("Jose","12345","139130","jmorenoh");
         Project p1 = new Project("P1",Jose,123);
@@ -93,6 +91,15 @@ public class App {
         ProjectList.append(p1);
         ProjectList.append(p2);**/
  
+        
+
+
+
+
+
+
+
+
         
         
         
