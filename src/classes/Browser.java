@@ -23,14 +23,22 @@ public class Browser {
     public void open(DynamicArray<User>  Users){
         logInPage login = new logInPage();
         mainPage mnpg = new mainPage(login.logIn(Users));
-        mnpg.display();
-        navigationStack.push(mnpg);
+        this.currentPage = mnpg;
+        while(true){
+            if(this.currentPage instanceof projectPage){
+                boolean answer = this.currentPage.showProject();
+                if(answer){
+                    this.returnToPreviousPage();
+                }
+            } else{
+                this.changePage(this.currentPage.display());
+            }
+        }
     }
     
     public void changePage(Page newPage){
         this.navigationStack.push(this.currentPage);
         this.currentPage = newPage;
-        this.currentPage.display();
     }
     
     public void returnToPreviousPage(){

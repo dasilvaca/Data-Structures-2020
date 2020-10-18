@@ -4,12 +4,14 @@ import classes.*;
 public class projectPage extends Page{
     
     Project currentProject;
+    User currentUser;
 
-    public projectPage(Project currentProject){
+    public projectPage(Project currentProject, User currentUser){
+        this.currentUser = currentUser;
         this.currentProject = currentProject;
     }
 
-    public Page showProject(){
+    public boolean showProject(){
         System.out.print("|===========================================================================|");
         System.out.print("|***************************************************************************|");
         System.out.print("|      "+currentProject.name+"                                              |");
@@ -32,15 +34,15 @@ public class projectPage extends Page{
         System.out.print("|===========================================================================|");
 
         boolean resp = false;
-        Page mnpg = this;
         while (! resp){
             System.out.println("Do you want to exit?");
             String answer = input.nextLine();
             if("Y".equals(answer)){
-                mnpg = new mainPage();
                 resp = true;
+            }else{
+                continue;
             }
         }
-        return mnpg;
+        return resp;
     }
 }

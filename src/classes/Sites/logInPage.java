@@ -1,7 +1,10 @@
 package classes.Sites;
 
 import classes.*;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3b0dc78488e754028bee83a080597b04994a1eb
 import structs.DynamicArray;
 
 public class logInPage extends Page{
@@ -22,22 +25,21 @@ public class logInPage extends Page{
             System.out.print("|                                                                              |");
             System.out.println("|       Enter your password: ");
             String pssw = input.nextLine();
-            if(Users.getUser(usnm, pssw)==null){
-                System.out.println("User or password are incorrect");
-            }else{
-                return Users.getUser(usnm, pssw);
+            while (Users.getUser(usnm, pssw)==null){
+                System.out.println("|       Enter your username: ");
+                usnm = input.nextLine();
+                System.out.print("|                                                                              |");
+                System.out.println("|       Enter your password: ");
+                pssw = input.nextLine();
+                if(Users.getUser(usnm, pssw)==null){
+                    System.out.println("|          User or password are incorrect.                                        |");
+                }
+                System.out.print("|                                                                              |");
             }
-            System.out.print("|                                                                              |");
-
-            /** Aquí va la validación de usuario; se supone que luego de que el usuario entrega sus creden-
-             *  ciales, el método determina si existe o no un usuario con esos mismos username y contraseña,
-             *  y de ser así  retorna dicho usuario para luego ser utilizado en una mainPage:
-             * 
-             * return currentUser;
-             * 
-             * 
-             */
-
+            System.out.print("|                                                                           |");
+            System.out.print("|***************************************************************************|");
+            System.out.print("|===========================================================================|");
+            return Users.getUser(usnm, pssw);
         }
     }
 

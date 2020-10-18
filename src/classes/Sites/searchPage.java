@@ -1,19 +1,29 @@
 package classes.Sites;
 
 import classes.*;
+import structs.*;
 
 public class searchPage extends Page{
     
-    public Page search(){
-        String projectToFind = input.nextLine();
+    User currentUser;
 
-        /** Aquí va la búsqueda del proyecto que el usuario quiere encontrar, lo cual retorna la página correspon-
-         *  diente a ese proyecto, en caso de ser encontrado. En caso de que este proyetco no exista se envía
-         *  un mensaje al usario alertándolo de esto, y pidiéndole que escriba otro nombre. Esto se hace por me-
-         *  dio de un while que hasta no encontrar un proyecto no se rompe.
-         *  Algo que se me ocurrió es que en caso de que el usuario escribiera 'exit' el bucle se rompiera de
-         *  inmediato.
-         */
-        return null;
+    public searchPage(User cuser){
+        this.currentUser = cuser;
+    }
+
+    public Page display(){
+        System.out.print("|     Which project dou you want to see in detail?                           |");
+        String projectoToFind = input.nextLine();
+
+        Node<Project> currentProject = this.currentUser.ownProjectList.Firstnode;
+        while (currentProject != null && currentProject.data.name.equals(projectoToFind)){
+            currentProject = currentProject.next;
+        }
+        if (currentProject == null){
+            return new mainPage(currentUser);
+        } else{
+            projectPage foundProjectPage = new projectPage(currentProject.data, currentUser);
+            return foundProjectPage;
+        }
     }
 }

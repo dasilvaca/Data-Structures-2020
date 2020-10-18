@@ -1,6 +1,7 @@
 package structs;
 
 import classes.Project;
+import classes.User;
 
 public class DynamicArray<T> {
     Object[] array;
