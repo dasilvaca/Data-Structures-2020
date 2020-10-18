@@ -11,10 +11,10 @@ import structs.*;
  * @author usuario
  */
 public class Project {
-    String name;
+    public String name;
     LinkedL<User> owners=new LinkedL<User>();
     LinkedL<User> followers=new LinkedL<User>();
-    int budget;
+    public int budget;
     
     public Project(String name, LinkedL<User> owners, int budg){
         this.name = name;
@@ -42,4 +42,6 @@ public class Project {
         String s= "Name: "+name+" Owners: "+owners.toString()+" Followers: "+followers.toString()+" Budget: "+String.valueOf(budget);
         return s;
     }
+
+
 }

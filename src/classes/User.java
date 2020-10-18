@@ -16,10 +16,10 @@ public class User {
     public String password;
     String birthDate;
     String email;
-    LinkedL<Project> ownProjectList=new LinkedL<Project>();
-    LinkedL<Project> followedProjects=new LinkedL<Project>();
-    LinkedL<String> saveOwnProjectList=new LinkedL<String>();
-    LinkedL<String> saveFollowedProjects=new LinkedL<String>();
+    public LinkedL<Project> ownProjectList=new LinkedL<Project>();
+    public LinkedL<Project> followedProjects=new LinkedL<Project>();
+    public LinkedL<String> saveOwnProjectList=new LinkedL<String>();
+    public LinkedL<String> saveFollowedProjects=new LinkedL<String>();
     
     public User(String name, String password, String birthdate, String email){
         this.userName = name;

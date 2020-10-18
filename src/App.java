@@ -19,7 +19,6 @@ public class App {
     
     
     public static void main(String[] args) throws Exception {
-        
         DynamicArray<User> UserList = new DynamicArray<User>();
         DynamicArray<Project> ProjectList = new DynamicArray<Project>();
         Gson gson = new Gson();
@@ -49,21 +48,31 @@ public class App {
             e.printStackTrace();
         }**/
 
-        try (FileReader UserReader = new FileReader("EdUsers.json"))
+        try (FileReader UserReader = new FileReader("EdUser.json"))
         {
             //Read JSON file
-            Object objUser = jsonParser.parse(UserReader);
+            Object objUser =jsonParser.parse(UserReader);
  
-            JSONArray readUserList = (JSONArray) objUser;
+            JSONArray readUserList = (JSONArray)objUser;
             for(int k=0;k<readUserList.size();k++){
                 JSONObject JsonReadUser = (JSONObject)readUserList.get(k);
                 String readUserString =(String)JsonReadUser.get("User"+k);
                 User readedUser =  gson.fromJson(readUserString, User.class);
                 UserList.append(readedUser);
+                Node changer=readedUser.saveFollowedProjects.Firstnode;
+                while(changer!=null){
+                    System.out.println((String)changer.data);
+                    readedUser.followedProjects.append(ProjectList.getProject((String)changer.data));
+                    changer=changer.next;
+                }
+                readedUser.saveFollowedProjects.makeEmpty();
+                changer=readedUser.saveOwnProjectList.Firstnode;
+                while(changer!=null){
+                    readedUser.ownProjectList.append(ProjectList.getProject(changer.data.toString()));
+                    changer=changer.next;
+                }
+                readedUser.saveOwnProjectList.makeEmpty();
             }
-             
-            
-            
  
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -71,26 +80,26 @@ public class App {
             e.printStackTrace();
         } /**catch (ParseException e) {
             e.printStackTrace();
-        }**/
+        }**/ 
         
-        
+        User peo=UserList.get(0);
+        System.out.println(peo.ownProjectList.Firstnode.data.name);
 
-
-    
+        /**User Jose = new User("Jose","12345","139130","jmorenoh");
+        Project p1 = new Project("P1",Jose,123);
+        Project p2 = new Project("P2",Jose,123);
+        Jose.followProject(p2);
+        UserList.append(Jose);
+        ProjectList.append(p1);
+        ProjectList.append(p2);**/
  
         
-        //NO TOCAR, ya guarda usuarios en Json.
         
-       /** User Jose = new User("Jose","12345","29/11/2001","jmorenoh");
-        Project p1 = new Project("P1", Jose,1234); 
-        ProjectList.append(p1);
-        UserList.append(Jose);
-        UserList.append(new User("Juan","12345","29/11/2001","juaneduardo"));
-        UserList.append(new User("Daniel","12345","29/11/2001","danielsantiago"));
-        User iterador;
+        
         
         JSONArray JsonUserList = new JSONArray();
         String jsonUserString;
+        User iterador;
         for(int i=0;i<UserList.size;i++){
             JSONObject JsonUser= new JSONObject();
             iterador=UserList.get(i);
@@ -103,7 +112,7 @@ public class App {
         }
         
 
-        try (FileWriter file = new FileWriter("EdUsers.json")) {
+        try (FileWriter file = new FileWriter("EdUser.json")) {
  
             file.write(JsonUserList.toJSONString());
             file.flush();
@@ -133,7 +142,6 @@ public class App {
  
         } catch (IOException e) {
             e.printStackTrace();
-        }**/
-
+        }
     }
 }
