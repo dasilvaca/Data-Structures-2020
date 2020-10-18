@@ -1,12 +1,8 @@
 package classes.Sites;
 
 import classes.*;
-import structs.DynamicArray;
-<<<<<<< HEAD
 
-import java.util.Scanner;
-=======
->>>>>>> df35929382554aea5545d4317de9500ff9538f9d
+import structs.DynamicArray;
 
 public class logInPage extends Page{
 
