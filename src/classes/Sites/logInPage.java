@@ -1,11 +1,9 @@
 package classes.Sites;
 
 import classes.*;
-import java.util.Scanner;
+import structs.DynamicArray;
 
 public class logInPage extends Page{
-    
-    Scanner input = new Scanner(System.in);
 
     public User logIn(){
 
@@ -21,7 +19,6 @@ public class logInPage extends Page{
         } else{
             System.out.println("|       Enter your username: ");
             String usnm = input.nextLine();
-
             System.out.print("|                                                                              |");
             System.out.println("|       Enter your password: ");
             String pssw = input.nextLine();
@@ -33,16 +30,10 @@ public class logInPage extends Page{
              * 
              * return currentUser;
              * 
-             * (en la función main se verá: 
              * 
-             * mainPage mpage = new mainPage(currentUser);
-             * mpage.display();
-             * 
-             * )
              */
 
         }
-        return null;
     }
 
 }

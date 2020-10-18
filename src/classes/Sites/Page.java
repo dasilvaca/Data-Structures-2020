@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 package classes.Sites;
-import classes.*;
 import java.util.Scanner;
 /**
  *
  * @author usuario
  */
 public class Page {
-    
+
     Scanner input;
 
     public Page(){

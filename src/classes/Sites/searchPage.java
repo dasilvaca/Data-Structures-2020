@@ -3,7 +3,7 @@ package classes.Sites;
 import classes.*;
 
 public class searchPage extends Page{
-
+    
     public Page search(){
         String projectToFind = input.nextLine();
 

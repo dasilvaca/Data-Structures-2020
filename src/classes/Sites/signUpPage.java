@@ -1,15 +1,8 @@
 package classes.Sites;
 
 import classes.*;
-import java.util.Scanner;
 
 public class signUpPage extends Page{
-    
-    public Scanner input;
-
-    public signUpPage(){
-        this.input = new Scanner(System.in);
-    }
 
     public User signUp(){
 
