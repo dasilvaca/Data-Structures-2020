@@ -6,6 +6,9 @@
 package classes;
 
 import structs.*;
+
+import org.graalvm.compiler.lir.LIRInstruction.Use;
+
 import classes.Sites.*;
 
 /**
@@ -16,8 +19,8 @@ public class Browser {
     
     public Stack<Page> navigationStack = new Stack<Page>();
     public Stack<Page> transitionNavigationStack = new Stack<Page>();
-    public LinkedL<Page> pagesList = new LinkedL();
-    public LinkedL<User> users = new LinkedL();
+    public LinkedL<Page> pagesList = new LinkedL<Page>();
+    public LinkedL<User> users = new LinkedL<User>();
     public Page currentPage;
     
     
