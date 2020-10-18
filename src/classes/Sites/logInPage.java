@@ -2,12 +2,13 @@ package classes.Sites;
 
 import classes.*;
 import structs.DynamicArray;
+<<<<<<< HEAD
 
 import java.util.Scanner;
+=======
+>>>>>>> df35929382554aea5545d4317de9500ff9538f9d
 
 public class logInPage extends Page{
-    
-    Scanner input = new Scanner(System.in);
 
     public User logIn(DynamicArray<User> Users){
         System.out.print("|===========================================================================|");
@@ -22,7 +23,6 @@ public class logInPage extends Page{
         } else{
             System.out.println("|       Enter your username: ");
             String usnm = input.nextLine();
-
             System.out.print("|                                                                              |");
             System.out.println("|       Enter your password: ");
             String pssw = input.nextLine();
@@ -39,16 +39,10 @@ public class logInPage extends Page{
              * 
              * return currentUser;
              * 
-             * (en la función main se verá: 
              * 
-             * mainPage mpage = new mainPage(currentUser);
-             * mpage.display();
-             * 
-             * )
              */
 
         }
-        return null;
     }
 
 }
