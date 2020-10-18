@@ -71,6 +71,25 @@ public class DynamicArray<T> {
         T data = (T)array[index];
         return data;
     }
+    
+    public User getUser(String userName,String userPassword){
+        int inicio=0;
+        int fin=size-1;
+        int medio;
+        User usuario;
+        while(inicio<=fin){
+            medio=(inicio+fin)/2;
+            usuario=(User)array[medio];
+            if(usuario.userName.equals(userName) && usuario.password.equals(userPassword)){
+                return usuario;
+            }else if(usuario.userName.compareTo(userName)<0){
+                inicio=medio+1;
+            }else {
+                fin=medio-1;
+            }
+        }
+        return null;
+    }
 
     public Project orderedAdd(Project newProject){
         int inicio=0;
