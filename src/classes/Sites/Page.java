@@ -17,7 +17,11 @@ public class Page {
         this.input = new Scanner(System.in);
     }
 
-    public void display(){
+    public Page display(){
+        return this;
+    }
 
+    public boolean showProject(){
+        return true;
     }
 }

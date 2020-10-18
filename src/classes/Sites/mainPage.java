@@ -1,24 +1,34 @@
 package classes.Sites;
 
 import classes.*;
+import structs.*;
 
 public class mainPage extends Page{
 
-    public mainPage(User currentUser){
+    User currentUser;
 
+    public mainPage(User currentUser){
+        this.currentUser = currentUser;
     }
 
-    public void display(){
+    public Page display(){
 
-        /** Este método despliega la página principal, busca todos los proyectos que el usuario haya crado o que
-         *  actualmente esté siguiendo y los lista en dos coumnas distintas.
-         * 
-         *  Primero pregunta si el usuario quiere buscar algún proyecto en paticular, y de ser así crea una
-         *  searchPage y ejecuta su método.
-         * 
-         *  Si la respuesta es no de eso pregunta si quiere ver alguno, cola el nombre de uno de ellos y luego 
-         *  el método se encarga de crear una projectPage para el proyecto y retornarla.
-         */
+        Node<Project> currentProject = this.currentUser.ownProjectList.Firstnode;
+        System.out.print("|===========================================================================|");
+        System.out.print("|***************************************************************************|");
+        System.out.print("|                                                                           |");
+        System.out.print("|       Welcome,"+currentUser.userName+"                                    |");
+        System.out.print("|                                                                           |");
+        System.out.print("|***************************************************************************|");
+        System.out.print("|    Check your projects:                                                   |");
+        System.out.print("|                                                                           |");
+        while (currentProject != null){
+            System.out.print("|         "+currentProject.data.name+"   "+currentProject.data.followers.size+"     |");
+            System.out.print("|   -----------------------------------------------------------------   |");
+            currentProject = currentProject.next;
+        }
+        
+        return new searchPage(this.currentUser);
 
     }
 
