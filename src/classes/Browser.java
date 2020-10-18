@@ -20,41 +20,6 @@ public class Browser {
     public LinkedL<User> users = new LinkedL();
     public Page currentPage;
     
-    public Browser(LinkedL pgsList){
-        currentPage = new Page("logInPage");
-        this.pagesList = pgsList;
-        this.navigationStack.push(this.currentPage);
-    }
-    
-    public void open(){
-        User enteredUser = this.currentPage.initPage();
-        boolean found = false;
-        for (int i = 0; i < this.users.size; i++){
-            if(this.users.get(i).validateUsers(enteredUser)){
-                found = true;
-            }
-        }
-        if (found){
-            this.changePage(this.pagesList.get(0));
-        }
-    }
-    
-    public void search(){
-        String projectToFind = this.currentPage.input.nextLine();
-        boolean found = false;
-        int index = 0;
-        for (int i = 0; i < this.pagesList.size; i++){
-            if(pagesList.get(i).title.equals(projectToFind)){
-                found = true;
-            }
-            index++;
-        }
-        if (found){
-            this.changePage(pagesList.get(index));
-        } else{
-            System.out.print("Proyecto no encontrado :'v");
-        }
-    }
     
     public void changePage(Page newPage){
         this.navigationStack.push(this.currentPage);
