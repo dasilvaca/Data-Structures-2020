@@ -6,7 +6,6 @@
 package classes;
 
 import structs.*;
-
 import classes.Sites.*;
 
 /**
@@ -21,6 +20,12 @@ public class Browser {
     public LinkedL<User> users = new LinkedL<User>();
     public Page currentPage;
     
+    public void open(){
+        logInPage login = new logInPage();
+        mainPage mnpg = new mainPage(login.logIn());
+        mnpg.display();
+        navigationStack.push(mnpg);
+    }
     
     public void changePage(Page newPage){
         this.navigationStack.push(this.currentPage);
