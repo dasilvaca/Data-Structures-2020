@@ -51,7 +51,7 @@ public class projectPage extends Page{
         }
         boolean resp = false;
         while (! resp){
-            System.out.println("Do you want to exit?");
+            System.out.println("|   Do you want to exit?");
             String ans = input.nextLine();
             if("Y".equals(ans)){
                 resp = true;

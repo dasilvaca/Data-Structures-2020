@@ -12,6 +12,9 @@ public class searchPage extends Page{
     }
 
     public Page display(){
+        if (this.currentUser.ownProjectList.isEmpty()){
+            return new mainPage(currentUser);
+        }
         System.out.println("|     Which project dou you want to see in detail?                           |");
         String projectoToFind = input.nextLine();
 
@@ -20,6 +23,7 @@ public class searchPage extends Page{
             currentProject = currentProject.next;
         }
         if (currentProject == null){
+            System.out.println("|        El proyecto no pudo ser encontrado :'v                                |");
             return new mainPage(currentUser);
         } else{
             projectPage foundProjectPage = new projectPage(currentProject.data, currentUser);
