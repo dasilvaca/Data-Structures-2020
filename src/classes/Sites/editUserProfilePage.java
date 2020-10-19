@@ -10,36 +10,36 @@ public class editUserProfilePage extends Page{
     }
 
     public boolean edit(){
-        System.out.print("|===========================================================================|");
-        System.out.print("|***************************************************************************|");
-        System.out.print("|                                                                           |");
-        System.out.print("|    Do you want to change your username?                                   |");
+        System.out.println("|===========================================================================|");
+        System.out.println("|***************************************************************************|");
+        System.out.println("|                                                                           |");
+        System.out.println("|    Do you want to change your username?                                   |");
         String answer = input.nextLine();
         if(answer.equals("Y")){
-            System.out.print("|        Enter your new username                                               |");
+            System.out.println("|        Enter your new username                                               |");
             String newUsername = input.nextLine();
             this.currentUser.userName = newUsername;
         }
-        System.out.print("|    Do you want to change your password?                                   |");
+        System.out.println("|    Do you want to change your password?                                   |");
         answer = input.nextLine();
         if(answer.equals("Y")){
             boolean correctEdit = false;
             while(!correctEdit){
-                System.out.print("|        Enter your current password:                                          |");
+                System.out.println("|        Enter your current password:                                          |");
                 String currentPassword = input.nextLine();
-                System.out.print("|        Enter your new password:                                              |");
+                System.out.println("|        Enter your new password:                                              |");
                 String newPassword = input.nextLine();
-                System.out.print("|        Confirm your new password:                                            |");
+                System.out.println("|        Confirm your new password:                                            |");
                 String newPasswordConfirm = input.nextLine();
                 if(newPassword.equals(newPasswordConfirm) && this.currentUser.password.equals(currentPassword)){
                     this.currentUser.password = newPassword;
                     correctEdit = true;
                 } else{
-                    System.out.print("|        You have done some error, please do it again                           |");
+                    System.out.println("|        You have done some error, please do it again                           |");
                 }
             }
         }
-        System.out.print("|    Have you finished?                                                     |");
+        System.out.println("|    Have you finished?                                                     |");
         answer = input.nextLine();
         if(answer.equals("Y")){
             return true;

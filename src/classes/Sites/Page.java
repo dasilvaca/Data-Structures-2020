@@ -12,9 +12,11 @@ import java.util.Scanner;
 public class Page {
 
     Scanner input;
+    public boolean toyDentro;
 
     public Page(){
         this.input = new Scanner(System.in);
+        this.toyDentro = true;
     }
 
     public Page display(){

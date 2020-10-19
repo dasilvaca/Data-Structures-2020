@@ -12,11 +12,11 @@ public class searchPage extends Page{
     }
 
     public Page display(){
-        System.out.print("|     Which project dou you want to see in detail?                           |");
+        System.out.println("|     Which project dou you want to see in detail?                           |");
         String projectoToFind = input.nextLine();
 
         Node<Project> currentProject = this.currentUser.ownProjectList.Firstnode;
-        while (currentProject != null && currentProject.data.name.equals(projectoToFind)){
+        while (currentProject != null && !currentProject.data.name.equals(projectoToFind)){
             currentProject = currentProject.next;
         }
         if (currentProject == null){

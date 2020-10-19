@@ -1,25 +1,26 @@
-//import java.io.File;
+/*import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-//import java.io.FileWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-//import java.text.ParseException;
+import java.text.ParseException;
 
 import com.google.gson.Gson;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+*/
 import classes.*;
 
-import structs.*;
+//import structs.*;
 
 public class App {
 
     
     
     public static void main(String[] args) throws Exception {
+        /*
         DynamicArray<User> UserList = new DynamicArray<User>();
         DynamicArray<Project> ProjectList = new DynamicArray<Project>();
         Gson gson = new Gson();
@@ -48,7 +49,7 @@ public class App {
         } /**catch (ParseException e) {
             e.printStackTrace();
         }**/
-
+        /*
         try (FileReader UserReader = new FileReader("EdUser.json"))
         {
             //Read JSON file
@@ -86,16 +87,11 @@ public class App {
         } /**catch (ParseException e) {
             e.printStackTrace();
         }**/
-        
+
         
 
-        /**User Jose = new User("Jose","12345","139130","jmorenoh");
-        Project p1 = new Project("P1",Jose,123);
-        Project p2 = new Project("P2",Jose,123);
-        Jose.followProject(p2);
-        UserList.append(Jose);
-        ProjectList.append(p1);
-        ProjectList.append(p2);**/
+        Browser mainBrowser = new Browser();
+        mainBrowser.open();
  
        
         
@@ -111,8 +107,8 @@ public class App {
         
         
         
-        
-        /**JSONArray JsonUserList = new JSONArray();
+        /*
+        JSONArray JsonUserList = new JSONArray();
         String jsonUserString;
         User iterador;
         for(int i=0;i<UserList.size;i++){
@@ -157,6 +153,6 @@ public class App {
  
         } catch (IOException e) {
             e.printStackTrace();
-        }**/
+        }*/
     }
 }
