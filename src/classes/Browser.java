@@ -16,8 +16,6 @@ public class Browser {
     
     public Stack<Page> navigationStack = new Stack<Page>();
     public Stack<Page> transitionNavigationStack = new Stack<Page>();
-    public LinkedL<Page> pagesList = new LinkedL<Page>();
-    public LinkedL<User> users = new LinkedL<User>();
     public Page currentPage;
     
     public void open(DynamicArray<User>  Users){
