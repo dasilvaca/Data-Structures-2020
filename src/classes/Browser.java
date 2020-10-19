@@ -31,7 +31,14 @@ public class Browser {
                     this.returnToPreviousPage();
                 }
             } else{
-                this.changePage(this.currentPage.display());
+                if(this.currentPage instanceof editUserProfilePage){
+                    boolean response = this.currentPage.edit();
+                    if (response){
+                        this.returnToPreviousPage();
+                    }
+                } else{
+                    this.changePage(this.currentPage.display());
+                }
             }
         }
     }
