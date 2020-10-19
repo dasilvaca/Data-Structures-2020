@@ -16,13 +16,11 @@ public class Browser {
     
     public Stack<Page> navigationStack = new Stack<Page>();
     public Stack<Page> transitionNavigationStack = new Stack<Page>();
-    public LinkedL<Page> pagesList = new LinkedL<Page>();
-    public LinkedL<User> users = new LinkedL<User>();
     public Page currentPage;
     
     public void open(DynamicArray<User>  Users){
         logInPage login = new logInPage();
-        mainPage mnpg = new mainPage(login.logIn(Users));
+        mainPage mnpg = login.logIn(Users);
         this.currentPage = mnpg;
         while(true){
             if(this.currentPage instanceof projectPage){
@@ -31,7 +29,14 @@ public class Browser {
                     this.returnToPreviousPage();
                 }
             } else{
-                this.changePage(this.currentPage.display());
+                if(this.currentPage instanceof editUserProfilePage){
+                    boolean response = this.currentPage.edit();
+                    if (response){
+                        this.returnToPreviousPage();
+                    }
+                } else{
+                    this.changePage(this.currentPage.display());
+                }
             }
         }
     }

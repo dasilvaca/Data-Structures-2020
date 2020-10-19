@@ -24,4 +24,8 @@ public class Page {
     public boolean showProject(){
         return true;
     }
+
+    public boolean edit(){
+        return true;
+    }
 }
