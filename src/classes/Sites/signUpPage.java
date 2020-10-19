@@ -1,10 +1,11 @@
 package classes.Sites;
 
 import classes.*;
+import structs.*;
 
 public class signUpPage extends Page{
 
-    public mainPage signUp(){
+    public mainPage signUp(DynamicArray<User> users){
 
         System.out.print("|===========================================================================|");
         System.out.print("|***************************************************************************|");

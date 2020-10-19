@@ -14,7 +14,7 @@ public class logInPage extends Page{
         String answer = input.nextLine();
         if ("Y".equals(answer)){
             signUpPage signup = new signUpPage();
-            return signup.signUp();
+            return signup.signUp(Users);
         } else{
             System.out.println("|       Enter your username: ");
             String usnm = input.nextLine();
