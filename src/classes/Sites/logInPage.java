@@ -5,7 +5,7 @@ import structs.DynamicArray;
 
 public class logInPage extends Page{
 
-    public User logIn(DynamicArray<User> Users){
+    public mainPage logIn(DynamicArray<User> Users){
         System.out.print("|===========================================================================|");
         System.out.print("|***************************************************************************|");
         System.out.print("|                                                                           |");
@@ -35,7 +35,7 @@ public class logInPage extends Page{
             System.out.print("|                                                                           |");
             System.out.print("|***************************************************************************|");
             System.out.print("|===========================================================================|");
-            return Users.getUser(usnm, pssw);
+            return new mainPage(Users.getUser(usnm, pssw));
         }
     }
 

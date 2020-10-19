@@ -4,7 +4,7 @@ import classes.*;
 
 public class signUpPage extends Page{
 
-    public User signUp(){
+    public mainPage signUp(){
 
         System.out.print("|===========================================================================|");
         System.out.print("|***************************************************************************|");
@@ -26,6 +26,6 @@ public class signUpPage extends Page{
         System.out.print("|                                                                           |");
         System.out.print("|***************************************************************************|");
         System.out.print("|===========================================================================|");
-        return newUser;
+        return new mainPage(newUser);
     }
 }

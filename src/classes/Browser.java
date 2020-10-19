@@ -22,7 +22,7 @@ public class Browser {
     
     public void open(DynamicArray<User>  Users){
         logInPage login = new logInPage();
-        mainPage mnpg = new mainPage(login.logIn(Users));
+        mainPage mnpg = login.logIn(Users);
         this.currentPage = mnpg;
         while(true){
             if(this.currentPage instanceof projectPage){
