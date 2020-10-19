@@ -71,7 +71,7 @@ public class DynamicArray<T> {
         T data = (T)array[index];
         return data;
     }
-
+    @SuppressWarnings("unchecked")
     public Project orderedAddProject(Project newProject){
         int inicio=0;
         int fin=size-1;
@@ -89,10 +89,11 @@ public class DynamicArray<T> {
                 inicio=medio+1;
             }
         }
-        this.insert(inicio, (T)newProject);
+        
+        this.insert(inicio, (T) newProject);
         return null;
     }
-
+    @SuppressWarnings("unchecked")
     public User orderedAddUser(User newUser){
         int inicio=0;
         int fin=size-1;
@@ -114,7 +115,7 @@ public class DynamicArray<T> {
         return null;
     }
 
-    
+       
     public User getUser(String userName,String userPassword){
         int inicio=0;
         int fin=size-1;

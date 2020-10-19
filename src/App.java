@@ -60,7 +60,7 @@ public class App {
                 String readUserString =(String)JsonReadUser.get("User"+k);
                 User readedUser =  gson.fromJson(readUserString, User.class);
                 UserList.append(readedUser);
-                Node changer;
+                Node <String> changer;
                 if(readedUser.saveFollowedProjects.size!=0){
                 changer=readedUser.saveFollowedProjects.Firstnode;
                 while(changer!=null){
