@@ -21,6 +21,7 @@ public class signUpPage extends Page{
         String newEmail = input.nextLine();
 
         User newUser = new User(newUsername, newPassword, newBirthDate, newEmail);
+        users.orderedAddUser(newUser);
         System.out.println("|                                                                           |");
         System.out.println("|      Congratulations "+newUser.userName+",                                |");
         System.out.println("|      you have successfully created a new account!                         |");

@@ -5,6 +5,9 @@
  */
 package classes.Sites;
 import java.util.Scanner;
+
+import classes.Project;
+import structs.DynamicArray;
 /**
  *
  * @author usuario
@@ -20,6 +23,9 @@ public class Page {
     }
 
     public Page display(){
+        return this;
+    }
+    public Page display(DynamicArray<Project> Projects){
         return this;
     }
 

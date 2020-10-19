@@ -7,12 +7,13 @@ package classes;
 
 import structs.*;
 import classes.Sites.*;
-import java.io.File;
+//import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
+//import java.text.ParseException;
+//import java.lang.Thread.UncaughtExceptionHandler;
 
 import com.google.gson.Gson;
 
@@ -35,14 +36,15 @@ public class Browser {
 
     public void open() {
 
-        //this.read();
+        this.read();
         logInPage login = new logInPage();
         mainPage mnpg = login.logIn(Users);
         this.currentPage = mnpg;
         this.currentUser = mnpg.currentUser;
         while(true){
+
             if(!this.currentPage.toyDentro){
-                this.write(this.Users, this.Projects);
+                this.write();
                 break;
             }
             if(this.currentPage instanceof projectPage){
@@ -57,6 +59,9 @@ public class Browser {
                         this.returnToPreviousPage();
                     }
                 } else{
+                    if (this.currentPage instanceof mainPage){
+                        this.changePage(this.currentPage.display(this.Projects));
+                    }
                     this.changePage(this.currentPage.display());
                 }
             }
@@ -112,7 +117,6 @@ public class Browser {
             e.printStackTrace();
         }**/
         catch (org.json.simple.parser.ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -144,8 +148,7 @@ public class Browser {
                 }
                 readedUser.saveOwnProjectList.makeEmpty();
             }
-            this.Users = UserList;
-            this.Projects = ProjectList;
+            
         }
  
         } catch (FileNotFoundException e) {
@@ -156,12 +159,16 @@ public class Browser {
             e.printStackTrace();
         }**/
         catch (org.json.simple.parser.ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        this.Users = UserList;
+        this.Projects = ProjectList;
     }
+    @SuppressWarnings ("unchecked")
+    public void write(){
+        DynamicArray<User> UserList = this.Users;
+        DynamicArray<Project> ProjectList = this.Projects;
 
-    public void write(DynamicArray<User> UserList, DynamicArray<Project> ProjectList){
         Gson gson = new Gson();
         JSONArray JsonUserList = new JSONArray();
         String jsonUserString;

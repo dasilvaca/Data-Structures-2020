@@ -11,7 +11,7 @@ public class mainPage extends Page{
         this.currentUser = currentUser;
     }
 
-    public Page display(){
+    public Page display(DynamicArray<Project> Projects){
 
         System.out.println("|===========================================================================|");
         System.out.println("|***************************************************************************|");
@@ -62,6 +62,8 @@ public class mainPage extends Page{
             LinkedL<User> newProjectOwners = new LinkedL<User>();
             newProjectOwners.append(this.currentUser);
             this.currentUser.createProject(newProjectName, newProjectOwners, newProjectBudget);
+            Project proyecto = new Project(newProjectName, this.currentUser, newProjectBudget);
+            Projects.orderedAddProject(proyecto);
             System.out.println("|                                                                           |");
             System.out.println("|    Congratulations! You have successfully created a new project           |");
             System.out.println("|                                                                           |");
