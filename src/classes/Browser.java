@@ -33,7 +33,7 @@ public class Browser {
     public DynamicArray<User> Users = new DynamicArray<User>();
     public DynamicArray<Project> Projects = new DynamicArray<Project>();
 
-    public void open() throws org.json.simple.parser.ParseException {
+    public void open() {
 
         //this.read();
         logInPage login = new logInPage();
