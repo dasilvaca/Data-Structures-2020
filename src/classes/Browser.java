@@ -42,7 +42,8 @@ public class Browser {
         this.currentPage = mnpg;
         this.currentUser = mnpg.currentUser;
         // TODO: volver la condición a verdadera
-        while(true){
+        boolean xd = false;
+        while(xd){
 
             if(!this.currentPage.toyDentro){
                 this.write();
