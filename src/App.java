@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,7 +30,7 @@ public class App {
             //Read JSON file
             Object objProject = jsonParser.parse(ProjectReader);
  
-            JSONArray readProjectList = (JSONArray) objProject;
+            JSONArray readProjectList = (JSONArray)objProject;
             for(int l=0;l<readProjectList.size();l++){
                 JSONObject JsonReadProject = (JSONObject)readProjectList.get(l);
                 String readProjectString =(String)JsonReadProject.get("Project"+l);
@@ -37,7 +38,7 @@ public class App {
                 ProjectList.append(readedProject);
             }
              
-            //Iterate over User array
+           
             
  
         } catch (FileNotFoundException e) {
@@ -59,12 +60,16 @@ public class App {
                 String readUserString =(String)JsonReadUser.get("User"+k);
                 User readedUser =  gson.fromJson(readUserString, User.class);
                 UserList.append(readedUser);
-                Node changer=readedUser.saveFollowedProjects.Firstnode;
+                Node changer;
+                if(readedUser.saveFollowedProjects.size!=0){
+                changer=readedUser.saveFollowedProjects.Firstnode;
                 while(changer!=null){
                     readedUser.followedProjects.append(ProjectList.getProject((String)changer.data));
                     changer=changer.next;
                 }
                 readedUser.saveFollowedProjects.makeEmpty();
+                }
+                if(readedUser.saveOwnProjectList.size!=0){
                 changer=readedUser.saveOwnProjectList.Firstnode;
                 while(changer!=null){
                     readedUser.ownProjectList.append(ProjectList.getProject(changer.data.toString()));
@@ -72,6 +77,7 @@ public class App {
                 }
                 readedUser.saveOwnProjectList.makeEmpty();
             }
+        }
  
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -79,7 +85,7 @@ public class App {
             e.printStackTrace();
         } /**catch (ParseException e) {
             e.printStackTrace();
-        }**/ 
+        }**/
         
         
 
@@ -91,20 +97,22 @@ public class App {
         ProjectList.append(p1);
         ProjectList.append(p2);**/
  
+       
         
-
-
-
-
-
-
+        /**File f = new File("EdUser.json");
+        f.delete();
+        try {
+            f.createNewFile();
+        } catch (IOException ioe) {
+             ioe.printStackTrace();
+        }**/
 
 
         
         
         
         
-        JSONArray JsonUserList = new JSONArray();
+        /**JSONArray JsonUserList = new JSONArray();
         String jsonUserString;
         User iterador;
         for(int i=0;i<UserList.size;i++){
@@ -149,6 +157,6 @@ public class App {
  
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }**/
     }
 }
