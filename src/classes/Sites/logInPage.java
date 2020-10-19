@@ -1,10 +1,6 @@
 package classes.Sites;
 
 import classes.*;
-<<<<<<< HEAD
-
-=======
->>>>>>> d3b0dc78488e754028bee83a080597b04994a1eb
 import structs.DynamicArray;
 
 public class logInPage extends Page{

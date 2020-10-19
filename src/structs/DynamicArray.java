@@ -2,7 +2,6 @@ package structs;
 
 import classes.Project;
 import classes.User;
-
 public class DynamicArray<T> {
     Object[] array;
     public int size, capacity;
@@ -72,27 +71,8 @@ public class DynamicArray<T> {
         T data = (T)array[index];
         return data;
     }
-    
-    public User getUser(String userName,String userPassword){
-        int inicio=0;
-        int fin=size-1;
-        int medio;
-        User usuario;
-        while(inicio<=fin){
-            medio=(inicio+fin)/2;
-            usuario=(User)array[medio];
-            if(usuario.userName.equals(userName) && usuario.password.equals(userPassword)){
-                return usuario;
-            }else if(usuario.userName.compareTo(userName)<0){
-                inicio=medio+1;
-            }else {
-                fin=medio-1;
-            }
-        }
-        return null;
-    }
 
-    public Project orderedAdd(Project newProject){
+    public Project orderedAddProject(Project newProject){
         int inicio=0;
         int fin=size-1;
         int medio;
@@ -113,6 +93,46 @@ public class DynamicArray<T> {
         return null;
     }
 
+    public User orderedAddUser(User newUser){
+        int inicio=0;
+        int fin=size-1;
+        int medio;
+        User usuario;
+        while(inicio<=fin){
+            medio=(inicio+fin)/2;
+            usuario= (User)array[medio];
+            if(usuario.userName.equals(newUser.userName)){
+                System.out.println("El usuario ya existe");
+                return null;
+            }else if(usuario.userName.compareTo(newUser.userName)>0){
+                fin=medio-1;
+            }else{
+                inicio=medio+1;
+            }
+        }
+        this.insert(inicio, (T)newUser);
+        return null;
+    }
+
+    
+    public User getUser(String userName,String userPassword){
+        int inicio=0;
+        int fin=size-1;
+        int medio;
+        User usuario;
+        while(inicio<=fin){
+            medio=(inicio+fin)/2;
+            usuario=(User)array[medio];
+            if(usuario.userName.equals(userName) && usuario.password.equals(userPassword)){
+                return usuario;
+            }else if(usuario.userName.compareTo(userName)<0){
+                inicio=medio+1;
+            }else {
+                fin=medio-1;
+            }
+        }
+        return null;
+    }
     public Project getProject(String projectname){
         int inicio=0;
         int fin=size-1;
