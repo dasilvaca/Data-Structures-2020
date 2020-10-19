@@ -41,6 +41,7 @@ public class Browser {
         mainPage mnpg = login.logIn(Users);
         this.currentPage = mnpg;
         this.currentUser = mnpg.currentUser;
+        // TODO: volver la condición a verdadera
         while(true){
 
             if(!this.currentPage.toyDentro){

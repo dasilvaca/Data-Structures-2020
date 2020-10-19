@@ -26,7 +26,7 @@ public class mainPage extends Page{
         }else{
             Node<Project> currentProject = this.currentUser.ownProjectList.Firstnode;
             while (currentProject != null){
-                System.out.println("|         "+currentProject.data.name+"   "+currentProject.data.followers.size);
+                System.out.println("|         "+currentProject.data.name+"   followers: "+currentProject.data.followers.size + "  |\n|              Budget:  " + currentProject.data.budget + "              |");
                 System.out.println("|");
                 System.out.println("|   -----------------------------------------------------------------   |");
                 currentProject = currentProject.next;
@@ -58,10 +58,10 @@ public class mainPage extends Page{
             String newProjectName = input.nextLine();
             System.out.println("|                                                                           |");
             System.out.println("|     How much will be its budget?                                          |");
-            int newProjectBudget = (int)input.nextInt();
-            LinkedL<User> newProjectOwners = new LinkedL<User>();
-            newProjectOwners.append(this.currentUser);
-            this.currentUser.createProject(newProjectName, newProjectOwners, newProjectBudget);
+            int newProjectBudget = input.nextInt();
+            //LinkedL<User> newProjectOwners = new LinkedL<User>();
+            //newProjectOwners.append(this.currentUser);
+            //this.currentUser.createProject(newProjectName, newProjectOwners, newProjectBudget);
             Project proyecto = new Project(newProjectName, this.currentUser, newProjectBudget);
             Projects.orderedAddProject(proyecto);
             System.out.println("|                                                                           |");
