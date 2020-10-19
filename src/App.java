@@ -83,9 +83,8 @@ public class App {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } /**catch (ParseException e) {
-            e.printStackTrace();
-        }**/
+        }
+
         
         
 
@@ -110,8 +109,7 @@ public class App {
 
         
         
-        
-        
+        //////////////////////////////////////////////////////////////////////////////////////////////
         /**JSONArray JsonUserList = new JSONArray();
         String jsonUserString;
         User iterador;
