@@ -15,15 +15,27 @@ public class BSTree<T> {
         root=null;
     }
 
-    public T find(int key){
-        BinaryNode<T> newNode=root;
-        while(newNode!=null){
-            if(newNode.key==key){
-                return newNode.data;
-            }else if(key>newNode.key){
-                newNode=newNode.right;
+    public BinaryNode<T> find(int key){
+        BinaryNode<T> Iterator=root;
+        while(Iterator!=null){
+            if(Iterator.key==key){
+                return Iterator;
+            }else if(key>Iterator.key){
+                if(Iterator.right==null){
+                    BinaryNode<T> newNode= new BinaryNode<T>(key); 
+                    newNode.father=Iterator;
+                    Iterator.right=newNode;
+                    return newNode;
+                }
+                Iterator=Iterator.right;
             }else{
-                newNode=newNode.left;
+                if(Iterator.left==null){
+                    BinaryNode<T> newNode= new BinaryNode<T>(key); 
+                    newNode.father=Iterator;
+                    Iterator.left=newNode;
+                    return newNode;
+                }
+                Iterator=Iterator.left;
             }
         }
         return null;

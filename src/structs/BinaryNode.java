@@ -12,7 +12,9 @@ public class BinaryNode<T> {
         this.key = ky;
     }
 
-
+    public BinaryNode(int ky){
+        this.key = ky;
+    }
 
     
 }
