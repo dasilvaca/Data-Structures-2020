@@ -20,23 +20,39 @@ public class BSTree<T> {
         while(newNode!=null){
             if(newNode.key==key){
                 return newNode.data;
-            }else if()
+            }else if(key>newNode.key){
+                newNode=newNode.right;
+            }else{
+                newNode=newNode.left;
+            }
         }
+        return null;
+    }
+
+    public BinaryNode<T> next(BinaryNode<T> N){
+        if(N.right!=null){
+            return  LeftDescendant(N.right);
+        }
+        return RightAncestor(N);
+    }
+
+    private BinaryNode<T> LeftDescendant(BinaryNode<T> N){
+        if(N.left==null){
+            return N;
+        }
+        return LeftDescendant(N.left);
+    }
+
+    private BinaryNode<T> RightAncestor(BinaryNode<T> N){
+        if(N.key<N.father.key){
+            return N.father;
+        }
+        return RightAncestor(N.father);
     }
 
     public void Insert(int key, T data){
         BinaryNode<T> newNode = new BinaryNode<T>(key,data);
-        if(root==null){
-            this.root=newNode;
-        }else{
-            BinaryNode<T> Iterator = root;
-            while(Iterator!=null){
-                if(key>Iterator.key){
-                    Iterator=Iterator.right;
-                }else{
-                    Iterator=Iterator.left;
-                }
-            }
+        
         } 
     }
 

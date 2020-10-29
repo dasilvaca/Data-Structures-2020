@@ -71,6 +71,7 @@ public class mainPage extends Page{
             System.out.println("|===========================================================================|");
             return new projectPage(this.currentUser.ownProjectList.Lastnode.data, this.currentUser);
         }
+        
         return new searchPage(this.currentUser);
 
     }
