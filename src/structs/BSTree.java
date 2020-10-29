@@ -4,8 +4,7 @@ public class BSTree<T> {
     BinaryNode<T> root;
 
     public BSTree(int key, T data){
-        this.root.key=key;
-        this.root.data=data;
+        this.root=new BinaryNode<>(key,data);
     }
     
     public BSTree(BinaryNode<T> root){
@@ -41,7 +40,7 @@ public class BSTree<T> {
         return null;
     }
 
-    public BinaryNode<T> next(BinaryNode<T> N){
+    public BinaryNode<T> Next(BinaryNode<T> N){
         if(N.right!=null){
             return  LeftDescendant(N.right);
         }
@@ -62,10 +61,36 @@ public class BSTree<T> {
         return RightAncestor(N.father);
     }
 
-    public void Insert(int key, T data){
-        BinaryNode<T> newNode = new BinaryNode<T>(key,data);
-        
-        } 
+    public void Insert(int key, T dt){
+        BinaryNode<T> newNode=this.find(key);
+        newNode.data = dt;
     }
 
+    @Override    
+    public String toString(){
+        Queue<BinaryNode<T>> newQ = new Queue<BinaryNode<T>>();
+        BinaryNode<T> Iterator = root;
+        BinaryNode<T> NewNode;
+        newQ.enqueue(Iterator);
+        String retornable="";
+        while(!newQ.isEmpty()){
+            NewNode=newQ.dequeue();
+            retornable+=NewNode.toString()+" ";
+            if(NewNode.left!=null){
+                newQ.enqueue(NewNode.left);
+            }
+            if(NewNode.right!=null){
+                newQ.enqueue(NewNode.right);
+            }
+        }
+        return retornable;
+
+    }
+    
+    public void delete(int key){
+        BinaryNode<T> toDelete=this.find(key);
+        
+    }
 }
+
+
