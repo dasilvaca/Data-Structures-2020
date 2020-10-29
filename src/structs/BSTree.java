@@ -89,8 +89,49 @@ public class BSTree<T> {
     
     public void delete(int key){
         BinaryNode<T> toDelete=this.find(key);
-        
+        if(toDelete.right==null){
+            if(toDelete==root){
+                root=toDelete.left;
+            }else {
+                if(toDelete.father.left==toDelete){
+                    toDelete.father.left=toDelete.left;
+                    if(toDelete.left!=null){toDelete.left.father=toDelete.father;}
+                    
+                }
+                if(toDelete.father.right==toDelete){
+                    toDelete.father.right=toDelete.left;
+                    if(toDelete.left!=null){toDelete.left.father=toDelete.father;}
+                }
+            }
+        }else{
+            BinaryNode<T> next = this.Next(toDelete);
+            if(next.right!=null){
+                BinaryNode<T> nextright = next.right;
+                nextright.father = next.father;
+                next.father.left = nextright;
+            }else{
+                if(next.father.left==next){next.father.left=null;}else{next.father.right=null;}
+            }
+            if(toDelete==root){
+                next.father=null;
+                if(root.left!=null){next.left=root.left;}
+                next.right=root.right;
+                root=next;
+            }else{
+                next.father=toDelete.father;
+                if(toDelete.left!=null){next.left=toDelete.left;}
+                next.right=toDelete.right;
+                if(toDelete.father.left==toDelete){
+                    toDelete.father.left=next;
+                }else{
+                    toDelete.father.right=next;
+                }
+            }
+            
+        }
     }
+
+    
 }
 
 

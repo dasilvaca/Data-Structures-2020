@@ -167,17 +167,23 @@ public class App {
    
 
     public static void main(String[] args)  {
-       BSTree<String> a = new BSTree<String>(5,"5");
-       a.Insert(4, "4");
-       //a.Insert(6,"6");
-       a.Insert(2,"2");
-       //a.Insert(9,"9");
-       a.Insert(1,"1");
-       //a.Insert(7,"7");
-       //a.Insert(13,"13");
-       //a.Insert(11,"11");
-       //a.Insert(12,"12");
-       a.delete(1);
+       BSTree<String> a = new BSTree<String>(20,"20");
+       a.Insert(15, "15");
+       a.Insert(25,"25");
+       a.Insert(13,"13");
+       a.Insert(17,"17");
+       a.Insert(21,"21");
+       a.Insert(27,"27");
+       a.Insert(4,"4");
+       a.Insert(14,"14");
+       a.Insert(16,"16");
+       a.Insert(19,"19");
+       a.Insert(13,"13");
+       a.Insert(23,"23");
+       a.Insert(22,"22");
+       a.Insert(26,"26");
+       a.Insert(28,"28");
+       a.delete(23);
        System.out.println(a.toString());
        
 
