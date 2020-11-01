@@ -131,7 +131,9 @@ public class BSTree<T> {
         }
     }
 
-    public 
+    public LinkedL<BinaryNode<T>> search(){
+        return new LinkedL<BinaryNode<T>>();
+    }
 }
 
 
