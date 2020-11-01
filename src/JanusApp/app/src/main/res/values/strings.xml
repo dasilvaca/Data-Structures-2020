@@ -4,4 +4,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="logo_3">Logo :3</string>
+    <string name="slidescreen">slidescreen picture</string>
+    <string name="login">Login</string>
 </resources>

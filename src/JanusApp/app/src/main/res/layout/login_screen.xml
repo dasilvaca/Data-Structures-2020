@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/topimages"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:background="@color/black"
+        android:contentDescription="@string/slidescreen"
+        android:src="@drawable/bogota"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginSpicifier"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topimages"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/login"
+        android:layout_margin="12dp"
+        android:textSize="18sp" />
+    <EditText
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loginSpicifier"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="username or email"
+        android:layout_margin="12dp"
+        android:textSize="18sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
