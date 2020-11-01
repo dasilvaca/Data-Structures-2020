@@ -5,11 +5,19 @@ public class Queue<T> {
            cola, es decir el primer elemento de esta, y back que guarda el último.
            Ambos atributos se inicializan en null ya que al crear una cola esta
            estará vacía. */
+        int size=0;
         public Node<T> front = null;
         public Node<T> back = null;
         
+        public boolean isEmpty(){
+            if(size==0){
+                return true;
+            }
+            return false;
+        } 
         /*El método enqueue añade un elemento nuevo (newNode) a la cola */
         public void enqueue(T newData){
+            size++;
             Node<T> newNode = new Node<T>(newData);
             if(this.front == null){
                 /* Si la cola está vacia (if(this.front == null)), se les da a front 
@@ -27,6 +35,7 @@ public class Queue<T> {
         
         /* El método dequeue saca de la cola el primer elemento de esta (front) */
         public T dequeue(){
+            size--;
             T dato=this.front.data;
             this.front = front.next;
             return dato;
@@ -49,13 +58,7 @@ public class Queue<T> {
         
         /* El método len retorna la longitud de la cola, que es 0 si está vacía. */
         public int len(){
-            Node<T> curr = front;
-            int len = 0;
-            while(curr != null){
-                len++;
-                curr = curr.next;
-            }
-            return len;
+            return size;
         }
         
         

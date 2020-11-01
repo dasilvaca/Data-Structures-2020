@@ -15,4 +15,9 @@ public class BinaryNode<T> {
     public BinaryNode(int ky){
         this.key = ky;
     }
+
+    @Override
+    public String toString(){
+        return data.toString();   
+    }
 }

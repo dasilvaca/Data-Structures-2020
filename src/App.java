@@ -161,66 +161,31 @@ public class App {
 
 
 
-    static int twoStacks(int x, Stack<Integer> a, Stack<Integer> b) {
-        Stack<Integer> transitiv = new Stack<Integer>();
-        int max,sumatoria;
-        max=sumatoria=0;
-        while((sumatoria+a.peek())<=x){
-            max++;
-            int poped=a.pop();
-            sumatoria+=poped;
-            transitiv.push(poped);
-        }
-       int t =transitiv.len();
-        while(transitiv.len()>0){
-            transitiv.pop();
-            
-        }
-       return 0;
         
-    }
+    
 
-    private static final Scanner scanner = new Scanner(System.in);
+   
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
+       BSTree<String> a = new BSTree<String>(20,"20");
+       a.Insert(15, "15");
+       a.Insert(25,"25");
+       a.Insert(13,"13");
+       a.Insert(17,"17");
+       a.Insert(21,"21");
+       a.Insert(27,"27");
+       a.Insert(4,"4");
+       a.Insert(14,"14");
+       a.Insert(16,"16");
+       a.Insert(19,"19");
+       a.Insert(13,"13");
+       a.Insert(23,"23");
+       a.Insert(22,"22");
+       a.Insert(26,"26");
+       a.Insert(28,"28");
+       a.delete(23);
+       System.out.println(a.toString());
        
-
-        int g = Integer.parseInt(scanner.nextLine().trim());
-
-        for (int gItr = 0; gItr < g; gItr++) {
-            String[] nmx = scanner.nextLine().split(" ");
-
-            int n = Integer.parseInt(nmx[0].trim());
-
-            int m = Integer.parseInt(nmx[1].trim());
-
-            int x = Integer.parseInt(nmx[2].trim());
-            Stack<Integer> a = new Stack<Integer>();
-            
-
-            String[] aItems = scanner.nextLine().split(" ");
-
-            for (int aItr = n-1; aItr >= 0; aItr--) {
-                int aItem = Integer.parseInt(aItems[aItr].trim());
-                
-                a.push(aItem);
-            }
-            Stack<Integer> b = new Stack<Integer>();
-            
-
-            String[] bItems = scanner.nextLine().split(" ");
-
-            for (int bItr = m-1; bItr >= 0; bItr--) {
-                int bItem = Integer.parseInt(bItems[bItr].trim());
-                b.push(bItem);
-            }
-            
-             
-             int c= twoStacks(x, a, b);
-
-            System.out.println(c);
-            
-        }
 
         
     }
