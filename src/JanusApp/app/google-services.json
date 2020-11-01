@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "472812433888",
+    "firebase_url": "https://janus-app-652aa.firebaseio.com",
+    "project_id": "janus-app-652aa",
+    "storage_bucket": "janus-app-652aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472812433888:android:0640a54d5abb444a3cbb85",
+        "android_client_info": {
+          "package_name": "com.janus.janusapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472812433888-fvbr3ppjvh1q0qcsqtep1kblhuhvmaic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlTqVRwEakUb8TaGL-kkRD_OmkWfQrqGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472812433888-fvbr3ppjvh1q0qcsqtep1kblhuhvmaic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
