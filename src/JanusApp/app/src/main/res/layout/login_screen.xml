@@ -35,6 +35,8 @@
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
         android:hint="Username or email"
+        
+        android:inputType="textPersonName"
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +47,7 @@
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
