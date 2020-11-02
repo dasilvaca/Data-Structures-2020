@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JanusApp">
         <activity
+            android:name=".Main"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.JanusApp.NoActionBar"></activity>
+        <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
