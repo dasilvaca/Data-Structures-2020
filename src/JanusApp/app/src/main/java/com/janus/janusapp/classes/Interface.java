@@ -1,6 +1,6 @@
-package classes;
+package com.janus.janusapp.classes;
 
-import structs.Stack;
+import com.janus.janusapp.structs.Stack;
 
 /**
  * Interface

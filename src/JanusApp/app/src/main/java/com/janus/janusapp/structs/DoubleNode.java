@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class DoubleNode<T> {
     public T data;

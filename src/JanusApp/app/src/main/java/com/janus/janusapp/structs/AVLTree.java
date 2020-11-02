@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 /*
  * este codigo se creo tomando como referencia la informacion de los siguientes enlaces:

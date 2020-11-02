@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class BinaryNode<T> {
     public BinaryNode<T> left = null;
