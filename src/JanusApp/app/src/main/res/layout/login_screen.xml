@@ -37,14 +37,8 @@
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
         android:autofillHints=""
-
         android:hint="Username or email"
-<<<<<<< HEAD
-        
-        android:inputType="textPersonName"
-=======
         android:inputType="textWebEmailAddress"
->>>>>>> 10782bd36377fa227f815606474dd6ecab2f2513
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,16 +50,12 @@
         android:layout_width="match_parent"
         android:autofillHints=""
         android:hint="Password"
-<<<<<<< HEAD
         android:inputType="textPassword"
-=======
-        android:inputType="textWebPassword"
->>>>>>> 10782bd36377fa227f815606474dd6ecab2f2513
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/username" />
-
+    <!--android:inputType="textWebPassword"-->
     <LinearLayout
         android:id="@+id/buttonslog"
         android:layout_width="0dp"

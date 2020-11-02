@@ -15,16 +15,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-
-
-
-
-
-=======
-        prueba=(TextView)findViewById(R.id.prueba);
+        //setContentView(R.layout.activity_main);
+        //prueba=(TextView)findViewById(R.id.prueba);
         setContentView(R.layout.login_screen);
->>>>>>> 10782bd36377fa227f815606474dd6ecab2f2513
     }
 }
