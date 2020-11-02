@@ -35,10 +35,13 @@
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
         android:hint="Username or email"
+
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
+        app:layout_constraintTop_toBottomOf="@id/login_spicifier"
+        android:inputType="textWebEmailAddress"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/password"
@@ -48,15 +51,77 @@
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username" />
+        app:layout_constraintTop_toBottomOf="@id/username"
+        android:inputType="textWebPassword"
+        android:autofillHints="" />
+
+    <LinearLayout
+        android:id="@+id/buttonslog"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintTop_toBottomOf="@id/password">
+        <Button
+            android:id="@+id/Button02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:layout_marginRight="12dp"
+            android:textColorHighlight="@color/black"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp">
+        </Button>
+        <Button
+            android:id="@+id/Button03"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SignUp"
+            android:textAllCaps="false"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="12dp">
+        </Button>
+    </LinearLayout>
+    <!--
+    <LinearLayout
+        android:id="@+id/buttonslog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password">
+
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="right"
+            />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="right" />
+
+    </LinearLayout>-->
+
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="107dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_margin="12dp"
-        android:text="CheckBox"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Stay logged in until logout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@id/buttonslog" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
