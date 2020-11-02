@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/xd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -34,94 +35,86 @@
         android:id="@+id/username"
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
-        android:hint="Username or email"
+        android:autofillHints=""
 
+        android:hint="Username or email"
+        android:inputType="textWebEmailAddress"
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_spicifier"
-        android:inputType="textWebEmailAddress"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
     <EditText
         android:id="@+id/password"
         style="@style/Theme.JanusApp.text_boxes"
         android:layout_width="match_parent"
+        android:autofillHints=""
         android:hint="Password"
+        android:inputType="textWebPassword"
         android:textColorHint="@color/gricesito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        android:inputType="textWebPassword"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/username" />
 
     <LinearLayout
         android:id="@+id/buttonslog"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintTop_toBottomOf="@id/password">
-        <Button
-            android:id="@+id/Button02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Login"
-            android:textAllCaps="false"
-            android:layout_marginRight="12dp"
-            android:textColorHighlight="@color/black"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="20dp">
-        </Button>
-        <Button
-            android:id="@+id/Button03"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="SignUp"
-            android:textAllCaps="false"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="12dp">
-        </Button>
-    </LinearLayout>
-    <!--
-    <LinearLayout
-        android:id="@+id/buttonslog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password">
 
+        <Button
+            android:id="@+id/Button02"
+            style="@style/innerRowButtons"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColorHighlight="@color/black"></Button>
 
         <Button
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="right"
-            />
-
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="right" />
-
-    </LinearLayout>-->
-
+            android:id="@+id/Button03"
+            style="@style/innerRowButtons"
+            android:text="Signup"
+            android:textAllCaps="false"></Button>
+    </LinearLayout>
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/StayLogged"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_margin="12dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:text="Stay logged in until logout"
+        android:text="Stay logged in"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonslog" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <CheckBox
+        android:id="@+id/ShowPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="12dp"
+        android:text="Show password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:clickable="true"
+        android:text="Forgot your password?"
+
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonslog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonslog" />
+
+
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
