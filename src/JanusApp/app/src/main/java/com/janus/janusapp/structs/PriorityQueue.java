@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class PriorityQueue <T> {
     public PriorityStack<T> orderedStack;

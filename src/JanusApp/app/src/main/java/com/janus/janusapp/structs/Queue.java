@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class Queue<T> {
         /* Cada cola tiene dos atributos: front que guarda el primer nodo de la

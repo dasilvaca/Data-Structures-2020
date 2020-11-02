@@ -1,7 +1,7 @@
-package structs;
+package com.janus.janusapp.structs;
 
-import classes.Project;
-import classes.User;
+import com.janus.janusapp.classes.Project;
+import com.janus.janusapp.classes.User;
 public class DynamicArray<T> {
     Object[] array;
     public int size, capacity;

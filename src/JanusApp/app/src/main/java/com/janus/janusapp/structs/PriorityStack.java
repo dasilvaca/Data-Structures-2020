@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class PriorityStack<T> extends Stack<T> {
     PriorityNode<T> top=null;

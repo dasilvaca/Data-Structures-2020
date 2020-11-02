@@ -1,14 +1,14 @@
 package com.janus.janusapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
-//public static boolean opened = false;
-public class MainActivity extends AppCompatActivity {
 
+public class Login extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
     }
+
+
 }

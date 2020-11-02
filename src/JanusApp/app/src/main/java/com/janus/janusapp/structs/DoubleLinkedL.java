@@ -1,4 +1,4 @@
-package structs;
+package com.janus.janusapp.structs;
 
 public class DoubleLinkedL<T>{
     public DoubleNode<T> FirstIn;
