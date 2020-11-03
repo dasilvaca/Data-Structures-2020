@@ -1,4 +1,4 @@
-package com.janus.janusapp.structs;
+package structs;
 
 public class BSTree<T> {
     BinaryNode<T> root;
