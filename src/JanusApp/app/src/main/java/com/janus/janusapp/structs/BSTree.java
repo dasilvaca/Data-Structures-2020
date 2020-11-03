@@ -40,25 +40,25 @@ public class BSTree<T> {
         return null;   //Si no estoy mal este null nunca lo retorna pero lo puse para saltar
     }               //las putas  warnings
 
-    public BinaryNode<T> Next(BinaryNode<T> N){  //Este método es el de buscar el nodo con la siguiente llave
-        if(N.right!=null){     //como lo explico el profesor y está tal cual como en las diapositivas.
-            return  LeftDescendant(N.right);  //retorna el nodo y no la data
+    public BinaryNode<T> Next(BinaryNode<T> node){  //Este método es el de buscar el nodo con la siguiente llave
+        if(node.right!=null){     //como lo explico el profesor y está tal cual como en las diapositivas.
+            return  LeftDescendant(node.right);  //retorna el nodo y no la data
         }
-        return RightAncestor(N);
+        return RightAncestor(node);
     }
 
-    private BinaryNode<T> LeftDescendant(BinaryNode<T> N){
-        if(N.left==null){
-            return N;
+    private BinaryNode<T> LeftDescendant(BinaryNode<T> node){
+        if(node.left==null){
+            return node;
         }
-        return LeftDescendant(N.left);
+        return LeftDescendant(node.left);
     }
 
-    private BinaryNode<T> RightAncestor(BinaryNode<T> N){
-        if(N.key<N.father.key){
-            return N.father;
+    private BinaryNode<T> RightAncestor(BinaryNode<T> node){
+        if(node.key<node.father.key){
+            return node.father;
         }
-        return RightAncestor(N.father);
+        return RightAncestor(node.father);
     }
 
     public void Insert(int key, T dt){   //Se inserta un nodo en la posición key
@@ -129,6 +129,27 @@ public class BSTree<T> {
             }
             
         }
+    }
+
+    public BinaryNode<T> previous(BinaryNode<T> node){  
+        if(node.left!=null){     
+            return  rightDescendant(node.left);  
+        }
+        return LeftAncestor(node);
+    }
+
+    private BinaryNode<T> rightDescendant(BinaryNode<T> node){
+        if(node.right==null){
+            return node;
+        }
+        return rightDescendant(node.right);
+    }
+
+    private BinaryNode<T> LeftAncestor(BinaryNode<T> node){
+        if(node.key>node.father.key){
+            return node.father;
+        }
+        return LeftAncestor(node.father);
     }
 
     public LinkedL<BinaryNode<T>> search(){
