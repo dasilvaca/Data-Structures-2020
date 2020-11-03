@@ -3,10 +3,7 @@ package com.janus.janusapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import com.janus.janusapp.structs.*;
 
 //public static boolean opened = false;
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         //prueba=(TextView)findViewById(R.id.prueba);
-        setContentView(R.layout.login_screen);
+        setContentView(R.layout.login_layout);
     }
 }

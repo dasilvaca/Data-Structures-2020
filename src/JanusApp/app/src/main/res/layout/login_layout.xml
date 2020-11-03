@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/login_inner_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/topimages"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/janus_gif"
+            android:background="#213136"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--<ImageView
+            android:id="@+id/topimages"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/black"
+            android:contentDescription="@string/slidescreen"
+            android:src="@drawable/bogota"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/login_spicifier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topimages" />
+
+        <EditText
+            android:id="@+id/username"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:autofillHints=""
+            android:hint="@string/username_or_email"
+            android:inputType="textWebEmailAddress"
+            android:textColorHint="@color/gricesito"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
+
+        <EditText
+            android:id="@+id/password"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:autofillHints=""
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/gricesito"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/username" />
+        <!--android:inputType="textWebPassword"-->
+        <LinearLayout
+            android:id="@+id/buttonslog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password">
+
+            <Button
+                android:id="@+id/Button02"
+                style="@style/Theme.JanusApp.innerRowButtons"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColorHighlight="@color/black" />
+
+            <Button
+                android:id="@+id/Button03"
+                style="@style/Theme.JanusApp.innerRowButtons"
+                android:text="@string/signup"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/StayLogged"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/stay_logged_in"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <CheckBox
+            android:id="@+id/ShowPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:text="@string/show_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:clickable="true"
+            android:text="@string/forgot_your_password"
+
+
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonslog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonslog"
+            android:focusable="true" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
