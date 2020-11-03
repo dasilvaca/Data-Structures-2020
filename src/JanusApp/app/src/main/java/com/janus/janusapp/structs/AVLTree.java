@@ -73,23 +73,34 @@ class AVLTree<T>
         }
     }
 
-    public void insertNode(int key, T data) // esta funcion se usa para llamar otra funcion pero iniciando el tempNode en root
+    public void insertNode(int key) // esta funcion se usa para llamar otra funcion pero iniciando el tempNode en root
     {
         if(!findWithBoolean(key, root)) // solo si el nodo no existe, se inserta
-            root = insertNode (key, data, root, null); //la funcion de insert devuelve el root, pero con la modificacion de la insercion y el re balanceo.
+            root = insertNode (key, root, null); //la funcion de insert devuelve el root, pero con la modificacion de la insercion y el re balanceo.
     }
 
-    public BinaryNode<T> insertNode(int key, T data, BinaryNode<T> tempNode, BinaryNode<T> father)
+    public BinaryNode<T> insertNode(int key, BinaryNode<T> tempNode, BinaryNode<T> father)
     {
         if (tempNode == null) // si llegamos al fondo del nodo insertamos el nuevo nodo
             return (new BinaryNode(key, father)); //en esta linea se inserta el nodo y se retorna ese nuevo nodo
         else if (key < tempNode.key) //si no estamos en el fondo del arbol, entonces nos vamos por el subarbol izquierdo
-            tempNode.left = insertNode(key, data, tempNode.left, tempNode); //de manera recursiva se recorre nodo hijo izquierdo del nodo actual
+            tempNode.left = insertNode(key, tempNode.left, tempNode); //de manera recursiva se recorre nodo hijo izquierdo del nodo actual
         else if (key > tempNode.key) //si no estamos en el fondo del arbol, entonces nos vamos por el subarbol derecho
-            tempNode.right = insertNode(key, data, tempNode.right, tempNode); //de manera recursiva se recorre nodo hijo derecho del nodo actual
+            tempNode.right = insertNode(key, tempNode.right, tempNode); //de manera recursiva se recorre nodo hijo derecho del nodo actual
         else // si no pasa nada de lo anterior quiere decir que el nodo del key ya existe en el arbol, entonces retorna el nodo en el que se encuentra
             return tempNode;
-        return reBalance(tempNode); // aqui se rebalancea el arbol cada que se llama la funcion(comenzando en los nodos mas alejados del root).
+        // ahora revisamos si tiene un desvalance por izquierda (-n) o por derecha(n);
+        // y ademas revisa si el hijo dependiendo del caso esta con (-1 o menor) o (1 o mayor) para realizar una doble rotacion
+        if (getBalance(tempNode) > 1 && key > tempNode.right.key)
+            return rotateWithLeftChild(tempNode);
+        if (getBalance(tempNode) < -1 && key < tempNode.left.key)
+            return rotateWithRightChild(tempNode);
+        if (getBalance(tempNode) > 1 && key < tempNode.right.key)
+            return rotateDoubleWithLeftChild(tempNode);
+        if (getBalance(tempNode) < -1 && key > tempNode.left.key)
+            return rotateDoubleWithRightChild(tempNode);
+        //en los 4 anteriores if si se realizo alguna rotacion, se devuelve el nodo pivote con la rotacion respectiva.
+        return tempNode; //si no se realiza ninguna rotacion se devuelve el nodo sin cambios.
     }
 
     public void deleteNode(int key) // ua funcion para iniciar la funcion delete real en root
@@ -124,18 +135,6 @@ class AVLTree<T>
                 tempNode.right = deleteNode(temp.key, tempNode.right); // y luego eliminamos el nodo que pasamos arriba
             }
         }
-        return reBalance(tempNode); //rebalanceamos el arbol
-    }
-
-    BinaryNode<T> minValueNode(BinaryNode<T> tempNode)
-    {
-        while (tempNode.left != null) // esto se hace para llegar al hijo mas pequeño del arbol que nos ingresan
-            tempNode = tempNode.left;
-        return tempNode; // y se devuelve ese nodo hijo mas pequeño.
-    }
-
-    public BinaryNode<T> reBalance(BinaryNode<T> tempNode) // este rebalance y temp node es nuestro nodo pivote.
-    {
         // ahora revisamos si tiene un desvalance por izquierda (-n) o por derecha(n);
         // y ademas revisa si el hijo dependiendo del caso esta con (-1 o menor) o (1 o mayor) para realizar una doble rotacion
         if (getBalance(tempNode) > 1 && getBalance(tempNode.right) <= 0)
@@ -148,6 +147,13 @@ class AVLTree<T>
             return rotateDoubleWithRightChild(tempNode);
         //en los 4 anteriores if si se realizo alguna rotacion, se devuelve el nodo pivote con la rotacion respectiva.
         return tempNode; //si no se realiza ninguna rotacion se devuelve el nodo sin cambios.
+    }
+
+    BinaryNode<T> minValueNode(BinaryNode<T> tempNode)
+    {
+        while (tempNode.left != null) // esto se hace para llegar al hijo mas pequeño del arbol que nos ingresan
+            tempNode = tempNode.left;
+        return tempNode; // y se devuelve ese nodo hijo mas pequeño.
     }
 
     public BinaryNode<T> find(int key) // esta es la primera funcion find donde verificamos si el nodo existe o no y devolvemos un nodo
@@ -197,6 +203,16 @@ class AVLTree<T>
             System.out.print(tempNode.key + " "); //imprime el key del nodo actual
             preOrder(tempNode.left);  //recorremos primero toda la parte izquierda del subarbol
             preOrder(tempNode.right);  //luego recorremos toda la parte derecha.
+        }
+    }
+
+    void inOrder(BinaryNode<T> tempNode)
+    {
+        if (tempNode != null) // si no se a salido del arbol, entonces
+        {
+            inOrder(tempNode.left);  //recorremos primero toda la parte izquierda del subarbol
+            System.out.print(tempNode.key + " "); //imprime el key del nodo actual
+            inOrder(tempNode.right);  //luego recorremos toda la parte derecha.
         }
     }
 

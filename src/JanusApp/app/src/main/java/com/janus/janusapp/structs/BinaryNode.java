@@ -22,6 +22,12 @@ public class BinaryNode<T> {
         this.father = father;
     }
 
+    public BinaryNode(int ky, BinaryNode<T> father){
+        this.key = ky;
+        this.data = dt;
+        this.father = father;
+    }
+
     @Override
     public String toString(){
         return data.toString();
