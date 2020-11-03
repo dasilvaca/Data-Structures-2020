@@ -75,8 +75,6 @@
         <Button
             android:id="@+id/Button02"
             style="@style/innerRowButtons"
-            android:onClick="login"
-            android:text="Login"
             android:textAllCaps="false"
             android:textColorHighlight="@color/black"></Button>
 
