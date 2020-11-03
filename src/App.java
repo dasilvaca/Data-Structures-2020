@@ -1,4 +1,4 @@
-import java.io.File;
+/*import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,13 +10,24 @@ import com.google.gson.Gson;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.JSONParser;*/
 
-import classes.*;
 
 import structs.*;
 
 public class App {
+    public static void main(String[] args){
+        BSTree<String> tree= new BSTree<String>(5,"5");
+        tree.Insert(6, "6");
+        tree.Insert(1,"1");
+        tree.Insert(9, "9");
+        tree.Insert(2, "2");
+        tree.Insert(7,"7");
+        tree.Insert(8, "8");
+        tree.Insert(3,"3");
+        System.out.println(tree.toString());
+
+    }
 
     
     
