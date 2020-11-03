@@ -2,7 +2,9 @@ package com.janus.janusapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,8 +17,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        //prueba=(TextView)findViewById(R.id.prueba);
         setContentView(R.layout.login_screen);
+
+    }
+
+    public void login(View v){
+        Intent i = new Intent(this,Main.class);
+        startActivity(i);
     }
 }
