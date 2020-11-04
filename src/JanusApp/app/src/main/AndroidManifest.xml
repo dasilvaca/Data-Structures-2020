@@ -11,20 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JanusApp">
-        <activity
-<<<<<<< HEAD
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.JanusApp.NoActionBar"></activity>
-        <activity
-            android:name=".Main"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.JanusApp.NoActionBar" />
-        <activity
-=======
->>>>>>> 1e91274e7d3bd47c2586c3e9d41e6b809f72690d
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+
+
+
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
