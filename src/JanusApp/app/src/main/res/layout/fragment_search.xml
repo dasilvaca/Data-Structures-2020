@@ -3,12 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".searchFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="search" />
+        android:layout_height="154dp"
+        android:layout_marginTop="20dp"
+        android:text="Buscar Usuarios"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:layout_marginTop="190dp"
+        android:text="Buscar proyectos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:layout_marginTop="360dp"
+        android:text="Buscar proyectos por categorías"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
 
 </FrameLayout>
