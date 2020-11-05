@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JanusApp">
-        <activity android:name=".Categorys"></activity>
+        <activity android:name=".Project"></activity>
+        <activity android:name=".User" />
+        <activity android:name=".Categorys" />
         <activity android:name=".searchs" />
         <activity android:name=".MainActivity">
             <intent-filter>
