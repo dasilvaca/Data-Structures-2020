@@ -5,10 +5,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.janus.janusapp.classes.User;
+
+import java.io.Serializable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +72,7 @@ public class searchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),searchs.class);
+                User jeje = new User("KJD","bdja","lsjdn","sjkdvd");
                 i.putExtra("Tipo","Usuario");
                 startActivity(i);
             }

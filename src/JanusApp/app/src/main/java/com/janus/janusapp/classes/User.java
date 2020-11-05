@@ -7,11 +7,13 @@ package com.janus.janusapp.classes;
 
 import com.janus.janusapp.structs.*;
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public class User {
+public class User implements Serializable {
     public String userName;
     public String password;
     String birthDate;

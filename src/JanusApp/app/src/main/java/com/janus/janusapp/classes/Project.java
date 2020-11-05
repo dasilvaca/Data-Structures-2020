@@ -6,11 +6,13 @@ package com.janus.janusapp.classes;
 
 import com.janus.janusapp.structs.*;
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public class Project {
+public class Project implements Serializable {
     public String name;
     public LinkedL<User> owners=new LinkedL<User>();
     public LinkedL<User> followers=new LinkedL<User>();

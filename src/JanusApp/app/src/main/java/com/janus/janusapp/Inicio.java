@@ -21,6 +21,9 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+
+        
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
