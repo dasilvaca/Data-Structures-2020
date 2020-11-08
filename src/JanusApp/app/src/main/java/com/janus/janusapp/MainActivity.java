@@ -1,20 +1,11 @@
 package com.janus.janusapp;
-import java.math.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.content.Intent;
-
-
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.janus.janusapp.structs.AVLTree;
 
@@ -39,19 +30,19 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(item.getItemId()){
                         case R.id.configFragment:
-                            selectedFragment=new configFragment();
+                            selectedFragment = new configFragment();
                             break;
                         case R.id.homeFragment:
-                            selectedFragment=new homeFragment();
+                            selectedFragment = new homeFragment();
                             break;
                         case R.id.newProjectFragment:
-                            selectedFragment=new newProjectFragment();
+                            selectedFragment = new newProjectFragment();
                             break;
                         case R.id.profileFragment:
-                            selectedFragment=new profileFragment();
+                            selectedFragment = new profileFragment();
                             break;
                         case R.id.searchFragment:
-                            selectedFragment=new searchFragment();
+                            selectedFragment = new searchFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
