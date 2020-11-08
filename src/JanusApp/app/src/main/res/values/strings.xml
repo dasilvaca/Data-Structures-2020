@@ -16,8 +16,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_main">Main</string>
-
-<<<<<<< HEAD
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -30,7 +28,4 @@
     <string name="show_password">Show password</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="username_or_email">Username or email</string>
-=======
-
->>>>>>> 1e91274e7d3bd47c2586c3e9d41e6b809f72690d
 </resources>

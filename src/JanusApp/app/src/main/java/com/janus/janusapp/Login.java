@@ -1,7 +1,6 @@
 package com.janus.janusapp;
 
 import android.app.Activity;
-<<<<<<< HEAD
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -14,11 +13,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-=======
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
->>>>>>> 1e91274e7d3bd47c2586c3e9d41e6b809f72690d
 
 public class Login extends Activity {
     final EditText usernameEditText = findViewById(R.id.username);
@@ -29,7 +26,6 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.login_layout);
 
     }
@@ -39,9 +35,7 @@ public class Login extends Activity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-=======
         setContentView(R.layout.signup);
->>>>>>> 1e91274e7d3bd47c2586c3e9d41e6b809f72690d
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
