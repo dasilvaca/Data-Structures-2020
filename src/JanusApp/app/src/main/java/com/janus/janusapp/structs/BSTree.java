@@ -47,6 +47,15 @@ public class BSTree<T> {
         return RightAncestor(node);
     }
 
+    public String inOrder(BinaryNode node){
+        String retornable="";
+        if(node!=null){
+            inOrder(node.left);
+            retornable+=node.toString();
+            inOrder(node.right);
+        }
+        return retornable;
+    }
     private BinaryNode<T> LeftDescendant(BinaryNode<T> node){
         if(node.left==null){
             return node;

@@ -15,6 +15,10 @@
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" />
+        <activity android:name=".ProjectActivity"></activity>
+        <activity android:name=".UserActivity" />
+        <activity android:name=".Categorys" />
+        <activity android:name=".searchs" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

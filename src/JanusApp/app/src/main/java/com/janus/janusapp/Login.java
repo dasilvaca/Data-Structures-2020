@@ -17,20 +17,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+
 public class Login extends Activity {
     final EditText usernameEditText = findViewById(R.id.username);
     private EditText password;
     private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+        setContentView(R.layout.activity_login);
 
     }
 
-    public void onStart() {
+
+
+   /** public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -43,7 +50,7 @@ public class Login extends Activity {
         } else {
 
         }
-    }
+    }*/
     /*
     private void createAccount(){
         String email = R.id.login;

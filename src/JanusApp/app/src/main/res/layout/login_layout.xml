@@ -81,6 +81,7 @@
             <Button
                 android:id="@+id/Button02"
                 style="@style/Theme.JanusApp.innerRowButtons"
+                android:onClick="change"
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColorHighlight="@color/black" />

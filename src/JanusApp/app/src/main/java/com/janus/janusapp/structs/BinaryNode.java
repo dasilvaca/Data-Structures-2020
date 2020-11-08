@@ -16,7 +16,9 @@ public class BinaryNode<T> {
         this.key = ky;
     }
 
-    public BinaryNode(int ky, T dt, BinaryNode<T> father){
+
+
+    public BinaryNode(int ky, BinaryNode<T> father, T dt){
         this.key = ky;
         this.data = dt;
         this.father = father;

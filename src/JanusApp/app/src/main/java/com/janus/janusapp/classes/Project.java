@@ -6,36 +6,43 @@ package com.janus.janusapp.classes;
 
 import com.janus.janusapp.structs.*;
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public class Project {
+public class Project implements Serializable {
     public String name;
-    public LinkedL<User> owners=new LinkedL<User>();
-    public LinkedL<User> followers=new LinkedL<User>();
+    public LinkedL<String> owners=new LinkedL<String>();
+    public LinkedL<String> followers=new LinkedL<String>();
     public int budget;
-    
-    public Project(String name, LinkedL<User> owners, int budg){
+    String category;
+    String description;
+    public Project(String name, LinkedL<String> owners, int budg,String ctgr,String dscpt){
         this.name = name;
         this.owners = owners;
         this.budget = budg;
+        this.category=ctgr;
+        this.description=dscpt;
         
     }
-    public Project(String name,User owner, int budg){
+    public Project(String name,User owner, int budg,String ctgr,String dscpt){
         this.name = name;
         this.budget = budg;
         this.addOwner(owner);
+        this.category=ctgr;
+        this.description=dscpt;
     }
     
     public void addFollower(User newFollower){
-        followers.append(newFollower);
-        newFollower.followedProjects.append(this);
+        followers.append(newFollower.userName);
+        newFollower.followedProjects.append(this.name);
     }
     
     public void addOwner(User newOwner){
-        owners.append(newOwner);
-        newOwner.ownProjectList.append(this);
+        owners.append(newOwner.userName);
+        newOwner.ownProjectList.append(this.name);
     }
     @Override
     public String toString(){

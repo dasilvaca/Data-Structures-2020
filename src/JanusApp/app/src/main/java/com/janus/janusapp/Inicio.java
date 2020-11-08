@@ -1,41 +1,29 @@
 package com.janus.janusapp;
-import java.math.*;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.janus.janusapp.structs.AVLTree;
+import com.google.firebase.database.DatabaseReference;
+
+public class Inicio extends AppCompatActivity {
 
 
-//public static boolean opened = false;
-public class MainActivity extends AppCompatActivity {
-    TextView prueba;
-    public static AVLTree<String> dadyTree;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        //prueba=(TextView)findViewById(R.id.prueba);
-        setContentView(R.layout.login_layout);
-
-        setContentView(R.layout.inicio);
-
+        setContentView(R.layout.activity_main);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+
+        
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -65,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    public static long log2(long N){
 
-        long result = (long)(Math.log(N) / Math.log(2));
-        return result;
-    }
+
 }

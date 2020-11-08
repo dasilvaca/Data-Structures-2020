@@ -7,19 +7,20 @@ package com.janus.janusapp.classes;
 
 import com.janus.janusapp.structs.*;
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public class User {
+public class User implements Serializable {
     public String userName;
     public String password;
     String birthDate;
     String email;
-    public LinkedL<Project> ownProjectList=new LinkedL<Project>();
-    public LinkedL<Project> followedProjects=new LinkedL<Project>();
-    public LinkedL<String> saveOwnProjectList=new LinkedL<String>();
-    public LinkedL<String> saveFollowedProjects=new LinkedL<String>();
+    public LinkedL<String> ownProjectList=new LinkedL<String>();
+    public LinkedL<String> followedProjects=new LinkedL<String>();
+
     
     public User(String name, String password, String birthdate, String email){
         this.userName = name;
@@ -27,33 +28,19 @@ public class User {
         this.birthDate = birthdate;
         this.email = email;
     }
-    public void toSave(){
-        Node<Project> iterador= ownProjectList.Firstnode;
-        if(!ownProjectList.isEmpty()){
-            while(iterador!=null){
-                saveOwnProjectList.append(iterador.data.name);
-                iterador=iterador.next;
-            }    
-        ownProjectList.makeEmpty();
-        }
-        iterador=followedProjects.Firstnode;
-        if(!followedProjects.isEmpty()){
-            while(iterador!=null){
-                saveFollowedProjects.append(iterador.data.name);
-                iterador=iterador.next;
-            }
-        followedProjects.makeEmpty();
-        }
+    public User(){
+
     }
+
     
     public void followProject(Project project){
-        followedProjects.append(project);
-        project.followers.append(this);
+        followedProjects.append(project.name);
+        project.followers.append(this.userName);
     }
     
-    public void createProject(String name, LinkedL<User> owns, int bdgt){
-        Project newProject = new Project(name, owns, bdgt);
-        ownProjectList.append(newProject);
+    public void createProject(String name, LinkedL<String> owns, int bdgt,String ctgr,String dscpt){
+        Project newProject = new Project(name, owns, bdgt,ctgr,dscpt);
+        ownProjectList.append(newProject.name);
     }
 
     public boolean validateUsers(User userToValidate){
