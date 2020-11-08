@@ -1,5 +1,5 @@
 package com.janus.janusapp;
-
+import java.math.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,20 +16,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.janus.janusapp.structs.AVLTree;
+
 
 //public static boolean opened = false;
 public class MainActivity extends AppCompatActivity {
     TextView prueba;
-
+    public static AVLTree<String> dadyTree;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
-
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -59,4 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+    public static long log2(long N){
+
+        long result = (long)(Math.log(N) / Math.log(2));
+        return result;
+    }
 }

@@ -11,7 +11,7 @@ package com.janus.janusapp.structs;
  * https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
  * https://www.geeksforgeeks.org/avl-tree-set-2-deletion/
  */
-class AVLTree<T>
+public class AVLTree<T>
 {
     BinaryNode<T> root; //aqui se crea el nodo raiz de nuestro arbol
 
