@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <pl.droidsonroids.gif.GifImageView
+            <pl.droidsonroids.gif.GifImageView
             android:id="@+id/topimages"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/janus_gif"
-            android:background="#213136"
+            android:background="#3C3F41"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
