@@ -30,4 +30,7 @@
     <string name="username_or_email">Username or email</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings de profile-->
+    <string name="Folder_Invest_Profile">Mis Inversiones</string>
+    <string name="Folder_My_Projects_Profile">Mis Proyectos</string>
 </resources>
