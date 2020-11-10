@@ -16,8 +16,8 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/topimages"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_width="412dp"
+            android:layout_height="225dp"
             android:background="#213135"
             android:src="@drawable/janus_gif"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,15 +80,14 @@
             app:layout_constraintTop_toBottomOf="@id/password">
 
             <Button
-                android:id="@+id/Button02"
+                android:id="@+id/ButtonLogin"
                 style="@style/Theme.JanusApp.innerRowButtons"
-                android:onClick="change"
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColorHighlight="@color/black" />
 
             <Button
-                android:id="@+id/Button03"
+                android:id="@+id/ButtonSignUp"
                 style="@style/Theme.JanusApp.innerRowButtons"
                 android:text="@string/signup"
                 android:textAllCaps="false" />

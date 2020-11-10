@@ -3,29 +3,31 @@ package com.janus.janusapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.janus.janusapp.structs.AVLTree;
 
 //public static boolean opened = false;
 public class MainActivity extends AppCompatActivity {
-    TextView prueba;
+
+
     public static AVLTree<String> dadyTree;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        //prueba=(TextView)findViewById(R.id.prueba);
-        //setContentView(R.layout.login_layout);
-
         setContentView(R.layout.inicio);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
     }
-
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
