@@ -112,4 +112,4 @@ public class signup extends AppCompatActivity /*Activity*/ {
         //goToHome.putExtra("currentUser", currentUser);
         startActivity(goToHome);
     }
-} 
+}
