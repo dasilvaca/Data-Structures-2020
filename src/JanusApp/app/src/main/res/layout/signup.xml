@@ -1,14 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!--<TextView
+    <TextView
+        android:id="@+id/Mensaje_de_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Signup UwU"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/Nombres"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mensaje_de_signup">
+
+        <EditText
+            android:id="@+id/newUserFirstName"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="First Name"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/newUserLastName"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="Last Name"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/newUserEmail"
+        style="@style/Theme.JanusApp.text_boxes"
+        android:layout_width="0dp"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Nombres" />
+
+    <EditText
+        android:id="@+id/verifyemail"
+        style="@style/Theme.JanusApp.text_boxes"
+        android:layout_width="0dp"
+        android:hint="verify email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newUserEmail" />
+    <!-- Ver si se puede verificar mientras se escribe xd-->
+    <LinearLayout
+        android:id="@+id/OtherData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verifyemail">
+
+        <EditText
+            android:id="@+id/newUserUsername"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="Username"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/MobileNumebr"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="Last Name"
+            android:inputType="phone"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/newUserPassword"
+        style="@style/Theme.JanusApp.text_boxes"
+        android:layout_width="0dp"
+        android:hint="@string/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/OtherData" />
+
+    <EditText
+        android:id="@+id/verifypasswrod"
+        style="@style/Theme.JanusApp.text_boxes"
+        android:layout_width="0dp"
+        android:hint="verify password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newUserPassword" />
+
+    <LinearLayout
+        android:id="@+id/Fechagenero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verifypasswrod">
+
+        <EditText
+            android:id="@+id/newUserBirthdate"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="Birth Date"
+            android:textAllCaps="false"
+            android:inputType="date"/>
+
+        <Spinner
+            android:id="@+id/Genero"
+            style="@style/Theme.JanusApp.text_boxes"
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/Gender_Spinner"
+            android:prompt="Gender"
+            android:spinnerMode="dropdown"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+    <CheckBox
+        app:layout_constraintTop_toBottomOf=""
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:text=""/>
+
+    <LinearLayout
+        android:id="@+id/buttonslog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Fechagenero">
+
+        <Button
+            android:id="@+id/Button02"
+            style="@style/Theme.JanusApp.innerRowitems"
+            android:onClick="change"
+            android:text="Back to login"
+            android:textAllCaps="false"
+            android:textColorHighlight="@color/black" />
+
+        <Button
+            android:id="@+id/SignUpButton"
+            style="@style/Theme.JanusApp.innerRowitems"
+            android:text="@string/signup"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+
+    <!--
+    <EditText
+        style="@style/Theme.JanusApp.text_boxes"
+        app:layout_constraintTop_toBottomOf="@+id/Mensaje_de_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Theme.JanusApp.text_boxes"
-        android:text="nombre"-->
-        android:text="nombre"-->
+        android:gravity="left|center_vertical"
+        android:hint="  username"
+        android:inputType="textPersonName"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

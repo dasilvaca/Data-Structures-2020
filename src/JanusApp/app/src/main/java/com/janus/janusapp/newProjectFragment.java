@@ -74,8 +74,8 @@ public class newProjectFragment extends Fragment {
         projectGoal=(EditText)view.findViewById(R.id.editTextGoal);
         projectName=(EditText)view.findViewById(R.id.editTextTextProjectName);
         projectDscr=(EditText)view.findViewById(R.id.editTextDscr);
-        String[] categorys = {"cat 1","cat 2", "cat 3", "Otro"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,categorys);
+        String[] categories = {"cat 1","cat 2", "cat 3", "Otro"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,categories);
         ctgr.setAdapter(adapter);
         create=(Button)view.findViewById(R.id.Crear);
         create.setOnClickListener(new View.OnClickListener() {
