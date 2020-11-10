@@ -18,11 +18,8 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.inicio);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
-        bottomnav.setOnNavigationItemSelectedListener(navListener);
-
-        
 
     }
 
@@ -33,19 +30,19 @@ public class Inicio extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(item.getItemId()){
                         case R.id.configFragment:
-                            selectedFragment=new configFragment();
+                            selectedFragment = new configFragment();
                             break;
                         case R.id.homeFragment:
-                            selectedFragment=new homeFragment();
+                            selectedFragment = new homeFragment();
                             break;
                         case R.id.newProjectFragment:
-                            selectedFragment=new newProjectFragment();
+                            selectedFragment = new newProjectFragment();
                             break;
                         case R.id.profileFragment:
-                            selectedFragment=new profileFragment();
+                            selectedFragment = new profileFragment();
                             break;
                         case R.id.searchFragment:
-                            selectedFragment=new searchFragment();
+                            selectedFragment = new searchFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
@@ -53,6 +50,9 @@ public class Inicio extends AppCompatActivity {
                 }
             };
 
+    public static long log2(long N){
 
-
+        long result = (long)(Math.log(N) / Math.log(2));
+        return result;
+    }
 }

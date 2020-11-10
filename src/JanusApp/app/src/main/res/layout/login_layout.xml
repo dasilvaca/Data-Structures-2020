@@ -16,8 +16,8 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/topimages"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_width="412dp"
+            android:layout_height="225dp"
             android:src="@drawable/janus_gif"
             android:background="#233136"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
                 android:textColorHighlight="@color/black" />
 
             <Button
-                android:id="@+id/Button03"
+                android:id="@+id/ButtonSignUp"
                 style="@style/Theme.JanusApp.innerRowitems"
                 android:text="@string/signup"
                 android:textAllCaps="false" />
