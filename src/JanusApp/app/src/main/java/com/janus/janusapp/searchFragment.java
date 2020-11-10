@@ -72,7 +72,7 @@ public class searchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),searchs.class);
-                User jeje = new User("KJD","bdja","lsjdn","sjkdvd");
+                //User jeje = new User("KJD","bdja","lsjdn","sjkdvd");
                 i.putExtra("Tipo","Usuario");
                 startActivity(i);
             }

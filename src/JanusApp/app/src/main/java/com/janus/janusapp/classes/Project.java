@@ -36,12 +36,12 @@ public class Project implements Serializable {
     }
     
     public void addFollower(User newFollower){
-        followers.append(newFollower.userName);
+        followers.append(newFollower.username);
         newFollower.followedProjects.append(this.name);
     }
     
     public void addOwner(User newOwner){
-        owners.append(newOwner.userName);
+        owners.append(newOwner.username);
         newOwner.ownProjectList.append(this.name);
     }
     @Override

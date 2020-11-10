@@ -11,11 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JanusApp">
+        <activity android:name=".signup">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ProjectActivity"></activity>
+        <activity android:name=".ProjectActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".Categorys" />
         <activity android:name=".searchs" />

@@ -27,7 +27,7 @@ public class newProjectFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Spinner ctgr;
+    private Spinner category;
     private EditText projectName, projectGoal,projectDscr;
     private Button create;
     // TODO: Rename and change types of parameters
@@ -70,13 +70,13 @@ public class newProjectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_project, container, false);
-        ctgr=(Spinner)view.findViewById(R.id.spinner_cat);
+        category =(Spinner)view.findViewById(R.id.spinner_cat);
         projectGoal=(EditText)view.findViewById(R.id.editTextGoal);
         projectName=(EditText)view.findViewById(R.id.editTextTextProjectName);
         projectDscr=(EditText)view.findViewById(R.id.editTextDscr);
         String[] categories = {"cat 1","cat 2", "cat 3", "Otro"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,categories);
-        ctgr.setAdapter(adapter);
+        category.setAdapter(adapter);
         create=(Button)view.findViewById(R.id.Crear);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +84,7 @@ public class newProjectFragment extends Fragment {
                  String Pname = projectName.getText().toString();
                  int Pgoal = Integer.parseInt(projectGoal.getText().toString());
                  String Pdescription = projectDscr.getText().toString();
-                 String Pcategory= ctgr.getSelectedItem().toString();
+                 String Pcategory= category.getSelectedItem().toString();
                  Project newProject = new Project(Pname, new User(), Pgoal,Pcategory,Pdescription);
                  Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
                  projectName.setText("");
