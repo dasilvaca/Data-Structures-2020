@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/janus_gif"
-            android:background="#3C3F41"
+            android:background="#233136"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@id/topimages" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/newUserUsername"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="match_parent"
             android:autofillHints=""
@@ -59,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="match_parent"
             android:autofillHints=""
@@ -68,7 +68,7 @@
             android:textColorHint="@color/gricesito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/username" />
+            app:layout_constraintTop_toBottomOf="@id/newUserUsername" />
         <!--android:inputType="textWebPassword"-->
         <LinearLayout
             android:id="@+id/buttonslog"
@@ -76,11 +76,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password">
+            app:layout_constraintTop_toBottomOf="@id/newUserPassword">
 
             <Button
                 android:id="@+id/Button02"
-                style="@style/Theme.JanusApp.innerRowButtons"
+                style="@style/Theme.JanusApp.innerRowitems"
                 android:onClick="change"
                 android:text="@string/login"
                 android:textAllCaps="false"
@@ -88,7 +88,7 @@
 
             <Button
                 android:id="@+id/Button03"
-                style="@style/Theme.JanusApp.innerRowButtons"
+                style="@style/Theme.JanusApp.innerRowitems"
                 android:text="@string/signup"
                 android:textAllCaps="false" />
         </LinearLayout>

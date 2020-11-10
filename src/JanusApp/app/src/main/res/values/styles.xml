@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />-->
 
     </style>
-    <style name="Theme.JanusApp.innerRowButtons">
+    <style name="Theme.JanusApp.innerRowitems">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
