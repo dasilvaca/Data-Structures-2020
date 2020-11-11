@@ -2,7 +2,10 @@ package com.janus.janusapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 606f490fd502828ca54d0a270004a6ed9c8525af
 
 import android.os.Bundle;
 

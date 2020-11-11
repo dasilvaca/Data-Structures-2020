@@ -8,14 +8,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/Mensaje_de_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Signup UwU"
+            android:text="@string/signup_uwu"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,7 @@
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:hint="First Name"
+                android:inputType="textPersonName"
                 android:textAllCaps="false" />
 
             <EditText
@@ -102,6 +103,7 @@
             android:layout_width="0dp"
             android:layout_marginTop="8dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/OtherData" />
@@ -111,6 +113,7 @@
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
             android:hint="verify password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserPassword" />
@@ -129,9 +132,12 @@
                 android:layout_width="match_parent"
                 android:layout_margin="12dp"
                 android:layout_weight="1"
-                android:hint="Birth Date"
+                android:clickable="true"
+
+                android:hint="Birthday: MM/DD/YYYY"
                 android:inputType="date"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/newUserGender"
@@ -167,7 +173,7 @@
             app:layout_constraintTop_toBottomOf="@id/Acepto_UwU">
 
             <Button
-                android:id="@+id/goBackToLoginButton"
+                android:id="@+id/goBackToLogInButton"
                 style="@style/Theme.JanusApp.innerRowitems"
                 android:onClick="change"
                 android:text="Back to login"

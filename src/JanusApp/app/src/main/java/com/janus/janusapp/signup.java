@@ -1,6 +1,7 @@
 package com.janus.janusapp;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,15 +13,14 @@ import android.widget.Spinner;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.janus.janusapp.classes.*;
 
 
 import com.google.firebase.database.DatabaseReference;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class signup extends AppCompatActivity /*Activity*/ {
@@ -41,8 +41,30 @@ public class signup extends AppCompatActivity /*Activity*/ {
     private Button signUpButton;
 
 
+    public class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
 
-    @Override
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet (DatePicker view, int year, int month, int dayOfMonth){
+            //return year + "/" + month + "/" + dayOfMonth;
+
+        }
+
+    }
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
@@ -58,8 +80,9 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserPasswordVerification = findViewById(R.id.newUserPasswordVerification);
         newUserBirthDate = findViewById(R.id.newUserBirthdate);
         newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
-        goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
+        goBackToLoginButton = findViewById(R.id.goBackToLogInButton);
         signUpButton = findViewById(R.id.SignUpButton);
+        //goBackToLoginButton = findViewById(R.id.LogInButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -67,12 +90,14 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                //Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
-                //startActivity(VamoAHomeHomies);
+                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
+                startActivity(VamoAHomeHomies);
+                finish();
             }
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(signup.this, MainActivity.class);
@@ -87,10 +112,17 @@ public class signup extends AppCompatActivity /*Activity*/ {
                         //showDatePickerDialog();
                         break;
                 }
+=======
+            @Override
+            public void onClick(View v) {
+                Intent VayaseALogin = new Intent(signup.this, Login.class);
+                startActivity(VayaseALogin);
+>>>>>>> 606f490fd502828ca54d0a270004a6ed9c8525af
             }
         });
     }
 
+<<<<<<< HEAD
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
@@ -120,3 +152,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
         startActivity(goToHome);
     }
 }
+=======
+}
+>>>>>>> 606f490fd502828ca54d0a270004a6ed9c8525af
