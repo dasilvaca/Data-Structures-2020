@@ -80,7 +80,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserPasswordVerification = findViewById(R.id.newUserPasswordVerification);
         newUserBirthDate = findViewById(R.id.newUserBirthdate);
         newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
-        goBackToLoginButton = findViewById(R.id.bacjToLogInButton);
+        goBackToLoginButton = findViewById(R.id.goBackToLogInButton);
         signUpButton = findViewById(R.id.SignUpButton);
         goBackToLoginButton = findViewById(R.id.LogInButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
