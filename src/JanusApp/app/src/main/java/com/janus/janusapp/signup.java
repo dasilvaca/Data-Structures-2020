@@ -57,8 +57,8 @@ public class signup extends AppCompatActivity /*Activity*/ {
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            return year + "/" + month + "/" + day;
+        public void onDateSet (DatePicker view, int year, int month, int dayOfMonth){
+            //return year + "/" + month + "/" + dayOfMonth;
         }
 
     }
@@ -82,6 +82,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
         goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
         signUpButton = findViewById(R.id.SignUpButton);
+        goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -89,24 +90,22 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
+                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
                 startActivity(VamoAHomeHomies);
+                finish();
             }
 
         });
-        newUserBirthDate.setOnClickListener(new View.OnClickListener() {
+        goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.newUserBirthdate:
-                        showDatePickerDialog();
-                        break;
-                }
+                Intent VayaseALogin = new Intent(signup.this, Login.class);
+                startActivity(VayaseALogin);
             }
         });
     }
 
-    private void showDatePickerDialog() {
+    public void showDatePickerDialog(View view) {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.show(signup.this.getSupportFragmentManager(), "datePicker");
     }
@@ -120,17 +119,4 @@ public class signup extends AppCompatActivity /*Activity*/ {
         dataBaseRef.child("Users").child(Username).setValue(newUser);
         //return newUser;
     }*/
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    protected void signUp(View view){
-        String newUrNm = newUsername.getText().toString();
-        String newUrPassword = newUserPassword.getText().toString();
-        String newUrEmail = newUserEmail.getText().toString();
-        LocalDate newUrBirthD = LocalDate.parse(newUserBirthDate.getText());
-        // User currentUser = writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        //writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        Intent goToHome = new Intent(this, Inicio.class);
-        //goToHome.putExtra("currentUser", currentUser);
-        startActivity(goToHome);
-    }
 }
