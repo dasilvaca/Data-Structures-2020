@@ -2,7 +2,7 @@ package com.janus.janusapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-<<<<<<< HEAD
+
 
 import android.os.Bundle;
 
@@ -54,7 +54,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    public static void log2(long N){
 
-    }
 };

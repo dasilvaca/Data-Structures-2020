@@ -72,24 +72,31 @@ public class signup extends AppCompatActivity /*Activity*/ {
             }
 
         });
+        goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(signup.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.newUserBirthdate:
-                        showDatePickerDialog();
+                        //showDatePickerDialog();
                         break;
                 }
             }
         });
     }
 
-    private void showDatePickerDialog() {
+    /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
-    }
+    }*/
 
-    @Override
+    //@Override
     public String onDateSet (DatePicker view, int year, int month, int dayOfMonth){
         return year + "/" + month + "/" + dayOfMonth;
     }
