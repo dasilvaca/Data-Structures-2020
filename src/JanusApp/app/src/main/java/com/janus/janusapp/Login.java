@@ -3,6 +3,8 @@ package com.janus.janusapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -21,12 +23,36 @@ public class Login extends Activity {
     final EditText usernameEditText = findViewById(R.id.newUserUsername);
     private EditText password = findViewById(R.id.newUserPassword);
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
+    private Button LogInButton = findViewById(R.id.LogInButton);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        DatabaseReference userNameReference = database.getReference("Users");
-        if (userNameReference.)
+        //DatabaseReference userNameReference = database.getReference("Users");
+        String LogInUsername = usernameEditText.getText().toString();
+        LogInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            //String LogInUsername = usernameEditText.getText().toString();
+                            String LogInPassword = password.getText().toString();
+                            //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
+                                //if (firebaseReference.child("Users").child(LogInUsername).)
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
     }
 
     // Read from the database
