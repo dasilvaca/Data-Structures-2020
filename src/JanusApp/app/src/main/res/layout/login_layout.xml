@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,10 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/login_inner_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/topimages"
@@ -23,17 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!--<ImageView
-            android:id="@+id/topimages"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:background="@color/black"
-            android:contentDescription="@string/slidescreen"
-            android:src="@drawable/bogota"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+
 
         <TextView
             android:id="@+id/login_spicifier"
@@ -50,29 +39,24 @@
         <EditText
             android:id="@+id/newUserUsername"
             style="@style/Theme.JanusApp.text_boxes"
-            android:layout_width="match_parent"
-            android:autofillHints=""
+            android:layout_width="0dp"
             android:hint="@string/username_or_email"
             android:inputType="textWebEmailAddress"
-            android:textColorHint="@color/gricesito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
-        <!--android:inputType="textWebPassword"-->
-
         <EditText
             android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_marginTop="12dp"
+            android:autofillHints=""
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColorHint="@color/gricesito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserUsername" />
-        <!--android:autofillHints=""-->
         <LinearLayout
             android:id="@+id/buttonslog"
             android:layout_width="0dp"
