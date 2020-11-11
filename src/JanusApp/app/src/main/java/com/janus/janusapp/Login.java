@@ -1,11 +1,13 @@
 package com.janus.janusapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -25,6 +27,7 @@ public class Login extends Activity {
     public String usernameInDB;
     public  String passwordInDB;
     public Button loginNow;
+    public Button goToSignUp;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
     private Button LogInButton;
@@ -32,6 +35,15 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
+        goToSignUp = (Button) findViewById(R.id.ButtonSignUp);
+        goToSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vayaseARegistrar = new Intent(Login.this, signup.class);
+                startActivity(vayaseARegistrar);
+            }
+        });
         username = findViewById(R.id.newUserUsername);
         password = findViewById(R.id.newUserPassword);
         //loginNow;
@@ -51,6 +63,7 @@ public class Login extends Activity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
+                            Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
                             //String LogInUsername = usernameEditText.getText().toString();
                             String LogInPassword = password.getText().toString();
                             //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){

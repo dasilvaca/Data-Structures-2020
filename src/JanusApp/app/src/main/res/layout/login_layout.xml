@@ -60,19 +60,19 @@
             app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
         <!--android:inputType="textWebPassword"-->
+
         <EditText
             android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="match_parent"
             android:layout_marginTop="12dp"
-            android:autofillHints=""
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColorHint="@color/gricesito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserUsername" />
-
+        <!--android:autofillHints=""-->
         <LinearLayout
             android:id="@+id/buttonslog"
             android:layout_width="0dp"
