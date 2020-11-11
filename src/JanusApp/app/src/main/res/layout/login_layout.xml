@@ -16,10 +16,10 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/topimages"
-            android:layout_width="412dp"
+            android:layout_width="match_parent"
             android:layout_height="225dp"
+            android:background="#233135"
             android:src="@drawable/janus_gif"
-            android:background="#233136"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,10 +59,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
+        <!--android:inputType="textWebPassword"-->
         <EditText
             android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
             android:autofillHints=""
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -70,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserUsername" />
-        <!--android:inputType="textWebPassword"-->
+
         <LinearLayout
             android:id="@+id/buttonslog"
             android:layout_width="0dp"

@@ -58,7 +58,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            return year + "/" + month + "/" + day;
+            //return year + "/" + month + "/" + day;
         }
 
     }
@@ -95,49 +95,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
             }
 
         });
-        /*newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
-                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
-                startActivity(VamoAHomeHomies);
-            }
 
-        });
-        newUserBirthDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.newUserBirthdate:
-                        showDatePickerDialog();
-                        break;
-                }
-            }
-        });*/
-    }
-
-    /*private void showDatePickerDialog() {
-        DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.show(signup.this.getSupportFragmentManager(), "datePicker");
-    }
-
-    public String onDateSet (DatePicker view, int year, int month, int dayOfMonth){
-        return year + "/" + month + "/" + dayOfMonth;
-    }*/
-    /*
-    protected void writeNewUser(String Username, String password, LocalDate birthdate, String email){
-        User newUser = new User(Username,password,birthdate,email);
-        dataBaseRef.child("Users").child(Username).setValue(newUser);
-        //return newUser;
-    }*/
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    protected void signUp(View view){
-        String newUrNm = newUsername.getText().toString();
-        String newUrPassword = newUserPassword.getText().toString();
-        String newUrEmail = newUserEmail.getText().toString();
-        LocalDate newUrBirthD = LocalDate.parse(newUserBirthDate.getText());
-        // User currentUser = writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        //writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        Intent goToHome = new Intent(this, Inicio.class);
-        //goToHome.putExtra("currentUser", currentUser);
-        startActivity(goToHome);
     }
 }
