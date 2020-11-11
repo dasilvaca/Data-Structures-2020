@@ -102,6 +102,7 @@
             android:layout_width="0dp"
             android:layout_marginTop="8dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/OtherData" />
@@ -111,6 +112,7 @@
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
             android:hint="verify password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserPassword" />

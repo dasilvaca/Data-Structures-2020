@@ -82,11 +82,11 @@
             <Button
                 android:id="@+id/goBackToLoginButton"
                 style="@style/Theme.JanusApp.innerRowitems"
-                android:onClick="change"
+
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColorHighlight="@color/black" />
-
+            <!--android:onClick="change"-->
             <Button
                 android:id="@+id/ButtonSignUp"
                 style="@style/Theme.JanusApp.innerRowitems"

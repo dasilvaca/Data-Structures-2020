@@ -67,12 +67,13 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                //Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
-                //startActivity(VamoAHomeHomies);
+                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
+                startActivity(VamoAHomeHomies);
+                finish();
             }
 
         });
-        newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
+        /*newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -81,10 +82,10 @@ public class signup extends AppCompatActivity /*Activity*/ {
                         break;
                 }
             }
-        });
+        });*/
     }
 
-    private void showDatePickerDialog() {
+    /*private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
     }
@@ -92,7 +93,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
     @Override
     public String onDateSet (DatePicker view, int year, int month, int dayOfMonth){
         return year + "/" + month + "/" + dayOfMonth;
-    }
+    }*/
     /*
     protected void writeNewUser(String Username, String password, LocalDate birthdate, String email){
         User newUser = new User(Username,password,birthdate,email);

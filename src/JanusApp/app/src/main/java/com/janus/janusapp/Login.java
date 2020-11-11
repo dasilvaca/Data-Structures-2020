@@ -5,20 +5,40 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Login extends Activity {
     final EditText usernameEditText = findViewById(R.id.newUserUsername);
-    private EditText password;
-    private FirebaseAuth mAuth;
+    private EditText password = findViewById(R.id.newUserPassword);
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference DBusername = database.getReference("Users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        setContentView(R.layout.activity_login);
-
+        //setContentView(R.layout.activity_login);
     }
+    // Read from the database
+DBusername.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            String value = dataSnapshot.getValue(String.class);
+            Log.d(TAG, "Value is: " + value);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError error) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException());
+        }
+    });
+
+
 
 
 
@@ -111,4 +131,4 @@ public class Login extends Activity {
     public void onClick(){
     }*/
 
-}
+};
