@@ -3,6 +3,10 @@ package com.janus.janusapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+<<<<<<< HEAD
+=======
+import android.view.View;
+>>>>>>> cedf95da4124db2b493007bb1e619f7c4514045e
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -25,14 +29,42 @@ public class Login extends Activity {
     public  String passwordInDB;
     public Button loginNow;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
+    private Button LogInButton = findViewById(R.id.LogInButton);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+/*
         DatabaseReference userNameReference = database.getReference("Users");
         //if (userNameReference.child(username.toString()).getValue())
 
         }
+*/
+        //DatabaseReference userNameReference = database.getReference("Users");
+        String LogInUsername = usernameEditText.getText().toString();
+        LogInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            //String LogInUsername = usernameEditText.getText().toString();
+                            String LogInPassword = password.getText().toString();
+                            //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
+                                //if (firebaseReference.child("Users").child(LogInUsername).)
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
     }
 
     // Read from the database

@@ -82,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@id/newUserPassword">
 
             <Button
-                android:id="@+id/goBackToLoginButton"
+                android:id="@+id/LogInButton"
                 style="@style/Theme.JanusApp.innerRowitems"
 
                 android:text="@string/login"
