@@ -1,6 +1,7 @@
 package com.janus.janusapp;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,8 +13,8 @@ import android.widget.Spinner;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.janus.janusapp.classes.*;
 
@@ -41,8 +42,29 @@ public class signup extends AppCompatActivity /*Activity*/ {
     private Button signUpButton;
 
 
+    public class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
 
-    @Override
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            return year + "/" + month + "/" + day;
+        }
+
+    }
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
@@ -67,12 +89,12 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                //Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
-                //startActivity(VamoAHomeHomies);
+                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
+                startActivity(VamoAHomeHomies);
             }
 
         });
-        newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
+        newUserBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -86,10 +108,9 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
     private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+        newFragment.show(signup.this.getSupportFragmentManager(), "datePicker");
     }
 
-    @Override
     public String onDateSet (DatePicker view, int year, int month, int dayOfMonth){
         return year + "/" + month + "/" + dayOfMonth;
     }
@@ -105,9 +126,9 @@ public class signup extends AppCompatActivity /*Activity*/ {
         String newUrNm = newUsername.getText().toString();
         String newUrPassword = newUserPassword.getText().toString();
         String newUrEmail = newUserEmail.getText().toString();
-        LocalDate newUrBirthD = LocalDate.parse(newUserBirthDate.getText());//Sigan en esatudios a mimir
+        LocalDate newUrBirthD = LocalDate.parse(newUserBirthDate.getText());
         // User currentUser = writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        //writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail); //xddddddddddd
+        //writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
         Intent goToHome = new Intent(this, Inicio.class);
         //goToHome.putExtra("currentUser", currentUser);
         startActivity(goToHome);
