@@ -59,42 +59,51 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             //return year + "/" + month + "/" + day;
-        }
 
-    }
+            }
+
+        }
 
 
         @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        //DatabaseReference mRootReference;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-        dataBaseRef = FirebaseDatabase.getInstance().getReference();
-        newUserFirstName = findViewById(R.id.newUserFirstName);
-        newUserLastName = findViewById(R.id.newUserLastName);
-        newUserEmail = findViewById(R.id.newUserEmail);
-        newUserEmailVerification = findViewById(R.id.newUserEmailVerification);
-        newUsername = findViewById(R.id.newUserUsername);
-        newUserMobilenumber = findViewById(R.id.newUserMobilenumber);
-        newUserPassword = findViewById(R.id.newUserPassword);
-        newUserPasswordVerification = findViewById(R.id.newUserPasswordVerification);
-        newUserBirthDate = findViewById(R.id.newUserBirthdate);
-        newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
-        goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
-        signUpButton = findViewById(R.id.SignUpButton);
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
-                        newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
-                dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
-                startActivity(VamoAHomeHomies);
-                finish();
-            }
+        protected void onCreate(Bundle savedInstanceState) {
+            //DatabaseReference mRootReference;
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_signup);
+            dataBaseRef = FirebaseDatabase.getInstance().getReference();
+            newUserFirstName = findViewById(R.id.newUserFirstName);
+            newUserLastName = findViewById(R.id.newUserLastName);
+            newUserEmail = findViewById(R.id.newUserEmail);
+            newUserEmailVerification = findViewById(R.id.newUserEmailVerification);
+            newUsername = findViewById(R.id.newUserUsername);
+            newUserMobilenumber = findViewById(R.id.newUserMobilenumber);
+            newUserPassword = findViewById(R.id.newUserPassword);
+            newUserPasswordVerification = findViewById(R.id.newUserPasswordVerification);
+            newUserBirthDate = findViewById(R.id.newUserBirthdate);
+            newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
+            goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
+            signUpButton = findViewById(R.id.SignUpButton);
+            goBackToLoginButton = findViewById(R.id.goBackToLoginButton);
+            signUpButton.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onClick(View v) {
+                    User newUser = new User(newUserFirstName, newUserLastName, newUserEmail, newUsername,
+                            newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
+                    dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
+                    Intent VamoAHomeHomies = new Intent(signup.this, MainActivity.class);
+                    startActivity(VamoAHomeHomies);
+                    finish();
+                }
 
-        });
+            });
+            goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent VayaseALogin = new Intent(signup.this, Login.class);
+                    startActivity(VayaseALogin);
+                }
+            });
+        }
 
     }
-}

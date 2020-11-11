@@ -132,9 +132,11 @@
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:hint="Birth Date"
+
+                android:hint="Birthday: MM/DD/YYYY"
                 android:inputType="date"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/newUserGender"
