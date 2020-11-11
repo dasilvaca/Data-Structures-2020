@@ -3,10 +3,7 @@ package com.janus.janusapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-<<<<<<< HEAD
-=======
 import android.view.View;
->>>>>>> cedf95da4124db2b493007bb1e619f7c4514045e
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,18 +20,22 @@ import static android.content.ContentValues.TAG;
 
 
 public class Login extends Activity {
-    final EditText username = findViewById(R.id.newUserUsername);
-    private EditText password = findViewById(R.id.newUserPassword);
+    public EditText username;
+    private EditText password;
     public String usernameInDB;
     public  String passwordInDB;
     public Button loginNow;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
-    private Button LogInButton = findViewById(R.id.LogInButton);
+    private Button LogInButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+        username = findViewById(R.id.newUserUsername);
+        password = findViewById(R.id.newUserPassword);
+        //loginNow;
+        LogInButton = findViewById(R.id.LogInButton);
 /*
         DatabaseReference userNameReference = database.getReference("Users");
         //if (userNameReference.child(username.toString()).getValue())
@@ -42,7 +43,7 @@ public class Login extends Activity {
         }
 */
         //DatabaseReference userNameReference = database.getReference("Users");
-        String LogInUsername = usernameEditText.getText().toString();
+        String LogInUsername = username.getText().toString();
         LogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +57,7 @@ public class Login extends Activity {
                                 //if (firebaseReference.child("Users").child(LogInUsername).)
                             }
                         }
-                    }
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
