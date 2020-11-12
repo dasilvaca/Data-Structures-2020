@@ -91,7 +91,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
+                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
                 startActivity(VamoAHomeHomies);
                 finish();
             }
@@ -99,6 +99,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
 
+<<<<<<< HEAD
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(signup.this, MainActivity.class);
@@ -107,15 +108,21 @@ public class signup extends AppCompatActivity /*Activity*/ {
         });
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
 
+=======
+>>>>>>> 945653dcb9ce4201051349afce1b3bb611f37877
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
                 startActivity(VayaseALogin);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 945653dcb9ce4201051349afce1b3bb611f37877
             }
         });
     }
 
+<<<<<<< HEAD
 
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
@@ -134,3 +141,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
 
 
+=======
+}
+
+>>>>>>> 945653dcb9ce4201051349afce1b3bb611f37877

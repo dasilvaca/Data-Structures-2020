@@ -5,6 +5,7 @@
  */
 package com.janus.janusapp.classes;
 
+import android.net.Uri;
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -28,6 +29,8 @@ public class User implements Serializable {
     public String username;
     public String mobileNumber;
     public String password;
+    public Uri picture;
+    // Implementar wallet
     //public LocalDate birthDate;
     public String birthDate;
     public String gender;
@@ -45,6 +48,7 @@ public class User implements Serializable {
         this.password = password;
         this.birthDate = birthDate;
         this.gender = gender;
+        //this.picture = ;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public User(EditText FirstName, EditText LastName, EditText email, EditText username,
@@ -58,6 +62,10 @@ public class User implements Serializable {
         //this.birthDate = LocalDate.parse(birthDate.getText());
         this.birthDate = birthDate.getText().toString();
         this.gender = gender.getSelectedItem().toString();
+    }
+
+    public void setPicture(Uri picture) {
+        this.picture = picture;
     }
 
     public User() {

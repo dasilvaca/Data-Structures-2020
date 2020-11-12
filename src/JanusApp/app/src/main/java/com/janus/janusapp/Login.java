@@ -63,7 +63,7 @@ public class Login extends Activity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
-
+                            Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
                             //String LogInUsername = usernameEditText.getText().toString();
                             String LogInPassword = password.getText().toString();
                             //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
@@ -74,7 +74,7 @@ public class Login extends Activity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
+                        Toast.makeText(Login.this,"No Funciona", Toast.LENGTH_LONG);
 
                     }
                 });

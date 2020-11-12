@@ -16,42 +16,10 @@ import com.janus.janusapp.structs.AVLTree;
 public class MainActivity extends AppCompatActivity {
 
 
-    public static AVLTree<String> dadyTree;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inicio);
-
-        BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
-        bottomnav.setOnNavigationItemSelectedListener(navListener);
+        setContentView(R.layout.login_layout);
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch(item.getItemId()){
-                        case R.id.configFragment:
-                            selectedFragment = new configFragment();
-                            break;
-                        case R.id.homeFragment:
-                            selectedFragment = new homeFragment();
-                            break;
-                        case R.id.newProjectFragment:
-                            selectedFragment = new newProjectFragment();
-                            break;
-                        case R.id.profileFragment:
-                            selectedFragment = new profileFragment();
-                            break;
-                        case R.id.searchFragment:
-                            selectedFragment = new searchFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
-                    return true;
-                }
-            };
-
 
 };

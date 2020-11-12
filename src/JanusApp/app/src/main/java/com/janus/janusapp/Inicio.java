@@ -20,7 +20,7 @@ public class Inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
-
+        bottomnav.setOnNavigationItemSelectedListener(navListener);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -49,10 +49,4 @@ public class Inicio extends AppCompatActivity {
                     return true;
                 }
             };
-
-    public static long log2(long N){
-
-        long result = (long)(Math.log(N) / Math.log(2));
-        return result;
-    }
 }
