@@ -17,7 +17,7 @@
             android:id="@+id/topimages"
             android:layout_width="match_parent"
             android:layout_height="225dp"
-            android:background="#233135"
+            android:background="@color/azulito"
             android:src="@drawable/janus_gif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

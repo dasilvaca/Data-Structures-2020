@@ -1,53 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profileFragment">
 
-    <ImageButton
-        android:id="@+id/imageButton_MisInversiones"
-        android:layout_width="150dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="@string/Folder_My_Projects_Profile"
-        android:src="@mipmap/ic_profile_myinvest"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/imageButton_MisProyectos"
-        android:layout_width="150dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="@string/Folder_My_Projects_Profile"
-        android:src="@mipmap/ic_profile_mi_project"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_MisInversiones" />
+        <ImageView
+            android:id="@+id/profilePicture"
+            android:layout_width="0dp"
+            android:layout_height="225dp"
+            android:background="@color/azulito"
+            android:src="@drawable/default_prfile_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_MisInversiones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Folder_Invest_Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_MisInversiones" />
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Default User Name"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profilePicture" />
 
-    <TextView
-        android:id="@+id/textView_MisProyectos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Folder_My_Projects_Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_MisProyectos" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dineros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="$ 1.000'000.000.00"
+            android:textColor="@color/verdesito"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profilePicture" />
+
+        <TextView
+            android:id="@+id/fullnameparameter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/birthdateparameter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Birth date"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Full Name (All the name xd)"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullnameparameter"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/birthdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="MM/DD/YYYY"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullnameparameter"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/emaileparameter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="email"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullname"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="averyveryveeerylarge@email.com"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emaileparameter"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/genderparam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullname"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Any Gender"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emaileparameter"
+            android:layout_margin="8dp"/>
+
+        <TabHost
+            android:layout_width="match_parent"
+            android:layout_height="300dip"
+            tools:layout_editor_absoluteX="194dp"
+            tools:layout_editor_absoluteY="227dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gender">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </LinearLayout>
+        </TabHost>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
