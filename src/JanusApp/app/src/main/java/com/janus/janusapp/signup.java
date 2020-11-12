@@ -97,6 +97,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -106,3 +107,4 @@ public class signup extends AppCompatActivity /*Activity*/ {
     }
 
 }
+
