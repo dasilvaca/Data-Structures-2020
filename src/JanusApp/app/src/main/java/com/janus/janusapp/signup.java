@@ -21,6 +21,7 @@ import com.janus.janusapp.classes.*;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class signup extends AppCompatActivity /*Activity*/ {
@@ -97,7 +98,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
+
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(signup.this, MainActivity.class);
@@ -105,33 +106,23 @@ public class signup extends AppCompatActivity /*Activity*/ {
             }
         });
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.newUserBirthdate:
-                        //showDatePickerDialog();
-                        break;
-                }
-=======
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
                 startActivity(VayaseALogin);
->>>>>>> 606f490fd502828ca54d0a270004a6ed9c8525af
+
             }
         });
     }
 
-<<<<<<< HEAD
+
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
     }*/
 
-    //@Override
-    public String onDateSet (DatePicker view, int year, int month, int dayOfMonth){
-        return year + "/" + month + "/" + dayOfMonth;
-    }
+
     /*
     protected void writeNewUser(String Username, String password, LocalDate birthdate, String email){
         User newUser = new User(Username,password,birthdate,email);
@@ -139,19 +130,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         //return newUser;
     }*/
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    protected void signUp(View view){
-        String newUrNm = newUsername.getText().toString();
-        String newUrPassword = newUserPassword.getText().toString();
-        String newUrEmail = newUserEmail.getText().toString();
-        LocalDate newUrBirthD = LocalDate.parse(newUserBirthDate.getText());//Sigan en esatudios a mimir
-        // User currentUser = writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail);
-        //writeNewUser(newUrNm, newUrPassword, newUrBirthD, newUrEmail); //xddddddddddd
-        Intent goToHome = new Intent(this, Inicio.class);
-        //goToHome.putExtra("currentUser", currentUser);
-        startActivity(goToHome);
-    }
 }
-=======
-}
->>>>>>> 606f490fd502828ca54d0a270004a6ed9c8525af
+
+
+
