@@ -9,17 +9,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <ImageView
+            android:id="@+id/icon_form"
+            android:layout_width="0dp"
+            android:layout_height="225dp"
+            android:background="@color/azulito"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_baseline_assignment_24"/>
         <TextView
             android:id="@+id/Mensaje_de_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/signup_uwu"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/icon_form" />
 
         <LinearLayout
             android:id="@+id/Nombres"
@@ -27,7 +37,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Mensaje_de_signup">
+            app:layout_constraintTop_toBottomOf="@id/icon_form">
 
             <EditText
                 android:id="@+id/newUserFirstName"
