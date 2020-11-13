@@ -90,7 +90,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
+                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
                 startActivity(VamoAHomeHomies);
                 finish();
             }
