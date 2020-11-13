@@ -10,12 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.janus.janusapp.classes.User;
-
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -36,9 +30,6 @@ public class profileFragment extends Fragment{
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private User MainUser;
-    TextView userName, fullName,Email, Gender,birthdate;
-    Button fl;
 
     /** Bueno, en esta sección hago las animaciones de los botopnes para la edición del perfil,
      * así que por eso declaro las siguientes 4 ANIMACIONES, y los 3 botones*/
@@ -55,7 +46,6 @@ public class profileFragment extends Fragment{
     private boolean clicked = false;
 
     /**=======================================================================================================*/
-
 
 
     // TODO: Rename and change types of parameters
@@ -89,7 +79,6 @@ public class profileFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainUser=Inicio.MainUser;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -147,22 +136,7 @@ public class profileFragment extends Fragment{
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_profile, container, false);
-        userName=view.findViewById(R.id.username);
-        fullName=view.findViewById(R.id.fullname);
-        Email= view.findViewById(R.id.email);
-        birthdate=view.findViewById(R.id.birthdate);
-        Gender=view.findViewById(R.id.gender);
-        userName.setText(MainUser.username);
-        fullName.setText(MainUser.firstName+" "+MainUser.lastName);
-        Email.setText(MainUser.email);
-        birthdate.setText(MainUser.birthDate);
-        Gender.setText(MainUser.gender);
-
-        return view;
-    }
-
-    public void f(View v){
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
         rotateOpen = AnimationUtils.loadAnimation(getActivity(),R.anim.rotate_open_anim);
@@ -170,9 +144,9 @@ public class profileFragment extends Fragment{
         fromBottom = AnimationUtils.loadAnimation(getActivity(),R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation( getActivity(),R.anim.to_bottom_anim);
 
-        more_buttons = v.findViewById(R.id.buttons_to_edit);
-        edit_profile =  v.findViewById(R.id.edit_profile);
-        edit_profile_picture = v.findViewById(R.id.edit_profile_picture);
+        more_buttons = view.findViewById(R.id.buttons_to_edit);
+        edit_profile =  view.findViewById(R.id.edit_profile);
+        edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
@@ -203,6 +177,7 @@ public class profileFragment extends Fragment{
 
 
 
+        return view;
     }
 
 

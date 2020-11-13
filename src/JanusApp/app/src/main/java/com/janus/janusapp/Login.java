@@ -38,8 +38,8 @@ public class Login extends Activity {
     public  String passwordInDB;
     public Button loginNow;
     public Button goToSignUp;
-    private CheckBox showPassword;
     public CheckBox stayLogged;
+    private CheckBox showPassword;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
     //private Button LogInButton;
@@ -58,6 +58,8 @@ public class Login extends Activity {
                 }
             }
         });
+
+
         goToSignUp = (Button) findViewById(R.id.ButtonSignUp);
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +76,6 @@ public class Login extends Activity {
 /*
         DatabaseReference userNameReference = database.getReference("Users");
         //if (userNameReference.child(username.toString()).getValue())
-
         }
 */
         //DatabaseReference userNameReference = database.getReference("Users");
@@ -83,11 +84,9 @@ public class Login extends Activity {
         /*LogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                         if (snapshot.exists()){
                             Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
                             //String LogInUsername = usernameEditText.getText().toString();
@@ -97,11 +96,9 @@ public class Login extends Activity {
                                 //if (firebaseReference.child("Users").child(LogInUsername).)
                             }
                         }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(Login.this,"No Funciona", Toast.LENGTH_LONG);
-
                     }
                 });
                 Toast.makeText(Login.this,"bfdbdf", Toast.LENGTH_LONG); }
@@ -118,7 +115,6 @@ DBusername.addValueEventListener(new ValueEventListener() {
             String value = dataSnapshot.getValue(String.class);
             Log.d(TAG, "Value is: " + value);
         }
-
         @Override
         public void onCancelled(DatabaseError error) {
             // Failed to read value
@@ -127,44 +123,46 @@ DBusername.addValueEventListener(new ValueEventListener() {
     });*/
     public void leer(View v){
         String LogInUsername = username.getText().toString();
+        if (!LogInUsername.equals("")) {
 
-        firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (snapshot.exists()){
-                    Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
-                    //String LogInUsername = usernameEditText.getText().toString();
-                    String LogInPassword = password.getText().toString();
-                    if(LogInPassword.equals(snapshot.child("password").getValue().toString())){
-                        if(stayLogged.isChecked()){
-                           SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
-                           SharedPreferences.Editor ed = p.edit();
-                           ed.putString("user",LogInUsername);
-                           ed.putString("password",LogInPassword);
-                           ed.commit();
+                    if (snapshot.exists()) {
+                        //String LogInUsername = usernameEditText.getText().toString();
+                        String LogInPassword = password.getText().toString();
+                        if (LogInPassword.equals(snapshot.child("password").getValue().toString())) {
+                            if (stayLogged.isChecked()) {
+                                SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor ed = p.edit();
+                                ed.putString("user", LogInUsername);
+                                ed.putString("password", LogInPassword);
+                                ed.commit();
+                            }
+                            Intent vamoahome = new Intent(Login.this, Inicio.class);
+                            MainUser = (User) snapshot.getValue(User.class);
+
+                            startActivity(vamoahome);
+                            finish();
+
+                        } else {
+                            Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
                         }
-                        Intent vamoahome = new Intent(Login.this, Inicio.class);
-                        MainUser = (User)snapshot.getValue(User.class);
 
-                        startActivity(vamoahome);
-                        finish();
-
-                    }else{
-                        Toast.makeText(Login.this,"Contraseña incorrecta",Toast.LENGTH_LONG).show();
-                    }
-
-                    //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
-                    //if (firebaseReference.child("Users").child(LogInUsername).)
+                        //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
+                        //if (firebaseReference.child("Users").child(LogInUsername).)
+                    } else Toast.makeText(Login.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Login.this,"No Funciona", Toast.LENGTH_LONG);
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Login.this, "No Funciona", Toast.LENGTH_LONG);
 
-            }
-        });
+                }
+            });
+        }
+        else Toast.makeText(Login.this, "El campo de Usuario está vacío", Toast.LENGTH_SHORT).show();
     }
 
 }
