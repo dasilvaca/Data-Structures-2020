@@ -43,7 +43,9 @@
             app:borderWidth="0.5dp"
             app:layout_constraintBottom_toBottomOf="@id/profilePicture"
             app:layout_constraintEnd_toEndOf="@id/profilePicture" />\
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

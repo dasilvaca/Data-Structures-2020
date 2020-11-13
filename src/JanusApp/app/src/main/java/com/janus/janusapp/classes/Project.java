@@ -14,12 +14,12 @@ import java.io.Serializable;
  */
 public class Project implements Serializable {
     public String name;
-    public LinkedL<String> owners=new LinkedL<String>();
-    public LinkedL<String> followers=new LinkedL<String>();
+    public DynamicArray<String> owners=new DynamicArray<String>();
+    public DynamicArray<String> followers=new DynamicArray<>();
     public int budget;
     String category;
     String description;
-    public Project(String name, LinkedL<String> owners, int budg,String ctgr,String dscpt){
+    public Project(String name, DynamicArray<String> owners, int budg,String ctgr,String dscpt){
         this.name = name;
         this.owners = owners;
         this.budget = budg;
@@ -31,6 +31,12 @@ public class Project implements Serializable {
         this.name = name;
         this.budget = budg;
         this.addOwner(owner);
+        this.category=ctgr;
+        this.description=dscpt;
+    }
+    public Project(String name, int budg,String ctgr,String dscpt){
+        this.name = name;
+        this.budget = budg;
         this.category=ctgr;
         this.description=dscpt;
     }

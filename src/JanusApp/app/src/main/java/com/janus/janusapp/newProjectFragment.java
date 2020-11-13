@@ -13,8 +13,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
+import com.janus.janusapp.structs.DynamicArray;
+
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,13 +32,14 @@ public class newProjectFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private DatabaseReference dataBaseRef;
     private Spinner category;
     private EditText projectName, projectGoal,projectDscr;
     private Button create;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    public User hola;
     public newProjectFragment() {
         // Required empty public constructor
     }
@@ -70,6 +76,7 @@ public class newProjectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_project, container, false);
+        dataBaseRef = FirebaseDatabase.getInstance().getReference();
         category =(Spinner)view.findViewById(R.id.spinner_cat);
         projectGoal=(EditText)view.findViewById(R.id.editTextGoal);
         projectName=(EditText)view.findViewById(R.id.editTextTextProjectName);
@@ -81,15 +88,21 @@ public class newProjectFragment extends Fragment {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                 Toast.makeText(getContext(),"Se pudo",Toast.LENGTH_LONG).show();
                  String Pname = projectName.getText().toString();
                  int Pgoal = Integer.parseInt(projectGoal.getText().toString());
                  String Pdescription = projectDscr.getText().toString();
                  String Pcategory= category.getSelectedItem().toString();
-                 Project newProject = new Project(Pname, new User(), Pgoal,Pcategory,Pdescription);
-                 Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
+                 Project newProject = new Project(Pname,Pgoal,Pcategory,Pdescription);
+                 hola=new User("f","f","f","f","f","f","f","f");
+                 hola.ownProjectList.append(Pname);
+                 //Project newProject = new Project(Pname, Inicio.MainUser, Pgoal,Pcategory,Pdescription);
+                 /*Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
+                 String[] hola = {"jeje","jaja","juju"};
                  projectName.setText("");
                  projectGoal.setText("");
                  projectDscr.setText("");
+                 dataBaseRef.child("Users").child(Inicio.MainUser.username).child("ownProjectList").child("Hola").setValue("ju");*/
             }
         });
         return view;

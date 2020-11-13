@@ -34,8 +34,8 @@ public class User implements Serializable {
     //public LocalDate birthDate;
     public String birthDate;
     public String gender;
-    public LinkedL<String> ownProjectList = new LinkedL<String>();
-    public LinkedL<String> followedProjects = new LinkedL<String>();
+    public DynamicArray<String> ownProjectList = new DynamicArray<String>();
+    public DynamicArray<String> followedProjects = new DynamicArray<String>();
 
 //Poner todos los atributos en el constructor String FirstName, String LastName,
     public User(String FirstName, String LastName, String email, String username,
@@ -78,8 +78,8 @@ public class User implements Serializable {
         project.followers.append(this.username);
     }
 
-    public void createProject(String name, LinkedL<String> owns, int bdgt, String ctgr, String dscpt) {
-        Project newProject = new Project(name, owns, bdgt, ctgr, dscpt);
+    public void createProject(String name, int bdgt, String ctgr, String dscpt) {
+        Project newProject = new Project(name,this, bdgt, ctgr, dscpt);
         ownProjectList.append(newProject.name);
     }
 
