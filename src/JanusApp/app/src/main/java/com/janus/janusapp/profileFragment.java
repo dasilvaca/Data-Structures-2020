@@ -15,6 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link profileFragment#newInstance} factory method to
@@ -38,9 +40,9 @@ public class profileFragment extends Fragment{
     private Animation toBottom ;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
 
 
-    private Button more_buttons;
-    private Button edit_profile_picture;
-    private Button edit_profile;
+    private FloatingActionButton more_buttons;
+    private FloatingActionButton edit_profile_picture;
+    private FloatingActionButton edit_profile;
     private boolean clicked = false;
 
     /**=======================================================================================================*/
@@ -142,9 +144,9 @@ public class profileFragment extends Fragment{
         fromBottom = AnimationUtils.loadAnimation(getActivity(),R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation( getActivity(),R.anim.to_bottom_anim);
 
-        more_buttons =(Button) getActivity().findViewById(R.id.buttons_to_edit);
-        edit_profile = (Button)getActivity().findViewById(R.id.edit_profile);
-        edit_profile_picture =(Button) view.findViewById(R.id.edit_profile_picture);
+        more_buttons = view.findViewById(R.id.buttons_to_edit);
+        edit_profile =  view.findViewById(R.id.edit_profile);
+        edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
