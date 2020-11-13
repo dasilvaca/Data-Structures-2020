@@ -21,11 +21,13 @@ import com.janus.janusapp.classes.*;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class signup extends AppCompatActivity /*Activity*/ {
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //private FirebaseAuth mAuth;
+    public static User MainUser=null;
     private DatabaseReference dataBaseRef;
     private EditText newUserFirstName;
     private EditText newUserLastName;
@@ -90,19 +92,46 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
+                MainUser=newUser;
+                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
                 startActivity(VamoAHomeHomies);
                 finish();
             }
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(signup.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+        newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
+
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
                 startActivity(VayaseALogin);
+
             }
         });
     }
+
+
+    /**private void showDatePickerDialog() {
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+    }*/
+
+
+    /*
+    protected void writeNewUser(String Username, String password, LocalDate birthdate, String email){
+        User newUser = new User(Username,password,birthdate,email);
+        dataBaseRef.child("Users").child(Username).setValue(newUser);
+        //return newUser;
+    }*/
 
 }

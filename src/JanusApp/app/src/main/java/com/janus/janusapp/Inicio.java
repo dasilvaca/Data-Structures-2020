@@ -10,17 +10,25 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
+import com.janus.janusapp.classes.User;
 
 public class Inicio extends AppCompatActivity {
 
-
+    public static User MainUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+        String jeje = getIntent().getStringExtra("JEJE");
+        //MainUser=(User)getIntent().getParcelableExtra("usuario");
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+        if(Login.MainUser==null){
+            MainUser=signup.MainUser;
+        }else{
+            MainUser=Login.MainUser;
+        }
         bottomnav.setSelectedItemId(R.id.homeFragment);
     }
 

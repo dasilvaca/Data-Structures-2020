@@ -70,6 +70,7 @@
                 android:id="@+id/LogInButton"
                 style="@style/Theme.JanusApp.innerRowitems"
 
+                android:onClick="leer"
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColorHighlight="@color/black" />

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579ed5be-19aa-41fd-bb4b-47f57c63bcb6" name="Default Changelist" comment="" />
+    <list default="true" id="579ed5be-19aa-41fd-bb4b-47f57c63bcb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JanusApp/app/src/main/java/com/janus/janusapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JanusApp/app/src/main/java/com/janus/janusapp/MainActivity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,9 +40,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="131" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605216398727">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="131" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1605216398727" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604799175122">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604799175122" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1605216033109">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605216033109" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605216097527">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605216097527" />
   </component>
 </project>
