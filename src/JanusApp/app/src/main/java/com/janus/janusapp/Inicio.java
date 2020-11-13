@@ -21,6 +21,7 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.inicio);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+        bottomnav.setSelectedItemId(R.id.homeFragment);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -44,6 +45,8 @@ public class Inicio extends AppCompatActivity {
                         case R.id.searchFragment:
                             selectedFragment = new searchFragment();
                             break;
+                        default: selectedFragment = new newProjectFragment();
+                        break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
                     return true;

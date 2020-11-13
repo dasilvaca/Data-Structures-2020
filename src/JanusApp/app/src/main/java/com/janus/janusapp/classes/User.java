@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi;
 import com.janus.janusapp.structs.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 
 /**
@@ -23,13 +22,14 @@ import java.time.LocalDate;
  */
 public class User implements Serializable {
 
-    public String FirstName;
-    public String LastName;
+    public String firstName;
+    public String lastName;
     public String email;
     public String username;
     public String mobileNumber;
     public String password;
     public Uri picture;
+    public int wallet;
     // Implementar wallet
     //public LocalDate birthDate;
     public String birthDate;
@@ -40,21 +40,22 @@ public class User implements Serializable {
 //Poner todos los atributos en el constructor String FirstName, String LastName,
     public User(String FirstName, String LastName, String email, String username,
                 String mobileNumber, String password, /*LocalDate*/ String birthDate, String gender) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
+        this.firstName = FirstName;
+        this.lastName = LastName;
         this.email = email;
         this.username = username;
         this.mobileNumber = mobileNumber;
         this.password = password;
         this.birthDate = birthDate;
         this.gender = gender;
+        this.wallet = 0;
         //this.picture = ;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public User(EditText FirstName, EditText LastName, EditText email, EditText username,
                 EditText mobileNumber, EditText password, EditText birthDate, Spinner gender) {
-        this.FirstName = FirstName.getText().toString();
-        this.LastName = LastName.getText().toString();
+        this.firstName = FirstName.getText().toString();
+        this.lastName = LastName.getText().toString();
         this.email = email.getText().toString();
         this.username = username.getText().toString();
         this.mobileNumber = mobileNumber.getText().toString();
