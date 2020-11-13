@@ -3,9 +3,13 @@ package com.janus.janusapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ public class Login extends Activity {
     public  String passwordInDB;
     public Button loginNow;
     public Button goToSignUp;
+    private CheckBox showPassword;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
     private Button LogInButton;
@@ -35,7 +40,17 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-
+        showPassword = (CheckBox)findViewById(R.id.ShowPassword);
+        showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(!isChecked){
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else{
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
         goToSignUp = (Button) findViewById(R.id.ButtonSignUp);
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
