@@ -66,7 +66,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
     }
 
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
@@ -100,6 +100,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
 
 
             @Override
@@ -111,6 +112,8 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
 
 
+=======
+>>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -120,6 +123,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         });
     }
 
+<<<<<<< HEAD
 
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
@@ -136,3 +140,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
 }
 
+=======
+}
+>>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692

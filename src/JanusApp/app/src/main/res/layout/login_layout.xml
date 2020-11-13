@@ -44,7 +44,8 @@
             android:inputType="textWebEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
+            app:layout_constraintTop_toBottomOf="@id/login_spicifier"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/newUserPassword"

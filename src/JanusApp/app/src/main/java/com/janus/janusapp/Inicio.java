@@ -24,11 +24,15 @@ public class Inicio extends AppCompatActivity {
         //MainUser=(User)getIntent().getParcelableExtra("usuario");
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+<<<<<<< HEAD
         if(Login.MainUser==null){
             MainUser=signup.MainUser;
         }else{
             MainUser=Login.MainUser;
         }
+=======
+        bottomnav.setSelectedItemId(R.id.homeFragment);
+>>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -52,6 +56,8 @@ public class Inicio extends AppCompatActivity {
                         case R.id.searchFragment:
                             selectedFragment = new searchFragment();
                             break;
+                        default: selectedFragment = new newProjectFragment();
+                        break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
                     return true;
