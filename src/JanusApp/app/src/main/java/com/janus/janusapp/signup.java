@@ -37,8 +37,8 @@ public class signup extends AppCompatActivity /*Activity*/ {
     private EditText newUserPasswordVerification;
     private EditText newUserBirthDate;
     private Spinner newUserGender;
-    private Button goBackToLoginButton = findViewById(R.id.goBackToLogInButton);
-    private Button signUpButton = findViewById(R.id.SignUpButton);
+    private Button goBackToLoginButton;
+    private Button signUpButton;
 
 
     public class DatePickerFragment extends DialogFragment
@@ -64,7 +64,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
     }
 
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
@@ -80,6 +80,8 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserPasswordVerification = findViewById(R.id.newUserPasswordVerification);
         newUserBirthDate = findViewById(R.id.newUserBirthdate);
         newUserGender = findViewById(R.id.newUserGender); // Pregunta a José Luis pls
+        goBackToLoginButton = findViewById(R.id.goBackToLogInButton);
+        signUpButton = findViewById(R.id.SignUpButton);
         //goBackToLoginButton = findViewById(R.id.LogInButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -88,14 +90,13 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
+                Intent VamoAHomeHomies = new Intent(signup.this,MainActivity.class);
                 startActivity(VamoAHomeHomies);
                 finish();
             }
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -105,4 +106,3 @@ public class signup extends AppCompatActivity /*Activity*/ {
     }
 
 }
-

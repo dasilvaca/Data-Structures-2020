@@ -34,4 +34,15 @@
     <string name="Folder_Invest_Profile">Mis Inversiones</string>
     <string name="Folder_My_Projects_Profile">Mis Proyectos</string>
     <string name="signup_uwu">Signup UwU</string>
+    <string name="signup_logo">Signup Logo</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="i_accept_terms_and_conditions">I accept terms and conditions</string>
+    <string name="birthday_holder">Birthday: MM/DD/YYYY</string>
+    <string name="verify_password">verify password</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="first_name">First Name</string>
+    <string name="email">email</string>
+    <string name="verify_email">verify email</string>
+    <string name="last_name">Last Name</string>
+    <string name="username">Username</string>
 </resources>
