@@ -158,21 +158,14 @@ public class profileFragment extends Fragment{
         Email.setText(MainUser.email);
         birthdate.setText(MainUser.birthDate);
         Gender.setText(MainUser.gender);
-
-        return view;
-    }
-
-    public void f(View v){
-
-
         rotateOpen = AnimationUtils.loadAnimation(getActivity(),R.anim.rotate_open_anim);
         rotateClose = AnimationUtils.loadAnimation( getActivity(),R.anim.rotate_close_anim);
         fromBottom = AnimationUtils.loadAnimation(getActivity(),R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation( getActivity(),R.anim.to_bottom_anim);
 
-        more_buttons = v.findViewById(R.id.buttons_to_edit);
-        edit_profile =  v.findViewById(R.id.edit_profile);
-        edit_profile_picture = v.findViewById(R.id.edit_profile_picture);
+        more_buttons = view.findViewById(R.id.buttons_to_edit);
+        edit_profile =  view.findViewById(R.id.edit_profile);
+        edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +187,10 @@ public class profileFragment extends Fragment{
 
             }
         });
-        //View view = view.findViewById(R.id.scrollableView);
+
+
+        return view;
     }
+    
 }/** Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
  * y el que edita el perfil, como el que edita sólo la foto */
