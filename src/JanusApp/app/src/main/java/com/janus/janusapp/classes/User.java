@@ -33,8 +33,8 @@ public class User implements Serializable {
     // Implementar wallet
     public String birthDate;
     public String gender;
-    public DynamicArray<String> ownProjectList = new DynamicArray<String>();
-    public DynamicArray<String> followedProjects = new DynamicArray<String>();
+    public DynamicArrayS ownProjectList = new DynamicArrayS();
+    public DynamicArrayS followedProjects = new DynamicArrayS();
 
 //Poner todos los atributos en el constructor String FirstName, String LastName,
     public User(String FirstName, String LastName, String email, String username,

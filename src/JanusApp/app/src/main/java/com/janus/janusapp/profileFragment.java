@@ -191,6 +191,6 @@ public class profileFragment extends Fragment{
 
         return view;
     }
-    
+
 }/** Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
  * y el que edita el perfil, como el que edita sólo la foto */

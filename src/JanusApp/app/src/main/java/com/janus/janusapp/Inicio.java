@@ -1,35 +1,62 @@
 package com.janus.janusapp;
 
 import android.app.Activity;
+import android.content.ContentProvider;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
+import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 
 public class Inicio extends AppCompatActivity {
-
+    TextView test;
+    Gson gson;
     public static User MainUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
-        String jeje = getIntent().getStringExtra("JEJE");
+        String MainUserStr = getIntent().getStringExtra("usuario");
+        gson=new Gson();
+        MainUser= gson.fromJson(MainUserStr,User.class);
+        test=findViewById(R.id.buttercup);
+        newProjectFragment frag = new newProjectFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario",MainUserStr);
+        frag.setArguments(bundle);
+        test.setText(MainUser.username);
+
+
         //MainUser=(User)getIntent().getParcelableExtra("usuario");
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+<<<<<<< HEAD
+
+
+
+        bottomnav.setSelectedItemId(R.id.homeFragment);
+
+=======
         if(Login.MainUser==null){
             MainUser=signup.MainUser;
         }else{
             MainUser=Login.MainUser;
         }
         bottomnav.setSelectedItemId(R.id.homeFragment);
+>>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -60,4 +87,6 @@ public class Inicio extends AppCompatActivity {
                     return true;
                 }
             };
+
+
 }

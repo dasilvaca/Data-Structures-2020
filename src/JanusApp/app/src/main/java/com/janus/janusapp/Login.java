@@ -23,7 +23,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.User;
+import com.janus.janusapp.structs.DynamicArray;
+import com.janus.janusapp.structs.DynamicArrayS;
+import com.janus.janusapp.structs.LinkedL;
 
 import java.io.Serializable;
 
@@ -143,8 +147,70 @@ DBusername.addValueEventListener(new ValueEventListener() {
                             Intent vamoahome = new Intent(Login.this, Inicio.class);
                             MainUser = (User) snapshot.getValue(User.class);
 
+<<<<<<< HEAD
+        firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()){
+                    Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
+                    //String LogInUsername = usernameEditText.getText().toString();
+                    String LogInPassword = password.getText().toString();
+                    if(LogInPassword.equals(snapshot.child("password").getValue().toString())){
+                        SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = p.edit();
+                        if(stayLogged.isChecked()){
+
+                           ed.putString("check","si");
+
+                        }
+                        Intent vamoahome = new Intent(Login.this, Inicio.class);
+                        User newUser = (User)snapshot.getValue(User.class);
+                        newUser.ownProjectList=new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
+                        newUser.followedProjects=new DynamicArrayS();
+                        firebaseReference.child("Users").child(LogInUsername).child("followedProjects").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P"+cont).getValue().toString();
+                                        newUser.followedProjects.append(project);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P+cont").getValue().toString();
+                                        newUser.ownProjectList.append((project));
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        Gson gson = new Gson();
+                        String usuario = gson.toJson(newUser);
+                        vamoahome.putExtra("usuario",usuario);
+                        startActivity(vamoahome);
+                        finish();
+=======
                             startActivity(vamoahome);
                             finish();
+>>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
 
                         } else {
                             Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
