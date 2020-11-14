@@ -36,6 +36,7 @@
 
         <LinearLayout
             android:id="@+id/Nombres"
+            android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -48,7 +49,7 @@
                 android:id="@+id/newUserFirstName"
                 style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
+
                 android:autofillHints=""
                 android:hint="@string/first_name"
                 android:inputType="textPersonName"
@@ -58,7 +59,6 @@
                 android:id="@+id/newUserLastName"
                 style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/last_name"
                 android:inputType="textPersonName"
