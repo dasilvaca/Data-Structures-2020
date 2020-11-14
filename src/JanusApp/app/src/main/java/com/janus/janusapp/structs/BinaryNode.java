@@ -7,25 +7,24 @@ public class BinaryNode<T> {
     public T data;
     public int key;
 
-    public BinaryNode(int ky,T dt){
+    public BinaryNode(int ky, T dt) {
         this.data = dt;
         this.key = ky;
     }
 
-    public BinaryNode(int ky){
+    public BinaryNode(int ky) {
         this.key = ky;
     }
 
 
-
-    public BinaryNode(int ky, BinaryNode<T> father, T dt){
+    public BinaryNode(int ky, BinaryNode<T> father, T dt) {
         this.key = ky;
         this.data = dt;
         this.father = father;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return data.toString();
     }
 }

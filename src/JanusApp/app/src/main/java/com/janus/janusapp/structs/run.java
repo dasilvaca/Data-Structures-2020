@@ -6,7 +6,7 @@ import com.janus.janusapp.structs.*;
 import java.util.Scanner;
 
 class run {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Trie<Object> newTrie = new Trie<Object>();
         User user1 = new User("Juan", "Bedoya", "jubedoyat@unal.edu.co", "jubedoyat",
                 "7263516653", "bedoya123", /*LocalDate*/ "20/04/2002", "Male");

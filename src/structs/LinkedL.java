@@ -44,7 +44,7 @@ public class LinkedL<T> {
             while(cont<index){ //Si index!=0 se itera hasta llegar al nodo con ese índex
             n=n.next;  
             cont+=1;
-            }
+            }//nodo1.equals(nodo2);
             return n.data; //
         }
     }
@@ -64,6 +64,7 @@ public class LinkedL<T> {
         System.out.println("No está en la lista");
         return -1;
     }
+
     public void append(T el){
         if(size==0){  //Si no hay elementos en la lista se añade y la cabeza y la cola apuntan al nuevo elemento
             Firstnode=new Node<T>(el);
