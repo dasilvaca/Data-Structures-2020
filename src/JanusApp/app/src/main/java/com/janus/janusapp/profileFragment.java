@@ -223,72 +223,65 @@ public class profileFragment extends Fragment {
          * Acciones que realiza el botón edit_proile picture
          */
 
-<<<<<<< HEAD
-=======
-        if (pic == false) {
+
+        //if (pic == false) {
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    openGallery();
-
->>>>>>> c55657eeebb714712ca52db4fc1eccacb4a9abf9
-
-        edit_profile_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(pic==false) {
                     openGallery();
                 }
-            }
-        });
 
-        edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        return view;
-
-    }
-
-    private void openGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == -1 && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            MainUser.picture = imageUri;
-            profileImage.setImageURI(imageUri);
-            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            });
+       // }
+            edit_profile.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Uri downloadUrl = uri;
-                            String ubiPic = downloadUrl.toString();
-                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                            fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
-                        }
-                    });
-
+                public void onClick(View v) {
 
                 }
             });
+
+
+            return view;
+
         }
+
+        private void openGallery(){
+            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            startActivityForResult(gallery, PICK_IMAGE);
+        }
+
+        @Override
+        public void onActivityResult ( int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            if (resultCode == -1 && requestCode == PICK_IMAGE) {
+                imageUri = data.getData();
+                MainUser.picture = imageUri;
+                profileImage.setImageURI(imageUri);
+                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Uri downloadUrl = uri;
+                                String ubiPic = downloadUrl.toString();
+                                DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
+                                fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                            }
+                        });
+
+
+                    }
+                });
+            }
+        }
+
     }
 
-}/**
+
+/**
  * Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
  * y el que edita el perfil, como el que edita sólo la foto
  */
