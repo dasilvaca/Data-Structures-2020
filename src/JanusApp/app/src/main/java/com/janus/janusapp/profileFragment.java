@@ -197,11 +197,11 @@ public class profileFragment extends Fragment {
         profileImage = view.findViewById(R.id.profilePicture);
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
-        /*d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
+        d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String ubi = snapshot.child("PicUbi").getValue().toString();
+                    String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
                     Glide.with(profileFragment.this).load(ubi).fitCenter().centerCrop().into(profileImage);
                     pic=true;
@@ -212,7 +212,7 @@ public class profileFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
@@ -227,7 +227,7 @@ public class profileFragment extends Fragment {
          */
 
 
-        //if (pic == false) {
+        if (pic == false) {
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -235,7 +235,7 @@ public class profileFragment extends Fragment {
                 }
 
             });
-       // }
+        }
             edit_profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

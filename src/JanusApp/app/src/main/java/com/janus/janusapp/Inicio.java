@@ -36,8 +36,8 @@ public class Inicio extends AppCompatActivity {
         frag.setArguments(bundle);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-        bottomnav.setSelectedItemId(R.id.homeFragment);
-        bottomnav.setSelectedItemId(R.id.homeFragment);
+       // bottomnav.setSelectedItemId(R.id.homeFragment);
+        //bottomnav.setSelectedItemId(R.id.homeFragment);
     }
 
     /**

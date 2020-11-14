@@ -1,7 +1,6 @@
 package structs;
 
-import com.janus.janusapp.classes.Project;
-import com.janus.janusapp.classes.User;
+import classes.*;
 public class DynamicArray<T> {
     Object[] array;
     public int size, capacity;
@@ -102,10 +101,10 @@ public class DynamicArray<T> {
         while(inicio<=fin){
             medio=(inicio+fin)/2;
             usuario= (User)array[medio];
-            if(usuario.userName.equals(newUser.userName)){
+            if(usuario.username.equals(newUser.username)){
                 System.out.println("El usuario ya existe");
                 return null;
-            }else if(usuario.userName.compareTo(newUser.userName)>0){
+            }else if(usuario.username.compareTo(newUser.username)>0){
                 fin=medio-1;
             }else{
                 inicio=medio+1;
@@ -124,9 +123,9 @@ public class DynamicArray<T> {
         while(inicio<=fin){
             medio=(inicio+fin)/2;
             usuario=(User)array[medio];
-            if(usuario.userName.equals(userName) && usuario.password.equals(userPassword)){
+            if(usuario.username.equals(userName) && usuario.password.equals(userPassword)){
                 return usuario;
-            }else if(usuario.userName.compareTo(userName)<0){
+            }else if(usuario.username.compareTo(userName)<0){
                 inicio=medio+1;
             }else {
                 fin=medio-1;
