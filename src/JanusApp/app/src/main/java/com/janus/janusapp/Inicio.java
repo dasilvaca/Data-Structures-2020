@@ -43,11 +43,20 @@ public class Inicio extends AppCompatActivity {
         //MainUser=(User)getIntent().getParcelableExtra("usuario");
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+<<<<<<< HEAD
 
 
 
         bottomnav.setSelectedItemId(R.id.homeFragment);
 
+=======
+        if(Login.MainUser==null){
+            MainUser=signup.MainUser;
+        }else{
+            MainUser=Login.MainUser;
+        }
+        bottomnav.setSelectedItemId(R.id.homeFragment);
+>>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

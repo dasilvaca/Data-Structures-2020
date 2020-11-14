@@ -38,15 +38,16 @@
             android:id="@+id/Nombres"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_form">
 
             <EditText
                 android:id="@+id/newUserFirstName"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/first_name"
@@ -55,9 +56,8 @@
 
             <EditText
                 android:id="@+id/newUserLastName"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/last_name"
@@ -91,29 +91,32 @@
             android:id="@+id/OtherData"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserEmailVerification">
 
             <EditText
                 android:id="@+id/newUserUsername"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/username"
+                android:layout_marginBottom="0dp"
                 android:inputType="text"
                 android:textAllCaps="false" />
 
             <EditText
                 android:id="@+id/newUserMobilenumber"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
+                android:layout_marginBottom="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/mobile_number"
+
                 android:inputType="phone"
                 android:textAllCaps="false" />
         </LinearLayout>
@@ -122,8 +125,9 @@
             android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:hint="@string/password"
+            android:layout_marginBottom="0dp"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -145,18 +149,18 @@
             android:id="@+id/Fechagenero"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserPasswordVerification">
 
             <EditText
                 android:id="@+id/newUserBirthdate"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:autofillHints=""
-
                 android:clickable="true"
                 android:focusable="true"
                 android:hint="@string/birthday_holder"
@@ -166,9 +170,8 @@
 
             <Spinner
                 android:id="@+id/newUserGender"
-                style="@style/Theme.JanusApp.text_boxes"
+                style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
-                android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:drawSelectorOnTop="true"
                 android:entries="@array/Gender_Spinner"
