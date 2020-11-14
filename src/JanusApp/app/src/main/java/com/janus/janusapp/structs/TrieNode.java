@@ -4,11 +4,11 @@ package com.janus.janusapp.structs;
 public class TrieNode<T>{
 
     public char letter;
-    public structs.LinkedL<TrieNode<T>> childs;
+    public LinkedL<TrieNode<T>> childs;
     public T inObject;
 
     public TrieNode(char letter){
-        this.childs = new structs.LinkedL<TrieNode<T>>();
+        this.childs = new LinkedL<TrieNode<T>>();
         this.inObject = null;
         this.letter = letter;
     }

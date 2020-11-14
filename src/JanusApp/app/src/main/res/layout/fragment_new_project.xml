@@ -95,7 +95,8 @@
             <Spinner
                 android:id="@+id/spinner_cat"
                 style="@style/Theme.JanusApp.innerText_boxes"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:foregroundTint="@color/black" />
         </LinearLayout>
 
         <EditText

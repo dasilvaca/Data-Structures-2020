@@ -1,10 +1,5 @@
 package com.janus.janusapp.structs;
 
-import structs.TrieNode;
-import structs.LinkedL;
-import structs.Node;
-
-
 public class Trie<T>{
 
     public LinkedL<TrieNode<T>> letters;
