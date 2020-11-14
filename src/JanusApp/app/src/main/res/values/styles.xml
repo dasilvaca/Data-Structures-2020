@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Widget.Theme.JanusApp.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
@@ -9,7 +9,6 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
-
     <style name="Theme.JanusApp.text_boxes" parent="Theme.JanusApp">
         <item name="android:background">@drawable/boxes</item>
         <item name="android:gravity">center</item>
@@ -24,13 +23,11 @@
             app:layout_constraintTop_toTopOf="parent" />-->
 
     </style>
-
     <style name="Theme.JanusApp.innerText_boxes" parent="Theme.JanusApp">
         <item name="android:background">@drawable/boxes</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginHorizontal" tools:targetApi="o">12dp</item>
+        <item name="android:layout_marginHorizontal">12dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/gricesito</item>
@@ -40,7 +37,6 @@
             app:layout_constraintTop_toTopOf="parent" />-->
 
     </style>
-
     <style name="Theme.JanusApp.innerRowitems">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
