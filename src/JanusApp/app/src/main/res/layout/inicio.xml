@@ -7,6 +7,14 @@
     android:layout_height="match_parent">
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/buttercup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hello world">
+
+    </TextView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView2"
         android:layout_width="match_parent"

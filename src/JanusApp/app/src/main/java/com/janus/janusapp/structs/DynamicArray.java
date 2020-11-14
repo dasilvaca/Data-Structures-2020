@@ -3,7 +3,7 @@ package com.janus.janusapp.structs;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 public class DynamicArray<T> {
-    Object[] array;
+    public Object[] array;
     public int size, capacity;
 
     public DynamicArray(){ 

@@ -2,7 +2,9 @@ package com.janus.janusapp;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.*;
 
 
@@ -27,7 +30,7 @@ import java.util.Calendar;
 public class signup extends AppCompatActivity /*Activity*/ {
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //private FirebaseAuth mAuth;
-    public static User MainUser=null;
+
     private DatabaseReference dataBaseRef;
     private EditText newUserFirstName;
     private EditText newUserLastName;
@@ -92,15 +95,19 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
-                MainUser=newUser;
-                Intent VamoAHomeHomies = new Intent(signup.this,Inicio.class);
-                startActivity(VamoAHomeHomies);
+
+                Intent vamoahome = new Intent(signup.this, Inicio.class);
+
+                Gson gson = new Gson();
+                String usuario = gson.toJson(newUser);
+                vamoahome.putExtra("usuario",usuario);
+                startActivity(vamoahome);
                 finish();
             }
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
+
 
 
             @Override
@@ -112,8 +119,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
 
 
-=======
->>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -123,7 +129,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
         });
     }
 
-<<<<<<< HEAD
+
 
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
@@ -140,6 +146,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
 }
 
-=======
-}
->>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692
+
+
+

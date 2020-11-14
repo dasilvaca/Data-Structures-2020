@@ -1,5 +1,7 @@
 package com.janus.janusapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,10 +17,14 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 import com.janus.janusapp.structs.DynamicArray;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -30,6 +36,8 @@ public class newProjectFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private Gson gson;
+    private User MainUser;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private DatabaseReference dataBaseRef;
@@ -40,6 +48,7 @@ public class newProjectFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     public User hola;
+    String MainUserStr;
     public newProjectFragment() {
         // Required empty public constructor
     }
@@ -65,11 +74,7 @@ public class newProjectFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
 
-        }
     }
 
     @Override
@@ -88,21 +93,26 @@ public class newProjectFragment extends Fragment {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Toast.makeText(getContext(),"Se pudo",Toast.LENGTH_LONG).show();
+
                  String Pname = projectName.getText().toString();
                  int Pgoal = Integer.parseInt(projectGoal.getText().toString());
                  String Pdescription = projectDscr.getText().toString();
                  String Pcategory= category.getSelectedItem().toString();
-                 Project newProject = new Project(Pname,Pgoal,Pcategory,Pdescription);
-                 hola=new User("f","f","f","f","f","f","f","f");
-                 hola.ownProjectList.append(Pname);
-                 //Project newProject = new Project(Pname, Inicio.MainUser, Pgoal,Pcategory,Pdescription);
-                 /*Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
-                 String[] hola = {"jeje","jaja","juju"};
+
+                 Project newProject = new Project(Pname, Inicio.MainUser, Pgoal,Pcategory,Pdescription);
+                 Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
                  projectName.setText("");
                  projectGoal.setText("");
                  projectDscr.setText("");
-                 dataBaseRef.child("Users").child(Inicio.MainUser.username).child("ownProjectList").child("Hola").setValue("ju");*/
+                 //ArrayList<String>  = new ArrayList<>(Arrays.asList(newProject.owners.array));
+                 //dataBaseRef.child("Project").child(Pname).setValue(new ArrayList<>(Arrays.asList(categories)));
+
+                 ArrayList<String> subible = new ArrayList<>(Arrays.asList(newProject.owners.array));
+                 newProject.owners=null;
+                 newProject.followers=null;
+                 dataBaseRef.child("Project").child((String)Pname).setValue(newProject);
+                 dataBaseRef.child("Project").child(Pname).child("owners").setValue(subible);
+
             }
         });
         return view;

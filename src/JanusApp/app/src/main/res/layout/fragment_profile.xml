@@ -53,13 +53,12 @@
             android:tint="@color/azulito"
             app:backgroundTint="@color/azulito"
             app:borderWidth="0.5dp"
-<<<<<<< HEAD
+
             app:layout_constraintBottom_toBottomOf="@id/profilePicture"
             app:layout_constraintEnd_toEndOf="@id/profilePicture" />\
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fl"
-=======
             app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/buttons_to_edit"
             app:layout_constraintEnd_toEndOf="@+id/buttons_to_edit"
@@ -69,7 +68,6 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile"
             android:visibility="invisible"
->>>>>>> 6d1f1125dcf5e789f39052b962f3e2ed019f5692
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

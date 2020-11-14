@@ -14,12 +14,12 @@ import java.io.Serializable;
  */
 public class Project implements Serializable {
     public String name;
-    public DynamicArray<String> owners=new DynamicArray<String>();
-    public DynamicArray<String> followers=new DynamicArray<>();
+    public DynamicArrayS owners=new DynamicArrayS();
+    public DynamicArrayS followers=new DynamicArrayS();
     public int budget;
-    String category;
-    String description;
-    public Project(String name, DynamicArray<String> owners, int budg,String ctgr,String dscpt){
+    public String category;
+    public String description;
+    public Project(String name, DynamicArrayS owners, int budg,String ctgr,String dscpt){
         this.name = name;
         this.owners = owners;
         this.budget = budg;

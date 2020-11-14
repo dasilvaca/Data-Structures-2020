@@ -20,7 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.User;
+import com.janus.janusapp.structs.DynamicArray;
+import com.janus.janusapp.structs.DynamicArrayS;
+import com.janus.janusapp.structs.LinkedL;
 
 import java.io.Serializable;
 
@@ -124,16 +128,54 @@ DBusername.addValueEventListener(new ValueEventListener() {
                     //String LogInUsername = usernameEditText.getText().toString();
                     String LogInPassword = password.getText().toString();
                     if(LogInPassword.equals(snapshot.child("password").getValue().toString())){
+                        SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = p.edit();
                         if(stayLogged.isChecked()){
-                           SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
-                           SharedPreferences.Editor ed = p.edit();
-                           ed.putString("user",LogInUsername);
-                           ed.putString("password",LogInPassword);
-                           ed.commit();
+
+                           ed.putString("check","si");
+
                         }
                         Intent vamoahome = new Intent(Login.this, Inicio.class);
-                        MainUser = (User)snapshot.getValue(User.class);
+                        User newUser = (User)snapshot.getValue(User.class);
+                        newUser.ownProjectList=new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
+                        newUser.followedProjects=new DynamicArrayS();
+                        firebaseReference.child("Users").child(LogInUsername).child("followedProjects").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P"+cont).getValue().toString();
+                                        newUser.followedProjects.append(project);
+                                    }
+                                }
+                            }
 
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P+cont").getValue().toString();
+                                        newUser.ownProjectList.append((project));
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        Gson gson = new Gson();
+                        String usuario = gson.toJson(newUser);
+                        vamoahome.putExtra("usuario",usuario);
                         startActivity(vamoahome);
                         finish();
 
