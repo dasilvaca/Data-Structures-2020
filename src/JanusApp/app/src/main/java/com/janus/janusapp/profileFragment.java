@@ -224,17 +224,16 @@ public class profileFragment extends Fragment{
          * Acciones que realiza el botón edit_proile picture
          */
 
-        if(pic==false) {
-            edit_profile_picture.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                        openGallery();
-
-
+        edit_profile_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pic==false) {
+                    openGallery();
                 }
-            });
-        }
+            }
+        });
+
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
