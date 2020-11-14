@@ -26,68 +26,83 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/logito_más_proyectos"
+            android:text="+Nuevo proyecto"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/logito_más_proyectos"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="+Nuevo proyecto" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
+
+        <EditText
+            android:id="@+id/editTextTextProjectName"
+            style="@style/Theme.JanusApp.innerText_boxes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:ems="10"
+            android:hint="Nombre del proyecto"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/logito_más_proyectos" />
+
+        <EditText
+            android:id="@+id/editTextGoal"
+            style="@style/Theme.JanusApp.innerText_boxes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Meta del proyecto"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextTextProjectName" />
 
 
-
-            <EditText
-                android:id="@+id/editTextTextProjectName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Nombre del proyecto"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextGoal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Meta del proyecto"
-                android:inputType="number" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextGoal"
+            app:layout_constraintEnd_toEndOf="parent">
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Categoría del proyecto" />
-
-            <Spinner
-                android:id="@+id/spinner_cat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/editTextDscr"
-                android:layout_width="match_parent"
-                android:layout_height="305dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="Descripción del proyecto"
-                android:inputType="textMultiLine" />
-
-            <Button
-                android:id="@+id/Crear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="createP"
-                android:text="Crear" />
         </LinearLayout>
+        <Spinner
+            android:id="@+id/spinner_cat"
+            style="@style/Theme.JanusApp.innerText_boxes"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextGoal" />
+
+        <EditText
+            android:id="@+id/editTextDscr"
+            android:layout_width="match_parent"
+            android:layout_height="305dp"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_cat"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descripción del proyecto"
+            android:inputType="textMultiLine"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/Crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="createP"
+            android:text="Crear"
+            app:layout_constraintTop_toBottomOf="@id/editTextDscr"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

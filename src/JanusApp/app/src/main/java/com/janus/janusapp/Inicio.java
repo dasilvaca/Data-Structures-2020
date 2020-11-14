@@ -21,7 +21,7 @@ import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 
 public class Inicio extends AppCompatActivity {
-    TextView test;
+    //TextView test;
     Gson gson;
     public static User MainUser;
     @Override
@@ -32,31 +32,25 @@ public class Inicio extends AppCompatActivity {
         String MainUserStr = getIntent().getStringExtra("usuario");
         gson=new Gson();
         MainUser= gson.fromJson(MainUserStr,User.class);
-        test=findViewById(R.id.buttercup);
         newProjectFragment frag = new newProjectFragment();
         Bundle bundle = new Bundle();
         bundle.putString("usuario",MainUserStr);
         frag.setArguments(bundle);
-        test.setText(MainUser.username);
-
-
-        //MainUser=(User)getIntent().getParcelableExtra("usuario");
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-<<<<<<< HEAD
 
 
 
         bottomnav.setSelectedItemId(R.id.homeFragment);
 
-=======
+
         if(Login.MainUser==null){
             MainUser=signup.MainUser;
         }else{
             MainUser=Login.MainUser;
         }
         bottomnav.setSelectedItemId(R.id.homeFragment);
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

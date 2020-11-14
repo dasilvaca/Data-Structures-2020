@@ -38,36 +38,25 @@
             app:layout_constraintBottom_toBottomOf="@id/profilePicture"
             app:layout_constraintEnd_toEndOf="@id/profilePicture" />
 
-        \
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:focusable="true"
-            android:visibility="invisible"
-            android:layout_marginBottom="64dp"
             android:backgroundTint="#FFFFFF"
+            android:focusable="true"
             android:src="@drawable/ic_baseline_image_24"
             android:tint="@color/azulito"
+            android:visibility="invisible"
             app:backgroundTint="@color/azulito"
             app:borderWidth="0.5dp"
-<<<<<<< HEAD
 
-            app:layout_constraintBottom_toBottomOf="@id/profilePicture"
-            app:layout_constraintEnd_toEndOf="@id/profilePicture" />\
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fl"
-=======
-            app:layout_constraintBottom_toBottomOf="@id/profilePicture"
-            app:layout_constraintEnd_toEndOf="@id/profilePicture"
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
             app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/buttons_to_edit"
-            app:layout_constraintStart_toStartOf="@+id/buttons_to_edit"
-            app:rippleColor="@color/azulito" />
+            app:layout_constraintEnd_toEndOf="@+id/buttons_to_edit"
+            app:layout_constraintStart_toStartOf="@+id/buttons_to_edit" />
+
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile"

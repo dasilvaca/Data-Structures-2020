@@ -32,6 +32,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
     //private FirebaseAuth mAuth;
 
     private DatabaseReference dataBaseRef;
+    public static User MainUser=null;
     private EditText newUserFirstName;
     private EditText newUserLastName;
     private EditText newUserEmail;
@@ -107,12 +108,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
-
-=======
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
-
-
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(signup.this, Login.class);
@@ -120,12 +115,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
             }
         });
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -135,10 +124,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
         });
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
 
     /**private void showDatePickerDialog() {
         DatePickerFragment newFragment = new DatePickerFragment();
@@ -154,10 +139,3 @@ public class signup extends AppCompatActivity /*Activity*/ {
     }*/
 
 }
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
