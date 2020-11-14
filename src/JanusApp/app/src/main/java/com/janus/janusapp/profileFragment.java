@@ -185,6 +185,7 @@ public class profileFragment extends Fragment{
         more_buttons = view.findViewById(R.id.buttons_to_edit);
         edit_profile =  view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
+<<<<<<< HEAD
         profileImage = view.findViewById(R.id.profilePicture);
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic=false;
@@ -204,6 +205,8 @@ public class profileFragment extends Fragment{
 
             }
         });*/
+=======
+>>>>>>> cea1d71a1d24fc3c9cf0ec34dac3a558d7c3bfd2
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
@@ -232,6 +235,7 @@ public class profileFragment extends Fragment{
 
 
         return view;
+<<<<<<< HEAD
     }
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -265,6 +269,8 @@ public class profileFragment extends Fragment{
                 }
             });
         }
+=======
+>>>>>>> cea1d71a1d24fc3c9cf0ec34dac3a558d7c3bfd2
     }
 
 }/** Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,

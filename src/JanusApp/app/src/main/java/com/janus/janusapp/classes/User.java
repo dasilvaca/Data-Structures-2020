@@ -31,7 +31,6 @@ public class User implements Serializable {
     public Uri picture;
     public int wallet;
     // Implementar wallet
-    //public LocalDate birthDate;
     public String birthDate;
     public String gender;
     public DynamicArrayS ownProjectList = new DynamicArrayS();
@@ -39,7 +38,7 @@ public class User implements Serializable {
 
 //Poner todos los atributos en el constructor String FirstName, String LastName,
     public User(String FirstName, String LastName, String email, String username,
-                String mobileNumber, String password, /*LocalDate*/ String birthDate, String gender) {
+                String mobileNumber, String password, String birthDate, String gender) {
         this.firstName = FirstName;
         this.lastName = LastName;
         this.email = email;
