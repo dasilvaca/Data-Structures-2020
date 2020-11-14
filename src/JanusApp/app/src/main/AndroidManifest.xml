@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup">
+        <activity android:name=".signup"
+            android:label="Signup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +39,9 @@
         <activity android:name=".UserActivity" />
         <activity android:name=".Categorys" />
         <activity android:name=".searchs" />
-        <activity android:name=".Inicio">
+        <activity android:name=".Inicio"
+            android:label="Inicio">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

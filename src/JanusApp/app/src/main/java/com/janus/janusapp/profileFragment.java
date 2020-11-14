@@ -50,7 +50,7 @@ public class profileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private User MainUser;
-    TextView userName, fullName, Email, Gender, birthdate;
+    TextView userName, fullName, Email, Gender, birthdate, wallet;
     Button fl;
 
     /**
@@ -123,8 +123,8 @@ public class profileFragment extends Fragment {
     private void deployMoreButtons() {
         setVisibility(clicked);
         setAnimation(clicked);
-        setClickable(clicked);
         clicked = !clicked;
+        setClickable(clicked);
     }
 
     private void setVisibility(boolean clicked) {
@@ -176,11 +176,14 @@ public class profileFragment extends Fragment {
         userName = view.findViewById(R.id.username);
         fullName = view.findViewById(R.id.fullname);
         Email = view.findViewById(R.id.email);
+        wallet = view.findViewById(R.id.dineros);
         birthdate = view.findViewById(R.id.birthdate);
         Gender = view.findViewById(R.id.gender);
         userName.setText(MainUser.username);
         fullName.setText(MainUser.firstName + " " + MainUser.lastName);
         Email.setText(MainUser.email);
+        wallet.setText("$ " + MainUser.wallet);
+
         birthdate.setText(MainUser.birthDate);
         Gender.setText(MainUser.gender);
         rotateOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_open_anim);
