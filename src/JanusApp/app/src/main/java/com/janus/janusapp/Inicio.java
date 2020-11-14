@@ -43,12 +43,13 @@ public class Inicio extends AppCompatActivity {
 
         bottomnav.setSelectedItemId(R.id.homeFragment);
 
-
+/*
         if(Login.MainUser==null){
             MainUser=signup.MainUser;
         }else{
             MainUser=Login.MainUser;
-        }
+        }*/
+
         bottomnav.setSelectedItemId(R.id.homeFragment);
 
     }
@@ -81,6 +82,7 @@ public class Inicio extends AppCompatActivity {
                     return true;
                 }
             };
+
 
 
 }

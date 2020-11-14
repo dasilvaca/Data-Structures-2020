@@ -50,7 +50,6 @@
             android:visibility="invisible"
             app:backgroundTint="@color/azulito"
             app:borderWidth="0.5dp"
-
             app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/buttons_to_edit"
             app:layout_constraintEnd_toEndOf="@+id/buttons_to_edit"

@@ -1,19 +1,33 @@
 package com.janus.janusapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.janus.janusapp.classes.User;
 
 import android.view.animation.Animation;
@@ -49,12 +63,17 @@ public class profileFragment extends Fragment{
     private Animation toBottom ;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
 
 
+    private Boolean pic;
+    private StorageReference storageRef;
+    private static final int PICK_IMAGE = 100;
+    private Uri imageUri;
+    private ImageView profileImage;
     private FloatingActionButton more_buttons;
     private FloatingActionButton edit_profile_picture;
     private FloatingActionButton edit_profile;
     private boolean clicked = false;
 
-    /**=======================================================================================================*/
+    /*=======================================================================================================/
 
 
 
@@ -91,8 +110,7 @@ public class profileFragment extends Fragment{
         super.onCreate(savedInstanceState);
         MainUser=Inicio.MainUser;
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
 
 
@@ -148,6 +166,7 @@ public class profileFragment extends Fragment{
 
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_profile, container, false);
+        storageRef= FirebaseStorage.getInstance().getReference();
         userName=view.findViewById(R.id.username);
         fullName=view.findViewById(R.id.fullname);
         Email= view.findViewById(R.id.email);
@@ -166,6 +185,26 @@ public class profileFragment extends Fragment{
         more_buttons = view.findViewById(R.id.buttons_to_edit);
         edit_profile =  view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
+        profileImage = view.findViewById(R.id.profilePicture);
+        DatabaseReference d = FirebaseDatabase.getInstance().getReference();
+        pic=false;
+        /*d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String ubi = snapshot.child("PicUbi").getValue().toString();
+                    Uri ubiUrl = Uri.parse(ubi);
+                    Glide.with(profileFragment.this).load(ubi).fitCenter().centerCrop().into(profileImage);
+                    pic=true;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
 
 
         more_buttons.setOnClickListener(new View.OnClickListener() {
@@ -174,13 +213,17 @@ public class profileFragment extends Fragment{
                 deployMoreButtons();
             }
         });
-        edit_profile_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(pic==false) {
+            edit_profile_picture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                        openGallery();
 
+
+                }
+            });
+        }
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,6 +233,40 @@ public class profileFragment extends Fragment{
 
 
         return view;
+
+    }
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == -1 && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            MainUser.picture=imageUri;
+            profileImage.setImageURI(imageUri);
+            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                         @Override
+                         public void onSuccess(Uri uri) {
+                              Uri downloadUrl = uri;
+                              String ubiPic = downloadUrl.toString();
+                              DatabaseReference fbRef= FirebaseDatabase.getInstance().getReference();
+                              fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                         }
+                     });
+
+
+
+                }
+            });
+        }
     }
 
 }/** Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,

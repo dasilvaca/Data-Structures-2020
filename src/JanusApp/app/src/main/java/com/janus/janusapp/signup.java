@@ -32,7 +32,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
     //private FirebaseAuth mAuth;
 
     private DatabaseReference dataBaseRef;
-    public static User MainUser=null;
+    //public static User MainUser=null;
     private EditText newUserFirstName;
     private EditText newUserLastName;
     private EditText newUserEmail;
@@ -108,6 +108,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
         });
         goBackToLoginButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(signup.this, Login.class);
@@ -115,6 +116,10 @@ public class signup extends AppCompatActivity /*Activity*/ {
             }
         });
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
+
+
+
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
