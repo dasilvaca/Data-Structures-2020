@@ -42,24 +42,25 @@ public class Login extends Activity {
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
 
     /**
-     * En la siguiente sección aparece el chechbox para mostrar o no la contraseña
+     *En la siguiente sección aparece el chechbox para mostrar o no la contraseña
+     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        showPassword = (CheckBox) findViewById(R.id.ShowPassword);
+        showPassword = (CheckBox)findViewById(R.id.ShowPassword);
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked) {
+                if(!isChecked){
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                } else {
+                } else{
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
             }
         });
-        /**==============================================================================*/
+    /**==============================================================================*/
 
 
         /**
@@ -81,17 +82,16 @@ public class Login extends Activity {
          */
         username = findViewById(R.id.newUserUsername);
         password = findViewById(R.id.newUserPassword);
-        stayLogged = (CheckBox) findViewById(R.id.StayLogged);
+        stayLogged=(CheckBox)findViewById(R.id.StayLogged);
 
     }
 
-    /**
-     * Aquí se hacen las verificaciones de si las entradas son o no vacías
+    /** Aquí se hacen las verificaciones de si las entradas son o no vacías
      * y se procede a ingresar según el caso, es decir, se hace lectura con la base de datos
      * Conectandolo directo desde el XML
      */
 
-    public void leer(View v) {
+    public void leer(View v){
         String LogInUsername = username.getText().toString();
 
         /**
@@ -103,73 +103,72 @@ public class Login extends Activity {
             /**
              * El siguiente método hace la lectura de la base de datos, teniendo como llava el nombre de usuario ingresado
              */
-            firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+        firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                /**
+                 * Si el usuario ingresado existe, toma la cadena del campo Password
+                 */
+                if (snapshot.exists()){
+                    String LogInPassword = password.getText().toString();
                     /**
-                     * Si el usuario ingresado existe, toma la cadena del campo Password
+                     * Se hace la verificación con la contrasseña del usuario que se encontró con la ingresada por el usuario
                      */
-                    if (snapshot.exists()) {
-                        String LogInPassword = password.getText().toString();
-                        /**
-                         * Se hace la verificación con la contrasseña del usuario que se encontró con la ingresada por el usuario
-                         */
-                        if (LogInPassword.equals(snapshot.child("password").getValue().toString())) {
-                            SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor ed = p.edit();
-                            if (stayLogged.isChecked()) ed.putString("check", "si");
+                    if(LogInPassword.equals(snapshot.child("password").getValue().toString())){
+                        SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = p.edit();
+                        if(stayLogged.isChecked()) ed.putString("check","si");
 
 
-                            Intent vamoahome = new Intent(Login.this, Inicio.class);
-                            User newUser = (User) snapshot.getValue(User.class);
-                            newUser.ownProjectList = new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
-                            newUser.followedProjects = new DynamicArrayS();
-                            firebaseReference.child("Users").child(LogInUsername).child("followedProjects").child("Projects").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.exists()) {
-                                        int cont = 0;
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String project = ds.child("P" + cont).getValue().toString();
-                                            newUser.followedProjects.append(project);
-                                        }
+                        Intent vamoahome = new Intent(Login.this, Inicio.class);
+                        User newUser = (User)snapshot.getValue(User.class);
+                        newUser.ownProjectList=new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
+                        newUser.followedProjects=new DynamicArrayS();
+                        firebaseReference.child("Users").child(LogInUsername).child("followedProjects").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P"+cont).getValue().toString();
+                                        newUser.followedProjects.append(project);
                                     }
                                 }
+                            }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
-                            firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").child("Projects").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.exists()) {
-                                        int cont = 0;
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String project = ds.child("P+cont").getValue().toString();
-                                            newUser.ownProjectList.append((project));
-                                        }
+                            }
+                        });
+                        firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").child("Projects").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    int cont=0;
+                                    for(DataSnapshot ds : snapshot.getChildren()){
+                                        String project = ds.child("P+cont").getValue().toString();
+                                        newUser.ownProjectList.append((project));
                                     }
                                 }
+                            }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
-                            Gson gson = new Gson();
-                            String usuario = gson.toJson(newUser);
-                            vamoahome.putExtra("usuario", usuario);
-                            startActivity(vamoahome);
-                            finish();
+                            }
+                        });
+                        Gson gson = new Gson();
+                        String usuario = gson.toJson(newUser);
+                        vamoahome.putExtra("usuario",usuario);
+                        startActivity(vamoahome);
+                        finish();
 
                         } else {
                             Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
                         }
 
-                    } else
-                        Toast.makeText(Login.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(Login.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -178,8 +177,8 @@ public class Login extends Activity {
 
                 }
             });
-        } else
-            Toast.makeText(Login.this, "El campo de Usuario está vacío", Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(Login.this, "El campo de Usuario está vacío", Toast.LENGTH_SHORT).show();
     }
 /**=================Hasta aquí va el método de lectura e inicio de sesión en la DB================*/
 }

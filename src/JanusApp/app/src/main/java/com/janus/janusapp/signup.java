@@ -62,7 +62,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        public void onDateSet (DatePicker view, int year, int month, int dayOfMonth){
             //return year + "/" + month + "/" + dayOfMonth;
 
         }
@@ -93,7 +93,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                User newUser = new User(newUserFirstName, newUserLastName, newUserEmail, newUsername,
+                User newUser = new User(newUserFirstName,  newUserLastName,newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
 
@@ -101,7 +101,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
                 Gson gson = new Gson();
                 String usuario = gson.toJson(newUser);
-                vamoahome.putExtra("usuario", usuario);
+                vamoahome.putExtra("usuario",usuario);
                 startActivity(vamoahome);
                 finish();
             }
@@ -118,6 +118,8 @@ public class signup extends AppCompatActivity /*Activity*/ {
         newUserBirthDate.setOnClickListener(new View.OnClickListener() {// AQUI LAS FECHAS MALDITAS FECHAS QUE NO PERMITWEN TRABAJARRRR
 
 
+
+
             @Override
             public void onClick(View v) {
                 Intent VayaseALogin = new Intent(signup.this, Login.class);
@@ -129,9 +131,9 @@ public class signup extends AppCompatActivity /*Activity*/ {
 
 
     /**private void showDatePickerDialog() {
-     DatePickerFragment newFragment = new DatePickerFragment();
-     newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
-     }*/
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+    }*/
 
 
     /*
