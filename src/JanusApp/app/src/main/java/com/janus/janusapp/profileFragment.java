@@ -42,8 +42,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * Use the {@link profileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class profileFragment extends Fragment{
-
+public class profileFragment extends Fragment {
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -51,16 +50,18 @@ public class profileFragment extends Fragment{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private User MainUser;
-    TextView userName, fullName,Email, Gender,birthdate;
+    TextView userName, fullName, Email, Gender, birthdate;
     Button fl;
 
-    /** Bueno, en esta sección hago las animaciones de los botopnes para la edición del perfil,
-     * así que por eso declaro las siguientes 4 ANIMACIONES, y los 3 botones*/
+    /**
+     * Bueno, en esta sección hago las animaciones de los botopnes para la edición del perfil,
+     * así que por eso declaro las siguientes 4 ANIMACIONES, y los 3 botones
+     */
 
-    private Animation rotateOpen ;//= AnimationUtils.loadAnimation(this.getContext(),R.anim.rotate_open_anim);
-    private Animation rotateClose ;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.rotate_close_anim);
-    private Animation fromBottom ;//= AnimationUtils.loadAnimation(this.getContext(),R.anim.from_bottom_anim);
-    private Animation toBottom ;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
+    private Animation rotateOpen;//= AnimationUtils.loadAnimation(this.getContext(),R.anim.rotate_open_anim);
+    private Animation rotateClose;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.rotate_close_anim);
+    private Animation fromBottom;//= AnimationUtils.loadAnimation(this.getContext(),R.anim.from_bottom_anim);
+    private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
 
 
     private Boolean pic;
@@ -108,7 +109,7 @@ public class profileFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainUser=Inicio.MainUser;
+        MainUser = Inicio.MainUser;
         if (getArguments() != null) {
 
         }
@@ -119,31 +120,29 @@ public class profileFragment extends Fragment{
     /**
      * La siguiente sección de métodos son para desplegar los botones ocultos
      */
-    private void deployMoreButtons(){
+    private void deployMoreButtons() {
         setVisibility(clicked);
         setAnimation(clicked);
         setClickable(clicked);
         clicked = !clicked;
     }
 
-    private void setVisibility(boolean clicked){
-        if(clicked){
+    private void setVisibility(boolean clicked) {
+        if (clicked) {
             edit_profile.setVisibility(View.INVISIBLE);
             edit_profile_picture.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             edit_profile.setVisibility(View.VISIBLE);
             edit_profile_picture.setVisibility(View.VISIBLE);
         }
     }
 
-    private void setAnimation(boolean clicked){
-        if(clicked){
+    private void setAnimation(boolean clicked) {
+        if (clicked) {
             edit_profile_picture.startAnimation(toBottom);
             edit_profile.startAnimation(toBottom);
             more_buttons.startAnimation(rotateClose);
-        }
-        else {
+        } else {
             edit_profile_picture.startAnimation(fromBottom);
             edit_profile.startAnimation(fromBottom);
             more_buttons.startAnimation(rotateOpen);
@@ -151,19 +150,20 @@ public class profileFragment extends Fragment{
     }
 
 
-    private void setClickable(boolean clicked){
-        if (clicked){
+    private void setClickable(boolean clicked) {
+        if (clicked) {
             edit_profile_picture.setClickable(true);
             edit_profile.setClickable(true);
-        }
-        else {
+        } else {
             edit_profile_picture.setClickable(false);
             edit_profile.setClickable(false);
         }
 
     }
 
-    /**==============================Hasta aquí los metodos para mostrar botones===============**/
+    /**
+     * ==============================Hasta aquí los metodos para mostrar botones===============
+     **/
 
 
     @Override
@@ -171,29 +171,29 @@ public class profileFragment extends Fragment{
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_profile, container, false);
-        storageRef= FirebaseStorage.getInstance().getReference();
-        userName=view.findViewById(R.id.username);
-        fullName=view.findViewById(R.id.fullname);
-        Email= view.findViewById(R.id.email);
-        birthdate=view.findViewById(R.id.birthdate);
-        Gender=view.findViewById(R.id.gender);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        storageRef = FirebaseStorage.getInstance().getReference();
+        userName = view.findViewById(R.id.username);
+        fullName = view.findViewById(R.id.fullname);
+        Email = view.findViewById(R.id.email);
+        birthdate = view.findViewById(R.id.birthdate);
+        Gender = view.findViewById(R.id.gender);
         userName.setText(MainUser.username);
-        fullName.setText(MainUser.firstName+" "+MainUser.lastName);
+        fullName.setText(MainUser.firstName + " " + MainUser.lastName);
         Email.setText(MainUser.email);
         birthdate.setText(MainUser.birthDate);
         Gender.setText(MainUser.gender);
-        rotateOpen = AnimationUtils.loadAnimation(getActivity(),R.anim.rotate_open_anim);
-        rotateClose = AnimationUtils.loadAnimation( getActivity(),R.anim.rotate_close_anim);
-        fromBottom = AnimationUtils.loadAnimation(getActivity(),R.anim.from_bottom_anim);
-        toBottom = AnimationUtils.loadAnimation( getActivity(),R.anim.to_bottom_anim);
+        rotateOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_open_anim);
+        rotateClose = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_close_anim);
+        fromBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.from_bottom_anim);
+        toBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.to_bottom_anim);
 
         more_buttons = view.findViewById(R.id.buttons_to_edit);
-        edit_profile =  view.findViewById(R.id.edit_profile);
+        edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
-        pic=false;
+        pic = false;
         /*d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -212,7 +212,6 @@ public class profileFragment extends Fragment{
         });*/
 
 
-
         more_buttons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,12 +223,12 @@ public class profileFragment extends Fragment{
          * Acciones que realiza el botón edit_proile picture
          */
 
-        if(pic==false) {
+        if (pic == false) {
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                        openGallery();
+                    openGallery();
 
 
                 }
@@ -246,7 +245,8 @@ public class profileFragment extends Fragment{
         return view;
 
     }
-    private void openGallery(){
+
+    private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
     }
@@ -256,7 +256,7 @@ public class profileFragment extends Fragment{
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == -1 && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
-            MainUser.picture=imageUri;
+            MainUser.picture = imageUri;
             profileImage.setImageURI(imageUri);
             StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
             filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -264,15 +264,14 @@ public class profileFragment extends Fragment{
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                     filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                         @Override
-                         public void onSuccess(Uri uri) {
-                              Uri downloadUrl = uri;
-                              String ubiPic = downloadUrl.toString();
-                              DatabaseReference fbRef= FirebaseDatabase.getInstance().getReference();
-                              fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
-                         }
-                     });
-
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUrl = uri;
+                            String ubiPic = downloadUrl.toString();
+                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
+                            fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                        }
+                    });
 
 
                 }
@@ -280,5 +279,7 @@ public class profileFragment extends Fragment{
         }
     }
 
-}/** Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
- * y el que edita el perfil, como el que edita sólo la foto */
+}/**
+ * Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
+ * y el que edita el perfil, como el que edita sólo la foto
+ */

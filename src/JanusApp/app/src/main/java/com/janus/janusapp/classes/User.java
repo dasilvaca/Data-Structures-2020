@@ -38,7 +38,7 @@ public class User implements Serializable {
 
     /**
      * ================================Sección de constructores=====================================
-     *
+     * <p>
      * Es u constructor con parametros en String
      */
 //Poner todos los atributos en el constructor String FirstName, String LastName,
@@ -91,16 +91,12 @@ public class User implements Serializable {
     }
 
     public void createProject(String name, int bdgt, String ctgr, String dscpt) {
-        Project newProject = new Project(name,this, bdgt, ctgr, dscpt);
+        Project newProject = new Project(name, this, bdgt, ctgr, dscpt);
         ownProjectList.append(newProject.name);
     }
 
     public boolean validateUsers(User userToValidate) {
-        if (this.username.equals(userToValidate.username) && this.password.equals(userToValidate.password)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.username.equals(userToValidate.username) && this.password.equals(userToValidate.password));
     }
 
     @Override
