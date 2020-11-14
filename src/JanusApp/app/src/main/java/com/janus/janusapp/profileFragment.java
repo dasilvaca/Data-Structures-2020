@@ -116,9 +116,13 @@ public class profileFragment extends Fragment{
 
     }
 
+    /**
+     * La siguiente sección de métodos son para desplegar los botones ocultos
+     */
     private void deployMoreButtons(){
         setVisibility(clicked);
         setAnimation(clicked);
+        setClickable(clicked);
         clicked = !clicked;
     }
 
@@ -158,6 +162,8 @@ public class profileFragment extends Fragment{
         }
 
     }
+
+    /**==============================Hasta aquí los metodos para mostrar botones===============**/
 
 
     @Override
@@ -213,6 +219,11 @@ public class profileFragment extends Fragment{
                 deployMoreButtons();
             }
         });
+
+        /**
+         * Acciones que realiza el botón edit_proile picture
+         */
+
         if(pic==false) {
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override

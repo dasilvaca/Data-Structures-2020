@@ -33,18 +33,13 @@ import static android.content.ContentValues.TAG;
 
 
 public class Login extends Activity {
-    //public static User MainUser=null;
     public EditText username;
     private EditText password;
-    public String usernameInDB;
-    public  String passwordInDB;
-    public Button loginNow;
     public Button goToSignUp;
     public CheckBox stayLogged;
     private CheckBox showPassword;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
-    //private Button LogInButton;
 
     /**
      *En la siguiente sección aparece el chechbox para mostrar o no la contraseña
@@ -81,83 +76,50 @@ public class Login extends Activity {
         });
 
         /**===============================================================================*/
+
+        /**
+         * se instancian los edit Text de username
+         */
         username = findViewById(R.id.newUserUsername);
         password = findViewById(R.id.newUserPassword);
-        //loginNow;
-        //LogInButton = findViewById(R.id.LogInButton);
         stayLogged=(CheckBox)findViewById(R.id.StayLogged);
-/*
-        DatabaseReference userNameReference = database.getReference("Users");
-        //if (userNameReference.child(username.toString()).getValue())
-        }
-*/
-        //DatabaseReference userNameReference = database.getReference("Users");
 
-
-        /*LogInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-                            Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
-                            //String LogInUsername = usernameEditText.getText().toString();
-                            String LogInPassword = password.getText().toString();
-                            username.setText(LogInPassword);
-                            //if (!LogInUsername.isEmpty() && !LogInPassword.isEmpty()){
-                                //if (firebaseReference.child("Users").child(LogInUsername).)
-                            }
-                        }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Login.this,"No Funciona", Toast.LENGTH_LONG);
-                    }
-                });
-                Toast.makeText(Login.this,"bfdbdf", Toast.LENGTH_LONG); }
-        });*/
     }
 
-    // Read from the database
-/*8
-DBusername.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            // This method is called once with the initial value and again
-            // whenever data at this location is updated.
-            String value = dataSnapshot.getValue(String.class);
-            Log.d(TAG, "Value is: " + value);
-        }
-        @Override
-        public void onCancelled(DatabaseError error) {
-            // Failed to read value
-            Log.w(TAG, "Failed to read value.", error.toException());
-        }
-    });*/
-
     /** Aquí se hacen las verificaciones de si las entradas son o no vacías
-     * y se procede a ingresar según el caso
+     * y se procede a ingresar según el caso, es decir, se hace lectura con la base de datos
+     * Conectandolo directo desde el XML
      */
 
     public void leer(View v){
         String LogInUsername = username.getText().toString();
+
+        /**
+         * Se verifica si el campo Usuario está vacío
+         */
+
         if (!LogInUsername.equals("")) {
+
+            /**
+             * El siguiente método hace la lectura de la base de datos, teniendo como llava el nombre de usuario ingresado
+             */
         firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                /**
+                 * Si el usuario ingresado existe, toma la cadena del campo Password
+                 */
                 if (snapshot.exists()){
-                    Toast.makeText(Login.this,"Funciona", Toast.LENGTH_LONG);
-                    //String LogInUsername = usernameEditText.getText().toString();
                     String LogInPassword = password.getText().toString();
+                    /**
+                     * Se hace la verificación con la contrasseña del usuario que se encontró con la ingresada por el usuario
+                     */
                     if(LogInPassword.equals(snapshot.child("password").getValue().toString())){
                         SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
                         SharedPreferences.Editor ed = p.edit();
-                        if(stayLogged.isChecked()){
+                        if(stayLogged.isChecked()) ed.putString("check","si");
 
-                           ed.putString("check","si");
 
-                        }
                         Intent vamoahome = new Intent(Login.this, Inicio.class);
                         User newUser = (User)snapshot.getValue(User.class);
                         newUser.ownProjectList=new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
@@ -196,7 +158,6 @@ DBusername.addValueEventListener(new ValueEventListener() {
 
                             }
                         });
-//Voy acá
                         Gson gson = new Gson();
                         String usuario = gson.toJson(newUser);
                         vamoahome.putExtra("usuario",usuario);
@@ -219,5 +180,5 @@ DBusername.addValueEventListener(new ValueEventListener() {
         }
         else Toast.makeText(Login.this, "El campo de Usuario está vacío", Toast.LENGTH_SHORT).show();
     }
-/**=========================================================================================================================*/
+/**=================Hasta aquí va el método de lectura e inicio de sesión en la DB================*/
 }

@@ -30,12 +30,17 @@ public class User implements Serializable {
     public String password;
     public Uri picture;
     public int wallet;
-    // Implementar wallet
     public String birthDate;
     public String gender;
     public DynamicArrayS ownProjectList = new DynamicArrayS();
     public DynamicArrayS followedProjects = new DynamicArrayS();
 
+
+    /**
+     * ================================Sección de constructores=====================================
+     *
+     * Es u constructor con parametros en String
+     */
 //Poner todos los atributos en el constructor String FirstName, String LastName,
     public User(String FirstName, String LastName, String email, String username,
                 String mobileNumber, String password, String birthDate, String gender) {
@@ -50,6 +55,10 @@ public class User implements Serializable {
         this.wallet = 0;
         //this.picture = ;
     }
+
+    /**
+     * Sobrecarga del método constructor que captura EditTexts
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public User(EditText FirstName, EditText LastName, EditText email, EditText username,
                 EditText mobileNumber, EditText password, EditText birthDate, Spinner gender) {
@@ -64,6 +73,9 @@ public class User implements Serializable {
         this.gender = gender.getSelectedItem().toString();
     }
 
+    /**
+     * =======================Hasta Aquí van los constructores de Usuario===========================
+     */
     public void setPicture(Uri picture) {
         this.picture = picture;
     }

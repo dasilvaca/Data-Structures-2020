@@ -21,12 +21,10 @@ import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 
 public class Inicio extends AppCompatActivity {
-    //TextView test;
     Gson gson;
     public static User MainUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //DatabaseReference mRootReference;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
         String MainUserStr = getIntent().getStringExtra("usuario");
@@ -38,22 +36,13 @@ public class Inicio extends AppCompatActivity {
         frag.setArguments(bundle);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-
-
-
         bottomnav.setSelectedItemId(R.id.homeFragment);
-
-/*
-        if(Login.MainUser==null){
-            MainUser=signup.MainUser;
-        }else{
-            MainUser=Login.MainUser;
-        }*/
-
         bottomnav.setSelectedItemId(R.id.homeFragment);
-
     }
 
+    /**
+     *  Bueno, aquí es donde se cambian por defecto las vistas de la aplicación. Por defecto, es decir, cuando arranca se manda a Home
+     */
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -82,6 +71,7 @@ public class Inicio extends AppCompatActivity {
                     return true;
                 }
             };
+    /** ==========================Hasta aquí el selector de fragment=============================**/
 
 
 
