@@ -129,25 +129,9 @@ DBusername.addValueEventListener(new ValueEventListener() {
         String LogInUsername = username.getText().toString();
         if (!LogInUsername.equals("")) {
 
-            firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    if (snapshot.exists()) {
-                        //String LogInUsername = usernameEditText.getText().toString();
-                        String LogInPassword = password.getText().toString();
-                        if (LogInPassword.equals(snapshot.child("password").getValue().toString())) {
-                            if (stayLogged.isChecked()) {
-                                SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor ed = p.edit();
-                                ed.putString("user", LogInUsername);
-                                ed.putString("password", LogInPassword);
-                                ed.commit();
-                            }
-                            Intent vamoahome = new Intent(Login.this, Inicio.class);
-                            MainUser = (User) snapshot.getValue(User.class);
 
-<<<<<<< HEAD
+
         firebaseReference.child("Users").child(LogInUsername).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -207,10 +191,6 @@ DBusername.addValueEventListener(new ValueEventListener() {
                         vamoahome.putExtra("usuario",usuario);
                         startActivity(vamoahome);
                         finish();
-=======
-                            startActivity(vamoahome);
-                            finish();
->>>>>>> d8fab91a32442054ef5022e8508f31afa2cdf28a
 
                         } else {
                             Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
