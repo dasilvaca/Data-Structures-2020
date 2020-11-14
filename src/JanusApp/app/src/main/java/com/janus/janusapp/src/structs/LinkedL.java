@@ -10,7 +10,7 @@
  * @author JUAN E Y JOSE LUIS
  */
 
-package com.janus.janusapp.structs;
+package structs;
 
 public class LinkedL<T> {
     public Node<T> Firstnode,Lastnode;
@@ -44,15 +44,15 @@ public class LinkedL<T> {
             while(cont<index){ //Si index!=0 se itera hasta llegar al nodo con ese índex
             n=n.next;  
             cont+=1;
-            }
+            }//nodo1.equals(nodo2);
             return n.data; //
         }
     }
     public int indexOf(T el){
         Node<T> ne=Firstnode;  //Copiamos la cabeza
-        int conta = 0;
+        int conta=0;
         while(true){  //Se itera por la lista, si el elemento actual coincide con el que se busca retorna el contador que sería el index
-            if(ne.data==el){
+            if(ne.data==el){  
                 return conta;
             }
             if(conta==(size-1)){ //Si el contador llega al máximo index el elemento no está en la lista
@@ -64,6 +64,7 @@ public class LinkedL<T> {
         System.out.println("No está en la lista");
         return -1;
     }
+
     public void append(T el){
         if(size==0){  //Si no hay elementos en la lista se añade y la cabeza y la cola apuntan al nuevo elemento
             Firstnode=new Node<T>(el);
