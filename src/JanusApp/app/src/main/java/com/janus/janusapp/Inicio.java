@@ -166,6 +166,9 @@ public class Inicio extends FragmentActivity {
                             selectedFragment = new newProjectFragment();
                             break;
                     }
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment,selectedFragment).commit();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
                     return true;
                 }

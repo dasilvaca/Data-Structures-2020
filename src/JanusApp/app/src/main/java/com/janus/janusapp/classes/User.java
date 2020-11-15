@@ -88,7 +88,6 @@ public class User implements Serializable {
      * @param wallet
      */
 
-
     public User(String firstName, String lastName, String email, String username, String mobileNumber, String password, String birthDate, String gender, String wallet) {
 
     }

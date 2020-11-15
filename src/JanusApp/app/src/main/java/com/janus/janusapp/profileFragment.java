@@ -200,7 +200,6 @@ public class profileFragment extends Fragment {
         toBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.to_bottom_anim);
         /**==================Aquí se instancian los botones peques================================*/
         more_buttons = view.findViewById(R.id.buttons_to_edit);
-        edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
         /**=============Se inicializa la base de datos con el método para traer la imagen=========*/
