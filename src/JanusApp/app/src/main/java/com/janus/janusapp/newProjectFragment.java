@@ -86,7 +86,7 @@ public class newProjectFragment extends Fragment {
         projectGoal=(EditText)view.findViewById(R.id.editTextGoal);
         projectName=(EditText)view.findViewById(R.id.editTextTextProjectName);
         projectDscr=(EditText)view.findViewById(R.id.editTextDscr);
-        String[] categories = {"Food","Software", "Technology", "Accesories","Art","Entertainment","Services","Science","Education","Other"};
+        String[] categories = {"Other","Software", "Technology", "Accesories","Art","Entertainment","Services","Science","Education","Food"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,categories);
         category.setAdapter(adapter);
         create=(Button)view.findViewById(R.id.Crear);
@@ -112,7 +112,7 @@ public class newProjectFragment extends Fragment {
                  newProject.followers=null;
                  dataBaseRef.child("Project").child((String)Pname).setValue(newProject);
                  dataBaseRef.child("Project").child(Pname).child("owners").setValue(subible);
-                 //dataBaseRef.child("Project").child(Pname).child("followers").setValue(subible);
+                 dataBaseRef.child("Project").child(Pname).child("followers").setValue(subible);
 
 
             }

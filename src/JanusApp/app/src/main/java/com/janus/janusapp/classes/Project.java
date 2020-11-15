@@ -27,6 +27,9 @@ public class Project implements Serializable {
         this.description=dscpt;
         
     }
+    public Project(){
+
+    }
     public Project(String name,User owner, int budg,String ctgr,String dscpt){
         this.name = name;
         this.budget = budg;

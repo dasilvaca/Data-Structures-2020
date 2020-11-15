@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,8 @@ import com.janus.janusapp.structs.DynamicArray;
 import com.janus.janusapp.structs.DynamicArrayS;
 import com.janus.janusapp.structs.Trie;
 
+import java.util.ArrayList;
+
 public class Inicio extends FragmentActivity {
     public static Trie<Project> projectTrie;
     public static Trie<User> userTrie;
@@ -45,8 +48,18 @@ public class Inicio extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
-        Food = Software = Technology = Accesories = Art = Entertainment = Services = Science = Education = Other = new DynamicArray<Project>();
+        {Food=new DynamicArray<Project>();
+        Software = new DynamicArray<Project>();
+        Technology = new DynamicArray<Project>();
+        Accesories = new DynamicArray<Project>();
+        Art = new DynamicArray<Project>();
+        Entertainment = new DynamicArray<Project>();
+        Services = new DynamicArray<Project>();
+        Science = new DynamicArray<Project>();
+        Education = new DynamicArray<Project>();
+        Other = new DynamicArray<Project>();}
         String MainUserStr = getIntent().getStringExtra("usuario");
+        Food.append(new Project());
         gson = new Gson();
         MainUser = gson.fromJson(MainUserStr, User.class);
         newProjectFragment frag = new newProjectFragment();
@@ -61,21 +74,27 @@ public class Inicio extends FragmentActivity {
         /**
          * =======================Sección comentada para pruebas del Joselo=====================================
          */
-      /*  firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
+        firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         User newUser = new User(ds.child("firstName").getValue().toString(),ds.child("lastName").getValue().toString(),
                                 ds.child("email").getValue().toString(),ds.child("username").getValue().toString(),
                                 ds.child("mobileNumber").getValue().toString(),ds.child("password").getValue().toString(),
                                 ds.child("birthDate").getValue().toString(),ds.child("gender").getValue().toString());
-                        newUser.ownProjectList=new DynamicArrayS((String[])ds.child("ownProjectList").getValue());
-                        newUser.followedProjects= new DynamicArrayS((String[])ds.child("followedProjects").getValue());
-                        userTrie.addWord(newUser.username,newUser);
+                        ArrayList<String> ownProjectArrayList = (ArrayList<String>) ds.child("ownProjectList").getValue();
+                        ArrayList<String> followedProjectsArrayList= (ArrayList<String>) ds.child("followedProjects").getValue();
+                        DynamicArrayS ownProjectList = new DynamicArrayS((String[]) ownProjectArrayList.toArray(new String[0]));
+                        DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
+                        newUser.ownProjectList= ownProjectList;
+                        newUser.followedProjects= followedProjects;
+                        if(ds.child("picture").exists()){
+                            newUser.picture=ds.child("picture").getValue().toString();
+                        }
+                        //userTrie.addWord(newUser.username,newUser);
                     }
                 }
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -85,15 +104,19 @@ public class Inicio extends FragmentActivity {
         firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                        Project newProject = new Project(ds.child("name").getValue().toString(),
-                                Integer.parseInt(ds.child("budget").getValue().toString()),
-                                ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
-                        newProject.followers = new DynamicArrayS((String[])ds.child("followers").getValue());
-                        newProject.owners = new DynamicArrayS((String[])ds.child("owners").getValue());
-                        projectTrie.addWord(newProject.name,newProject);
-                        switch(newProject.category){
+                Toast.makeText(Inicio.this,"JEJEJE",Toast.LENGTH_LONG).show();
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    Project newProject = new Project(ds.child("name").getValue().toString(),
+                            Integer.parseInt(ds.child("budget").getValue().toString()),
+                            ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
+                    ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
+                    ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    newProject.owners=owners;
+                    newProject.followers = followers;
+                    //projectTrie.addWord(newProject.name,newProject);
+                    /*    switch(newProject.category){
                             case("Food"):
                                 Food.append(newProject);
                                 break;
@@ -123,16 +146,16 @@ public class Inicio extends FragmentActivity {
                                 break;
                             default:
                                 break;
-                        }
+                        }*/
                     }
                 }
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
         // bottomnav.setSelectedItemId(R.id.homeFragment);
     }
 /**
