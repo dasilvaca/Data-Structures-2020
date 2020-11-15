@@ -28,6 +28,9 @@ import com.janus.janusapp.classes.User;
 import com.janus.janusapp.structs.DynamicArrayS;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static android.content.ContentValues.TAG;
 
@@ -118,46 +121,32 @@ public class Login extends Activity {
                             SharedPreferences p = getSharedPreferences("Check", Context.MODE_PRIVATE);
                             SharedPreferences.Editor ed = p.edit();
                             if (stayLogged.isChecked()) ed.putString("check", "si");
+                            String firstName= snapshot.child("firstName").getValue().toString();
+                            String lastName=snapshot.child("lastName").getValue().toString();
+                            String email=snapshot.child("email").getValue().toString();
+                            String username=snapshot.child("username").getValue().toString();
+                            String mobileNumber=snapshot.child("mobileNumber").getValue().toString();
+                            String password=snapshot.child("password").getValue().toString();
+                            int wallet=Integer.parseInt(snapshot.child("wallet").getValue().toString());
+                            String birthDate=snapshot.child("birthDate").getValue().toString();
+                            String gender=snapshot.child("gender").getValue().toString();
+                            ArrayList<String> ownProjectArrayList = (ArrayList<String>) snapshot.child("ownProjectList").getValue();
+                            ArrayList<String> followedProjectsArrayList= (ArrayList<String>) snapshot.child("followedProjects").getValue();
 
-
+                            DynamicArrayS ownProjectList = new DynamicArrayS((String[]) ownProjectArrayList.toArray(new String[0]));
+                            DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
+                            User newUser = new User(firstName,lastName,email,username,mobileNumber,password,birthDate,gender);
+                            newUser.wallet=wallet;
+                            newUser.ownProjectList=ownProjectList;
+                            newUser.followedProjects=followedProjects;
+                            if(snapshot.child("picture").exists()) {
+                                newUser.picture=snapshot.child("picture").getValue().toString();
+                            }
                             Intent vamoahome = new Intent(Login.this, Inicio.class);
-                            User newUser = (User) snapshot.getValue(User.class);
+
                             newUser.ownProjectList = new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
                             newUser.followedProjects = new DynamicArrayS();
-                            firebaseReference.child("Users").child(LogInUsername).child("followedProjects").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.exists()) {
-                                        int cont = 0;
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String project = ds.child("P" + cont).getValue().toString();
-                                            newUser.followedProjects.append(project);
-                                        }
-                                    }
-                                }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                            firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.exists()) {
-                                        int cont = 0;
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String project = ds.child("P+cont").getValue().toString();
-                                            newUser.ownProjectList.append((project));
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
                             Gson gson = new Gson();
                             String usuario = gson.toJson(newUser);
                             vamoahome.putExtra("usuario", usuario);

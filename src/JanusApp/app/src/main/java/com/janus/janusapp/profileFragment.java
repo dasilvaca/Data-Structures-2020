@@ -168,6 +168,7 @@ public class profileFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        storageRef=FirebaseStorage.getInstance().getReference();
         /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);
         fullName = view.findViewById(R.id.fullname);
@@ -198,7 +199,7 @@ public class profileFragment extends Fragment {
          **/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
-        d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
+        d.child("Users").child(MainUser.username).child("picture").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -275,7 +276,7 @@ public class profileFragment extends Fragment {
                                 String ubiPic = downloadUrl.toString();
                                 MainUser.picture = ubiPic;
                                 DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                                fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                                fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
                             }
                         });
 
