@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,7 @@ import java.util.Arrays;
 import static android.content.ContentValues.TAG;
 
 
-public class Login extends Activity {
+public class Login extends AppCompatActivity {
     public EditText username;
     private EditText password;
     public Button goToSignUp;
