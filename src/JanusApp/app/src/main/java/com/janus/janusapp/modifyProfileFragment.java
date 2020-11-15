@@ -1,6 +1,7 @@
 package com.janus.janusapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -43,6 +44,7 @@ public class modifyProfileFragment extends Activity {
     private EditText modifyEmail;
     private EditText modifyTelNumber;
     private DatabaseReference firebaseRef;
+    private Button deleteUserButton;
 
     private Button saveChangesButton;
 
@@ -77,12 +79,23 @@ public class modifyProfileFragment extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_modify_profile);
         mainUser = Inicio.MainUser;
+
         //if (getArguments() != null) {
         //  mParam1 = getArguments().getString(ARG_PARAM1);
         //mParam2 = getArguments().getString(ARG_PARAM2);
         //}
         firebaseRef = FirebaseDatabase.getInstance().getReference();
         //View view = inflater.inflate(R.layout.fragment_modify_profile, container, false);
+        deleteUserButton = findViewById(R.id.DeleteUserButton);
+        deleteUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseRef.child("Users").child(mainUser.username).removeValue();
+                Intent salgaseDeAhi = new Intent(modifyProfileFragment.this, Login.class);
+                startActivity(salgaseDeAhi);
+                finish();
+            }
+        });
         modifyUsername = findViewById(R.id.ModifyUsername);
         modifyPassword = findViewById(R.id.ModifyPassword);
         modifyEmail = findViewById(R.id.ModifyEmail);
