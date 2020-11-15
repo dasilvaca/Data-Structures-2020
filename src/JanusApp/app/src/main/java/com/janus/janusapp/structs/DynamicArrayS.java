@@ -4,7 +4,7 @@ import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 
 public class DynamicArrayS {
-    public String[] array;
+    public String[] array=new String[1];
     public int size, capacity;
 
     public DynamicArrayS() {
@@ -13,7 +13,7 @@ public class DynamicArrayS {
         array = new String[1];
     }
 
-    DynamicArrayS(String[] arreglo) {
+    public DynamicArrayS(String[] arreglo) {
         array = arreglo;
         size = arreglo.length - 1;
         capacity = arreglo.length;

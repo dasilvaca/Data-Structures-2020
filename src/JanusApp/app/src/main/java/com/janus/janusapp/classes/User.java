@@ -75,12 +75,19 @@ public class User implements Serializable {
 
     /**
      * =======================Hasta Aquí van los constructores de Usuario===========================
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param username
+     * @param mobileNumber
+     * @param password
+     * @param birthDate
+     * @param gender
+     * @param wallet
      */
-    public void setPicture(Uri picture) {
-        this.picture = picture;
-    }
 
-    public User() {
+
+    public User(String firstName, String lastName, String email, String username, String mobileNumber, String password, String birthDate, String gender, String wallet) {
 
     }
 
