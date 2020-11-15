@@ -59,5 +59,7 @@ public class Project implements Serializable {
         return s;
     }
 
+    public void changeOwnerName(String oldName, String newName){
 
+    }
 }

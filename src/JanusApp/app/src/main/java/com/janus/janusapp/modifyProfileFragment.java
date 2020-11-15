@@ -123,6 +123,9 @@ public class modifyProfileFragment extends Activity {
                 firebaseRef.child("Users").child(newUser.username).child("birthDate").setValue(mainUser.birthDate);
                 firebaseRef.child("Users").child(newUser.username).child("gender").setValue(mainUser.gender);
                 firebaseRef.child("Users").child(newUser.username).child("wallet").setValue(mainUser.wallet);
+                firebaseRef.child("Users").child(newUser.username).child("ownProjectList").setValue(mainUser.ownProjectList);
+                firebaseRef.child("Users").child(newUser.username).child("followedProjects").setValue(mainUser.followedProjects);
+
 
                 Map<String, Object> changeUserMap = new HashMap<>();
                 changeUserMap.put("username", modifyUsername.getText().toString());
