@@ -57,7 +57,6 @@ public class homeFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            ji=getArguments().getString("je","No");
         }
     }
 
@@ -65,9 +64,8 @@ public class homeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_home, container, false);
-        je=(TextView)view.findViewById(R.id.hh);
-        je.setText(ji);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         return view;
     }
 }

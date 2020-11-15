@@ -23,32 +23,33 @@ import com.janus.janusapp.classes.User;
 public class Inicio extends AppCompatActivity {
     Gson gson;
     public static User MainUser;
+    private Fragment selectedFragment =new  newProjectFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
         String MainUserStr = getIntent().getStringExtra("usuario");
-        gson=new Gson();
-        MainUser= gson.fromJson(MainUserStr,User.class);
+        gson = new Gson();
+        MainUser = gson.fromJson(MainUserStr, User.class);
         newProjectFragment frag = new newProjectFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("usuario",MainUserStr);
+        bundle.putString("usuario", MainUserStr);
         frag.setArguments(bundle);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-       // bottomnav.setSelectedItemId(R.id.homeFragment);
-        //bottomnav.setSelectedItemId(R.id.homeFragment);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
     }
 
     /**
-     *  Bueno, aquí es donde se cambian por defecto las vistas de la aplicación. Por defecto, es decir, cuando arranca se manda a Home
+     * Bueno, aquí es donde se cambian por defecto las vistas de la aplicación. Por defecto, es decir, cuando arranca se manda a Home
      */
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch(item.getItemId()){
+
+                    switch (item.getItemId()) {
                         case R.id.configFragment:
                             selectedFragment = new configFragment();
                             break;
@@ -64,15 +65,15 @@ public class Inicio extends AppCompatActivity {
                         case R.id.searchFragment:
                             selectedFragment = new searchFragment();
                             break;
-                        default: selectedFragment = new newProjectFragment();
-                        break;
+                        default:
+                            selectedFragment = new newProjectFragment();
+                            break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
                     return true;
                 }
             };
     /** ==========================Hasta aquí el selector de fragment=============================**/
-
 
 
 }

@@ -118,7 +118,8 @@
                 android:hint="@string/mobile_number"
 
                 android:inputType="phone"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                />
         </LinearLayout>
 
         <EditText

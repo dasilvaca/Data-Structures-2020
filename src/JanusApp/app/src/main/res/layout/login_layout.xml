@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,13 +39,14 @@
             android:id="@+id/newUserUsername"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
             android:hint="@string/username_or_email"
             android:inputType="textWebEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_spicifier"
-            android:autofillHints="" />
-
+            app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
+        <!--style="@style/Theme.JanusApp.text_boxes"-->
         <EditText
             android:id="@+id/newUserPassword"
             style="@style/Theme.JanusApp.text_boxes"
@@ -58,6 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/newUserUsername" />
+
         <LinearLayout
             android:id="@+id/buttonslog"
             android:layout_width="0dp"
@@ -107,15 +108,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:clickable="true"
+            android:focusable="true"
+
+
             android:text="@string/forgot_your_password"
-
-
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/buttonslog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonslog"
-            android:focusable="true" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonslog" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

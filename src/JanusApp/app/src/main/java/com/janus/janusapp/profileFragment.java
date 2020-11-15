@@ -62,8 +62,6 @@ public class profileFragment extends Fragment {
     private Animation rotateClose;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.rotate_close_anim);
     private Animation fromBottom;//= AnimationUtils.loadAnimation(this.getContext(),R.anim.from_bottom_anim);
     private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
-
-
     private Boolean pic;
     private StorageReference storageRef;
     private static final int PICK_IMAGE = 100;
@@ -113,8 +111,6 @@ public class profileFragment extends Fragment {
         if (getArguments() != null) {
 
         }
-
-
     }
 
     /**
@@ -172,39 +168,41 @@ public class profileFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        storageRef = FirebaseStorage.getInstance().getReference();
+        /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);
         fullName = view.findViewById(R.id.fullname);
         Email = view.findViewById(R.id.email);
         wallet = view.findViewById(R.id.dineros);
         birthdate = view.findViewById(R.id.birthdate);
         Gender = view.findViewById(R.id.gender);
+        /**=====================Luego los text View Inicializados se "Setean"=====================*/
         userName.setText(MainUser.username);
         fullName.setText(MainUser.firstName + " " + MainUser.lastName);
         Email.setText(MainUser.email);
         wallet.setText("$ " + MainUser.wallet);
-
         birthdate.setText(MainUser.birthDate);
         Gender.setText(MainUser.gender);
+        /**===================Aquí se instancian las animaciones==================================*/
         rotateOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_open_anim);
         rotateClose = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_close_anim);
         fromBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.to_bottom_anim);
-
+        /**==================Aquí se instancian los botones peques================================*/
         more_buttons = view.findViewById(R.id.buttons_to_edit);
         edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
+        /**=============Se inicializa la base de datos con el método para traer la imagen=========*/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
         d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
                     Glide.with(profileFragment.this).load(ubi).fitCenter().centerCrop().into(profileImage);
-                    pic=true;
+                    pic = true;
                 }
             }
 
@@ -236,52 +234,52 @@ public class profileFragment extends Fragment {
 
             });
         }
-            edit_profile.setOnClickListener(new View.OnClickListener() {
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        return view;
+
+    }
+
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == -1 && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            MainUser.picture = imageUri;
+            profileImage.setImageURI(imageUri);
+            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onClick(View v) {
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUrl = uri;
+                            String ubiPic = downloadUrl.toString();
+                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
+                            fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                        }
+                    });
+
 
                 }
             });
-
-
-            return view;
-
         }
-
-        private void openGallery(){
-            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-            startActivityForResult(gallery, PICK_IMAGE);
-        }
-
-        @Override
-        public void onActivityResult ( int requestCode, int resultCode, Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            if (resultCode == -1 && requestCode == PICK_IMAGE) {
-                imageUri = data.getData();
-                MainUser.picture = imageUri;
-                profileImage.setImageURI(imageUri);
-                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
-                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Uri downloadUrl = uri;
-                                String ubiPic = downloadUrl.toString();
-                                DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                                fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
-                            }
-                        });
-
-
-                    }
-                });
-            }
-        }
-
     }
+
+}
 
 
 /**
