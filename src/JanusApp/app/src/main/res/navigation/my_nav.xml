@@ -14,7 +14,7 @@
         android:id="@+id/configFragment2"
         android:name="com.janus.janusapp.configFragment"
         android:label="fragment_config"
-        tools:layout="@layout/fragment_config" />
+        tools:layout="@layout/fragment_modifyProfile" />
     <fragment
         android:id="@+id/newProjectFragment2"
         android:name="com.janus.janusapp.newProjectFragment"

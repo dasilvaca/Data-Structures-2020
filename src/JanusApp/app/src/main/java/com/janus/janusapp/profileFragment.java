@@ -1,5 +1,6 @@
 package com.janus.janusapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +9,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -29,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.janus.janusapp.classes.User;
+import android.support.v4.app.*;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -51,7 +56,6 @@ public class profileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private User MainUser;
     TextView userName, fullName, Email, Gender, birthdate, wallet;
-    Button fl;
 
     /**
      * Bueno, en esta sección hago las animaciones de los botopnes para la edición del perfil,
@@ -109,6 +113,7 @@ public class profileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         MainUser = Inicio.MainUser;
         if (getArguments() != null) {
 
@@ -172,6 +177,14 @@ public class profileFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        edit_profile = view.findViewById(R.id.edit_profile);
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), modifyProfileFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
         storageRef = FirebaseStorage.getInstance().getReference();
         userName = view.findViewById(R.id.username);
         fullName = view.findViewById(R.id.fullname);
@@ -192,7 +205,6 @@ public class profileFragment extends Fragment {
         toBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.to_bottom_anim);
 
         more_buttons = view.findViewById(R.id.buttons_to_edit);
-        edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
         /**
@@ -239,12 +251,6 @@ public class profileFragment extends Fragment {
 
             });
         }
-            edit_profile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
 
 
             return view;

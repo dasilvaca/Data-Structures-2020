@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -28,12 +31,14 @@ import com.janus.janusapp.structs.DynamicArray;
 import com.janus.janusapp.structs.DynamicArrayS;
 import com.janus.janusapp.structs.Trie;
 
-public class Inicio extends AppCompatActivity {
+public class Inicio extends FragmentActivity {
     public static Trie<Project> projectTrie;
     public static Trie<User> userTrie;
     public static DynamicArray<Project> Food,Software, Technology,Accesories,Art,Entertainment,Services,Science,Education,Other;
     Gson gson;
+    public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
+    public static FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,7 +157,9 @@ public class Inicio extends AppCompatActivity {
                         default: selectedFragment = new newProjectFragment();
                         break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment,selectedFragment).commit();
                     return true;
                 }
             };

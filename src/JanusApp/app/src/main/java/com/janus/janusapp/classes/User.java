@@ -91,6 +91,10 @@ public class User implements Serializable {
 
     }
 
+    public User(){
+
+    }
+
 
     public void followProject(Project project) {
         followedProjects.append(project.name);
