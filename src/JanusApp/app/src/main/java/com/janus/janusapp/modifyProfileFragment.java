@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,8 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.janus.janusapp.classes.User;
 
 import java.util.HashMap;
@@ -84,9 +88,21 @@ public class modifyProfileFragment extends Activity {
         modifyEmail = findViewById(R.id.ModifyEmail);
         modifyTelNumber = findViewById(R.id.ModifyTelNumber);
         currentProfileImage = findViewById(R.id.currentProfileImage);
-        Uri ubiUrl = Uri.parse(mainUser.picture);
-        Glide.with(modifyProfileFragment.this).load(ubiUrl).fitCenter().centerCrop().into(currentProfileImage);
+        DatabaseReference d = FirebaseDatabase.getInstance().getReference();
+        d.child("Users").child(mainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String ubi = snapshot.getValue().toString();
+                    Uri ubiUrl = Uri.parse(ubi);
+                    Glide.with(modifyProfileFragment.this).load(ubi).fitCenter().centerCrop().into(currentProfileImage);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
         modifyUsername.setText(mainUser.username);
         modifyPassword.setText(mainUser.password);
         modifyEmail.setText(mainUser.email);
