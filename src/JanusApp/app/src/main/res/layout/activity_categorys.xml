@@ -8,97 +8,103 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Categoría 1"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="48dp"
+        android:onClick="food"
+        android:text="Food"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="104dp"
-        android:text="Categoría 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="24dp"
+        android:onClick="software"
+        android:text="Software"
         app:layout_constraintStart_toEndOf="@+id/button5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/button5" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Categoría 3"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="12dp"
+        android:onClick="technology"
+        android:text="Tecnology"
         app:layout_constraintEnd_toEndOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Categoría 4"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:onClick="accesories"
+        android:text="Accesories"
         app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toTopOf="@+id/button7" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Categoría 7"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="12dp"
+        android:onClick="services"
+        android:text="Services"
         app:layout_constraintEnd_toEndOf="@+id/button13"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button13"
         app:layout_constraintTop_toBottomOf="@+id/button13" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Categoría 6"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:onClick="entertainment"
+        android:text="Entertainment"
         app:layout_constraintEnd_toEndOf="@+id/button8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button8"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toTopOf="@+id/button13" />
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Categoría 9"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:onClick="education"
+        android:text="Education"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button9"
         app:layout_constraintTop_toBottomOf="@+id/button9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Categoría 8"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:onClick="science"
+        android:text="Science"
         app:layout_constraintEnd_toEndOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button10"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toTopOf="@+id/button9" />
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Categoría 5"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="12dp"
+        android:onClick="art"
+        android:text="Art"
         app:layout_constraintEnd_toEndOf="@+id/button7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button7"
@@ -106,14 +112,12 @@
 
     <Button
         android:id="@+id/button14"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="44dp"
-        android:text="Otra"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:onClick="other"
+        android:text="Other"
+        app:layout_constraintBottom_toBottomOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="@+id/button12"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button12"
-        app:layout_constraintTop_toBottomOf="@+id/button12"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/button11" />
 </androidx.constraintlayout.widget.ConstraintLayout>

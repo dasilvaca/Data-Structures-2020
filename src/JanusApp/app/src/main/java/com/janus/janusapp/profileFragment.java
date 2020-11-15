@@ -195,6 +195,9 @@ public class profileFragment extends Fragment {
         edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
+        /**
+         * ==============================Aquí verifica si el usuario tiene imagen y si si la muestra===============
+         **/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
         d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
@@ -256,9 +259,11 @@ public class profileFragment extends Fragment {
         @Override
         public void onActivityResult ( int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode, resultCode, data);
+            /**
+             * ==============================Aquí sube la foto al storage y la muestra===============
+             **/
             if (resultCode == -1 && requestCode == PICK_IMAGE) {
                 imageUri = data.getData();
-                MainUser.picture = imageUri;
                 profileImage.setImageURI(imageUri);
                 StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
                 filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -270,6 +275,7 @@ public class profileFragment extends Fragment {
                             public void onSuccess(Uri uri) {
                                 Uri downloadUrl = uri;
                                 String ubiPic = downloadUrl.toString();
+                                MainUser.picture = ubiPic;
                                 DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
                                 fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
                             }
