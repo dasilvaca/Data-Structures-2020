@@ -52,6 +52,10 @@ public class Inicio extends AppCompatActivity {
         bottomnav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
+
+        /**
+         * =======================Sección comentada para pruebas del Joselo=====================================
+         */
       /*  firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,10 +129,10 @@ public class Inicio extends AppCompatActivity {
             }
         });*/
         // bottomnav.setSelectedItemId(R.id.homeFragment);
-        //bottomnav.setSelectedItemId(R.id.homeFragment);
->>>>>>>b6712c9bc7ac2165b44721b1de38e6389c82befb
     }
-
+/**
+ * ===========================================================================================================
+ */
     /**
      * Bueno, aquí es donde se cambian por defecto las vistas de la aplicación. Por defecto, es decir, cuando arranca se manda a Home
      */
