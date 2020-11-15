@@ -110,8 +110,6 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 ArrayList<String> subible = new ArrayList<>(Arrays.asList(newUser.followedProjects.array));
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).child("ownProjectList").setValue(subible);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).child("followedProjects").setValue(subible);
-
-                //dataBaseRef.child("Users").child(newUsername.getText().toString()).child("firstName").setValue("peo");
                 Intent vamoahome = new Intent(signup.this, Inicio.class);
 
                 Gson gson = new Gson();
