@@ -97,6 +97,7 @@ public class Inicio extends FragmentActivity {
                             newUser.picture=ds.child("picture").getValue().toString();
                         }
                         userTrie.addWord(newUser.username,newUser);
+
                     }
 
                 }
@@ -119,8 +120,15 @@ public class Inicio extends FragmentActivity {
                             ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
                     ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
-                    DynamicArrayS owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
-                    DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    DynamicArrayS owners=new DynamicArrayS();
+                    DynamicArrayS followers = new DynamicArrayS();
+                    if(ownersArrayList!=null){
+                         owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    }
+                    if(followersArrayList!=null){
+                        followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    }
+
                     newProject.owners=owners;
                     newProject.followers = followers;
                     projectTrie.addWord(newProject.name,newProject);
