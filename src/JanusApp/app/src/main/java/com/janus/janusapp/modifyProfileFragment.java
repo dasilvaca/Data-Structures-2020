@@ -112,6 +112,18 @@ public class modifyProfileFragment extends Activity {
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User newUser = new User(mainUser.firstName,mainUser.lastName,modifyEmail.getText().toString(),modifyUsername.getText().toString(),
+                        modifyTelNumber.getText().toString(),modifyPassword.getText().toString(),mainUser.birthDate,mainUser.gender);
+                firebaseRef.child("Users").child(newUser.username).child("firstName").setValue(mainUser.firstName);
+                firebaseRef.child("Users").child(newUser.username).child("lastName").setValue(mainUser.lastName);
+                firebaseRef.child("Users").child(newUser.username).child("email").setValue(newUser.email);
+                firebaseRef.child("Users").child(newUser.username).child("username").setValue(newUser.username);
+                firebaseRef.child("Users").child(newUser.username).child("mobileNumber").setValue(newUser.mobileNumber);
+                firebaseRef.child("Users").child(newUser.username).child("password").setValue(newUser.password);
+                firebaseRef.child("Users").child(newUser.username).child("birthDate").setValue(mainUser.birthDate);
+                firebaseRef.child("Users").child(newUser.username).child("gender").setValue(mainUser.gender);
+                firebaseRef.child("Users").child(newUser.username).child("wallet").setValue(mainUser.wallet);
+
                 Map<String, Object> changeUserMap = new HashMap<>();
                 changeUserMap.put("username", modifyUsername.getText().toString());
                 changeUserMap.put("password", modifyPassword.getText().toString());

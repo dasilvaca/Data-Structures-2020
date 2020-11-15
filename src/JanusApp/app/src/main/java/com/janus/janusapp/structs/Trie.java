@@ -1,6 +1,7 @@
 package com.janus.janusapp.structs;
 
-public class Trie<T> {
+public class
+Trie<T> {
 
     public LinkedL<TrieNode<T>> letters;
 
@@ -55,7 +56,7 @@ public class Trie<T> {
         int i = 0;
         do {
             char newLetter = wordToFind.charAt(i);
-            if (current != null) {
+            if (current != null && current.data != null) {
                 if (current.data.letter == newLetter) {
                     if (current.data.inObject != null) {
                         if (i == wordToFind.length() - 1) {
