@@ -48,6 +48,9 @@ public class Inicio extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+        /**
+         * Estos DynamicArray guardan los proyectos por
+         */
         {Food=new DynamicArray<Project>();
         Software = new DynamicArray<Project>();
         Technology = new DynamicArray<Project>();
@@ -72,7 +75,7 @@ public class Inicio extends FragmentActivity {
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
 
         /**
-         * =======================Sección comentada para pruebas del Joselo=====================================
+         * =======================Esta parte baja los usuarios y los mete en un trie=====================================
          */
         firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,7 +103,9 @@ public class Inicio extends FragmentActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        }); //Trae usuarios de la BD y los mete a un trie
+        }); /**
+         * =======================Esta parte baja los proyectos y los mete en un trie y los separa por categorías en los DynArrays=====================================
+         */
         firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
