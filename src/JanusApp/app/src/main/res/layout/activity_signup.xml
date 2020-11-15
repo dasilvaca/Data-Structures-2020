@@ -36,11 +36,11 @@
 
         <LinearLayout
             android:id="@+id/Nombres"
-            android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_form">
@@ -69,23 +69,23 @@
             android:id="@+id/newUserEmail"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
+            android:autofillHints=""
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Nombres"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@id/Nombres" />
 
         <EditText
             android:id="@+id/newUserEmailVerification"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
             android:hint="@string/verify_email"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/newUserEmail"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@id/newUserEmail" />
         <!-- Ver si se puede verificar mientras se escribe xd-->
         <LinearLayout
             android:id="@+id/OtherData"
@@ -101,10 +101,10 @@
                 android:id="@+id/newUserUsername"
                 style="@style/Theme.JanusApp.innerText_boxes"
                 android:layout_width="match_parent"
+                android:layout_marginBottom="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/username"
-                android:layout_marginBottom="0dp"
                 android:inputType="text"
                 android:textAllCaps="false" />
 
@@ -116,10 +116,8 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:hint="@string/mobile_number"
-
                 android:inputType="phone"
-                android:textAllCaps="false"
-                />
+                android:textAllCaps="false" />
         </LinearLayout>
 
         <EditText
@@ -127,8 +125,8 @@
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
             android:layout_marginTop="0dp"
-            android:hint="@string/password"
             android:layout_marginBottom="0dp"
+            android:hint="@string/password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"

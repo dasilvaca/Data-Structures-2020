@@ -193,6 +193,9 @@ public class profileFragment extends Fragment {
         edit_profile_picture = view.findViewById(R.id.edit_profile_picture);
         profileImage = view.findViewById(R.id.profilePicture);
         /**=============Se inicializa la base de datos con el método para traer la imagen=========*/
+        /**
+         * ==============================Aquí verifica si el usuario tiene imagen y si si la muestra===============
+         **/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
         d.child("Users").child(MainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
@@ -251,35 +254,38 @@ public class profileFragment extends Fragment {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == -1 && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            MainUser.picture = imageUri;
-            profileImage.setImageURI(imageUri);
-            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        @Override
+        public void onActivityResult ( int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            /**
+             * ==============================Aquí sube la foto al storage y la muestra===============
+             **/
+            if (resultCode == -1 && requestCode == PICK_IMAGE) {
+                imageUri = data.getData();
+                profileImage.setImageURI(imageUri);
+                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Uri downloadUrl = uri;
-                            String ubiPic = downloadUrl.toString();
-                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                            fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
-                        }
-                    });
+                        filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Uri downloadUrl = uri;
+                                String ubiPic = downloadUrl.toString();
+                                MainUser.picture = ubiPic;
+                                DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
+                                fbRef.child("Users").child(MainUser.username).child("PicUbi").setValue(ubiPic);
+                            }
+                        });
 
 
-                }
-            });
+                    }
+                });
+            }
         }
-    }
 
-}
+    }
 
 
 /**

@@ -25,6 +25,8 @@ import com.janus.janusapp.classes.*;
 import com.google.firebase.database.DatabaseReference;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class signup extends AppCompatActivity /*Activity*/ {
@@ -95,8 +97,21 @@ public class signup extends AppCompatActivity /*Activity*/ {
             public void onClick(View v) {
                 User newUser = new User(newUserFirstName, newUserLastName, newUserEmail, newUsername,
                         newUserMobilenumber, newUserPassword, newUserBirthDate, newUserGender);
-                dataBaseRef.child("Users").child(newUsername.getText().toString()).setValue(newUser);
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("firstName").setValue(newUserFirstName.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("lastName").setValue(newUserLastName.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("email").setValue(newUserEmail.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("username").setValue(newUsername.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("mobileNumber").setValue(newUserMobilenumber.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("password").setValue(newUserPassword.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("birthDate").setValue(newUserBirthDate.getText().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("gender").setValue(newUserGender.getSelectedItem().toString());
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("wallet").setValue(0);
+                newUser.followedProjects.append("0");  //Las siguientes 4 líneas son para evitar un error, no borrar Att:Joselo
+                ArrayList<String> subible = new ArrayList<>(Arrays.asList(newUser.followedProjects.array));
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("ownProjectList").setValue(subible);
+                dataBaseRef.child("Users").child(newUsername.getText().toString()).child("followedProjects").setValue(subible);
 
+                //dataBaseRef.child("Users").child(newUsername.getText().toString()).child("firstName").setValue("peo");
                 Intent vamoahome = new Intent(signup.this, Inicio.class);
 
                 Gson gson = new Gson();
