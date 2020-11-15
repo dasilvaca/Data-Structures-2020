@@ -112,7 +112,7 @@ public class newProjectFragment extends Fragment {
                  newProject.followers=null;
                  dataBaseRef.child("Project").child((String)Pname).setValue(newProject);
                  dataBaseRef.child("Project").child(Pname).child("owners").setValue(subible);
-                 //dataBaseRef.child("Project").child(Pname).child("followers").setValue(subible);
+                 dataBaseRef.child("Project").child(Pname).child("followers").setValue(subible);
 
 
             }

@@ -74,10 +74,9 @@ public class Inicio extends FragmentActivity {
         /**
          * =======================Sección comentada para pruebas del Joselo=====================================
          */
-        /*firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
+        firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(Inicio.this,"Hols",Toast.LENGTH_LONG).show();
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         User newUser = new User(ds.child("firstName").getValue().toString(),ds.child("lastName").getValue().toString(),
                                 ds.child("email").getValue().toString(),ds.child("username").getValue().toString(),
@@ -86,12 +85,12 @@ public class Inicio extends FragmentActivity {
                         ArrayList<String> ownProjectArrayList = (ArrayList<String>) ds.child("ownProjectList").getValue();
                         ArrayList<String> followedProjectsArrayList= (ArrayList<String>) ds.child("followedProjects").getValue();
                         DynamicArrayS ownProjectList = new DynamicArrayS((String[]) ownProjectArrayList.toArray(new String[0]));
-                        //DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
-                        //newUser.ownProjectList= ownProjectList;
-                        //newUser.followedProjects= followedProjects;
-                       // if(ds.child("picture").exists()){
-                         //   newUser.picture=ds.child("picture").getValue().toString();
-                        //}
+                        DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
+                        newUser.ownProjectList= ownProjectList;
+                        newUser.followedProjects= followedProjects;
+                        if(ds.child("picture").exists()){
+                            newUser.picture=ds.child("picture").getValue().toString();
+                        }
                         //userTrie.addWord(newUser.username,newUser);
                     }
                 }
@@ -102,18 +101,22 @@ public class Inicio extends FragmentActivity {
 
             }
         }); //Trae usuarios de la BD y los mete a un trie
-        /*firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
+        firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                        Project newProject = new Project(ds.child("name").getValue().toString(),
-                                Integer.parseInt(ds.child("budget").getValue().toString()),
-                                ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
-                        newProject.followers = new DynamicArrayS((String[])ds.child("followers").getValue());
-                        newProject.owners = new DynamicArrayS((String[])ds.child("owners").getValue());
-                        projectTrie.addWord(newProject.name,newProject);
-                        switch(newProject.category){
+                Toast.makeText(Inicio.this,"JEJEJE",Toast.LENGTH_LONG).show();
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    Project newProject = new Project(ds.child("name").getValue().toString(),
+                            Integer.parseInt(ds.child("budget").getValue().toString()),
+                            ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
+                    ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
+                    ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    newProject.owners=owners;
+                    newProject.followers = followers;
+                    //projectTrie.addWord(newProject.name,newProject);
+                    /*    switch(newProject.category){
                             case("Food"):
                                 Food.append(newProject);
                                 break;
@@ -143,16 +146,16 @@ public class Inicio extends FragmentActivity {
                                 break;
                             default:
                                 break;
-                        }
+                        }*/
                     }
                 }
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
         // bottomnav.setSelectedItemId(R.id.homeFragment);
     }
 /**
