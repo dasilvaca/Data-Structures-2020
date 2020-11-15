@@ -73,6 +73,8 @@ public class User implements Serializable {
         this.gender = gender.getSelectedItem().toString();
     }
 
+    public User(){};
+
     /**
      * =======================Hasta Aquí van los constructores de Usuario===========================
      * @param firstName
