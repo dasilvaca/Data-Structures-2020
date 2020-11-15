@@ -37,7 +37,7 @@ import java.util.ArrayList;
 public class Inicio extends FragmentActivity {
     public static Trie<Project> projectTrie;
     public static Trie<User> userTrie;
-    public static DynamicArray<Project> Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
+    public static DynamicArray<String> Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
     Gson gson;
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
@@ -49,20 +49,21 @@ public class Inicio extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
         /**
-         * Estos DynamicArray guardan los proyectos por
+         * Estos DynamicArray guardan los proyectos por categorías
          */
-        {Food=new DynamicArray<Project>();
-        Software = new DynamicArray<Project>();
-        Technology = new DynamicArray<Project>();
-        Accesories = new DynamicArray<Project>();
-        Art = new DynamicArray<Project>();
-        Entertainment = new DynamicArray<Project>();
-        Services = new DynamicArray<Project>();
-        Science = new DynamicArray<Project>();
-        Education = new DynamicArray<Project>();
-        Other = new DynamicArray<Project>();}
+        projectTrie=new Trie<Project>();
+        userTrie=new Trie<User>();
+        {Food=new DynamicArray<String>();
+        Software = new DynamicArray<String>();
+        Technology = new DynamicArray<String>();
+        Accesories = new DynamicArray<String>();
+        Art = new DynamicArray<String>();
+        Entertainment = new DynamicArray<String>();
+        Services = new DynamicArray<String>();
+        Science = new DynamicArray<String>();
+        Education = new DynamicArray<String>();
+        Other = new DynamicArray<String>();}
         String MainUserStr = getIntent().getStringExtra("usuario");
-        Food.append(new Project());
         gson = new Gson();
         MainUser = gson.fromJson(MainUserStr, User.class);
         newProjectFragment frag = new newProjectFragment();
@@ -80,6 +81,7 @@ public class Inicio extends FragmentActivity {
         firebaseref.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         User newUser = new User(ds.child("firstName").getValue().toString(),ds.child("lastName").getValue().toString(),
                                 ds.child("email").getValue().toString(),ds.child("username").getValue().toString(),
@@ -94,8 +96,9 @@ public class Inicio extends FragmentActivity {
                         if(ds.child("picture").exists()){
                             newUser.picture=ds.child("picture").getValue().toString();
                         }
-                        //userTrie.addWord(newUser.username,newUser);
+                        userTrie.addWord(newUser.username,newUser);
                     }
+
                 }
 
 
@@ -109,7 +112,7 @@ public class Inicio extends FragmentActivity {
         firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(Inicio.this,"JEJEJE",Toast.LENGTH_LONG).show();
+
                 for(DataSnapshot ds : snapshot.getChildren()){
                     Project newProject = new Project(ds.child("name").getValue().toString(),
                             Integer.parseInt(ds.child("budget").getValue().toString()),
@@ -120,38 +123,38 @@ public class Inicio extends FragmentActivity {
                     DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
                     newProject.owners=owners;
                     newProject.followers = followers;
-                    //projectTrie.addWord(newProject.name,newProject);
-                    /*    switch(newProject.category){
+                    projectTrie.addWord(newProject.name,newProject);
+                        switch(newProject.category){
                             case("Food"):
-                                Food.append(newProject);
+                                Food.append(newProject.name);
                                 break;
                             case("Software"):
-                                Software.append(newProject);
+                                Software.append(newProject.name);
                                 break;
                             case("Technology"):
-                                Technology.append(newProject);
+                                Technology.append(newProject.name);
                                 break;
                             case("Art"):
-                                Art.append(newProject);
+                                Art.append(newProject.name);
                                 break;
                             case("Entertainment"):
-                                Entertainment.append(newProject);
+                                Entertainment.append(newProject.name);
                                 break;
                             case("Services"):
-                                Services.append(newProject);
+                                Services.append(newProject.name);
                                 break;
                             case("Science"):
-                                Science.append(newProject);
+                                Science.append(newProject.name);
                                 break;
                             case("Education"):
-                                Education.append(newProject);
+                                Education.append(newProject.name);
                                 break;
                             case("Other"):
-                                Other.append(newProject);
+                                Other.append(newProject.name);
                                 break;
                             default:
                                 break;
-                        }*/
+                        }
                     }
                 }
 

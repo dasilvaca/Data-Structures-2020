@@ -1,7 +1,6 @@
 package com.janus.janusapp.structs;
 
-public class
-Trie<T> {
+public class Trie<T> {
 
     public LinkedL<TrieNode<T>> letters;
 
