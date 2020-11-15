@@ -33,7 +33,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.janus.janusapp.classes.User;
-import android.support.v4.app.*;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -173,6 +172,13 @@ public class profileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         edit_profile = view.findViewById(R.id.edit_profile);
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), modifyProfileFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
         storageRef = FirebaseStorage.getInstance().getReference();
         /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);

@@ -78,8 +78,8 @@ public class modifyProfileFragment extends Activity {
         setContentView(R.layout.fragment_modify_profile);
         mainUser = Inicio.MainUser;
         //if (getArguments() != null) {
-          //  mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
+        //  mParam1 = getArguments().getString(ARG_PARAM1);
+        //mParam2 = getArguments().getString(ARG_PARAM2);
         //}
         firebaseRef = FirebaseDatabase.getInstance().getReference();
         //View view = inflater.inflate(R.layout.fragment_modify_profile, container, false);

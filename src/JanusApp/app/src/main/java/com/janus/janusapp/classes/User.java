@@ -73,6 +73,8 @@ public class User implements Serializable {
         this.gender = gender.getSelectedItem().toString();
     }
 
+    public User(){};
+
     /**
      * =======================Hasta Aquí van los constructores de Usuario===========================
      * @param firstName
@@ -87,10 +89,6 @@ public class User implements Serializable {
      */
 
     public User(String firstName, String lastName, String email, String username, String mobileNumber, String password, String birthDate, String gender, String wallet) {
-
-    }
-
-    public User(){
 
     }
 
