@@ -40,12 +40,13 @@
             android:id="@+id/newUserUsername"
             style="@style/Theme.JanusApp.text_boxes"
             android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
             android:hint="@string/username_or_email"
             android:inputType="textWebEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_spicifier"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@id/login_spicifier" />
 
         <EditText
             android:id="@+id/newUserPassword"
@@ -107,15 +108,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:clickable="true"
+            android:focusable="true"
             android:text="@string/forgot_your_password"
-
-
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/buttonslog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonslog"
-            android:focusable="true" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonslog" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

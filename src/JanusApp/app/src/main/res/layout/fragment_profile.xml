@@ -7,9 +7,9 @@
     tools:context=".profileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scrollableView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollableView">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/profilePicture"
@@ -31,8 +31,8 @@
             android:layout_marginBottom="4dp"
             android:backgroundTint="#FFFFFF"
             android:focusable="true"
-            android:tint="@color/azulito"
             android:src="@drawable/ic_baseline_add_24"
+            android:tint="@color/azulito"
             app:backgroundTint="@color/azulito"
             app:borderWidth="0.5dp"
             app:layout_constraintBottom_toBottomOf="@id/profilePicture"
@@ -56,18 +56,17 @@
             app:layout_constraintStart_toStartOf="@+id/buttons_to_edit" />
 
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginEnd="8dp"
-            android:focusable="true"
             android:layout_marginBottom="4dp"
             android:backgroundTint="#FFFFFF"
+            android:focusable="true"
             android:src="@drawable/ic_baseline_edit_24"
+            android:visibility="invisible"
             app:backgroundTint="@color/azulito"
             app:borderWidth="0.5dp"
             app:fabSize="mini"

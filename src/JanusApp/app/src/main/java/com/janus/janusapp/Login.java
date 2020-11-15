@@ -124,7 +124,7 @@ public class Login extends Activity {
                             User newUser = (User) snapshot.getValue(User.class);
                             newUser.ownProjectList = new DynamicArrayS(); //Esto lo hago para evitar un error, Att: Joselo
                             newUser.followedProjects = new DynamicArrayS();
-                            firebaseReference.child("Users").child(LogInUsername).child("followedProjects").child("Projects").addValueEventListener(new ValueEventListener() {
+                            firebaseReference.child("Users").child(LogInUsername).child("followedProjects").addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.exists()) {
@@ -141,7 +141,7 @@ public class Login extends Activity {
 
                                 }
                             });
-                            firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").child("Projects").addValueEventListener(new ValueEventListener() {
+                            firebaseReference.child("Users").child(LogInUsername).child("ownProjectList").addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.exists()) {

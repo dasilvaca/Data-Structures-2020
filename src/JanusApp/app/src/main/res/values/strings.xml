@@ -28,9 +28,7 @@
     <string name="show_password">Show password</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="username_or_email">Username or email</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- Strings de profile-->
     <string name="Folder_Invest_Profile">Mis Inversiones</string>
     <string name="Folder_My_Projects_Profile">Mis Proyectos</string>
     <string name="signup_uwu">Signup UwU</string>
@@ -45,4 +43,5 @@
     <string name="verify_email">verify email</string>
     <string name="last_name">Last Name</string>
     <string name="username">Username</string>
+    <string name="janus">Janus</string>
 </resources>
