@@ -113,4 +113,12 @@ public class User implements Serializable {
                 + " Projects: " + ownProjectList.toString() + " Followed: " + followedProjects.toString();
         return s;
     }
+
+    public void EditSomeUserInfo(EditText username, EditText password, EditText email, EditText phone){
+        this.email = email.getText().toString();
+        this.username = username.getText().toString();
+        this.mobileNumber =phone.getText().toString();
+        this.password = password.getText().toString();
+
+    }
 }

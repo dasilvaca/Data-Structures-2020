@@ -133,7 +133,6 @@ public class Login extends AppCompatActivity {
                             String gender=snapshot.child("gender").getValue().toString();
                             ArrayList<String> ownProjectArrayList = (ArrayList<String>) snapshot.child("ownProjectList").getValue();
                             ArrayList<String> followedProjectsArrayList= (ArrayList<String>) snapshot.child("followedProjects").getValue();
-
                             DynamicArrayS ownProjectList = new DynamicArrayS((String[]) ownProjectArrayList.toArray(new String[0]));
                             DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
                             User newUser = new User(firstName,lastName,email,username,mobileNumber,password,birthDate,gender);

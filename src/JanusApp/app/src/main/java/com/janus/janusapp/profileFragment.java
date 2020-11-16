@@ -42,6 +42,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link profileFragment#newInstance} factory method to
@@ -68,7 +69,7 @@ public class profileFragment extends Fragment {
     private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
     private Boolean pic;
     private StorageReference storageRef;
-    private static final int PICK_IMAGE = 100;
+    private static final int PICK_IMAGE = 101;
     private Uri imageUri;
     private ImageView profileImage;
     private FloatingActionButton more_buttons;
@@ -198,9 +199,10 @@ public class profileFragment extends Fragment {
         birthdate = view.findViewById(R.id.birthdate);
         Gender = view.findViewById(R.id.gender);
         /**=====================Luego los text View Inicializados se "Setean"=====================*/
-        userName.setText(MainUser.username);
+
         fullName.setText(MainUser.firstName + " " + MainUser.lastName);
         Email.setText(MainUser.email);
+        userName.setText(MainUser.username);
         wallet.setText("$ " + MainUser.wallet);
         birthdate.setText(MainUser.birthDate);
         Gender.setText(MainUser.gender);
@@ -225,7 +227,7 @@ public class profileFragment extends Fragment {
                 if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
-                    Glide.with(profileFragment.this).load(ubi).fitCenter().centerCrop().into(profileImage);
+                    Glide.with(getActivity()).load(ubi).fitCenter().centerCrop().into(profileImage);
                     pic = true;
                 }
             }
@@ -245,7 +247,7 @@ public class profileFragment extends Fragment {
         });
 
         /**
-         * ===========================cciones que realiza el botón edit_proile picture================
+         * ==========================Acciones que realiza el botón edit_proile picture================
          */
 
 
@@ -258,22 +260,14 @@ public class profileFragment extends Fragment {
 
             });
         }
-        edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), modifyProfileFragment.class);
-                getActivity().startActivity(intent);
-            }
-        });
+
         /**===========================TabListener para las tabs de los listviews=================**/
 
         TabLayout.Tab pestañáSeguidos = tabLayout.getTabAt(0);
         TabLayout.Tab pestañáPropios = tabLayout.getTabAt(1);
 
 
-
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -304,22 +298,8 @@ public class profileFragment extends Fragment {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 /**===============================================================================================**/
-    /**
-     * =====================================Apertura de Gallery======================================
-     **/
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        /**==============================Aquí sube la foto al storage y la muestra===========**/
-        if (resultCode == -1 && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            profileImage.setImageURI(imageUri);
-            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-<<<<<<< HEAD
+
         @Override
         public void onActivityResult ( int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode, resultCode, data);
@@ -329,6 +309,7 @@ public class profileFragment extends Fragment {
             if (resultCode == -1 && requestCode == PICK_IMAGE) {
                 imageUri = data.getData();
                 profileImage.setImageURI(imageUri);
+                profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
                 filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -350,31 +331,5 @@ public class profileFragment extends Fragment {
                 });
             }
         }
-=======
-                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Uri downloadUrl = uri;
-                            String ubiPic = downloadUrl.toString();
-                            MainUser.picture = ubiPic;
-                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                            fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
-                        }
-                    });
->>>>>>> d4b3ec6f89afc13ca114cfcae8d827273ef998f3
-
-
-                }
-            });
-        }
     }
     /**==========================================================================================**/
-
-
-}
-
-
-/**
- * Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
- * y el que edita el perfil, como el que edita sólo la foto
- */

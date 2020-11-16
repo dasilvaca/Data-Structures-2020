@@ -171,7 +171,7 @@ public class newProjectFragment extends Fragment {
         });
         return view;
     }
-
+/**====================Open Gallery :v =====================================**/
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
@@ -185,7 +185,7 @@ public class newProjectFragment extends Fragment {
         if (resultCode == -1 && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             projectImageView.setImageURI(imageUri);
-
+            projectImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
     }
 
