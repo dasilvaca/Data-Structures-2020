@@ -19,7 +19,8 @@ public class Project implements Serializable {
     public int budget;
     public String category;
     public String description;
-    public String picture;
+    public String picture=null;
+    public String upicture=null;
     public Project(String name, DynamicArrayS owners, int budg,String ctgr,String dscpt){
         this.name = name;
         this.owners = owners;

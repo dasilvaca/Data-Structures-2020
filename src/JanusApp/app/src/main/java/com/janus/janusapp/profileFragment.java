@@ -219,13 +219,13 @@ public class profileFragment extends Fragment {
          **/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
-        d.child("Users").child(MainUser.username).child("picture").addValueEventListener(new ValueEventListener() {
+        d.child("Users").child(MainUser.username).child("upicture").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
-                    Glide.with(profileFragment.this).load(ubi).fitCenter().centerCrop().into(profileImage);
+                    Glide.with(profileFragment.this).load(ubiUrl).fitCenter().centerCrop().into(profileImage);
                     pic = true;
                 }
             }
@@ -271,9 +271,7 @@ public class profileFragment extends Fragment {
         TabLayout.Tab pestañáPropios = tabLayout.getTabAt(1);
 
 
-
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -319,38 +317,6 @@ public class profileFragment extends Fragment {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-<<<<<<< HEAD
-        @Override
-        public void onActivityResult ( int requestCode, int resultCode, Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            /**
-             * ==============================Aquí sube la foto al storage y la muestra===============
-             **/
-            if (resultCode == -1 && requestCode == PICK_IMAGE) {
-                imageUri = data.getData();
-                profileImage.setImageURI(imageUri);
-                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
-                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Uri downloadUrl = uri;
-                                String ubiPic = downloadUrl.toString();
-                                MainUser.picture = ubiPic;
-                                DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                                fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
-                            }
-                        });
-
-
-                    }
-                });
-            }
-        }
-=======
                     filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -359,19 +325,19 @@ public class profileFragment extends Fragment {
                             MainUser.picture = ubiPic;
                             DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
                             fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
+                            fbRef.child("Users").child(MainUser.username).child("upicture").setValue(imageUri.toString());
                         }
                     });
->>>>>>> d4b3ec6f89afc13ca114cfcae8d827273ef998f3
 
 
                 }
             });
         }
     }
-    /**==========================================================================================**/
 
 
 }
+
 
 
 /**

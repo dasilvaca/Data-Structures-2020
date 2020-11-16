@@ -102,7 +102,7 @@ public class modifyProfileFragment extends Activity {
         modifyTelNumber = findViewById(R.id.ModifyTelNumber);
         currentProfileImage = findViewById(R.id.currentProfileImage);
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
-        d.child("Users").child(mainUser.username).child("PicUbi").addValueEventListener(new ValueEventListener() {
+        d.child("Users").child(mainUser.username).child("picture").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

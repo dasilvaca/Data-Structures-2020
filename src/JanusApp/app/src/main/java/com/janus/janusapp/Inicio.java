@@ -37,7 +37,7 @@ import java.util.ArrayList;
 public class Inicio extends FragmentActivity {
     public static Trie<Project> projectTrie;
     public static Trie<User> userTrie;
-    public static DynamicArray<String> Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
+    public static DynamicArrayS Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
     Gson gson;
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
@@ -54,16 +54,16 @@ public class Inicio extends FragmentActivity {
         projectTrie = new Trie<Project>();
         userTrie = new Trie<User>();
         {
-            Food = new DynamicArray<String>();
-            Software = new DynamicArray<String>();
-            Technology = new DynamicArray<String>();
-            Accesories = new DynamicArray<String>();
-            Art = new DynamicArray<String>();
-            Entertainment = new DynamicArray<String>();
-            Services = new DynamicArray<String>();
-            Science = new DynamicArray<String>();
-            Education = new DynamicArray<String>();
-            Other = new DynamicArray<String>();
+            Food = new DynamicArrayS();
+            Software = new DynamicArrayS();
+            Technology = new DynamicArrayS();
+            Accesories = new DynamicArrayS();
+            Art = new DynamicArrayS();
+            Entertainment = new DynamicArrayS();
+            Services = new DynamicArrayS();
+            Science = new DynamicArrayS();
+            Education = new DynamicArrayS();
+            Other = new DynamicArrayS();
         }
         String MainUserStr = getIntent().getStringExtra("usuario");
         gson = new Gson();
@@ -119,12 +119,25 @@ public class Inicio extends FragmentActivity {
                     Project newProject = new Project(ds.child("name").getValue().toString(),
                             Integer.parseInt(ds.child("budget").getValue().toString()),
                             ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
+
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
-                    ArrayList<String> followersArrayList = (ArrayList<String>) ds.child("followers").getValue();
-                    DynamicArrayS owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
-                    DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
-                    newProject.owners = owners;
+                    ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners=new DynamicArrayS();
+                    DynamicArrayS followers = new DynamicArrayS();
+                    if(ownersArrayList!=null){
+                         owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    }
+                    if(followersArrayList!=null){
+                        followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    }
+                    newProject.owners=owners;
                     newProject.followers = followers;
+                    if (ds.child("picture").exists()) {
+                        newProject.picture = ds.child("picture").getValue().toString();
+                    }
+                    if (ds.child("upicture").exists()) {
+                        newProject.upicture = ds.child("upicture").getValue().toString();
+                    }
                     projectTrie.addWord(newProject.name, newProject);
                     switch (newProject.category) {
                         case ("Food"):

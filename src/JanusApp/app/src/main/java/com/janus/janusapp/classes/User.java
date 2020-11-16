@@ -28,7 +28,7 @@ public class User implements Serializable {
     public String username;
     public String mobileNumber;
     public String password;
-    public String picture;
+    public String picture=null;
     public int wallet;
     public String birthDate;
     public String gender;
