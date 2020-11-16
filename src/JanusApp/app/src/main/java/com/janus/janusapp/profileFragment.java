@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -74,6 +75,8 @@ public class profileFragment extends Fragment {
     private FloatingActionButton edit_profile_picture;
     private FloatingActionButton edit_profile;
     private boolean clicked = false;
+
+    private TabLayout tabLayout;
 
     /*=======================================================================================================/
 
@@ -172,7 +175,7 @@ public class profileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        storageRef=FirebaseStorage.getInstance().getReference();
+        storageRef = FirebaseStorage.getInstance().getReference();
 
         edit_profile = view.findViewById(R.id.edit_profile);
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +186,9 @@ public class profileFragment extends Fragment {
             }
         });
 
+
+        /**---------------------------- Inicialización del TabLayout ============================**/
+        tabLayout = view.findViewById(R.id.selector);
 
         /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);
@@ -230,7 +236,7 @@ public class profileFragment extends Fragment {
             }
         });
 
-
+        /**================================Botón que trae más botonoes (Click listener================**/
         more_buttons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,7 +245,7 @@ public class profileFragment extends Fragment {
         });
 
         /**
-         * Acciones que realiza el botón edit_proile picture
+         * ===========================cciones que realiza el botón edit_proile picture================
          */
 
 
@@ -259,17 +265,61 @@ public class profileFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+        /**===========================TabListener para las tabs de los listviews=================**/
 
+        TabLayout.Tab pestañáSeguidos = tabLayout.getTabAt(0);
+        TabLayout.Tab pestañáPropios = tabLayout.getTabAt(1);
+
+
+
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         return view;
 
     }
 
+    /**=========================Fin del OnCreateView=============================**/
+
+    /**
+     * ================================OpenGallery Function==========================================
+     **/
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
     }
+/**===============================================================================================**/
+    /**
+     * =====================================Apertura de Gallery======================================
+     **/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**==============================Aquí sube la foto al storage y la muestra===========**/
+        if (resultCode == -1 && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            profileImage.setImageURI(imageUri);
+            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+<<<<<<< HEAD
         @Override
         public void onActivityResult ( int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode, resultCode, data);
@@ -300,8 +350,28 @@ public class profileFragment extends Fragment {
                 });
             }
         }
+=======
+                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUrl = uri;
+                            String ubiPic = downloadUrl.toString();
+                            MainUser.picture = ubiPic;
+                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
+                            fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
+                        }
+                    });
+>>>>>>> d4b3ec6f89afc13ca114cfcae8d827273ef998f3
 
+
+                }
+            });
+        }
     }
+    /**==========================================================================================**/
+
+
+}
 
 
 /**
