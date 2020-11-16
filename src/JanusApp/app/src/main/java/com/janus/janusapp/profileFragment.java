@@ -1,29 +1,24 @@
 package com.janus.janusapp;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,8 +32,6 @@ import com.janus.janusapp.classes.User;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -70,7 +63,7 @@ public class profileFragment extends Fragment {
     private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
     private Boolean pic;
     private StorageReference storageRef;
-    private static final int PICK_IMAGE = 101;
+    private static final int PICK_IMAGE = 100;
     private Uri imageUri;
     private ImageView profileImage;
     private FloatingActionButton more_buttons;
@@ -79,6 +72,9 @@ public class profileFragment extends Fragment {
     private boolean clicked = false;
 
     private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TabItem ownProjectsLists, userFollowProjets;
+    private PageController pageController;
 
     /*=======================================================================================================/
 
@@ -191,6 +187,12 @@ public class profileFragment extends Fragment {
 
         /**---------------------------- Inicialización del TabLayout ============================**/
         tabLayout = view.findViewById(R.id.selector);
+        ownProjectsLists = view.findViewById(R.id.OwnProjectsList);
+        userFollowProjets = view.findViewById(R.id.UserFollowProjects);
+        viewPager = view.findViewById(R.id.MyPager);
+
+        pageController = new PageController(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pageController);
 
         /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);
@@ -272,7 +274,13 @@ public class profileFragment extends Fragment {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
+                viewPager.setCurrentItem(tab.getPosition());
+                if(tab.getPosition()==0){
+                    pageController.notifyDataSetChanged();
+                }
+                if(tab.getPosition()==1){
+                    pageController.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -284,6 +292,8 @@ public class profileFragment extends Fragment {
 
             }
         });
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
 
         return view;
 
