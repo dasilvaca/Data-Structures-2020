@@ -82,12 +82,11 @@ public class homeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        int xd = 0;
 
         total=Inicio.num_projects;
         //while(projectQueue.size<total){
             aleatorio = (int)(Math.random()*total);
-            cual(aleatorio);
+            //cual(aleatorio);
         //}
 
 

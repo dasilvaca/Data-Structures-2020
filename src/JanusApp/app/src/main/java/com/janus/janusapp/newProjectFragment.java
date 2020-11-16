@@ -150,23 +150,23 @@ public class newProjectFragment extends Fragment {
                          }
                      });
                  }
-                 newProject.addOwner(MainUser);
-                 Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_LONG).show();
+                 Toast.makeText(getContext(),"Proyecto creado",Toast.LENGTH_SHORT).show();
                  projectImageView.setImageResource(R.drawable.ic_baseline_add_24);
                  projectName.setText("");
                  projectGoal.setText("");
                  projectDscr.setText("");
                  //ArrayList<String>  = new ArrayList<>(Arrays.asList(newProject.owners.array));
+                ArrayList<String> ownProjectArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.ownProjectList.array));
+                ArrayList<String> followedProjectsArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.followedProjects.array));
+                dataBaseRef.child("Users").child(MainUser.username).child("ownProjectList").setValue(ownProjectArrayList);
+                dataBaseRef.child("Users").child(MainUser.username).child("followedProjects").setValue(followedProjectsArrayList);
                  //dataBaseRef.child("Project").child(Pname).setValue(new ArrayList<>(Arrays.asList(categories)));
-
-                 ArrayList<String> subible = new ArrayList<>(Arrays.asList("0"));
+                 ArrayList<String> subible = new ArrayList<>(Arrays.asList(Inicio.MainUser.username));
                  newProject.owners=null;
                  newProject.followers=null;
-                 dataBaseRef.child("Project").child((String)Pname).setValue(newProject);
+                 dataBaseRef.child("Project").child(Pname).setValue(newProject);
                  dataBaseRef.child("Project").child(Pname).child("owners").setValue(subible);
                  dataBaseRef.child("Project").child(Pname).child("followers").setValue(subible);
-
-
             }
         });
         return view;

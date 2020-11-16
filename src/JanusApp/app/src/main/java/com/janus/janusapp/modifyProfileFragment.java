@@ -142,6 +142,8 @@ public class modifyProfileFragment extends Activity {
                 firebaseRef.child("Users").child(newUser.username).child("wallet").setValue(mainUser.wallet);
                 ArrayList<String> ownProjectArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.ownProjectList.array));
                 ArrayList<String> followedProjectsArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.followedProjects.array));
+                if (!ownProjectArrayList.isEmpty()) ownProjectArrayList.add("0");
+                if (!followedProjectsArrayList.isEmpty()) followedProjectsArrayList.add("0");
                 firebaseRef.child("Users").child(newUser.username).child("ownProjectList").setValue(ownProjectArrayList);
                 firebaseRef.child("Users").child(newUser.username).child("followedProjects").setValue(followedProjectsArrayList);
                 Map<String, Object> changeUserMap = new HashMap<>();

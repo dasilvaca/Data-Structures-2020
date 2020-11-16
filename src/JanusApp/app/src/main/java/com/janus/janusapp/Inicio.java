@@ -43,8 +43,8 @@ public class Inicio extends FragmentActivity {
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
     public static FragmentManager fragmentManager;
-    private Fragment selectedFragment = new newProjectFragment();
-    private BottomNavigationView bottomnav;
+    private Fragment selectedFragment = new homeFragment();
+    private static BottomNavigationView bottomnav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +70,12 @@ public class Inicio extends FragmentActivity {
         String MainUserStr = getIntent().getStringExtra("usuario");
         gson = new Gson();
         MainUser = gson.fromJson(MainUserStr, User.class);
-        newProjectFragment frag = new newProjectFragment();
+        newProjectFragment frag = new newProjectFragment(); //Posible error
         Bundle bundle = new Bundle();
         bundle.putString("usuario", MainUserStr);
         frag.setArguments(bundle);
         bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
 
         /**
@@ -116,8 +115,8 @@ public class Inicio extends FragmentActivity {
         firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                num_projects = 0;
 
-                num_projects=0;
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     num_projects++;
                     Project newProject = new Project(ds.child("name").getValue().toString(),
@@ -125,16 +124,16 @@ public class Inicio extends FragmentActivity {
                             ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
 
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
-                    ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
-                    DynamicArrayS owners=new DynamicArrayS();
+                    ArrayList<String> followersArrayList = (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners = new DynamicArrayS();
                     DynamicArrayS followers = new DynamicArrayS();
-                    if(ownersArrayList!=null){
+                    if (ownersArrayList != null) {
                         owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
                     }
-                    if(followersArrayList!=null){
+                    if (followersArrayList != null) {
                         followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
                     }
-                    newProject.owners=owners;
+                    newProject.owners = owners;
                     newProject.followers = followers;
                     if (ds.child("picture").exists()) {
                         newProject.picture = ds.child("picture").getValue().toString();
@@ -175,6 +174,8 @@ public class Inicio extends FragmentActivity {
                             break;
                     }
                 }
+                bottomnav.setSelectedItemId(R.id.homeFragment);
+
             }
 
 
@@ -183,7 +184,6 @@ public class Inicio extends FragmentActivity {
 
             }
         });
-        //bottomnav.setSelectedItemId(R.id.homeFragment); /*Selecciona alguna por defecto, en este caso home*/
     }
 /**
  * ===========================================================================================================
@@ -195,7 +195,7 @@ public class Inicio extends FragmentActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    //Fragment selectedFragment;
+                    //Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.configFragment:
                             selectedFragment = new configFragment();
@@ -214,17 +214,13 @@ public class Inicio extends FragmentActivity {
                             break;
                         default:
                             bottomnav.setSelectedItemId(R.id.homeFragment);
-                            selectedFragment = new newProjectFragment();
                             break;
                     }
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment, selectedFragment).commit();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
                     return true;
                 }
             };
-    /* ==========================Hasta aquí el selector de fragment=============================*/
+    /** ==========================Hasta aquí el selector de fragment=============================**/
 
 
 }

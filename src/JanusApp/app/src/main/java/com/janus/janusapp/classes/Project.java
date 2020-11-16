@@ -36,6 +36,7 @@ public class Project implements Serializable {
         this.name = name;
         this.budget = budg;
         this.addOwner(owner);
+        this.addFollower(owner);
         this.category=ctgr;
         this.description=dscpt;
     }
