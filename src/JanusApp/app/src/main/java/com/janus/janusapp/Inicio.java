@@ -42,7 +42,8 @@ public class Inicio extends FragmentActivity {
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
     public static FragmentManager fragmentManager;
-    //private Fragment selectedFragment = new newProjectFragment();
+    private Fragment selectedFragment = new newProjectFragment();
+    private BottomNavigationView bottomnav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class Inicio extends FragmentActivity {
         Bundle bundle = new Bundle();
         bundle.putString("usuario", MainUserStr);
         frag.setArguments(bundle);
-        BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
+        bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
@@ -114,6 +115,7 @@ public class Inicio extends FragmentActivity {
         firebaseref.child("Project").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Project newProject = new Project(ds.child("name").getValue().toString(),
@@ -191,7 +193,7 @@ public class Inicio extends FragmentActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment;
+                    //Fragment selectedFragment;
                     switch (item.getItemId()) {
                         case R.id.configFragment:
                             selectedFragment = new configFragment();
@@ -209,6 +211,7 @@ public class Inicio extends FragmentActivity {
                             selectedFragment = new searchFragment();
                             break;
                         default:
+                            bottomnav.setSelectedItemId(R.id.homeFragment);
                             selectedFragment = new newProjectFragment();
                             break;
                     }
