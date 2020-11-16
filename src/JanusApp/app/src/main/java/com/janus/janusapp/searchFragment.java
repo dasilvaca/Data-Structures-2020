@@ -73,7 +73,7 @@ public class searchFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),searchs.class);
                 //User jeje = new User("KJD","bdja","lsjdn","sjkdvd");
-                i.putExtra("Tipo","Usuario");
+                i.putExtra("Tipo","usuario");
                 startActivity(i);
             }
         });
@@ -82,7 +82,7 @@ public class searchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),searchs.class);
-                i.putExtra("Tipo","Proyecto");
+                i.putExtra("Tipo","proyecto");
                 startActivity(i);
             }
         });

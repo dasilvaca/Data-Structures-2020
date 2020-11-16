@@ -182,7 +182,7 @@ public class profileFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
-        storageRef = FirebaseStorage.getInstance().getReference();
+
 
         /**============================ Inicialización de TextViews==============================*/
         userName = view.findViewById(R.id.username);
@@ -279,7 +279,7 @@ public class profileFragment extends Fragment {
             if (resultCode == -1 && requestCode == PICK_IMAGE) {
                 imageUri = data.getData();
                 profileImage.setImageURI(imageUri);
-                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
                 filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
