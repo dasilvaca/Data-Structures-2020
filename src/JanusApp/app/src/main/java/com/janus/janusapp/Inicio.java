@@ -1,6 +1,7 @@
 package com.janus.janusapp;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
@@ -42,9 +43,7 @@ public class Inicio extends FragmentActivity {
     public static int num_projects;
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
-    public static FragmentManager fragmentManager;
-    private Fragment selectedFragment = new homeFragment();
-    private static BottomNavigationView bottomnav;
+    public static boolean entro = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +73,9 @@ public class Inicio extends FragmentActivity {
         Bundle bundle = new Bundle();
         bundle.putString("usuario", MainUserStr);
         frag.setArguments(bundle);
-        bottomnav = findViewById(R.id.bottomNavigationView2);
+        BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
+
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
 
         /**
@@ -174,7 +174,10 @@ public class Inicio extends FragmentActivity {
                             break;
                     }
                 }
-                bottomnav.setSelectedItemId(R.id.homeFragment);
+                if (!entro) {
+                    entro = true;
+                    bottomnav.setSelectedItemId(R.id.homeFragment);
+                }
 
             }
 
@@ -195,7 +198,7 @@ public class Inicio extends FragmentActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    //Fragment selectedFragment = null;
+                    Fragment selectedFragment;
                     switch (item.getItemId()) {
                         case R.id.configFragment:
                             selectedFragment = new configFragment();
@@ -213,7 +216,7 @@ public class Inicio extends FragmentActivity {
                             selectedFragment = new searchFragment();
                             break;
                         default:
-                            bottomnav.setSelectedItemId(R.id.homeFragment);
+                            selectedFragment = new newProjectFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();

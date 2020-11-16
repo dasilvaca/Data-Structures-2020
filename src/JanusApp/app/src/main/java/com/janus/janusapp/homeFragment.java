@@ -2,6 +2,7 @@ package com.janus.janusapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,9 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.janus.janusapp.classes.Project;
@@ -49,6 +52,7 @@ public class homeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView imegenP;
 
     public homeFragment() {
         // Required empty public constructor
@@ -90,6 +94,8 @@ public class homeFragment extends Fragment {
         previousButton=view.findViewById(R.id.floatingActionButton3);
         nextButton=view.findViewById(R.id.floatingActionButton2);
         infoButton=view.findViewById(R.id.floatingActionButton4);
+        imegenP = view.findViewById(R.id.imagenP);
+
         int xd = 0;
 
         total=Inicio.num_projects;
@@ -136,6 +142,11 @@ public class homeFragment extends Fragment {
 
     private void showProject(Project project){
         Toast.makeText(getContext(),project.name,Toast.LENGTH_SHORT).show();
+        if (project.picture != null){
+            Uri fotoDelProyectoUwU = Uri.parse(project.picture);
+            Glide.with(homeFragment.this).load(fotoDelProyectoUwU).fitCenter().centerCrop().into(imegenP);
+        }
+
     }
     private String cual(int pos){
         int sumatoria=0;

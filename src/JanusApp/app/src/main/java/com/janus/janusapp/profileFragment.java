@@ -66,7 +66,7 @@ public class profileFragment extends Fragment {
     private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
     private Boolean pic;
     private StorageReference storageRef;
-    private static final int PICK_IMAGE = 101;
+    private static final int PICK_IMAGE = 2;
     private Uri imageUri;
     private ImageView profileImage;
     private FloatingActionButton more_buttons;
@@ -261,7 +261,7 @@ public class profileFragment extends Fragment {
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (pic == false) openGallery();
+                    openGallery();
                 }
 
             });
@@ -322,8 +322,8 @@ public class profileFragment extends Fragment {
              **/
             if (resultCode == -1 && requestCode == PICK_IMAGE) {
                 imageUri = data.getData();
-                profileImage.setImageURI(imageUri);
-                profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+               // profileImage.setImageURI(imageUri);
+                //profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
                 filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
