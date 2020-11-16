@@ -267,17 +267,21 @@ public class profileFragment extends Fragment {
         });
         /**===========================TabListener para las tabs de los listviews=================**/
 
+        TabLayout.Tab pestañáSeguidos = tabLayout.getTabAt(0);
+        TabLayout.Tab pestañáPropios = tabLayout.getTabAt(1);
+
+
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
 
             @Override
-            public void onTabSelected(TabLayout.Tab la1) {
-                Toast.makeText(getActivity(), "Buenas, la uno", Toast.LENGTH_SHORT).show();
+            public void onTabSelected(TabLayout.Tab tab) {
 
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab la2) {
-                Toast.makeText(getActivity(), "Buenas, la dos", Toast.LENGTH_SHORT).show();
+            public void onTabUnselected(TabLayout.Tab tab) {
             }
 
             @Override
