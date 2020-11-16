@@ -1,182 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollableView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/scrollableView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="0dp"
+        android:layout_height="225dp"
+        android:background="@color/azulito"
+        android:src="@drawable/default_prfile_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/profilePicture"
-            android:layout_width="0dp"
-            android:layout_height="225dp"
-            android:background="@color/azulito"
-            android:src="@drawable/default_prfile_picture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttons_to_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#FFFFFF"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/azulito"
+        app:backgroundTint="@color/azulito"
+        app:borderWidth="0.5dp"
+        app:layout_constraintBottom_toBottomOf="@id/profilePicture"
+        app:layout_constraintEnd_toEndOf="@id/profilePicture" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/buttons_to_edit"
-            android:layout_width="wrap_content"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_profile_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#FFFFFF"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_image_24"
+        android:tint="@color/azulito"
+        android:visibility="invisible"
+        app:backgroundTint="@color/azulito"
+        app:borderWidth="0.5dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/buttons_to_edit"
+        app:layout_constraintEnd_toEndOf="@+id/buttons_to_edit"
+        app:layout_constraintStart_toStartOf="@+id/buttons_to_edit" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#FFFFFF"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:visibility="invisible"
+        app:backgroundTint="@color/azulito"
+        app:borderWidth="0.5dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/edit_profile_picture"
+        app:layout_constraintEnd_toEndOf="@+id/edit_profile_picture"
+        app:layout_constraintStart_toStartOf="@+id/edit_profile_picture" />
+
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Default User Name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePicture" />
+
+    <TextView
+        android:id="@+id/dineros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="$ 1.000'000.000.00"
+        android:textColor="@color/verdesito"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePicture" />
+
+    <TextView
+        android:id="@+id/fullnameparameter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Full Name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username" />
+
+    <TextView
+        android:id="@+id/birthdateparameter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Birth date"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username" />
+
+    <TextView
+        android:id="@+id/fullname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Full Name (All the name xd)"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullnameparameter" />
+
+    <TextView
+        android:id="@+id/birthdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="MM/DD/YYYY"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullnameparameter" />
+
+    <TextView
+        android:id="@+id/emaileparameter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="email"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullname" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="averyveryveeerylarge@email.com"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emaileparameter" />
+
+    <TextView
+        android:id="@+id/genderparam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Gender"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullname" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Any Gender"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emaileparameter" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/slectorSection">
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:focusable="true"
-            android:src="@drawable/ic_baseline_add_24"
-            android:tint="@color/azulito"
-            app:backgroundTint="@color/azulito"
-            app:borderWidth="0.5dp"
-            app:layout_constraintBottom_toBottomOf="@id/profilePicture"
-            app:layout_constraintEnd_toEndOf="@id/profilePicture" />
+            android:id="@+id/selector"
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/edit_profile_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FFFFFF"
-            android:focusable="true"
-            android:src="@drawable/ic_baseline_image_24"
-            android:tint="@color/azulito"
-            android:visibility="invisible"
-            app:backgroundTint="@color/azulito"
-            app:borderWidth="0.5dp"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toTopOf="@id/buttons_to_edit"
-            app:layout_constraintEnd_toEndOf="@+id/buttons_to_edit"
-            app:layout_constraintStart_toStartOf="@+id/buttons_to_edit" />
+            >
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proyectos Seguidos" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proyectos Propios" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/edit_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:focusable="true"
-            android:src="@drawable/ic_baseline_edit_24"
-            android:visibility="invisible"
-            app:backgroundTint="@color/azulito"
-            app:borderWidth="0.5dp"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toTopOf="@id/edit_profile_picture"
-            app:layout_constraintEnd_toEndOf="@+id/edit_profile_picture"
-            app:layout_constraintStart_toStartOf="@+id/edit_profile_picture" />
 
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Default User Name"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profilePicture" />
-
-        <TextView
-            android:id="@+id/dineros"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="$ 1.000'000.000.00"
-            android:textColor="@color/verdesito"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profilePicture" />
-
-        <TextView
-            android:id="@+id/fullnameparameter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Full Name"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/username" />
-
-        <TextView
-            android:id="@+id/birthdateparameter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Birth date"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/username" />
-
-        <TextView
-            android:id="@+id/fullname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Full Name (All the name xd)"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullnameparameter" />
-
-        <TextView
-            android:id="@+id/birthdate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="MM/DD/YYYY"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullnameparameter" />
-
-        <TextView
-            android:id="@+id/emaileparameter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="email"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullname" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="averyveryveeerylarge@email.com"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emaileparameter" />
-
-        <TextView
-            android:id="@+id/genderparam"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Gender"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullname" />
-
-        <TextView
-            android:id="@+id/gender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Any Gender"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emaileparameter" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,18 +51,20 @@ public class Inicio extends FragmentActivity {
         /**
          * Estos DynamicArray guardan los proyectos por categorías
          */
-        projectTrie=new Trie<Project>();
-        userTrie=new Trie<User>();
-        {Food=new DynamicArray<String>();
-        Software = new DynamicArray<String>();
-        Technology = new DynamicArray<String>();
-        Accesories = new DynamicArray<String>();
-        Art = new DynamicArray<String>();
-        Entertainment = new DynamicArray<String>();
-        Services = new DynamicArray<String>();
-        Science = new DynamicArray<String>();
-        Education = new DynamicArray<String>();
-        Other = new DynamicArray<String>();}
+        projectTrie = new Trie<Project>();
+        userTrie = new Trie<User>();
+        {
+            Food = new DynamicArray<String>();
+            Software = new DynamicArray<String>();
+            Technology = new DynamicArray<String>();
+            Accesories = new DynamicArray<String>();
+            Art = new DynamicArray<String>();
+            Entertainment = new DynamicArray<String>();
+            Services = new DynamicArray<String>();
+            Science = new DynamicArray<String>();
+            Education = new DynamicArray<String>();
+            Other = new DynamicArray<String>();
+        }
         String MainUserStr = getIntent().getStringExtra("usuario");
         gson = new Gson();
         MainUser = gson.fromJson(MainUserStr, User.class);
@@ -82,25 +84,24 @@ public class Inicio extends FragmentActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    for (DataSnapshot ds : snapshot.getChildren()) {
-                        User newUser = new User(ds.child("firstName").getValue().toString(),ds.child("lastName").getValue().toString(),
-                                ds.child("email").getValue().toString(),ds.child("username").getValue().toString(),
-                                ds.child("mobileNumber").getValue().toString(),ds.child("password").getValue().toString(),
-                                ds.child("birthDate").getValue().toString(),ds.child("gender").getValue().toString());
-                        ArrayList<String> ownProjectArrayList = (ArrayList<String>) ds.child("ownProjectList").getValue();
-                        ArrayList<String> followedProjectsArrayList= (ArrayList<String>) ds.child("followedProjects").getValue();
-                        DynamicArrayS ownProjectList = new DynamicArrayS((String[]) ownProjectArrayList.toArray(new String[0]));
-                        DynamicArrayS followedProjects = new DynamicArrayS((String[]) followedProjectsArrayList.toArray(new String[0]));
-                        newUser.ownProjectList= ownProjectList;
-                        newUser.followedProjects= followedProjects;
-                        if(ds.child("picture").exists()){
-                            newUser.picture=ds.child("picture").getValue().toString();
-                        }
-                        userTrie.addWord(newUser.username,newUser);
-
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    User newUser = new User(ds.child("firstName").getValue().toString(), ds.child("lastName").getValue().toString(),
+                            ds.child("email").getValue().toString(), ds.child("username").getValue().toString(),
+                            ds.child("mobileNumber").getValue().toString(), ds.child("password").getValue().toString(),
+                            ds.child("birthDate").getValue().toString(), ds.child("gender").getValue().toString());
+                    ArrayList<String> ownProjectArrayList = (ArrayList<String>) ds.child("ownProjectList").getValue();
+                    ArrayList<String> followedProjectsArrayList = (ArrayList<String>) ds.child("followedProjects").getValue();
+                    DynamicArrayS ownProjectList = new DynamicArrayS(ownProjectArrayList.toArray(new String[0]));
+                    DynamicArrayS followedProjects = new DynamicArrayS(followedProjectsArrayList.toArray(new String[0]));
+                    newUser.ownProjectList = ownProjectList;
+                    newUser.followedProjects = followedProjects;
+                    if (ds.child("picture").exists()) {
+                        newUser.picture = ds.child("picture").getValue().toString();
                     }
-
+                    userTrie.addWord(newUser.username, newUser);
                 }
+
+            }
 
 
             @Override
@@ -114,57 +115,50 @@ public class Inicio extends FragmentActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     Project newProject = new Project(ds.child("name").getValue().toString(),
                             Integer.parseInt(ds.child("budget").getValue().toString()),
-                            ds.child("category").getValue().toString(),ds.child("description").getValue().toString());
+                            ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
-                    ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
-                    DynamicArrayS owners=new DynamicArrayS();
-                    DynamicArrayS followers = new DynamicArrayS();
-                    if(ownersArrayList!=null){
-                         owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
-                    }
-                    if(followersArrayList!=null){
-                        followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
-                    }
-
-                    newProject.owners=owners;
+                    ArrayList<String> followersArrayList = (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    DynamicArrayS followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    newProject.owners = owners;
                     newProject.followers = followers;
-                    projectTrie.addWord(newProject.name,newProject);
-                        switch(newProject.category){
-                            case("Food"):
-                                Food.append(newProject.name);
-                                break;
-                            case("Software"):
-                                Software.append(newProject.name);
-                                break;
-                            case("Technology"):
-                                Technology.append(newProject.name);
-                                break;
-                            case("Art"):
-                                Art.append(newProject.name);
-                                break;
-                            case("Entertainment"):
-                                Entertainment.append(newProject.name);
-                                break;
-                            case("Services"):
-                                Services.append(newProject.name);
-                                break;
-                            case("Science"):
-                                Science.append(newProject.name);
-                                break;
-                            case("Education"):
-                                Education.append(newProject.name);
-                                break;
-                            case("Other"):
-                                Other.append(newProject.name);
-                                break;
-                            default:
-                                break;
-                        }
+                    projectTrie.addWord(newProject.name, newProject);
+                    switch (newProject.category) {
+                        case ("Food"):
+                            Food.append(newProject.name);
+                            break;
+                        case ("Software"):
+                            Software.append(newProject.name);
+                            break;
+                        case ("Technology"):
+                            Technology.append(newProject.name);
+                            break;
+                        case ("Art"):
+                            Art.append(newProject.name);
+                            break;
+                        case ("Entertainment"):
+                            Entertainment.append(newProject.name);
+                            break;
+                        case ("Services"):
+                            Services.append(newProject.name);
+                            break;
+                        case ("Science"):
+                            Science.append(newProject.name);
+                            break;
+                        case ("Education"):
+                            Education.append(newProject.name);
+                            break;
+                        case ("Other"):
+                            Other.append(newProject.name);
+                            break;
+                        default:
+                            break;
                     }
                 }
+            }
 
 
             @Override
@@ -207,7 +201,7 @@ public class Inicio extends FragmentActivity {
                     }
                     fragmentManager = getSupportFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment,selectedFragment).commit();
+                    fragmentTransaction.replace(R.id.fragment, selectedFragment).commit();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
                     return true;
                 }
