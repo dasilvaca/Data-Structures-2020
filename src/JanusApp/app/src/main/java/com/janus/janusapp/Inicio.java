@@ -42,7 +42,7 @@ public class Inicio extends FragmentActivity {
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
     public static FragmentManager fragmentManager;
-    private Fragment selectedFragment = new newProjectFragment();
+    //private Fragment selectedFragment = new newProjectFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class Inicio extends FragmentActivity {
         frag.setArguments(bundle);
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView2);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
         DatabaseReference firebaseref = FirebaseDatabase.getInstance().getReference();
 
         /**
@@ -121,6 +121,7 @@ public class Inicio extends FragmentActivity {
                             ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
 
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
+<<<<<<< HEAD
                     ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
                     DynamicArrayS owners=new DynamicArrayS();
                     DynamicArrayS followers = new DynamicArrayS();
@@ -131,6 +132,19 @@ public class Inicio extends FragmentActivity {
                         followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
                     }
                     newProject.owners=owners;
+=======
+                    ArrayList<String> followersArrayList = (ArrayList<String>) ds.child("followers").getValue();
+                    DynamicArrayS owners = new DynamicArrayS();
+                    DynamicArrayS followers = new DynamicArrayS();
+                    if (ownersArrayList != null) {
+                        owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                    }
+                    if (followersArrayList != null) {
+                        followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
+                    }
+
+                    newProject.owners = owners;
+>>>>>>> 2f5f7e15d75e10a994c7cd559dfa144d39d06fc7
                     newProject.followers = followers;
                     if (ds.child("picture").exists()) {
                         newProject.picture = ds.child("picture").getValue().toString();
@@ -179,7 +193,7 @@ public class Inicio extends FragmentActivity {
 
             }
         });
-        // bottomnav.setSelectedItemId(R.id.homeFragment);
+         bottomnav.setSelectedItemId(R.id.homeFragment); /**Selecciona alguna por defecto, en este caso home**/
     }
 /**
  * ===========================================================================================================
@@ -191,7 +205,7 @@ public class Inicio extends FragmentActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                    Fragment selectedFragment;
                     switch (item.getItemId()) {
                         case R.id.configFragment:
                             selectedFragment = new configFragment();

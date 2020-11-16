@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.janus.janusapp.classes.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,9 +111,10 @@ public class modifyProfileFragment extends Activity {
                 if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
-                    Glide.with(modifyProfileFragment.this).load(ubi).fitCenter().centerCrop().into(currentProfileImage);
+                    //Glide.with(modifyProfileFragment.this).load(ubi).fitCenter().centerCrop().into(currentProfileImage);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -125,8 +129,8 @@ public class modifyProfileFragment extends Activity {
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User newUser = new User(mainUser.firstName,mainUser.lastName,modifyEmail.getText().toString(),modifyUsername.getText().toString(),
-                        modifyTelNumber.getText().toString(),modifyPassword.getText().toString(),mainUser.birthDate,mainUser.gender);
+                User newUser = Inicio.MainUser;
+                newUser.EditSomeUserInfo(modifyUsername, modifyPassword, modifyEmail, modifyTelNumber);
                 firebaseRef.child("Users").child(newUser.username).child("firstName").setValue(mainUser.firstName);
                 firebaseRef.child("Users").child(newUser.username).child("lastName").setValue(mainUser.lastName);
                 firebaseRef.child("Users").child(newUser.username).child("email").setValue(newUser.email);
@@ -136,17 +140,18 @@ public class modifyProfileFragment extends Activity {
                 firebaseRef.child("Users").child(newUser.username).child("birthDate").setValue(mainUser.birthDate);
                 firebaseRef.child("Users").child(newUser.username).child("gender").setValue(mainUser.gender);
                 firebaseRef.child("Users").child(newUser.username).child("wallet").setValue(mainUser.wallet);
-                firebaseRef.child("Users").child(newUser.username).child("ownProjectList").setValue(mainUser.ownProjectList);
-                firebaseRef.child("Users").child(newUser.username).child("followedProjects").setValue(mainUser.followedProjects);
-
-
+                ArrayList<String> ownProjectArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.ownProjectList.array));
+                ArrayList<String> followedProjectsArrayList = new ArrayList<>(Arrays.asList(Inicio.MainUser.followedProjects.array));
+                firebaseRef.child("Users").child(newUser.username).child("ownProjectList").setValue(ownProjectArrayList);
+                firebaseRef.child("Users").child(newUser.username).child("followedProjects").setValue(followedProjectsArrayList);
                 Map<String, Object> changeUserMap = new HashMap<>();
                 changeUserMap.put("username", modifyUsername.getText().toString());
                 changeUserMap.put("password", modifyPassword.getText().toString());
                 changeUserMap.put("email", modifyEmail.getText().toString());
                 changeUserMap.put("mobileNumber", modifyTelNumber.getText().toString());
-
                 firebaseRef.child("Users").child(mainUser.username).updateChildren(changeUserMap);
+                Inicio.MainUser = newUser;
+                finish();
             }
         });
     }
