@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.provider.MediaStore;
@@ -32,6 +35,8 @@ import com.janus.janusapp.classes.User;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -63,7 +68,7 @@ public class profileFragment extends Fragment {
     private Animation toBottom;//= AnimationUtils.loadAnimation( this.getContext(),R.anim.to_bottom_anim);
     private Boolean pic;
     private StorageReference storageRef;
-    private static final int PICK_IMAGE = 100;
+    private static final int PICK_IMAGE = 101;
     private Uri imageUri;
     private ImageView profileImage;
     private FloatingActionButton more_buttons;
@@ -189,7 +194,7 @@ public class profileFragment extends Fragment {
         tabLayout = view.findViewById(R.id.selector);
         ownProjectsLists = view.findViewById(R.id.OwnProjectsList);
         userFollowProjets = view.findViewById(R.id.UserFollowProjects);
-        //viewPager = view.findViewById(R.id.MyPager);
+        viewPager = view.findViewById(R.id.MyPager);
 
         pageController = new PageController(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageController);
@@ -309,20 +314,22 @@ public class profileFragment extends Fragment {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 /**===============================================================================================**/
-    /**
-     * =====================================Apertura de Gallery======================================
-     **/
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        /**==============================Aquí sube la foto al storage y la muestra===========**/
-        if (resultCode == -1 && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            profileImage.setImageURI(imageUri);
-            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+
+        @Override
+        public void onActivityResult ( int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            /**
+             * ==============================Aquí sube la foto al storage y la muestra===============
+             **/
+            if (resultCode == -1 && requestCode == PICK_IMAGE) {
+                imageUri = data.getData();
+                profileImage.setImageURI(imageUri);
+                profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
+                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override

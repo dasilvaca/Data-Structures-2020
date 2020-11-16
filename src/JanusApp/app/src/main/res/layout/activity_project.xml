@@ -8,30 +8,14 @@
     android:foregroundTint="@color/azulito"
     tools:context=".ProjectActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/scrollView3"
-        android:layout_width="408dp"
-        android:layout_height="389dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ProjectImage"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="227dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -58,7 +42,7 @@
             android:progressBackgroundTintMode="add"
             android:progressTint="@color/doradito"
             android:secondaryProgressTint="@color/amarillito_claro"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.609"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,26 +62,25 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="510dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="400dp"
-            android:layout_height="1200dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Followers"
-                android:layout_width="181dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_margin="12dp"
                 android:gravity="bottom"
                 android:text="Followers"
                 android:textSize="18sp"
@@ -107,8 +90,8 @@
             <TextView
                 android:id="@+id/FollowersNumber"
                 android:layout_width="wrap_content"
-                android:layout_height="49dp"
-                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:text="TextView"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,10 +99,9 @@
 
             <TextView
                 android:id="@+id/Owners"
-                android:layout_width="183dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:gravity="bottom"
                 android:text="Owners"
                 android:textSize="18sp"
@@ -128,7 +110,7 @@
 
             <TextView
                 android:id="@+id/OwnersList"
-                android:layout_width="372dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="TextView"
@@ -140,10 +122,9 @@
 
             <TextView
                 android:id="@+id/ProjectDescription"
-                android:layout_width="183dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:gravity="bottom"
                 android:text="Description"
                 android:textSize="18sp"
@@ -152,9 +133,9 @@
 
             <TextView
                 android:id="@+id/Description"
-                android:layout_width="372dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="16dp"
                 android:text="TextView"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +144,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ProjectDescription" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 
 

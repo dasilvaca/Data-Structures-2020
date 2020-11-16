@@ -53,7 +53,7 @@ public class ProjectActivity extends AppCompatActivity {
 
         projectName.setText(proyecto.name);
         projectDescription.setText(proyecto.description);
-        followersNumber.setText(proyecto.followers.size);
+        followersNumber.setText(String.valueOf(proyecto.followers.size));
         ownersList.setText(proyecto.owners.toString());
 
         if(proyecto.picture!=null) {
