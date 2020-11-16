@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.common.collect.Lists;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.janus.janusapp.classes.*;
@@ -108,7 +109,7 @@ public class signup extends AppCompatActivity /*Activity*/ {
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).child("wallet").setValue(0);
                 newUser.followedProjects.append("0");  //Las siguientes 4 líneas son para evitar un error, no borrar Att:Joselo
                 newUser.ownProjectList.append("0");/** Toca cambiar esta chambonada xddd**/;
-                ArrayList<String> subible = new ArrayList<>(Arrays.asList(newUser.followedProjects.array));
+                ArrayList<String> subible = Lists.newArrayList("0");;
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).child("ownProjectList").setValue(subible);
                 dataBaseRef.child("Users").child(newUsername.getText().toString()).child("followedProjects").setValue(subible);
                 Intent vamoahome = new Intent(signup.this, Inicio.class);

@@ -35,8 +35,6 @@ import com.janus.janusapp.classes.User;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -229,7 +227,7 @@ public class profileFragment extends Fragment {
          **/
         DatabaseReference d = FirebaseDatabase.getInstance().getReference();
         pic = false;
-        d.child("Users").child(MainUser.username).child("upicture").addValueEventListener(new ValueEventListener() {
+        d.child("Users").child(MainUser.username).child("picture").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -259,15 +257,15 @@ public class profileFragment extends Fragment {
          */
 
 
-        if (pic == false) {
+
             edit_profile_picture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openGallery();
+                    if (pic == false) openGallery();
                 }
 
             });
-        }
+
 
         /**===========================TabListener para las tabs de los listviews=================**/
 

@@ -159,7 +159,7 @@ public class newProjectFragment extends Fragment {
                  //ArrayList<String>  = new ArrayList<>(Arrays.asList(newProject.owners.array));
                  //dataBaseRef.child("Project").child(Pname).setValue(new ArrayList<>(Arrays.asList(categories)));
 
-                 ArrayList<String> subible = new ArrayList<>(Arrays.asList(newProject.owners.array));
+                 ArrayList<String> subible = new ArrayList<>(Arrays.asList("0"));
                  newProject.owners=null;
                  newProject.followers=null;
                  dataBaseRef.child("Project").child((String)Pname).setValue(newProject);
