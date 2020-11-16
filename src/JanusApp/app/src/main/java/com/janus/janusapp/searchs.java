@@ -2,6 +2,7 @@ package com.janus.janusapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,18 +14,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 import com.janus.janusapp.structs.Trie;
 
 public class searchs extends AppCompatActivity {
-    EditText busqueda;
-    Button busca;
-    ImageView proPicture;
-    TextView id,muestraid,caracteristica,muestraCaracterisitca;
-    Trie<User> usuarios;
-    Trie<Project> proyectos;
-    Uri pic;
+    private EditText busqueda;
+    private Button busca;
+    private ImageView proPicture;
+    private Project proyecto;
+    private TextView id,muestraid,caracteristica,muestraCaracterisitca;
+    private Trie<User> usuarios;
+    private Trie<Project> proyectos;
+    private Uri pic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,7 @@ public class searchs extends AppCompatActivity {
                 }
                 if(tipo.equals("proyecto")){
                     proyectos=Inicio.projectTrie;
-                    Project proyecto = proyectos.findWord(nombre);
+                    proyecto = proyectos.findWord(nombre);
                     if(proyecto!=null){
                         if(proyecto.picture!=null){
                             pic = Uri.parse(proyecto.picture);
@@ -69,5 +72,20 @@ public class searchs extends AppCompatActivity {
                 }
             }
         });
+
+            proPicture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(searchs.this,"Entró al onclick",Toast.LENGTH_LONG).show();
+                    if(tipo.equals("proyecto") && proyecto!=null) {
+                        Intent intent = new Intent(searchs.this, ProjectActivity.class);
+                        Gson gson = new Gson();
+                        String enviable = gson.toJson(proyecto);
+                        intent.putExtra("project",enviable);
+                        startActivity(intent);
+                    }
+                }
+            });
+
     }
 }

@@ -228,11 +228,7 @@ public class profileFragment extends Fragment {
                 if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
-<<<<<<< HEAD
                     Glide.with(profileFragment.this).load(ubiUrl).fitCenter().centerCrop().into(profileImage);
-=======
-                    Glide.with(getActivity()).load(ubi).fitCenter().centerCrop().into(profileImage);
->>>>>>> 2f5f7e15d75e10a994c7cd559dfa144d39d06fc7
                     pic = true;
                 }
             }
@@ -303,36 +299,20 @@ public class profileFragment extends Fragment {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 /**===============================================================================================**/
-
-<<<<<<< HEAD
-                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Uri downloadUrl = uri;
-                            String ubiPic = downloadUrl.toString();
-                            MainUser.picture = ubiPic;
-                            DatabaseReference fbRef = FirebaseDatabase.getInstance().getReference();
-                            fbRef.child("Users").child(MainUser.username).child("picture").setValue(ubiPic);
-                            fbRef.child("Users").child(MainUser.username).child("upicture").setValue(imageUri.toString());
-                        }
-                    });
-
-=======
-
-        @Override
-        public void onActivityResult ( int requestCode, int resultCode, Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            /**
-             * ==============================Aquí sube la foto al storage y la muestra===============
-             **/
-            if (resultCode == -1 && requestCode == PICK_IMAGE) {
-                imageUri = data.getData();
-                profileImage.setImageURI(imageUri);
-                profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture");
-                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+    /**
+     * =====================================Apertura de Gallery======================================
+     **/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**==============================Aquí sube la foto al storage y la muestra===========**/
+        if (resultCode == -1 && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            profileImage.setImageURI(imageUri);
+            StorageReference filepath = storageRef.child("Users").child(MainUser.username).child("Picture").child(imageUri.getLastPathSegment());
+            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
@@ -349,7 +329,7 @@ public class profileFragment extends Fragment {
                     }
                 });
             }
->>>>>>> 2f5f7e15d75e10a994c7cd559dfa144d39d06fc7
+
 
             if (requestCode == PICK_USER){
                 fullName.setText(MainUser.firstName + " " + MainUser.lastName);
@@ -361,10 +341,9 @@ public class profileFragment extends Fragment {
             }
         }
     }
-<<<<<<< HEAD
 
 
-}
+
 
 
 
@@ -372,6 +351,3 @@ public class profileFragment extends Fragment {
  * Aquí declaro los "Clicklisteners" de los 3 botones, el que despliega ambos,
  * y el que edita el perfil, como el que edita sólo la foto
  */
-=======
-    /**==========================================================================================**/
->>>>>>> 2f5f7e15d75e10a994c7cd559dfa144d39d06fc7

@@ -121,7 +121,6 @@ public class Inicio extends FragmentActivity {
                             ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
 
                     ArrayList<String> ownersArrayList = (ArrayList<String>) ds.child("owners").getValue();
-<<<<<<< HEAD
                     ArrayList<String> followersArrayList= (ArrayList<String>) ds.child("followers").getValue();
                     DynamicArrayS owners=new DynamicArrayS();
                     DynamicArrayS followers = new DynamicArrayS();
@@ -132,19 +131,6 @@ public class Inicio extends FragmentActivity {
                         followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
                     }
                     newProject.owners=owners;
-=======
-                    ArrayList<String> followersArrayList = (ArrayList<String>) ds.child("followers").getValue();
-                    DynamicArrayS owners = new DynamicArrayS();
-                    DynamicArrayS followers = new DynamicArrayS();
-                    if (ownersArrayList != null) {
-                        owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
-                    }
-                    if (followersArrayList != null) {
-                        followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
-                    }
-
-                    newProject.owners = owners;
->>>>>>> 2f5f7e15d75e10a994c7cd559dfa144d39d06fc7
                     newProject.followers = followers;
                     if (ds.child("picture").exists()) {
                         newProject.picture = ds.child("picture").getValue().toString();

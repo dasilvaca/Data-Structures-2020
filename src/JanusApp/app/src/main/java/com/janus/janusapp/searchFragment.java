@@ -71,7 +71,7 @@ public class searchFragment extends Fragment {
         searchPeople.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),searchs.class);
+                Intent i = new Intent(getContext(),searchs.class);
                 i.putExtra("Tipo","usuario");
                 startActivity(i);
             }
@@ -80,7 +80,7 @@ public class searchFragment extends Fragment {
         searchProjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),searchs.class);
+                Intent i = new Intent(getContext(),searchs.class);
                 i.putExtra("Tipo","proyecto");
                 startActivity(i);
             }
@@ -89,7 +89,7 @@ public class searchFragment extends Fragment {
         searchCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),Categorys.class);
+                Intent i = new Intent(getContext(),Categorys.class);
                 startActivity(i);
             }
         });

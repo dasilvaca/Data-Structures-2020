@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.janus.janusapp.structs.DynamicArray;
 import com.janus.janusapp.structs.DynamicArrayS;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class ProjectByCat extends AppCompatActivity {
     private DynamicArrayS proyectos;
     private ListView listView;
@@ -26,6 +29,7 @@ public class ProjectByCat extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.listview_projects);
         text=(TextView)findViewById(R.id.textView11);
         String category = getIntent().getStringExtra("cat");
+        text.setText("Estos son los proyectos de "+category+":");
         switch (category){
             case("food"):
                 proyectos=Inicio.Food;
@@ -57,7 +61,8 @@ public class ProjectByCat extends AppCompatActivity {
             default:
                 break;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ProjectByCat.this,R.layout.list_item,proyectos.array);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ProjectByCat.this,R.layout.list_item,Arrays.copyOfRange(proyectos.array,0,proyectos.size));
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
