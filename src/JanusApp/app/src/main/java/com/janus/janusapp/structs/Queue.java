@@ -16,6 +16,18 @@ public class Queue<T> {
         return false;
     }
 
+    public boolean in(T data){
+        Node<T> iterable = front;
+        if(this.isEmpty()){ return false;}
+        while(iterable.next!=null){
+            if(iterable.data.equals(data)){
+                return true;
+            }
+            iterable=iterable.next;
+        }
+        return false;
+    }
+
     /*El método enqueue añade un elemento nuevo (newNode) a la cola */
     public void enqueue(T newData) {
         size++;

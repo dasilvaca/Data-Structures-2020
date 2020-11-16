@@ -1,5 +1,6 @@
 package com.janus.janusapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.structs.DynamicArrayS;
 import com.janus.janusapp.structs.Queue;
@@ -33,13 +36,15 @@ public class homeFragment extends Fragment {
 * =========AQuí instancio las cosas que se usan========================
  **/
     private int total;
-    private Queue<Project> projectQueue=new Queue<Project>();
+    private Queue<String> projectQueue=new Queue<String>();
     private Stack<Project> previous = new Stack<Project>();
     private Stack<Project> next = new Stack<Project>();
     private DynamicArrayS[] array =  {Inicio.Food,Inicio.Software,Inicio.Technology,
                             Inicio.Accesories,Inicio.Art,Inicio.Entertainment,Inicio.Services,
                             Inicio.Science,Inicio.Education,Inicio.Other};
     private int aleatorio=0;
+    private FloatingActionButton previousButton,nextButton,infoButton;
+    private Project mostrable;
 //**======================================================
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,27 +87,69 @@ public class homeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        previousButton=view.findViewById(R.id.floatingActionButton3);
+        nextButton=view.findViewById(R.id.floatingActionButton2);
+        infoButton=view.findViewById(R.id.floatingActionButton4);
+        int xd = 0;
 
         total=Inicio.num_projects;
-        //while(projectQueue.size<total){
-            aleatorio = (int)(Math.random()*total);
-            //cual(aleatorio);
-        //}
+        while(projectQueue.size<total){
+            aleatorio = (int)(Math.random()*(total-1));
+            String ProyectoCualquiera =cual(aleatorio);
+            projectQueue.enqueue(ProyectoCualquiera);
+        }
 
+        showProject(Inicio.projectTrie.findWord(projectQueue.dequeue()));
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(next.isEmpty()){
+                    mostrable =Inicio.projectTrie.findWord(projectQueue.dequeue());
+                }else{
+                    mostrable=next.pop();
+                }
 
+                showProject(mostrable);
+                previous.push(mostrable);
+            }
+        });
+        previousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrable = previous.pop();
+                showProject(mostrable);
+                next.push(mostrable);
+
+            }
+        });
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getContext(),ProjectActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra("project",gson.toJson(intent));
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
+    private void showProject(Project project){
+        Toast.makeText(getContext(),project.name,Toast.LENGTH_SHORT).show();
+    }
     private String cual(int pos){
         int sumatoria=0;
         for(int i=0;i<9;i++){
-            sumatoria+=array[i].size;
-            if((sumatoria+array[i+1].size)>pos){
-                Toast.makeText(getContext(),pos+" "+array[i].array[pos-sumatoria],Toast.LENGTH_LONG).show();
-                return array[i].array[pos-sumatoria];
+
+            if((sumatoria+array[i].size)>pos){
+                    if(projectQueue.in(array[i].array[pos-sumatoria]) ){
+                        return cual((pos+1)%total);
+                    }
+                    return array[i].array[pos-sumatoria];
             }
+            sumatoria+=array[i].size;
         }
-        return array[9].array[pos-sumatoria];
+        return "";
     }
 
 }
