@@ -35,7 +35,7 @@ public class Categorys extends AppCompatActivity {
         startActivity(intent);
     }
     public void art(View v){
-        intent.putExtra("car","art");
+        intent.putExtra("cat","art");
         startActivity(intent);
     }
     public void entertainment(View v){
