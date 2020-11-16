@@ -55,7 +55,7 @@ public class ProjectActivity extends AppCompatActivity {
         projectDescription.setText(proyecto.description);
         followersNumber.setText(String.valueOf(proyecto.followers.size));
         ownersList.setText(proyecto.owners.toString());
-
+        foundProgress.setText(String.valueOf(proyecto.budget));
         if(proyecto.picture!=null) {
             pic = Uri.parse(proyecto.picture);
             Glide.with(ProjectActivity.this).load(pic).fitCenter().centerCrop().into(projectImage);

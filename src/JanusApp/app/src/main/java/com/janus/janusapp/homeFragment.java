@@ -1,5 +1,6 @@
 package com.janus.janusapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.janus.janusapp.classes.Project;
+import com.janus.janusapp.structs.DynamicArrayS;
+import com.janus.janusapp.structs.Queue;
+import com.janus.janusapp.structs.Stack;
 
 import org.w3c.dom.Text;
 
@@ -22,8 +29,18 @@ public class homeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    TextView je;
-    String ji;
+/**
+* =========AQuí instancio las cosas que se usan========================
+ **/
+    private int total;
+    private Queue<Project> projectQueue=new Queue<Project>();
+    private Stack<Project> previous = new Stack<Project>();
+    private Stack<Project> next = new Stack<Project>();
+    private DynamicArrayS[] array =  {Inicio.Food,Inicio.Software,Inicio.Technology,
+                            Inicio.Accesories,Inicio.Art,Inicio.Entertainment,Inicio.Services,
+                            Inicio.Science,Inicio.Education,Inicio.Other};
+    private int aleatorio=0;
+//**======================================================
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -67,7 +84,26 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         int xd = 0;
 
+        total=Inicio.num_projects;
+        //while(projectQueue.size<total){
+            aleatorio = (int)(Math.random()*total);
+            cual(aleatorio);
+        //}
+
 
         return view;
     }
+
+    private String cual(int pos){
+        int sumatoria=0;
+        for(int i=0;i<9;i++){
+            sumatoria+=array[i].size;
+            if((sumatoria+array[i+1].size)>pos){
+                Toast.makeText(getContext(),pos+" "+array[i].array[pos-sumatoria],Toast.LENGTH_LONG).show();
+                return array[i].array[pos-sumatoria];
+            }
+        }
+        return array[9].array[pos-sumatoria];
+    }
+
 }

@@ -39,6 +39,7 @@ public class Inicio extends FragmentActivity {
     public static Trie<User> userTrie;
     public static DynamicArrayS Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
     Gson gson;
+    public static int num_projects;
     public static FragmentTransaction fragmentTransaction;
     public static User MainUser;
     public static FragmentManager fragmentManager;
@@ -116,8 +117,9 @@ public class Inicio extends FragmentActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
+                num_projects=0;
                 for (DataSnapshot ds : snapshot.getChildren()) {
+                    num_projects++;
                     Project newProject = new Project(ds.child("name").getValue().toString(),
                             Integer.parseInt(ds.child("budget").getValue().toString()),
                             ds.child("category").getValue().toString(), ds.child("description").getValue().toString());
@@ -127,7 +129,7 @@ public class Inicio extends FragmentActivity {
                     DynamicArrayS owners=new DynamicArrayS();
                     DynamicArrayS followers = new DynamicArrayS();
                     if(ownersArrayList!=null){
-                         owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
+                        owners = new DynamicArrayS((String[]) ownersArrayList.toArray(new String[0]));
                     }
                     if(followersArrayList!=null){
                         followers = new DynamicArrayS((String[]) followersArrayList.toArray(new String[0]));
@@ -181,7 +183,7 @@ public class Inicio extends FragmentActivity {
 
             }
         });
-         bottomnav.setSelectedItemId(R.id.homeFragment); /**Selecciona alguna por defecto, en este caso home**/
+        //bottomnav.setSelectedItemId(R.id.homeFragment); /*Selecciona alguna por defecto, en este caso home*/
     }
 /**
  * ===========================================================================================================
@@ -222,7 +224,7 @@ public class Inicio extends FragmentActivity {
                     return true;
                 }
             };
-    /** ==========================Hasta aquí el selector de fragment=============================**/
+    /* ==========================Hasta aquí el selector de fragment=============================*/
 
 
 }

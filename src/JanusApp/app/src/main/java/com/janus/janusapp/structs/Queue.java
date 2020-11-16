@@ -5,7 +5,7 @@ public class Queue<T> {
        cola, es decir el primer elemento de esta, y back que guarda el último.
        Ambos atributos se inicializan en null ya que al crear una cola esta
        estará vacía. */
-    int size = 0;
+    public int size = 0;
     public Node<T> front = null;
     public Node<T> back = null;
 

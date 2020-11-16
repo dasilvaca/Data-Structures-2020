@@ -76,7 +76,6 @@ public class searchs extends AppCompatActivity {
             proPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(searchs.this,"Entró al onclick",Toast.LENGTH_LONG).show();
                     if(tipo.equals("proyecto") && proyecto!=null) {
                         Intent intent = new Intent(searchs.this, ProjectActivity.class);
                         Gson gson = new Gson();
