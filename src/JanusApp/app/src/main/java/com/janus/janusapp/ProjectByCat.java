@@ -2,6 +2,7 @@ package com.janus.janusapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.structs.DynamicArray;
 import com.janus.janusapp.structs.DynamicArrayS;
 
@@ -67,7 +70,12 @@ public class ProjectByCat extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ProjectByCat.this,proyectos.get(position),Toast.LENGTH_LONG).show();
+                Project project = Inicio.projectTrie.findWord(proyectos.get(position)) ;
+                Gson gson = new Gson();
+                String enviable = gson.toJson(project);
+                Intent intent = new Intent(ProjectByCat.this,ProjectActivity.class);
+                intent.putExtra("project",enviable);
+                startActivity(intent);
             }
         });
     }
