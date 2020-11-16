@@ -189,7 +189,7 @@ public class profileFragment extends Fragment {
         tabLayout = view.findViewById(R.id.selector);
         ownProjectsLists = view.findViewById(R.id.OwnProjectsList);
         userFollowProjets = view.findViewById(R.id.UserFollowProjects);
-        viewPager = view.findViewById(R.id.MyPager);
+        //viewPager = view.findViewById(R.id.MyPager);
 
         pageController = new PageController(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageController);
