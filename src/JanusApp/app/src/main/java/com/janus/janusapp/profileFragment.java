@@ -55,6 +55,7 @@ public class profileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final int PICK_USER = 101;
     private User MainUser;
     TextView userName, fullName, Email, Gender, birthdate, wallet;
 
@@ -183,7 +184,7 @@ public class profileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), modifyProfileFragment.class);
-                getActivity().startActivity(intent);
+                startActivityForResult(intent, PICK_USER);
             }
         });
 
@@ -329,6 +330,15 @@ public class profileFragment extends Fragment {
 
                     }
                 });
+            }
+
+            if (requestCode == PICK_USER){
+                fullName.setText(MainUser.firstName + " " + MainUser.lastName);
+                Email.setText(MainUser.email);
+                userName.setText(MainUser.username);
+                wallet.setText("$ " + MainUser.wallet);
+                birthdate.setText(MainUser.birthDate);
+                Gender.setText(MainUser.gender);
             }
         }
     }

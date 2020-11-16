@@ -111,7 +111,7 @@ public class modifyProfileFragment extends Activity {
                 if (snapshot.exists()) {
                     String ubi = snapshot.getValue().toString();
                     Uri ubiUrl = Uri.parse(ubi);
-                    Glide.with(modifyProfileFragment.this).load(ubi).fitCenter().centerCrop().into(currentProfileImage);
+                    //Glide.with(modifyProfileFragment.this).load(ubi).fitCenter().centerCrop().into(currentProfileImage);
                 }
             }
 
