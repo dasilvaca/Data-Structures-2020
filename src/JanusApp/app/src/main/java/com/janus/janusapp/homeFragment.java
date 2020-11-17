@@ -39,6 +39,7 @@ public class homeFragment extends Fragment {
 * =========AQuí instancio las cosas que se usan========================
  **/
     private int total;
+    private TextView type,goal,name;
     private Queue<String> projectQueue=new Queue<String>();
     private Stack<Project> previous = new Stack<Project>();
     private Stack<Project> next = new Stack<Project>();
@@ -94,7 +95,10 @@ public class homeFragment extends Fragment {
         previousButton=view.findViewById(R.id.floatingActionButton3);
         nextButton=view.findViewById(R.id.floatingActionButton2);
         infoButton=view.findViewById(R.id.floatingActionButton4);
-        imegenP = view.findViewById(R.id.imagenP);
+        imegenP = view.findViewById(R.id.imageView);
+        name=view.findViewById(R.id.nombre);
+        goal=view.findViewById(R.id.goal);
+        type=view.findViewById(R.id.type);
 
         int xd = 0;
 
@@ -104,8 +108,8 @@ public class homeFragment extends Fragment {
             String ProyectoCualquiera =cual(aleatorio);
             projectQueue.enqueue(ProyectoCualquiera);
         }
-
-        showProject(Inicio.projectTrie.findWord(projectQueue.dequeue()));
+        mostrable=Inicio.projectTrie.findWord(projectQueue.dequeue());
+        showProject(mostrable);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,9 +135,10 @@ public class homeFragment extends Fragment {
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getContext(),ProjectActivity.class);
+                Intent intent= new Intent(getActivity(),ProjectActivity.class);
                 Gson gson = new Gson();
-                intent.putExtra("project",gson.toJson(intent));
+                String gsonP=gson.toJson(mostrable);
+                intent.putExtra("project",gsonP);
                 startActivity(intent);
             }
         });
@@ -141,11 +146,13 @@ public class homeFragment extends Fragment {
     }
 
     private void showProject(Project project){
-        Toast.makeText(getContext(),project.name,Toast.LENGTH_SHORT).show();
         if (project.picture != null){
             Uri fotoDelProyectoUwU = Uri.parse(project.picture);
             Glide.with(homeFragment.this).load(fotoDelProyectoUwU).fitCenter().centerCrop().into(imegenP);
         }
+        name.setText(mostrable.name);
+        goal.setText(String.valueOf(mostrable.budget));
+        type.setText(String.valueOf(mostrable.category));
 
     }
     private String cual(int pos){

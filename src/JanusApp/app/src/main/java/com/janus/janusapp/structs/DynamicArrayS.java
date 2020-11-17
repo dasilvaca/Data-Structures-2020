@@ -15,8 +15,8 @@ public class DynamicArrayS {
 
     public DynamicArrayS(String[] arreglo) {
         array = arreglo;
-        size = arreglo.length - 1;
-        capacity = arreglo.length;
+        size = arreglo.length ;
+        capacity = arreglo.length*2;
     }
 
     public void append(String data) {

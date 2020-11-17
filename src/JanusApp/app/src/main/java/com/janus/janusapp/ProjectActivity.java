@@ -49,7 +49,8 @@ public class ProjectActivity extends AppCompatActivity {
 
         //Sección Gson
         Gson gson = new Gson();
-        proyecto= gson.fromJson(getIntent().getStringExtra("project"),Project.class);
+        String gsonProject=getIntent().getStringExtra("project");
+        proyecto= gson.fromJson(gsonProject,Project.class);
 
         projectName.setText(proyecto.name);
         projectDescription.setText(proyecto.description);

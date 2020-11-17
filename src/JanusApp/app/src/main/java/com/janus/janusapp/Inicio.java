@@ -138,9 +138,7 @@ public class Inicio extends FragmentActivity {
                     if (ds.child("picture").exists()) {
                         newProject.picture = ds.child("picture").getValue().toString();
                     }
-                    if (ds.child("upicture").exists()) {
-                        newProject.upicture = ds.child("upicture").getValue().toString();
-                    }
+
                     projectTrie.addWord(newProject.name, newProject);
                     switch (newProject.category) {
                         case ("Food"):
