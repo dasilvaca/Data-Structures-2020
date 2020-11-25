@@ -12,7 +12,7 @@
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="36dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/mencorazona"
@@ -27,11 +27,22 @@
         android:layout_marginTop="80dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
-        android:src="@drawable/meachanta"
+        android:src="@drawable/flecha_atras"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/t"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/flecha_adelante"
+        app:layout_constraintStart_toEndOf="@+id/floatingActionButton2"
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButton2" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -52,7 +63,7 @@
         android:id="@+id/floatingActionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="36dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/ic_baseline_info_24"
@@ -67,15 +78,17 @@
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Name:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/nombre"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="157dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="36dp"
         android:gravity="center"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
@@ -86,6 +99,7 @@
         android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="Goal:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -94,6 +108,7 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:gravity="center"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/nombre"
         app:layout_constraintTop_toTopOf="@+id/g" />
 
@@ -104,6 +119,7 @@
         android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="Type:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/g"
         app:layout_constraintTop_toBottomOf="@+id/g" />
 
@@ -111,7 +127,12 @@
         android:id="@+id/type"
         android:layout_width="150dp"
         android:layout_height="30dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/goal"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/goal"
-        app:layout_constraintTop_toTopOf="@+id/t" />
+        app:layout_constraintTop_toBottomOf="@+id/goal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

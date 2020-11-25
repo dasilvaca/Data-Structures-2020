@@ -5,9 +5,13 @@ public class DoubleNode<T> {
     public DoubleNode<T> next = null;
     public DoubleNode<T> back = null;
 
+    public DoubleNode() {
+
+    }
     public DoubleNode(T dt) {
         this.data = dt;
     }
+
 
     public void setNext(DoubleNode<T> next) {
         this.next = next;

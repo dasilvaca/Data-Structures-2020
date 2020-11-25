@@ -47,7 +47,7 @@ public class homeFragment extends Fragment {
                             Inicio.Accesories,Inicio.Art,Inicio.Entertainment,Inicio.Services,
                             Inicio.Science,Inicio.Education,Inicio.Other};
     private int aleatorio=0;
-    private FloatingActionButton previousButton,nextButton,infoButton;
+    private FloatingActionButton previousButton,nextButton,infoButton,likeButton;
     private Project mostrable;
 //**======================================================
     // TODO: Rename and change types of parameters
@@ -93,8 +93,9 @@ public class homeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         previousButton=view.findViewById(R.id.floatingActionButton3);
-        nextButton=view.findViewById(R.id.floatingActionButton2);
+        nextButton=view.findViewById(R.id.floatingActionButton5);
         infoButton=view.findViewById(R.id.floatingActionButton4);
+        likeButton=view.findViewById(R.id.floatingActionButton2);
         imegenP = view.findViewById(R.id.imageView);
         name=view.findViewById(R.id.nombre);
         goal=view.findViewById(R.id.goal);
@@ -140,6 +141,12 @@ public class homeFragment extends Fragment {
                 String gsonP=gson.toJson(mostrable);
                 intent.putExtra("project",gsonP);
                 startActivity(intent);
+            }
+        });
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Se añadió a los proyectos que te gustan",Toast.LENGTH_SHORT).show();
             }
         });
         return view;

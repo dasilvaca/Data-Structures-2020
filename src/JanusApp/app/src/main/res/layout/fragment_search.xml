@@ -14,15 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="154dp"
         android:layout_marginTop="20dp"
-        android:text="Buscar Usuarios"
-        />
+        android:text="Search Users" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="154dp"
         android:layout_marginTop="190dp"
-        android:text="Buscar proyectos"
+        android:text="Search Projects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -32,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="154dp"
         android:layout_marginTop="360dp"
-        android:text="Buscar proyectos por categorías"
+        android:text="Search by categories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
