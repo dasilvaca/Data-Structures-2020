@@ -16,6 +16,10 @@
     <color name="azulito">          #233135</color>
     <color name="verdesito">        #3F9F41</color>
     <color name="doradito">         #DAA520</color>
+    <color name="amarillito_usernames">#D7CCA20A</color>
     <color name="azulito_tranas">#99233135</color>
     <color name="amarillito_claro">#F1D54E</color>
+    <color name="azulito_usuarios">#E90C5B8E</color>
+    <color name="azulito_usuarios_2">#95093959</color>
+    <color name="azulito_false">#A6768E9E</color>
 </resources>

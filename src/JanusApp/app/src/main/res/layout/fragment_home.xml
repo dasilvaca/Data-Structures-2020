@@ -16,22 +16,22 @@
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/mencorazona"
+        android:tint="@color/amarillito_claro"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton4"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton4" />
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButton4"
+        app:rippleColor="@color/amarillito_claro" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/flecha_atras"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton5"
@@ -41,13 +41,15 @@
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/flecha_adelante"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton2"
         app:layout_constraintTop_toTopOf="@+id/floatingActionButton2" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_width="409dp"
+        android:layout_height="303dp"
         android:layout_marginTop="4dp"
         android:background="@color/white"
         android:backgroundTint="@color/azulito"
@@ -66,69 +68,43 @@
         android:layout_marginStart="36dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
+        android:foregroundTint="@color/amarillito_claro"
         android:src="@drawable/ic_baseline_info_24"
+        android:tint="@color/amarillito_claro"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton3"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton3" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="Name:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButton3"
+        app:rippleColor="@color/amarillito_claro" />
 
     <TextView
         android:id="@+id/nombre"
-        android:layout_width="157dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/g"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:text="Goal:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        android:textColor="@color/doradito"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/goal"
         android:layout_width="150dp"
         android:layout_height="30dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/nombre"
-        app:layout_constraintTop_toTopOf="@+id/g" />
-
-    <TextView
-        android:id="@+id/t"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:text="Type:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/g"
-        app:layout_constraintTop_toBottomOf="@+id/g" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
     <TextView
         android:id="@+id/type"
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
+        android:textColor="@color/ic_launcher_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/goal"
         app:layout_constraintHorizontal_bias="0.0"

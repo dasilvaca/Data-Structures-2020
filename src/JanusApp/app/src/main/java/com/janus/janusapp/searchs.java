@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -21,54 +22,61 @@ import com.janus.janusapp.structs.Trie;
 
 public class searchs extends AppCompatActivity {
     private EditText busqueda;
-    private Button busca;
+    private ImageButton busca;
     private ImageView proPicture;
     private Project proyecto;
     private TextView id,muestraid,caracteristica,muestraCaracterisitca;
     private Trie<User> usuarios;
     private Trie<Project> proyectos;
     private Uri pic;
+    private String type;
+    private User usuario;
+    private User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Gson gson = new Gson();
+        String gsonUser=getIntent().getStringExtra("user");
+        currentUser = gson.fromJson(gsonUser,User.class);
+
         setContentView(R.layout.activity_searchs);
         String tipo = getIntent().getStringExtra("Tipo");
         busqueda=(EditText)findViewById(R.id.search);
-        busca=(Button)findViewById(R.id.searchButton);
+        busca=(ImageButton)findViewById(R.id.lupitaSearchButton);
         proPicture=(ImageView)findViewById(R.id.imageSearch);
-        id=(TextView)findViewById(R.id.textView10);
         muestraid=(TextView)findViewById(R.id.muestraid);
-        caracteristica=(TextView)findViewById(R.id.textView12);
         muestraCaracterisitca=(TextView)findViewById(R.id.textView13);
         busca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usuarios=Inicio.userTrie;
                 String nombre = busqueda.getText().toString();
-                if(tipo.equals("usuario")){
-                    usuarios=Inicio.userTrie;
-                    User usuario=usuarios.findWord(nombre);
-                    if(usuario!=null){
-                        if(usuario.picture!=null){
-                            pic = Uri.parse(usuario.picture);
-                            Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
-                        }
-                        id.setText("Username:");muestraid.setText(usuario.username);
-                        caracteristica.setText("Nombre:");muestraCaracterisitca.setText(usuario.firstName+" "+usuario.lastName);
-
-                    }else{ Toast.makeText(searchs.this,"El usuario no existe",Toast.LENGTH_LONG).show(); }
-                }
-                if(tipo.equals("proyecto")){
-                    proyectos=Inicio.projectTrie;
-                    proyecto = proyectos.findWord(nombre);
-                    if(proyecto!=null){
-                        if(proyecto.picture!=null){
-                            pic = Uri.parse(proyecto.picture);
-                            Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
-                        }
-                        id.setText("Project name:");muestraid.setText(proyecto.name);
-                        caracteristica.setText("Project goal:");muestraCaracterisitca.setText(String.valueOf(proyecto.budget));
-
-                    }else{Toast.makeText(searchs.this,"El proyecto no existe",Toast.LENGTH_LONG).show(); }
+                usuario=usuarios.findWord(nombre);
+                proyectos=Inicio.projectTrie;
+                proyecto = proyectos.findWord(nombre);
+                if(usuario!=null){
+                    if(usuario.picture!=null){
+                        pic = Uri.parse(usuario.picture);
+                        Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+                    } else{
+                        Glide.with(searchs.this).load(R.drawable.ic_person).fitCenter().centerCrop().into(proPicture);
+                    }
+                    muestraid.setText(usuario.username);
+                    muestraCaracterisitca.setText(usuario.firstName+" "+usuario.lastName);
+                    type = "usuario";
+                } else if(proyecto!=null){
+                    if(proyecto.picture!=null){
+                        pic = Uri.parse(proyecto.picture);
+                        Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+                    } else{
+                        Glide.with(searchs.this).load(R.drawable.default_project_picture).fitCenter().centerCrop().into(proPicture);
+                    }
+                    muestraid.setText(proyecto.name);
+                    muestraCaracterisitca.setText(String.valueOf(proyecto.budget));
+                    type = "proyecto";
+                } else{
+                    Toast.makeText(searchs.this, "There are not search results :(", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -76,11 +84,19 @@ public class searchs extends AppCompatActivity {
             proPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(tipo.equals("proyecto") && proyecto!=null) {
+                    if(type.equals("proyecto")){
                         Intent intent = new Intent(searchs.this, ProjectActivity.class);
                         Gson gson = new Gson();
                         String enviable = gson.toJson(proyecto);
+                        String gsonU=gson.toJson(currentUser);
+                        intent.putExtra("user",gsonU);
                         intent.putExtra("project",enviable);
+                        startActivity(intent);
+                    } else if(type.equals("usuario")){
+                        Intent intent = new Intent(searchs.this, UserActivity.class);
+                        Gson gson = new Gson();
+                        String enviable = gson.toJson(usuario);
+                        intent.putExtra("user",enviable);
                         startActivity(intent);
                     }
                 }

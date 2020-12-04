@@ -96,6 +96,7 @@ public class User implements Serializable {
     public void followProject(Project project) {
         followedProjects.append(project.name);
         project.followers.append(this.username);
+
     }
 
     public void createProject(String name, int bdgt, String ctgr, String dscpt) {
@@ -119,6 +120,10 @@ public class User implements Serializable {
         this.username = username.getText().toString();
         this.mobileNumber =phone.getText().toString();
         this.password = password.getText().toString();
+
+    }
+
+    public void unfollowProject(String projectName){
 
     }
 }

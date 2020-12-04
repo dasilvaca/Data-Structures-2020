@@ -83,4 +83,25 @@ public class DynamicArrayS {
         }
         return arreglo;
     }
+
+    public boolean find(String string){
+        for(int i=0;i<array.length;i++){
+            if(string.equals(array[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void remove(String name) {
+        if (this.find(name)){
+            String[] arreglo = new String[size - 1];
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != name) {
+                    arreglo[i] = array[i];
+                }
+            }
+            array = arreglo;
+        }
+    }
 }

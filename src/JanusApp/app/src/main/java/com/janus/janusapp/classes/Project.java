@@ -16,6 +16,7 @@ public class Project implements Serializable {
     public String name;
     public DynamicArrayS owners=new DynamicArrayS();
     public DynamicArrayS followers=new DynamicArrayS();
+    public int progress;
     public int budget;
     public String category;
     public String description;
@@ -27,7 +28,7 @@ public class Project implements Serializable {
         this.budget = budg;
         this.category=ctgr;
         this.description=dscpt;
-        
+        this.progress = 0;
     }
     public Project(){
 
@@ -39,12 +40,14 @@ public class Project implements Serializable {
         this.addFollower(owner);
         this.category=ctgr;
         this.description=dscpt;
+        this.progress = 0;
     }
     public Project(String name, int budg,String ctgr,String dscpt){
         this.name = name;
         this.budget = budg;
         this.category=ctgr;
         this.description=dscpt;
+        this.progress = 0;
     }
     
     public void addFollower(User newFollower){
@@ -60,6 +63,11 @@ public class Project implements Serializable {
     public String toString(){
         String s= "Name: "+name+" Owners: "+owners.toString()+" Followers: "+followers.toString()+" Budget: "+String.valueOf(budget);
         return s;
+    }
+
+    public void invest(User investor, int donation){
+        investor.wallet-=donation;
+        this.progress+=donation;
     }
 
     public void changeOwnerName(String oldName, String newName){

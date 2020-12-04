@@ -139,7 +139,9 @@ public class homeFragment extends Fragment {
                 Intent intent= new Intent(getActivity(),ProjectActivity.class);
                 Gson gson = new Gson();
                 String gsonP=gson.toJson(mostrable);
+                String gsonU=gson.toJson(Inicio.MainUser);
                 intent.putExtra("project",gsonP);
+                intent.putExtra("user",gsonU);
                 startActivity(intent);
             }
         });
@@ -156,6 +158,8 @@ public class homeFragment extends Fragment {
         if (project.picture != null){
             Uri fotoDelProyectoUwU = Uri.parse(project.picture);
             Glide.with(homeFragment.this).load(fotoDelProyectoUwU).fitCenter().centerCrop().into(imegenP);
+        } else{
+            Glide.with(homeFragment.this).load(R.drawable.default_project_picture).fitCenter().centerCrop().into(imegenP);
         }
         name.setText(mostrable.name);
         goal.setText(String.valueOf(mostrable.budget));

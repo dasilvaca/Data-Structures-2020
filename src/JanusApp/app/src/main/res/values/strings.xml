@@ -44,4 +44,7 @@
     <string name="last_name">Last Name</string>
     <string name="username">Username</string>
     <string name="janus">Janus</string>
+    <string name="searchHint">Write whatever you like to search...</string>
+    <string name="followButton">FOLLOW</string>
+    <string name="unfollowButton">UNFOLLOW</string>
 </resources>

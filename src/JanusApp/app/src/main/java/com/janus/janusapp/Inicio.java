@@ -211,8 +211,10 @@ public class Inicio extends FragmentActivity {
                             selectedFragment = new profileFragment();
                             break;
                         case R.id.searchFragment:
-                            selectedFragment = new searchFragment();
-                            break;
+                            String gsonU=gson.toJson(MainUser);
+                            Intent intent = new Intent(Inicio.this, searchs.class);
+                            intent.putExtra("user",gsonU);
+                            startActivity(intent);
                         default:
                             selectedFragment = new newProjectFragment();
                             break;
