@@ -70,9 +70,10 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
         DoubleLinkedL<Bundle> newList =table[position];
         DoubleNode<Bundle> tempNode = newList.Firstnode;
         while(tempNode!=null){
-            if(key==(T)tempNode.data.get("key")){
+            if(key.equals(((T)tempNode.data.get("key")))){
                 return (Q)tempNode.data.get("object");
             }
+            tempNode=tempNode.next;
         }
         return null;
     }

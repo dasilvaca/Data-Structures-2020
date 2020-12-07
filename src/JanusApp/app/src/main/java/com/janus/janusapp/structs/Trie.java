@@ -1,5 +1,7 @@
 package com.janus.janusapp.structs;
 
+import java.util.Arrays;
+
 public class Trie<T> {
 
     public LinkedL<TrieNode<T>> letters;
@@ -82,11 +84,9 @@ public class Trie<T> {
         return null;
     }
 
-    public DynamicArray findSuggestions(String string){
-        if(string.length()<4){
-            return null;
-        }
-        DynamicArray suggestions = new DynamicArray();
+    public Object[] findSuggestions(String string){
+
+        DynamicArray<String> suggestions = new DynamicArray<String>();
         Node<TrieNode<T>> current = this.letters.Firstnode;
         LinkedL<TrieNode<T>> currentList;
         int i = 0;
@@ -108,7 +108,7 @@ public class Trie<T> {
         if(!current.equals(this.letters.Firstnode)){
             suggestions = current.data.findValidChilds(suggestions);
         }
-        return suggestions;
+        return  Arrays.copyOfRange(suggestions.array,0,suggestions.size);
     }
 
 }

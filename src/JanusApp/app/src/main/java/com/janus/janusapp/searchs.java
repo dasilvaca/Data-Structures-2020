@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
+import com.janus.janusapp.structs.DynamicArray;
+import com.janus.janusapp.structs.HashTable;
 import com.janus.janusapp.structs.Trie;
 
 public class searchs extends AppCompatActivity implements SearchView.OnQueryTextListener{
@@ -39,6 +43,13 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
     private User currentUser;
     private SearchView searchView;
     private ListView recomendaciones;
+    private Spinner Project_User;
+    private Trie<String> projects;
+    private Trie<String> users;
+    private HashTable<String,User> userTable = Inicio.userTable;
+    private HashTable<String,Project> projectTable = Inicio.projectTable;
+    private User showableUser;
+    private Project showableProject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +57,12 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
         setContentView(R.layout.activity_searchs);
         Gson gson = new Gson();
         String gsonUser=getIntent().getStringExtra("user");
+        Project_User = (Spinner)findViewById(R.id.spinner);
+        users=Inicio.userNameTrie;
+        projects=Inicio.projectNameTrie;
+        String[] options = {"Search Users","Search Projects"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,options);
+        Project_User.setAdapter(adapter);
         recomendaciones=findViewById(R.id.recomendar);
         currentUser = gson.fromJson(gsonUser,User.class);
         searchView = findViewById(R.id.searchv);
@@ -115,24 +132,65 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        if(Project_User.getSelectedItem().toString().equals("Search Users")){
+            showableUser = userTable.find(query);
+            if(showableUser!=null){
+                Toast.makeText(searchs.this,showableUser.firstName,Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(searchs.this,"The user does not exist",Toast.LENGTH_SHORT).show();
+            }
+        }else if(Project_User.getSelectedItem().toString().equals("Search Projects")){
+            showableProject = projectTable.find(query);
+            if(showableProject!=null){
+                Toast.makeText(searchs.this,showableProject.description,Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(searchs.this,"The project does not exist",Toast.LENGTH_SHORT).show();
+            }
+        }
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        Toast.makeText(this,newText,Toast.LENGTH_SHORT).show();
-        String[] hola = new String[newText.length()];
-        for(int i=0;i<newText.length();i++){
-            hola[i]=String.valueOf(newText.charAt(i));
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,hola);
-        recomendaciones.setAdapter(adapter);
-        recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                busqueda.setText(hola[position]);
+        String[] UserSugest;
+        String[] ProjectSugest;
+        if(Project_User.getSelectedItem().toString().equals("Search Users") && newText.length()>=3){
+            Object[] sugests =users.findSuggestions(newText);
+            UserSugest = new String[sugests.length];
+            for(int i=0;i<sugests.length;i++){
+                UserSugest[i]=(String)sugests[i];
             }
-        });
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,UserSugest);
+            recomendaciones.setAdapter(adapter);
+            recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    showableUser = userTable.find(UserSugest[position]);
+                    Toast.makeText(searchs.this,showableUser.firstName,Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }else if(Project_User.getSelectedItem().toString().equals("Search Projects") && newText.length()>=3){
+            Object[] sugests = users.findSuggestions(newText);
+            ProjectSugest = new String[sugests.length];
+            for(int i=0;i<sugests.length;i++){
+                ProjectSugest[i]=(String)sugests[i];
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,ProjectSugest);
+            recomendaciones.setAdapter(adapter);
+            recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    showableProject = projectTable.find(ProjectSugest[position]);
+                    Toast.makeText(searchs.this,showableProject.description,Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
+
         return false;
     }
+
+
 }
