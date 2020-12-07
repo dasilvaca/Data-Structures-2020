@@ -82,5 +82,33 @@ public class Trie<T> {
         return null;
     }
 
+    public DynamicArray findSuggestions(String string){
+        if(string.length()<4){
+            return null;
+        }
+        DynamicArray suggestions = new DynamicArray();
+        Node<TrieNode<T>> current = this.letters.Firstnode;
+        LinkedL<TrieNode<T>> currentList;
+        int i = 0;
+        do{
+            if (current==null){
+                return null;
+            }
+            if(string.charAt(i)==current.data.letter){
+                currentList = current.data.childs;
+                if(i<string.length()-1){
+                    current = currentList.Firstnode;
+                }
+                i++;
+            }else{
+                current = current.next;
+            }
+
+        }while(i<string.length());
+        if(!current.equals(this.letters.Firstnode)){
+            suggestions = current.data.findValidChilds(suggestions);
+        }
+        return suggestions;
+    }
 
 }

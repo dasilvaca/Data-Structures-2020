@@ -34,4 +34,16 @@ public class TrieNode<T> {
         }
         return -1;
     }
+
+    public DynamicArray findValidChilds(DynamicArray currentArray){
+        Node<TrieNode<T>> current = this.childs.Firstnode;
+        while(current!=null && current.data!=null){
+            if(current.data.inObject!=null){
+                currentArray.append(current.data.inObject);
+            }
+            currentArray = current.data.findValidChilds(currentArray);
+            current = current.next;
+        }
+        return currentArray;
+    }
 }
