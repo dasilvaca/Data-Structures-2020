@@ -70,7 +70,7 @@ public class ProjectByCat extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Project project = Inicio.projectTrie.findWord(proyectos.get(position)) ;
+                Project project = Inicio.projectTable.find(proyectos.get(position)) ;
                 Gson gson = new Gson();
                 String enviable = gson.toJson(project);
                 Intent intent = new Intent(ProjectByCat.this,ProjectActivity.class);

@@ -109,13 +109,13 @@ public class homeFragment extends Fragment {
             String ProyectoCualquiera =cual(aleatorio);
             projectQueue.enqueue(ProyectoCualquiera);
         }
-        mostrable=Inicio.projectTrie.findWord(projectQueue.dequeue());
+        mostrable=Inicio.projectTable.find(projectQueue.dequeue());
         showProject(mostrable);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(next.isEmpty()){
-                    mostrable =Inicio.projectTrie.findWord(projectQueue.dequeue());
+                    mostrable = Inicio.projectTable.find(projectQueue.dequeue());
                 }else{
                     mostrable=next.pop();
                 }

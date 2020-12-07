@@ -7,25 +7,25 @@ import com.google.gson.Gson;
 import java.io.Serializable;
 
 public class HashTable<T extends Serializable,Q extends Serializable> {
-    public Object table[] ;
+    public DoubleLinkedL table[] ;
     public int size;
-    public int elements;
+    public double elements;
     public double LoadFactor;
 
     public HashTable(){
-        table= new Object[10];
+        table= new DoubleLinkedL[10];
         elements=0;
         size=10;
     }
 
     public HashTable(int size){
-        table= new Object[size];
+        table= new DoubleLinkedL[size];
         elements=0;
         this.size=size;
     }
 
     public void insert(T key, Q element){
-        int position=key.hashCode()%size;
+        int position=Math.abs(key.hashCode())%size;
         elements++;
         Bundle bundle = new Bundle();
         bundle.putSerializable("key",key);
@@ -35,9 +35,7 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
             newList.append(bundle);
             table[position]=newList;
         }else{
-            Gson gson = new Gson();
-            String listString = gson.toJson(table[position]);
-            DoubleLinkedL<Bundle> newList =gson.fromJson(listString,DoubleLinkedL.class);
+            DoubleLinkedL<Bundle> newList = table[position];
             newList.append(bundle);
             table[position]=newList;
         }
@@ -47,14 +45,13 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
         }
     }
     public void resize(){
-        Object[] newTable = new Object[size*2];
+        DoubleLinkedL tempTable[]= table;
+        table = new DoubleLinkedL[size*2];
         size*=2;
         elements=0;
-        for(int i=0;i<table.length;i++){
-            if(table[i]!=null){
-                Gson gson = new Gson();
-                String listString = gson.toJson(table[i]);
-                DoubleLinkedL<Bundle> newList =gson.fromJson(listString,DoubleLinkedL.class);
+        for(int i=0;i<tempTable.length;i++){
+            if(tempTable[i]!=null){
+                DoubleLinkedL<Bundle> newList =tempTable[i];
                 DoubleNode<Bundle> tempNode=newList.Firstnode;
                 while(tempNode!=null){
                     Bundle tempbundle = tempNode.data;
@@ -65,13 +62,12 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
                 }
             }
         }
+
     }
 
     public Q find(T key){
-        int position = key.hashCode()%size;
-        Gson gson = new Gson();
-        String listString = gson.toJson(table[position]);
-        DoubleLinkedL<Bundle> newList =gson.fromJson(listString,DoubleLinkedL.class);
+        int position = Math.abs(key.hashCode())%size;
+        DoubleLinkedL<Bundle> newList =table[position];
         DoubleNode<Bundle> tempNode = newList.Firstnode;
         while(tempNode!=null){
             if(key==(T)tempNode.data.get("key")){

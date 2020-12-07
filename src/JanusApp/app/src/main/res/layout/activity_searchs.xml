@@ -68,4 +68,31 @@
         app:layout_constraintTop_toTopOf="@+id/search"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_baseline_search_24" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSearch"
+        app:layout_constraintVertical_bias="0.035"
+        app:queryHint="Write whatever you want to find">
+
+    </androidx.appcompat.widget.SearchView>
+
+    <ListView
+        android:id="@+id/recomendar"
+        android:layout_width="384dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchv"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

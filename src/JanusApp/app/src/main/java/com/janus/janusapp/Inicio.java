@@ -31,13 +31,16 @@ import com.janus.janusapp.classes.Project;
 import com.janus.janusapp.classes.User;
 import com.janus.janusapp.structs.DynamicArray;
 import com.janus.janusapp.structs.DynamicArrayS;
+import com.janus.janusapp.structs.HashTable;
 import com.janus.janusapp.structs.Trie;
 
 import java.util.ArrayList;
 
 public class Inicio extends FragmentActivity {
-    public static Trie<Project> projectTrie;
-    public static Trie<User> userTrie;
+    public static Trie<String> projectNameTrie;
+    public static Trie<String> userNameTrie;
+    public static HashTable<String,User> userTable;
+    public static HashTable<String,Project> projectTable;
     public static DynamicArrayS Food, Software, Technology, Accesories, Art, Entertainment, Services, Science, Education, Other;
     Gson gson;
     public static int num_projects;
@@ -52,8 +55,10 @@ public class Inicio extends FragmentActivity {
         /**
          * Estos DynamicArray guardan los proyectos por categorías
          */
-        projectTrie = new Trie<Project>();
-        userTrie = new Trie<User>();
+        projectNameTrie = new Trie<String>();
+        userNameTrie = new Trie<String>();
+        userTable = new HashTable<String,User>();
+        projectTable = new HashTable<String,Project>();
         {
             Food = new DynamicArrayS();
             Software = new DynamicArrayS();
@@ -99,7 +104,8 @@ public class Inicio extends FragmentActivity {
                     if (ds.child("picture").exists()) {
                         newUser.picture = ds.child("picture").getValue().toString();
                     }
-                    userTrie.addWord(newUser.username, newUser);
+                    userNameTrie.addWord(newUser.username, newUser.username);
+                    userTable.insert(newUser.username,newUser);
                 }
 
             }
@@ -139,7 +145,8 @@ public class Inicio extends FragmentActivity {
                         newProject.picture = ds.child("picture").getValue().toString();
                     }
 
-                    projectTrie.addWord(newProject.name, newProject);
+                    projectNameTrie.addWord(newProject.name, newProject.name);
+                    projectTable.insert(newProject.name,newProject);
                     switch (newProject.category) {
                         case ("Food"):
                             Food.append(newProject.name);
