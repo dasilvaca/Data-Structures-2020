@@ -39,11 +39,9 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
     private Trie<String> proyectos;
     private Uri pic;
     private String type;
-    private User usuario;
     private User currentUser;
     private SearchView searchView;
     private ListView recomendaciones;
-    private Spinner Project_User;
     private Trie<String> projects;
     private Trie<String> users;
     private HashTable<String,User> userTable = Inicio.userTable;
@@ -57,18 +55,16 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
         setContentView(R.layout.activity_searchs);
         Gson gson = new Gson();
         String gsonUser=getIntent().getStringExtra("user");
-        Project_User = (Spinner)findViewById(R.id.spinner);
+
         users=Inicio.userNameTrie;
         projects=Inicio.projectNameTrie;
         String[] options = {"Search Users","Search Projects"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,options);
-        Project_User.setAdapter(adapter);
+
         recomendaciones=findViewById(R.id.recomendar);
         currentUser = gson.fromJson(gsonUser,User.class);
         searchView = findViewById(R.id.searchv);
         String tipo = getIntent().getStringExtra("Tipo");
-        busqueda=(EditText)findViewById(R.id.search);
-        busca=(ImageButton)findViewById(R.id.lupitaSearchButton);
         proPicture=(ImageView)findViewById(R.id.imageSearch);
         muestraid=(TextView)findViewById(R.id.muestraid);
         muestraCaracterisitca=(TextView)findViewById(R.id.textView13);
@@ -107,13 +103,13 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
             }
         });**/
 
-            proPicture.setOnClickListener(new View.OnClickListener() {
+           proPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(type.equals("proyecto")){
                         Intent intent = new Intent(searchs.this, ProjectActivity.class);
                         Gson gson = new Gson();
-                        String enviable = gson.toJson(proyecto);
+                        String enviable = gson.toJson(showableProject);
                         String gsonU=gson.toJson(currentUser);
                         intent.putExtra("user",gsonU);
                         intent.putExtra("project",enviable);
@@ -121,7 +117,7 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
                     } else if(type.equals("usuario")){
                         Intent intent = new Intent(searchs.this, UserActivity.class);
                         Gson gson = new Gson();
-                        String enviable = gson.toJson(usuario);
+                        String enviable = gson.toJson(showableUser);
                         intent.putExtra("user",enviable);
                         startActivity(intent);
                     }
@@ -132,65 +128,97 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        if(Project_User.getSelectedItem().toString().equals("Search Users")){
+        if(users.findWord(query)!=null){
             showableUser = userTable.find(query);
             if(showableUser!=null){
                 Toast.makeText(searchs.this,showableUser.firstName,Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(searchs.this,"The user does not exist",Toast.LENGTH_SHORT).show();
             }
-        }else if(Project_User.getSelectedItem().toString().equals("Search Projects")){
+        }else if(projects.findWord(query)!=null){
             showableProject = projectTable.find(query);
             if(showableProject!=null){
                 Toast.makeText(searchs.this,showableProject.description,Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(searchs.this,"The project does not exist",Toast.LENGTH_SHORT).show();
             }
+        }else{
+            Toast.makeText(searchs.this,"There are no results for this query",Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        String[] UserSugest;
-        String[] ProjectSugest;
-        if(Project_User.getSelectedItem().toString().equals("Search Users") && newText.length()>=3){
-            Object[] sugests =users.findSuggestions(newText);
-            UserSugest = new String[sugests.length];
-            for(int i=0;i<sugests.length;i++){
-                UserSugest[i]=(String)sugests[i];
-            }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,UserSugest);
-            recomendaciones.setAdapter(adapter);
-            recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    showableUser = userTable.find(UserSugest[position]);
-                    Toast.makeText(searchs.this,showableUser.firstName,Toast.LENGTH_SHORT).show();
-                }
-            });
+        String[] totalSugest;
 
-        }else if(Project_User.getSelectedItem().toString().equals("Search Projects") && newText.length()>=3){
-            Object[] sugests = users.findSuggestions(newText);
-            ProjectSugest = new String[sugests.length];
-            for(int i=0;i<sugests.length;i++){
-                ProjectSugest[i]=(String)sugests[i];
+        if( newText.length()>=3) {
+            Object[] userSugests = users.findSuggestions(newText);
+            Object[] projectSugests = projects.findSuggestions(newText);
+            int total= 0;
+            if (userSugests != null) {
+                total += userSugests.length;
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,ProjectSugest);
-            recomendaciones.setAdapter(adapter);
-            recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    showableProject = projectTable.find(ProjectSugest[position]);
-                    Toast.makeText(searchs.this,showableProject.description,Toast.LENGTH_SHORT).show();
+            if(projectSugests!= null) {
+                total += projectSugests.length;
+            }
+            if(projectSugests!= null || userSugests != null) {
+            totalSugest = new String[total];
+
+            if (userSugests != null && projectSugests!= null) {
+                for (int i = 0; i < userSugests.length; i++) {
+                    totalSugest[i] = (String) userSugests[i];
                 }
-            });
+
+                for (int j = userSugests.length; j < total; j++) {
+                    totalSugest[j] = (String) projectSugests[j];
+                }
+            }else if(userSugests == null){
+                for (int i = 0; i < projectSugests.length; i++) {
+                    totalSugest[i] = (String) projectSugests[i];
+                }
+            }else if(projectSugests == null){
+                for (int i = 0; i < userSugests.length; i++) {
+                    totalSugest[i] = (String) userSugests[i];
+                }
+            }
+
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,totalSugest);
+            recomendaciones.setAdapter(adapter);
+                recomendaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if (users.findWord(totalSugest[position]) != null) {
+                            showableUser = userTable.find(totalSugest[position]);
+                            Toast.makeText(searchs.this, showableUser.firstName, Toast.LENGTH_SHORT).show();
+                            if (showableUser.picture != null) {
+                                pic = Uri.parse(showableUser.picture);
+                                Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+                            } else {
+                                Glide.with(searchs.this).load(R.drawable.ic_person).fitCenter().centerCrop().into(proPicture);
+                            }
+                            muestraid.setText(showableUser.username);
+                            muestraCaracterisitca.setText(showableUser.firstName + " " + showableUser.lastName);
+                            type = "usuario";
+                        } else if (projects.findWord(totalSugest[position]) != null) {
+                            showableProject = projectTable.find(totalSugest[position]);
+                            Toast.makeText(searchs.this, showableProject.name, Toast.LENGTH_SHORT).show();
+                            if (showableProject.picture != null) {
+                                pic = Uri.parse(showableProject.picture);
+                                Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+                            } else {
+                                Glide.with(searchs.this).load(R.drawable.ic_person).fitCenter().centerCrop().into(proPicture);
+                            }
+                            muestraid.setText(showableProject.name);
+                            muestraCaracterisitca.setText(showableProject.description);
+                            type = "proyecto";
+                        }
+                    }
+                    });
+            }
         }
-
-
-
         return false;
+
     }
-
-
 }

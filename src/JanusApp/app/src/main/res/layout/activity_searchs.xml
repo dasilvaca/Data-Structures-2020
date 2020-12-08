@@ -7,29 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".searchs">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="291dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/searchHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageSearch"
-        android:layout_width="176dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="196dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="48dp"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="@+id/search"
-        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recomendar"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
     <TextView
@@ -53,33 +40,14 @@
         app:layout_constraintStart_toEndOf="@+id/imageSearch"
         app:layout_constraintTop_toBottomOf="@+id/muestraid" />
 
-    <ImageButton
-        android:id="@+id/lupitaSearchButton"
-        android:layout_width="55dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/cardview_shadow_end_color"
-        android:tint="@color/amarillito_claro"
-        app:layout_constraintBottom_toBottomOf="@+id/search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/search"
-        app:layout_constraintTop_toTopOf="@+id/search"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
-
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageSearch"
-        app:layout_constraintVertical_bias="0.035"
-        app:queryHint="Write whatever you want to find">
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Write whatever you want to find"
+        tools:layout_editor_absoluteX="0dp">
 
     </androidx.appcompat.widget.SearchView>
 
@@ -93,18 +61,6 @@
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchv"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageSearch"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.091" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
