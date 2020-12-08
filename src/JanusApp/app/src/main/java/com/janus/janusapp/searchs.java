@@ -130,18 +130,26 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
     public boolean onQueryTextSubmit(String query) {
         if(users.findWord(query)!=null){
             showableUser = userTable.find(query);
-            if(showableUser!=null){
-                Toast.makeText(searchs.this,showableUser.firstName,Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(searchs.this,"The user does not exist",Toast.LENGTH_SHORT).show();
+            if (showableUser.picture != null) {
+                pic = Uri.parse(showableUser.picture);
+                Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+            } else {
+                Glide.with(searchs.this).load(R.drawable.ic_person).fitCenter().centerCrop().into(proPicture);
             }
+            muestraid.setText(showableUser.username);
+            muestraCaracterisitca.setText(showableUser.firstName + " " + showableUser.lastName);
+            type = "usuario";
         }else if(projects.findWord(query)!=null){
             showableProject = projectTable.find(query);
-            if(showableProject!=null){
-                Toast.makeText(searchs.this,showableProject.description,Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(searchs.this,"The project does not exist",Toast.LENGTH_SHORT).show();
+            if (showableProject.picture != null) {
+                pic = Uri.parse(showableProject.picture);
+                Glide.with(searchs.this).load(pic).fitCenter().centerCrop().into(proPicture);
+            } else {
+                Glide.with(searchs.this).load(R.drawable.ic_person).fitCenter().centerCrop().into(proPicture);
             }
+            muestraid.setText(showableProject.name);
+            muestraCaracterisitca.setText(showableProject.description);
+            type = "proyecto";
         }else{
             Toast.makeText(searchs.this,"There are no results for this query",Toast.LENGTH_SHORT).show();
         }
@@ -151,7 +159,10 @@ public class searchs extends AppCompatActivity implements SearchView.OnQueryText
     @Override
     public boolean onQueryTextChange(String newText) {
         String[] totalSugest;
-
+        if( newText.length()<3){
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,new String[0]);
+            recomendaciones.setAdapter(adapter);
+        }
         if( newText.length()>=3) {
             Object[] userSugests = users.findSuggestions(newText);
             Object[] projectSugests = projects.findSuggestions(newText);

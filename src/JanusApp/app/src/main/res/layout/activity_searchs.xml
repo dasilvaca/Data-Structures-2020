@@ -11,17 +11,27 @@
         android:id="@+id/imageSearch"
         android:layout_width="196dp"
         android:layout_height="130dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recomendar"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
     <TextView
+        android:id="@+id/textView13"
+        android:layout_width="152dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/ic_launcher_background"
+        app:layout_constraintStart_toEndOf="@+id/imageSearch"
+        app:layout_constraintTop_toBottomOf="@+id/muestraid" />
+
+    <TextView
         android:id="@+id/muestraid"
-        android:layout_width="wrap_content"
+        android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -29,16 +39,6 @@
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/imageSearch"
         app:layout_constraintTop_toTopOf="@+id/imageSearch" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="87dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/ic_launcher_background"
-        app:layout_constraintStart_toEndOf="@+id/imageSearch"
-        app:layout_constraintTop_toBottomOf="@+id/muestraid" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchv"
