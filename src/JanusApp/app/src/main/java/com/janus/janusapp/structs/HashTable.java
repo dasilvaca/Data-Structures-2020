@@ -12,6 +12,14 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
     public double elements;
     public double LoadFactor;
 
+    public int hashCode(String key){
+        int hash = 0;
+        for (int i = 0; i < key.length(); i ++){
+            hash += key.charAt(i) * Math.pow(97, key.length() - (i + 1));
+        }
+        return hash % size;
+    }
+
     public HashTable(){
         table= new DoubleLinkedL[10];
         elements=0;
@@ -25,7 +33,7 @@ public class HashTable<T extends Serializable,Q extends Serializable> {
     }
 
     public void insert(T key, Q element){
-        int position=Math.abs(key.hashCode())%size;
+        int position=hashCode(key.toString());
         elements++;
         Bundle bundle = new Bundle();
         bundle.putSerializable("key",key);
